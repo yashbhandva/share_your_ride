@@ -333,6 +333,7 @@ public class TripServiceImpl implements TripService {
         response.setVehicleModel(trip.getVehicle().getModel());
         response.setVehicleNumber(trip.getVehicle().getVehicleNumber());
         response.setStatus(trip.getStatus().toString());
+        response.setIsActive(trip.getIsActive());
         return response;
     }
 }
