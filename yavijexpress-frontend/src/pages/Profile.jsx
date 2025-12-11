@@ -80,15 +80,61 @@ const Profile = () => {
 
       {profile && (
         <section style={{ marginBottom: 24 }}>
-          <h2>Details</h2>
-          <ul>
-            <li>Name: {profile.name}</li>
-            <li>Email: {profile.email}</li>
-            <li>Mobile: {profile.mobile}</li>
-            <li>Role: {profile.role}</li>
-          </ul>
+          <h2>Profile Details</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+            <div>
+              <h3>Basic Information</h3>
+              <p><strong>Name:</strong> {profile.name}</p>
+              <p><strong>Email:</strong> {profile.email}</p>
+              <p><strong>Mobile:</strong> {profile.mobile}</p>
+              <p><strong>Role:</strong> {profile.role}</p>
+              <p><strong>Status:</strong> {profile.verificationStatus}</p>
+              <p><strong>Total Rides:</strong> {profile.totalRides || 0}</p>
+              <p><strong>Rating:</strong> {profile.avgRating || 0}/5</p>
+            </div>
+            <div>
+              <h3>Additional Information</h3>
+              <p><strong>Emergency Contact 1:</strong> {profile.emergencyContact1 || 'Not provided'}</p>
+              <p><strong>Emergency Contact 2:</strong> {profile.emergencyContact2 || 'Not provided'}</p>
+              {profile.role === 'DRIVER' && (
+                <>
+                  <p><strong>Aadhaar Number:</strong> {profile.aadhaarNumber || 'Not provided'}</p>
+                  <p><strong>Driving License:</strong> {profile.drivingLicense || 'Not provided'}</p>
+                </>
+              )}
+            </div>
+          </div>
         </section>
       )}
+
+      <section style={{ marginBottom: 24 }}>
+        <h2>Update Profile</h2>
+        <form style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+          <div>
+            <label>Emergency Contact 1:</label>
+            <input type="tel" placeholder="Emergency contact number" />
+          </div>
+          <div>
+            <label>Emergency Contact 2:</label>
+            <input type="tel" placeholder="Secondary emergency contact" />
+          </div>
+          {profile?.role === 'DRIVER' && (
+            <>
+              <div>
+                <label>Aadhaar Number:</label>
+                <input type="text" placeholder="12-digit Aadhaar number" maxLength="12" />
+              </div>
+              <div>
+                <label>Driving License:</label>
+                <input type="text" placeholder="Driving license number" />
+              </div>
+            </>
+          )}
+          <div style={{ gridColumn: 'span 2' }}>
+            <button type="submit" style={{ padding: '10px 20px' }}>Update Profile</button>
+          </div>
+        </form>
+      </section>
 
       <section>
         <h2>Change Password</h2>
