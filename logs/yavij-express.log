@@ -162,3 +162,421 @@
 2025-12-12T01:51:12.291+05:30 DEBUG 20156 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@test.com for /api/trips
 2025-12-12T01:51:14.191+05:30 DEBUG 20156 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
 2025-12-12T01:51:14.203+05:30 DEBUG 20156 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2025-12-12T02:11:49.748+05:30  INFO 16776 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Starting YavijExpressApplication using Java 24.0.2 with PID 16776 (C:\yavijexpress\yavijexpress\yavijexpress\target\classes started by Dell in C:\yavijexpress)
+2025-12-12T02:11:49.751+05:30 DEBUG 16776 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-12T02:11:49.754+05:30  INFO 16776 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-12-12T02:11:51.554+05:30  INFO 16776 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-12T02:11:51.784+05:30  INFO 16776 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 205 ms. Found 10 JPA repository interfaces.
+2025-12-12T02:11:53.147+05:30  INFO 16776 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-12T02:11:53.162+05:30  INFO 16776 --- [yavij-express] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-12T02:11:53.162+05:30  INFO 16776 --- [yavij-express] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-12-12T02:11:53.273+05:30  INFO 16776 --- [yavij-express] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-12T02:11:53.273+05:30  INFO 16776 --- [yavij-express] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3397 ms
+2025-12-12T02:11:53.682+05:30  INFO 16776 --- [yavij-express] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-12T02:11:53.995+05:30  INFO 16776 --- [yavij-express] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-12-12T02:11:54.171+05:30  INFO 16776 --- [yavij-express] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-12T02:11:54.638+05:30  INFO 16776 --- [yavij-express] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-12T02:11:54.686+05:30  INFO 16776 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-12T02:11:54.978+05:30  INFO 16776 --- [yavij-express] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@35e07e19
+2025-12-12T02:11:54.981+05:30  INFO 16776 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-12T02:11:55.058+05:30  WARN 16776 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-12T02:11:55.059+05:30  WARN 16776 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-12-12T02:11:56.711+05:30  INFO 16776 --- [yavij-express] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-12T02:11:56.948+05:30  INFO 16776 --- [yavij-express] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12T02:11:57.579+05:30  INFO 16776 --- [yavij-express] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-12T02:11:58.464+05:30 DEBUG 16776 --- [yavij-express] [main] c.y.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2025-12-12T02:11:58.784+05:30  WARN 16776 --- [yavij-express] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-12-12T02:11:59.744+05:30  WARN 16776 --- [yavij-express] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-12T02:12:00.412+05:30  INFO 16776 --- [yavij-express] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2bfe51d5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@158566f8, org.springframework.security.web.context.SecurityContextHolderFilter@362aa318, org.springframework.security.web.header.HeaderWriterFilter@5ca012a6, org.springframework.web.filter.CorsFilter@e7afdd0, org.springframework.security.web.authentication.logout.LogoutFilter@cdf3ee2, com.yavijexpress.security.JwtAuthenticationFilter@16c559c7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7ec53f8f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6d0e242f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3125a827, org.springframework.security.web.session.SessionManagementFilter@3cc3914a, org.springframework.security.web.access.ExceptionTranslationFilter@48dbf9d, org.springframework.security.web.access.intercept.AuthorizationFilter@65cfd565]
+2025-12-12T02:12:01.061+05:30  INFO 16776 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-12-12T02:12:01.073+05:30  INFO 16776 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Started YavijExpressApplication in 12.154 seconds (process running for 13.137)
+2025-12-12T02:12:10.980+05:30  INFO 16776 --- [yavij-express] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-12T02:12:10.981+05:30  INFO 16776 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-12T02:12:10.983+05:30  INFO 16776 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-12-12T02:12:56.359+05:30 DEBUG 16776 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:12:56.365+05:30  WARN 16776 --- [yavij-express] [http-nio-8080-exec-5] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/auth/register' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2025-12-12T02:12:57.333+05:30 ERROR 16776 --- [yavij-express] [http-nio-8080-exec-5] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8080-exec-5] Exception processing template "email/verification": Error resolving template [email/verification], template might not exist or might not be accessible by any of the configured Template Resolvers
+
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [email/verification], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1064) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1053) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at com.yavijexpress.utils.EmailServiceImpl.sendVerificationEmail(EmailServiceImpl.java:39) ~[classes/:na]
+	at com.yavijexpress.service.impl.UserServiceImpl.register(UserServiceImpl.java:81) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:352) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.1.jar:6.1.1]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:385) ~[spring-tx-6.1.1.jar:6.1.1]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:717) ~[spring-aop-6.1.1.jar:6.1.1]
+	at com.yavijexpress.service.impl.UserServiceImpl$$SpringCGLIB$$0.register(<generated>) ~[classes/:na]
+	at com.yavijexpress.controller.AuthController.register(AuthController.java:27) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:352) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:713) ~[spring-aop-6.1.1.jar:6.1.1]
+	at com.yavijexpress.controller.AuthController$$SpringCGLIB$$0.register(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.16.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.16.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at com.yavijexpress.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:75) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at java.base/java.lang.Thread.run(Thread.java:1447) ~[na:na]
+
+2025-12-12T02:13:08.336+05:30 DEBUG 16776 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2025-12-12T02:13:15.308+05:30 DEBUG 16776 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2025-12-12T02:13:22.890+05:30 DEBUG 16776 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2025-12-12T02:15:48.651+05:30  INFO 16776 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12T02:15:48.712+05:30  INFO 16776 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-12T02:15:48.770+05:30  INFO 16776 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-12T02:15:55.171+05:30  INFO 15084 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Starting YavijExpressApplication using Java 24.0.2 with PID 15084 (C:\yavijexpress\yavijexpress\yavijexpress\target\classes started by Dell in C:\yavijexpress)
+2025-12-12T02:15:55.178+05:30 DEBUG 15084 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-12T02:15:55.181+05:30  INFO 15084 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-12-12T02:15:57.603+05:30  INFO 15084 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-12T02:15:57.862+05:30  INFO 15084 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 231 ms. Found 10 JPA repository interfaces.
+2025-12-12T02:15:59.547+05:30  INFO 15084 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-12T02:15:59.572+05:30  INFO 15084 --- [yavij-express] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-12T02:15:59.572+05:30  INFO 15084 --- [yavij-express] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-12-12T02:15:59.698+05:30  INFO 15084 --- [yavij-express] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-12T02:15:59.698+05:30  INFO 15084 --- [yavij-express] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4359 ms
+2025-12-12T02:16:00.104+05:30  INFO 15084 --- [yavij-express] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-12T02:16:00.291+05:30  INFO 15084 --- [yavij-express] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-12-12T02:16:00.422+05:30  INFO 15084 --- [yavij-express] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-12T02:16:00.970+05:30  INFO 15084 --- [yavij-express] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-12T02:16:01.022+05:30  INFO 15084 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-12T02:16:01.336+05:30  INFO 15084 --- [yavij-express] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2eb6d34a
+2025-12-12T02:16:01.353+05:30  INFO 15084 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-12T02:16:01.462+05:30  WARN 15084 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-12T02:16:01.465+05:30  WARN 15084 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-12-12T02:16:03.257+05:30  INFO 15084 --- [yavij-express] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-12T02:16:03.489+05:30  INFO 15084 --- [yavij-express] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12T02:16:04.118+05:30  INFO 15084 --- [yavij-express] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-12T02:16:05.103+05:30 DEBUG 15084 --- [yavij-express] [main] c.y.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2025-12-12T02:16:05.497+05:30  WARN 15084 --- [yavij-express] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-12-12T02:16:06.609+05:30  WARN 15084 --- [yavij-express] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-12T02:16:07.183+05:30  INFO 15084 --- [yavij-express] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1bbbede1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@699d04a9, org.springframework.security.web.context.SecurityContextHolderFilter@ad7d724, org.springframework.security.web.header.HeaderWriterFilter@5b84007e, org.springframework.web.filter.CorsFilter@1cc00f56, org.springframework.security.web.authentication.logout.LogoutFilter@74947f2b, com.yavijexpress.security.JwtAuthenticationFilter@12d76643, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e680c92, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@ef64a8f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@25379b3c, org.springframework.security.web.session.SessionManagementFilter@7e4f42c0, org.springframework.security.web.access.ExceptionTranslationFilter@46e03c31, org.springframework.security.web.access.intercept.AuthorizationFilter@cdf3ee2]
+2025-12-12T02:16:07.733+05:30  INFO 15084 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-12-12T02:16:07.746+05:30  INFO 15084 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Started YavijExpressApplication in 14.033 seconds (process running for 15.273)
+2025-12-12T02:16:26.676+05:30  INFO 15084 --- [yavij-express] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-12T02:16:26.677+05:30  INFO 15084 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-12T02:16:26.684+05:30  INFO 15084 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2025-12-12T02:16:26.750+05:30 DEBUG 15084 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2025-12-12T02:16:26.757+05:30  WARN 15084 --- [yavij-express] [http-nio-8080-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/auth/login' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2025-12-12T02:17:24.034+05:30 DEBUG 15084 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:17:24.615+05:30 ERROR 15084 --- [yavij-express] [http-nio-8080-exec-2] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8080-exec-2] Exception processing template "email/verification": Error resolving template [email/verification], template might not exist or might not be accessible by any of the configured Template Resolvers
+
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [email/verification], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1064) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1053) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at com.yavijexpress.utils.EmailServiceImpl.sendVerificationEmail(EmailServiceImpl.java:39) ~[classes/:na]
+	at com.yavijexpress.service.impl.UserServiceImpl.register(UserServiceImpl.java:81) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:352) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.1.jar:6.1.1]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:385) ~[spring-tx-6.1.1.jar:6.1.1]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:765) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:717) ~[spring-aop-6.1.1.jar:6.1.1]
+	at com.yavijexpress.service.impl.UserServiceImpl$$SpringCGLIB$$0.register(<generated>) ~[classes/:na]
+	at com.yavijexpress.controller.AuthController.register(AuthController.java:27) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:352) ~[spring-aop-6.1.1.jar:6.1.1]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:713) ~[spring-aop-6.1.1.jar:6.1.1]
+	at com.yavijexpress.controller.AuthController$$SpringCGLIB$$0.register(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.16.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.1.jar:6.1.1]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.16.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at com.yavijexpress.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:75) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at java.base/java.lang.Thread.run(Thread.java:1447) ~[na:na]
+
+2025-12-12T02:22:33.601+05:30  INFO 15084 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12T02:22:33.653+05:30  INFO 15084 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-12T02:22:33.712+05:30  INFO 15084 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-12T02:22:37.759+05:30  INFO 9780 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Starting YavijExpressApplication using Java 24.0.2 with PID 9780 (C:\yavijexpress\yavijexpress\yavijexpress\target\classes started by Dell in C:\yavijexpress)
+2025-12-12T02:22:37.764+05:30 DEBUG 9780 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-12T02:22:37.765+05:30  INFO 9780 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-12-12T02:22:39.384+05:30  INFO 9780 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-12T02:22:39.588+05:30  INFO 9780 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 172 ms. Found 10 JPA repository interfaces.
+2025-12-12T02:22:40.797+05:30  INFO 9780 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-12T02:22:40.813+05:30  INFO 9780 --- [yavij-express] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-12T02:22:40.813+05:30  INFO 9780 --- [yavij-express] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-12-12T02:22:40.924+05:30  INFO 9780 --- [yavij-express] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-12T02:22:40.926+05:30  INFO 9780 --- [yavij-express] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3059 ms
+2025-12-12T02:22:41.210+05:30  INFO 9780 --- [yavij-express] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-12T02:22:41.379+05:30  INFO 9780 --- [yavij-express] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-12-12T02:22:41.457+05:30  INFO 9780 --- [yavij-express] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-12T02:22:41.924+05:30  INFO 9780 --- [yavij-express] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-12T02:22:41.978+05:30  INFO 9780 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-12T02:22:42.281+05:30  INFO 9780 --- [yavij-express] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1edf71d9
+2025-12-12T02:22:42.284+05:30  INFO 9780 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-12T02:22:42.367+05:30  WARN 9780 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-12T02:22:42.367+05:30  WARN 9780 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-12-12T02:22:44.146+05:30  INFO 9780 --- [yavij-express] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-12T02:22:44.378+05:30  INFO 9780 --- [yavij-express] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12T02:22:44.754+05:30  INFO 9780 --- [yavij-express] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-12T02:22:45.471+05:30 DEBUG 9780 --- [yavij-express] [main] c.y.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2025-12-12T02:22:46.463+05:30  WARN 9780 --- [yavij-express] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-12T02:22:46.907+05:30  INFO 9780 --- [yavij-express] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7cb84fb5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@65cfd565, org.springframework.security.web.context.SecurityContextHolderFilter@3cc3914a, org.springframework.security.web.header.HeaderWriterFilter@4bdc0fb0, org.springframework.web.filter.CorsFilter@3940c41c, org.springframework.security.web.authentication.logout.LogoutFilter@720bf74d, com.yavijexpress.security.JwtAuthenticationFilter@6c152246, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c39ec34, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@362aa318, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2bfe51d5, org.springframework.security.web.session.SessionManagementFilter@ef64a8f, org.springframework.security.web.access.ExceptionTranslationFilter@399dc033, org.springframework.security.web.access.intercept.AuthorizationFilter@6127ae9e]
+2025-12-12T02:22:47.373+05:30  INFO 9780 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-12-12T02:22:47.382+05:30  INFO 9780 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Started YavijExpressApplication in 10.463 seconds (process running for 11.526)
+2025-12-12T02:23:25.198+05:30  INFO 9780 --- [yavij-express] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-12T02:23:25.199+05:30  INFO 9780 --- [yavij-express] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-12T02:23:25.203+05:30  INFO 9780 --- [yavij-express] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2025-12-12T02:23:25.257+05:30 DEBUG 9780 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:23:25.263+05:30  WARN 9780 --- [yavij-express] [http-nio-8080-exec-2] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/auth/register' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2025-12-12T02:27:24.441+05:30 DEBUG 9780 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:27:27.353+05:30 DEBUG 9780 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:28:07.958+05:30 DEBUG 9780 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:28:09.099+05:30 DEBUG 9780 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:29:34.178+05:30 DEBUG 9780 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:31:50.089+05:30 DEBUG 9780 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:35:13.033+05:30 DEBUG 9780 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:35:14.702+05:30 DEBUG 9780 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:43:39.866+05:30  INFO 9780 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12T02:43:39.937+05:30  INFO 9780 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-12T02:43:40.041+05:30  INFO 9780 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-12T02:43:48.163+05:30  INFO 6464 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Starting YavijExpressApplication using Java 24.0.2 with PID 6464 (C:\yavijexpress\yavijexpress\yavijexpress\target\classes started by Dell in C:\yavijexpress)
+2025-12-12T02:43:48.168+05:30 DEBUG 6464 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-12T02:43:48.168+05:30  INFO 6464 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-12-12T02:43:50.167+05:30  INFO 6464 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-12T02:43:50.340+05:30  INFO 6464 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 145 ms. Found 10 JPA repository interfaces.
+2025-12-12T02:43:51.573+05:30  INFO 6464 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-12T02:43:51.590+05:30  INFO 6464 --- [yavij-express] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-12T02:43:51.590+05:30  INFO 6464 --- [yavij-express] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-12-12T02:43:51.712+05:30  INFO 6464 --- [yavij-express] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-12T02:43:51.713+05:30  INFO 6464 --- [yavij-express] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3428 ms
+2025-12-12T02:43:51.978+05:30  INFO 6464 --- [yavij-express] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-12T02:43:52.112+05:30  INFO 6464 --- [yavij-express] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-12-12T02:43:52.181+05:30  INFO 6464 --- [yavij-express] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-12T02:43:52.616+05:30  INFO 6464 --- [yavij-express] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-12T02:43:52.663+05:30  INFO 6464 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-12T02:43:52.956+05:30  INFO 6464 --- [yavij-express] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@34beadce
+2025-12-12T02:43:52.960+05:30  INFO 6464 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-12T02:43:53.036+05:30  WARN 6464 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-12T02:43:53.037+05:30  WARN 6464 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-12-12T02:43:54.613+05:30  INFO 6464 --- [yavij-express] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-12T02:43:54.814+05:30  INFO 6464 --- [yavij-express] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12T02:43:55.223+05:30  INFO 6464 --- [yavij-express] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-12T02:43:55.900+05:30 DEBUG 6464 --- [yavij-express] [main] c.y.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2025-12-12T02:43:56.838+05:30  WARN 6464 --- [yavij-express] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-12T02:43:57.230+05:30  INFO 6464 --- [yavij-express] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1bbbede1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@699d04a9, org.springframework.security.web.context.SecurityContextHolderFilter@ad7d724, org.springframework.security.web.header.HeaderWriterFilter@5b84007e, org.springframework.web.filter.CorsFilter@1cc00f56, org.springframework.security.web.authentication.logout.LogoutFilter@74947f2b, com.yavijexpress.security.JwtAuthenticationFilter@372153eb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e680c92, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@ef64a8f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@25379b3c, org.springframework.security.web.session.SessionManagementFilter@7e4f42c0, org.springframework.security.web.access.ExceptionTranslationFilter@46e03c31, org.springframework.security.web.access.intercept.AuthorizationFilter@cdf3ee2]
+2025-12-12T02:43:57.667+05:30  INFO 6464 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-12-12T02:43:57.676+05:30  INFO 6464 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Started YavijExpressApplication in 10.238 seconds (process running for 11.039)
+2025-12-12T02:44:04.228+05:30  INFO 6464 --- [yavij-express] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-12T02:44:04.230+05:30  INFO 6464 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-12T02:44:04.231+05:30  INFO 6464 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-12-12T02:44:04.262+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:44:04.266+05:30  WARN 6464 --- [yavij-express] [http-nio-8080-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/auth/register' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2025-12-12T02:45:37.386+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:45:38.225+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:47:02.551+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:47:39.229+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:48:49.120+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:48:50.563+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:48:51.245+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:48:52.750+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:48:52.925+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:48:53.101+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:50:24.039+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
