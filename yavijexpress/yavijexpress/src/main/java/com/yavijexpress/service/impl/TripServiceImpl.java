@@ -63,14 +63,13 @@ public class TripServiceImpl implements TripService {
     public TripDTO.TripResponse createTrip(Long driverId, TripDTO.TripRequest request) {
         User driver = userService.getUserById(driverId);
 
-        // Validate driver
-        if (driver.getRole() != User.UserRole.DRIVER) {
-            throw new BadRequestException("Only drivers can create trips");
-        }
-
-        if (driver.getVerificationStatus() != User.VerificationStatus.VERIFIED) {
-            throw new BadRequestException("Driver must be verified to create trips");
-        }
+        // Allow any authenticated user to create trips
+        // if (driver.getRole() != User.UserRole.DRIVER) {
+        //     throw new BadRequestException("Only drivers can create trips");
+        // }
+        // if (driver.getVerificationStatus() != User.VerificationStatus.VERIFIED) {
+        //     throw new BadRequestException("Driver must be verified to create trips");
+        // }
 
         // Validate vehicle
         Vehicle vehicle = vehicleRepository.findById(request.getVehicleId())
