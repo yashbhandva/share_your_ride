@@ -50,6 +50,8 @@ public class BookingDTO {
         private String tripTo;
         private LocalDateTime departureTime;
         private String paymentStatus;
+        private String specialRequests;
+        private String tripNotes;
         private LocalDateTime bookedAt;
 
         public Long getId() {
@@ -138,6 +140,22 @@ public class BookingDTO {
 
         public void setBookedAt(LocalDateTime bookedAt) {
             this.bookedAt = bookedAt;
+        }
+
+        public String getSpecialRequests() {
+            return specialRequests;
+        }
+
+        public void setSpecialRequests(String specialRequests) {
+            this.specialRequests = specialRequests;
+        }
+
+        public String getTripNotes() {
+            return tripNotes;
+        }
+
+        public void setTripNotes(String tripNotes) {
+            this.tripNotes = tripNotes;
         }
     }
 
