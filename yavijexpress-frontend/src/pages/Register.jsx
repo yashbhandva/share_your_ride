@@ -35,8 +35,8 @@ const Register = () => {
 
     try {
       await register(form); // ensure backend accepts this DTO
-      setSuccess("Registration successful. Please login.");
-      setTimeout(() => navigate("/login"), 1000);
+      setSuccess("Registration successful! Redirecting to OTP verification...");
+      setTimeout(() => navigate("/verify-otp", { state: { email: form.email } }), 2000);
     } catch (err) {
       console.log('Error response:', err.response);
       const status = err.response?.status;
