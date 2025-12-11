@@ -11,6 +11,7 @@ public class TripDTO {
         @NotBlank private String fromLocation;
         @NotBlank private String toLocation;
         @NotNull private LocalDateTime departureTime;
+        private LocalDateTime expectedArrivalTime;
         @NotNull @Positive private Double pricePerSeat;
         @NotNull @Min(1) private Integer totalSeats;
         private String routePolyline;
@@ -41,6 +42,14 @@ public class TripDTO {
 
         public void setDepartureTime(LocalDateTime departureTime) {
             this.departureTime = departureTime;
+        }
+
+        public LocalDateTime getExpectedArrivalTime() {
+            return expectedArrivalTime;
+        }
+
+        public void setExpectedArrivalTime(LocalDateTime expectedArrivalTime) {
+            this.expectedArrivalTime = expectedArrivalTime;
         }
 
         public Double getPricePerSeat() {
