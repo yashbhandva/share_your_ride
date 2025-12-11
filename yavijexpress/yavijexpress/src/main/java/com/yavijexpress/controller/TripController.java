@@ -95,9 +95,16 @@ public class TripController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<List<TripDTO.TripResponse>> searchTrips(
+    public ResponseEntity<?> searchTrips(
             @Valid @RequestBody TripDTO.TripSearchRequest request) {
-        return ResponseEntity.ok(tripService.searchTrips(request));
+        try {
+            List<TripDTO.TripResponse> trips = tripService.searchTrips(request);
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(trips, "Trips found"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to search trips: " + e.getMessage())
+            );
+        }
     }
 
     @GetMapping("/driver/{driverId}")
@@ -124,6 +131,35 @@ public class TripController {
     public ResponseEntity<?> completeTrip(@PathVariable Long tripId) {
         tripService.completeTrip(tripId);
         return ResponseEntity.ok("Trip completed successfully");
+    }
+
+    @PutMapping("/{tripId}/toggle")
+    public ResponseEntity<?> toggleTrip(
+            @PathVariable Long tripId,
+            @RequestBody java.util.Map<String, Boolean> request) {
+        try {
+            Long userId = com.yavijexpress.utils.SecurityUtils.getCurrentUserId();
+            com.yavijexpress.entity.Trip trip = tripRepository.findById(tripId)
+                .orElseThrow(() -> new RuntimeException("Trip not found"));
+            
+            // Check if user owns this trip
+            if (!trip.getDriver().getId().equals(userId)) {
+                return ResponseEntity.status(403).body(
+                    com.yavijexpress.dto.ApiResponse.error("You can only toggle your own trips")
+                );
+            }
+            
+            trip.setIsActive(request.get("isActive"));
+            tripRepository.save(trip);
+            
+            return ResponseEntity.ok(
+                com.yavijexpress.dto.ApiResponse.success(null, "Trip updated successfully")
+            );
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to toggle trip: " + e.getMessage())
+            );
+        }
     }
 
     @GetMapping("/upcoming")
