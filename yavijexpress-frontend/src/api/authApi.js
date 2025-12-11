@@ -13,6 +13,11 @@ export const register = async (payload) => {
   return res.data; // caller may use message/status if needed
 };
 
+export const verifyOTP = async (payload) => {
+  const res = await api.post("/api/auth/verify-otp", payload);
+  return res.data;
+};
+
 export const logoutApi = async () => {
   await api.post("/api/auth/logout");
 };
