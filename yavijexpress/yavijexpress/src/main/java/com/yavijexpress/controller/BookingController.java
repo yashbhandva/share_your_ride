@@ -20,11 +20,17 @@ public class BookingController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('PASSENGER')")
-    public ResponseEntity<BookingDTO.BookingResponse> createBooking(
-            @RequestHeader("X-User-ID") Long passengerId,
+    public ResponseEntity<?> createBooking(
             @Valid @RequestBody BookingDTO.BookingRequest request) {
-        return ResponseEntity.ok(bookingService.createBooking(passengerId, request));
+        try {
+            Long passengerId = com.yavijexpress.utils.SecurityUtils.getCurrentUserId();
+            BookingDTO.BookingResponse response = bookingService.createBooking(passengerId, request);
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(response, "Booking created successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to create booking: " + e.getMessage())
+            );
+        }
     }
 
     @PostMapping("/{bookingId}/confirm")
@@ -42,10 +48,16 @@ public class BookingController {
     }
 
     @GetMapping("/passenger/{passengerId}")
-    @PreAuthorize("hasRole('PASSENGER')")
-    public ResponseEntity<List<BookingDTO.BookingResponse>> getPassengerBookings(
+    public ResponseEntity<?> getPassengerBookings(
             @PathVariable Long passengerId) {
-        return ResponseEntity.ok(bookingService.getPassengerBookings(passengerId));
+        try {
+            List<BookingDTO.BookingResponse> bookings = bookingService.getPassengerBookings(passengerId);
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(bookings, "Bookings retrieved successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to get bookings: " + e.getMessage())
+            );
+        }
     }
 
     @GetMapping("/trip/{tripId}")
