@@ -96,11 +96,12 @@ public class SecurityConfig {
                         // ============ BOOKING ENDPOINTS (All authenticated users) ============
                         .requestMatchers("/api/bookings/**").authenticated()
 
-                        // ============ TRIPS (Driver can create, all can view) ============
+                        // ============ TRIPS (Driver can create, all can search/view) ============
+                        .requestMatchers(HttpMethod.POST, "/api/trips/search").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/trips/**").hasAnyRole("DRIVER", "ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/trips/**").hasAnyRole("DRIVER", "ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/trips/**").hasAnyRole("DRIVER", "ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/trips/**").hasAnyRole("DRIVER", "PASSENGER", "ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/trips/**").authenticated()
 
                         // ============ PAYMENTS (Authenticated users) ============
                         .requestMatchers("/api/payments/**").authenticated()
