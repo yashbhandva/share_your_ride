@@ -172,6 +172,8 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(Arrays.asList(
                 "http://localhost:4200",  // Angular dev
                 "http://localhost:3000",  // React dev
+                "http://localhost:3000",  // React dev
+                "http://localhost:5173",  // React dev
                 "http://localhost:8081",  // Alternative port
                 "https://yavij-express.com",  // Production
                 "https://www.yavij-express.com"
