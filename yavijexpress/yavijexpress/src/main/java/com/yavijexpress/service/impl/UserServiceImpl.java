@@ -45,15 +45,25 @@ public class UserServiceImpl implements UserService {
         this.otpService = otpService;
         this.modelMapper = modelMapper;
     }
-
     @Override
     public User register(AuthDTO.RegisterRequest request) {
-        // Check if user already exists
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new ResourceAlreadyExistsException("Email already registered");
-        }
-        if (userRepository.existsByMobile(request.getMobile())) {
-            throw new ResourceAlreadyExistsException("Mobile number already registered");
+        // Check if user already exists (collect all duplicate errors)
+        boolean emailExists = userRepository.existsByEmail(request.getEmail());
+        boolean mobileExists = userRepository.existsByMobile(request.getMobile());
+
+        if (emailExists || mobileExists) {
+            StringBuilder sb = new StringBuilder();
+            if (emailExists) {
+                sb.append("Email already registered.");
+            }
+            if (mobileExists) {
+                if (sb.length() > 0) {
+                    sb.append("\n");
+                }
+                sb.append("Mobile number already registered.");
+            }
+            // Use your existing BadRequestException
+            throw new BadRequestException(sb.toString());
         }
 
         // Validate role
