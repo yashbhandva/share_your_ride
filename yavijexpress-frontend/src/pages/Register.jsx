@@ -38,44 +38,43 @@ const Register = () => {
       setSuccess("Registration successful. Please login.");
       setTimeout(() => navigate("/login"), 1000);
     } catch (err) {
+      console.log('Error response:', err.response);
+      const status = err.response?.status;
       const respData = err.response?.data;
-
+      
+      let errorMessage = "Registration failed. Please try again.";
+      
+      // Handle different response formats
       if (typeof respData === "string") {
-        const lower = respData.toLowerCase();
-        const messages = [];
-
-        if (
-          lower.includes("password") &&
-          lower.includes("size") &&
-          lower.includes("between")
-        ) {
-          messages.push("Password must be at least 8 characters long.");
-        }
-        if (lower.includes("email already registered")) {
-          messages.push("Email already registered.");
-        }
-        if (lower.includes("mobile number already registered")) {
-          messages.push("Mobile number already registered.");
-        }
-
-        if (messages.length > 0) {
-          setError(messages.join("\n"));
-        } else {
-          setError("Registration failed. Please check your inputs.");
+        // Extract the actual error message from string response
+        const lines = respData.split('\n');
+        const actualMessage = lines[lines.length - 1].trim() || lines[lines.length - 2]?.trim();
+        
+        if (actualMessage && actualMessage !== '') {
+          if (actualMessage.includes("Email already registered")) {
+            errorMessage = "Email already exists";
+          } else if (actualMessage.includes("Mobile number already registered")) {
+            errorMessage = "Mobile number already exists";
+          } else if (actualMessage.includes("password")) {
+            errorMessage = "Password must be at least 8 characters";
+          } else {
+            errorMessage = actualMessage;
+          }
         }
       } else if (respData && typeof respData === "object") {
-        // GlobalExceptionHandler: validation errors are returned as a map field->message
-        const messages = Object.values(respData).filter(Boolean);
-        if (messages.length > 0) {
-          setError(messages.join("\n"));
-        } else if (respData.message) {
-          setError(respData.message);
+        // Handle object responses (validation errors)
+        if (respData.message) {
+          errorMessage = respData.message;
         } else {
-          setError("Registration failed. Please check your inputs.");
+          // Handle validation error object
+          const messages = Object.values(respData).filter(msg => msg && typeof msg === 'string');
+          if (messages.length > 0) {
+            errorMessage = messages.join("\n");
+          }
         }
-      } else {
-        setError("Registration failed. Please try again.");
       }
+      
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -85,7 +84,17 @@ const Register = () => {
     <div>
       <h1>Register</h1>
       {error && (
-        <p style={{ color: "red", whiteSpace: "pre-line" }}>{error}</p>
+        <div style={{ 
+          color: "red", 
+          backgroundColor: "#fee", 
+          padding: "10px", 
+          borderRadius: "4px", 
+          border: "1px solid #fcc",
+          marginBottom: "15px",
+          whiteSpace: "pre-line"
+        }}>
+          {error}
+        </div>
       )}
       {success && <p style={{ color: "green" }}>{success}</p>}
       <form onSubmit={handleSubmit}>
