@@ -211,8 +211,8 @@ public class TripServiceImpl implements TripService {
                 : LocalDateTime.now();
 
         List<Trip> trips = tripRepository.searchTrips(
-                request.getFromLocation() != null ? request.getFromLocation() : "",
-                request.getToLocation() != null ? request.getToLocation() : "",
+                request.getFromLocation(),
+                request.getToLocation(),
                 startDate,
                 request.getRequiredSeats()
         );
@@ -225,7 +225,6 @@ public class TripServiceImpl implements TripService {
         }
 
         return trips.stream()
-                .filter(trip -> trip.getIsActive() != null && trip.getIsActive())
                 .map(this::convertToTripResponse)
                 .collect(Collectors.toList());
     }
@@ -334,6 +333,7 @@ public class TripServiceImpl implements TripService {
         response.setVehicleNumber(trip.getVehicle().getVehicleNumber());
         response.setStatus(trip.getStatus().toString());
         response.setIsActive(trip.getIsActive());
+        response.setNotes(trip.getNotes());
         return response;
     }
 }
