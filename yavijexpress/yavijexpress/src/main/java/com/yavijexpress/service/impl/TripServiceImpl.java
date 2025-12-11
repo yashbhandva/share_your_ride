@@ -225,6 +225,7 @@ public class TripServiceImpl implements TripService {
         }
 
         return trips.stream()
+                .filter(trip -> trip.getIsActive() != null && trip.getIsActive())
                 .map(this::convertToTripResponse)
                 .collect(Collectors.toList());
     }
