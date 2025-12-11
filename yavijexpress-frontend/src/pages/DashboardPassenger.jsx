@@ -74,7 +74,8 @@ const DashboardPassenger = () => {
         maxPrice: searchForm.maxPrice ? Number(searchForm.maxPrice) : null,
       };
       const res = await api.post("/api/trips/search", payload);
-      setSearchResults(res.data || []);
+      console.log('Search response:', res.data);
+      setSearchResults(res.data?.data || res.data || []);
     } catch (e) {
       setError(e.response?.data?.message || "Failed to search trips");
     } finally {
