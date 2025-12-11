@@ -580,3 +580,10 @@ org.thymeleaf.exceptions.TemplateInputException: Error resolving template [email
 2025-12-12T02:48:52.925+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
 2025-12-12T02:48:53.101+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
 2025-12-12T02:50:24.039+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:55:33.076+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:56:36.340+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:57:56.457+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:58:50.944+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:58:56.455+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:59:16.496+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2025-12-12T02:59:32.606+05:30 DEBUG 6464 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
