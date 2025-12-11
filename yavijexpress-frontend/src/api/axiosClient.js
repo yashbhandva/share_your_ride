@@ -24,11 +24,15 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("userRole");
-      localStorage.removeItem("userEmail");
-      localStorage.removeItem("userName");
-      window.location.href = "/login";
+      // Only redirect to login if it's not a profile request
+      if (!error.config.url.includes('/profile')) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("userRole");
+        localStorage.removeItem("userEmail");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("userId");
+        window.location.href = "/login";
+      }
     }
     return Promise.reject(error);
   }
