@@ -1,0 +1,25 @@
+package com.yavijexpress.repository;
+
+import com.yavijexpress.entity.Booking;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface BookingRepository extends JpaRepository<Booking, Long> {
+
+    List<Booking> findByPassengerId(Long passengerId);
+    List<Booking> findByTripId(Long tripId);
+    List<Booking> findByTripDriverId(Long driverId);
+
+    @Query("SELECT b FROM Booking b WHERE b.trip.id = :tripId AND b.status = 'CONFIRMED'")
+    List<Booking> findConfirmedBookingsByTripId(@Param("tripId") Long tripId);
+
+    Optional<Booking> findByTripIdAndPassengerId(Long tripId, Long passengerId);
+
+    @Query("SELECT COUNT(b) FROM Booking b WHERE b.passenger.id = :passengerId AND b.status = 'COMPLETED'")
+    Long countCompletedBookingsByPassenger(@Param("passengerId") Long passengerId);
+}
