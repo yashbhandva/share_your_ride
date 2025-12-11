@@ -25,12 +25,57 @@ const Register = () => {
     setError("");
     setSuccess("");
     setLoading(true);
+
+    // Basic client-side validation to avoid ugly backend validation messages
+    if (!form.password || form.password.length < 8) {
+      setError("Password must be at least 8 characters long.");
+      setLoading(false);
+      return;
+    }
+
     try {
       await register(form); // ensure backend accepts this DTO
       setSuccess("Registration successful. Please login.");
       setTimeout(() => navigate("/login"), 1000);
     } catch (err) {
-      setError(err.response?.data?.message || "Registration failed");
+      const respData = err.response?.data;
+
+      if (typeof respData === "string") {
+        const lower = respData.toLowerCase();
+        const messages = [];
+
+        if (
+          lower.includes("password") &&
+          lower.includes("size") &&
+          lower.includes("between")
+        ) {
+          messages.push("Password must be at least 8 characters long.");
+        }
+        if (lower.includes("email already registered")) {
+          messages.push("Email already registered.");
+        }
+        if (lower.includes("mobile number already registered")) {
+          messages.push("Mobile number already registered.");
+        }
+
+        if (messages.length > 0) {
+          setError(messages.join("\n"));
+        } else {
+          setError("Registration failed. Please check your inputs.");
+        }
+      } else if (respData && typeof respData === "object") {
+        // GlobalExceptionHandler: validation errors are returned as a map field->message
+        const messages = Object.values(respData).filter(Boolean);
+        if (messages.length > 0) {
+          setError(messages.join("\n"));
+        } else if (respData.message) {
+          setError(respData.message);
+        } else {
+          setError("Registration failed. Please check your inputs.");
+        }
+      } else {
+        setError("Registration failed. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -39,7 +84,9 @@ const Register = () => {
   return (
     <div>
       <h1>Register</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && (
+        <p style={{ color: "red", whiteSpace: "pre-line" }}>{error}</p>
+      )}
       {success && <p style={{ color: "green" }}>{success}</p>}
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: 8 }}>
