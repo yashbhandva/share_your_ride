@@ -16,7 +16,7 @@ public class SecurityUtils {
     private static UserRepository userRepository;
 
     @Autowired
-    public SecurityUtils(UserRepository userRepository) {
+    public void setUserRepository(UserRepository userRepository) {
         SecurityUtils.userRepository = userRepository;
     }
 
