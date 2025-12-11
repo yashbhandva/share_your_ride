@@ -47,9 +47,7 @@ public class BookingServiceImpl implements BookingService {
     public BookingDTO.BookingResponse createBooking(Long passengerId, BookingDTO.BookingRequest request) {
         User passenger = userService.getUserById(passengerId);
 
-        if (passenger.getRole() != User.UserRole.PASSENGER) {
-            throw new BadRequestException("Only passengers can book rides");
-        }
+        // Allow any authenticated user to book rides
 
         Trip trip = tripRepository.findById(request.getTripId())
                 .orElseThrow(() -> new ResourceNotFoundException("Trip not found"));
@@ -197,9 +195,13 @@ public class BookingServiceImpl implements BookingService {
         response.setTripTo(booking.getTrip().getToLocation());
         response.setDepartureTime(booking.getTrip().getDepartureTime());
         response.setStatus(booking.getStatus().toString());
+        response.setSpecialRequests(booking.getSpecialRequests());
+        response.setTripNotes(booking.getTrip().getNotes());
 
         if (booking.getPayment() != null) {
             response.setPaymentStatus(booking.getPayment().getStatus().toString());
+        } else {
+            response.setPaymentStatus("PENDING");
         }
 
         return response;
