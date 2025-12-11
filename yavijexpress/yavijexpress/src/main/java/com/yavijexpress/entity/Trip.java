@@ -56,6 +56,9 @@ public class Trip {
     @Column(nullable = false)
     private Boolean soberDeclaration = false;
 
+    @Column(nullable = false)
+    private Boolean isActive = true;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "driver_id", nullable = false)
     private User driver;
@@ -196,6 +199,14 @@ public class Trip {
 
     public void setSoberDeclaration(Boolean soberDeclaration) {
         this.soberDeclaration = soberDeclaration;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean active) {
+        isActive = active;
     }
 
     public User getDriver() {
