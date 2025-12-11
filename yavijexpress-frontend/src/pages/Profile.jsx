@@ -14,15 +14,36 @@ const Profile = () => {
   const [pwdMessage, setPwdMessage] = useState("");
 
   useEffect(() => {
+    const testAuth = async () => {
+      try {
+        console.log('Testing auth with token:', localStorage.getItem('accessToken'));
+        const testRes = await api.get("/api/auth/test-auth");
+        console.log('Auth test response:', testRes.data);
+      } catch (e) {
+        console.error('Auth test failed:', e.response);
+      }
+    };
+
     const loadProfile = async () => {
       try {
         setLoading(true);
         setError("");
+        
+        // Test auth first
+        await testAuth();
+        
+        console.log('Loading profile with token:', localStorage.getItem('accessToken'));
         const res = await api.get("/api/auth/profile");
+        console.log('Profile response:', res.data);
         // Backend wraps in ApiResponse
         setProfile(res.data?.data || res.data);
       } catch (e) {
-        setError(e.response?.data?.message || "Failed to load profile");
+        console.error('Profile error:', e.response);
+        if (e.response?.status === 401) {
+          setError("Please login again to access your profile.");
+        } else {
+          setError(e.response?.data?.message || e.response?.data || "Failed to load profile");
+        }
       } finally {
         setLoading(false);
       }
