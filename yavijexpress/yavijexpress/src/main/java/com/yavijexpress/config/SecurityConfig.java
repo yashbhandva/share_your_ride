@@ -91,10 +91,10 @@ public class SecurityConfig {
                         ).hasAnyRole("DRIVER", "ADMIN")
 
                         // ============ PASSENGER ENDPOINTS ============
-                        .requestMatchers(
-                                "/api/passenger/**",
-                                "/api/bookings/**"
-                        ).hasAnyRole("PASSENGER", "ADMIN")
+                        .requestMatchers("/api/passenger/**").hasAnyRole("PASSENGER", "ADMIN")
+                        
+                        // ============ BOOKING ENDPOINTS (All authenticated users) ============
+                        .requestMatchers("/api/bookings/**").authenticated()
 
                         // ============ TRIPS (Driver can create, all can view) ============
                         .requestMatchers(HttpMethod.POST, "/api/trips/**").hasAnyRole("DRIVER", "ADMIN")
