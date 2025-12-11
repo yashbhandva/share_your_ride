@@ -41,7 +41,8 @@ const DashboardDriver = () => {
       setLoading(true);
       setError("");
       const res = await api.get(`/api/trips/driver/${driverId}`);
-      setTrips(res.data || []);
+      console.log('Trips response:', res.data);
+      setTrips(res.data?.data || res.data || []);
     } catch (e) {
       setError(e.response?.data?.message || "Failed to load driver trips");
     } finally {
@@ -92,14 +93,28 @@ const DashboardDriver = () => {
     }
   };
 
-  const handleToggleTrip = async (tripId, isActive) => {
+  const handleDeleteTrip = async (tripId) => {
+    if (!confirm('Are you sure you want to delete this trip?')) return;
     try {
       setActionLoadingId(tripId);
       setError("");
-      await api.put(`/api/trips/${tripId}/toggle`, { isActive: !isActive });
+      await api.delete(`/api/trips/${tripId}/delete`);
       await loadTrips(user.id);
     } catch (e) {
-      setError(e.response?.data?.message || "Failed to toggle trip");
+      setError(e.response?.data?.message || "Failed to delete trip");
+    } finally {
+      setActionLoadingId(null);
+    }
+  };
+
+  const handleRestartTrip = async (tripId) => {
+    try {
+      setActionLoadingId(tripId);
+      setError("");
+      await api.put(`/api/trips/${tripId}/restart`);
+      await loadTrips(user.id);
+    } catch (e) {
+      setError(e.response?.data?.message || "Failed to restart trip");
     } finally {
       setActionLoadingId(null);
     }
@@ -237,7 +252,10 @@ const DashboardDriver = () => {
       });
 
       setSuccess("Trip created successfully!");
+      // Reload trips to update statistics
       await loadTrips(user.id);
+      // Clear success message after 3 seconds
+      setTimeout(() => setSuccess(""), 3000);
     } catch (e) {
       setError(e.response?.data?.message || "Failed to create trip");
     } finally {
@@ -248,6 +266,12 @@ const DashboardDriver = () => {
   return (
     <div>
       <h1>Driver Dashboard</h1>
+      <div style={{ marginBottom: "20px", padding: "10px", backgroundColor: "#f5f5f5", borderRadius: "5px" }}>
+        <h3>Statistics</h3>
+        <p><strong>Total Trips:</strong> {Array.isArray(trips) ? trips.length : 0}</p>
+        <p><strong>Active Trips:</strong> {Array.isArray(trips) ? trips.filter(t => t.isActive).length : 0}</p>
+        <p><strong>Completed Trips:</strong> {Array.isArray(trips) ? trips.filter(t => t.status === 'COMPLETED').length : 0}</p>
+      </div>
       {error && <p style={{ color: "red" }}>{error}</p>}
 
       <section style={{ marginBottom: 24 }}>
@@ -452,7 +476,9 @@ const DashboardDriver = () => {
         {trips.length === 0 && !loading && <p>No trips found.</p>}
         {trips.length > 0 && (
           <ul>
-            {trips.map((t) => (
+            {trips.map((t) => {
+              console.log('Trip data:', t);
+              return (
               <li key={t.id}>
                 {t.fromLocation} → {t.toLocation} on {t.departureTime} | Seats:
                 {" "}
@@ -460,11 +486,13 @@ const DashboardDriver = () => {
                 <span style={{ color: t.isActive ? "green" : "red" }}>
                   {t.isActive ? "Active" : "Disabled"}
                 </span>
+                <br />
+                <small>Debug: Status={t.status}, Active={String(t.isActive)}</small>
                 <div style={{ marginTop: 4 }}>
                   <button
                     onClick={() => handleStartTrip(t.id)}
                     disabled={
-                      actionLoadingId === t.id || t.status !== "SCHEDULED"
+                      actionLoadingId === t.id || t.status !== "SCHEDULED" || t.isActive === false
                     }
                     style={{ marginRight: 8 }}
                   >
@@ -475,7 +503,7 @@ const DashboardDriver = () => {
                   <button
                     onClick={() => handleCompleteTrip(t.id)}
                     disabled={
-                      actionLoadingId === t.id || t.status !== "ONGOING"
+                      actionLoadingId === t.id || t.status !== "ONGOING" || t.isActive === false
                     }
                   >
                     {actionLoadingId === t.id && t.status === "ONGOING"
@@ -483,21 +511,33 @@ const DashboardDriver = () => {
                       : "Complete"}
                   </button>
                   <button
-                    onClick={() => handleToggleTrip(t.id, t.isActive)}
+                    onClick={() => handleDeleteTrip(t.id)}
                     disabled={actionLoadingId === t.id}
                     style={{ 
                       marginLeft: 8, 
-                      backgroundColor: t.isActive ? "#f44336" : "#4CAF50",
+                      backgroundColor: "#f44336",
                       color: "white"
                     }}
                   >
-                    {actionLoadingId === t.id 
-                      ? "Updating..." 
-                      : (t.isActive ? "Disable" : "Enable")}
+                    {actionLoadingId === t.id ? "Deleting..." : "Delete"}
                   </button>
+                  {(t.status === "COMPLETED" || t.status === "CANCELLED") && (
+                    <button
+                      onClick={() => handleRestartTrip(t.id)}
+                      disabled={actionLoadingId === t.id}
+                      style={{ 
+                        marginLeft: 8, 
+                        backgroundColor: "#4CAF50",
+                        color: "white"
+                      }}
+                    >
+                      {actionLoadingId === t.id ? "Restarting..." : "Restart"}
+                    </button>
+                  )}
                 </div>
               </li>
-            ))}
+            );
+            })}
           </ul>
         )}
       </section>
