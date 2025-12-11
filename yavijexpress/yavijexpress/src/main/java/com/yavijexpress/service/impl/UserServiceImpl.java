@@ -243,9 +243,10 @@ public class UserServiceImpl implements UserService {
             throw new UnauthorizedException("Account is deactivated");
         }
 
-        if (user.getVerificationStatus() == User.VerificationStatus.PENDING) {
-            throw new UnauthorizedException("Please verify your email first");
-        }
+        // Allow unverified users to login and access profile
+        // if (user.getVerificationStatus() == User.VerificationStatus.PENDING) {
+        //     throw new UnauthorizedException("Please verify your email first");
+        // }
 
         UserDetails userDetails = org.springframework.security.core.userdetails.User
                 .withUsername(user.getEmail())
