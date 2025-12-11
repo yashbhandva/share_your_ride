@@ -34,6 +34,7 @@ const DashboardDriver = () => {
     notes: "",
   });
   const [creating, setCreating] = useState(false);
+  const [success, setSuccess] = useState("");
 
   const loadTrips = async (driverId) => {
     try {
@@ -192,6 +193,7 @@ const DashboardDriver = () => {
     try {
       setCreating(true);
       setError("");
+      setSuccess("");
 
       // departureTime from input datetime-local to ISO string
       const departureIso = form.departureTime
@@ -221,6 +223,7 @@ const DashboardDriver = () => {
         notes: "",
       });
 
+      setSuccess("Trip created successfully!");
       await loadTrips(user.id);
     } catch (e) {
       setError(e.response?.data?.message || "Failed to create trip");
@@ -350,6 +353,7 @@ const DashboardDriver = () => {
 
       <section style={{ marginBottom: 24 }}>
         <h2>Create Trip</h2>
+        {success && <div style={{ color: "green", marginBottom: "10px" }}>{success}</div>}
         <form onSubmit={handleCreateTrip}>
           <div style={{ marginBottom: 8 }}>
             <label>From:&nbsp;</label>
