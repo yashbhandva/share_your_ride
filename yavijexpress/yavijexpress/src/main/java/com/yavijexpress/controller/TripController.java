@@ -35,6 +35,9 @@ public class TripController {
     
     @Autowired
     private com.yavijexpress.repository.VehicleRepository vehicleRepository;
+    
+    @Autowired
+    private com.yavijexpress.repository.TripRepository tripRepository2;
 
     @PostMapping
     public ResponseEntity<?> createTrip(
@@ -133,31 +136,57 @@ public class TripController {
         return ResponseEntity.ok("Trip completed successfully");
     }
 
-    @PutMapping("/{tripId}/toggle")
-    public ResponseEntity<?> toggleTrip(
-            @PathVariable Long tripId,
-            @RequestBody java.util.Map<String, Boolean> request) {
+    @DeleteMapping("/{tripId}/delete")
+    public ResponseEntity<?> deleteTrip(@PathVariable Long tripId) {
         try {
             Long userId = com.yavijexpress.utils.SecurityUtils.getCurrentUserId();
-            com.yavijexpress.entity.Trip trip = tripRepository.findById(tripId)
+            com.yavijexpress.entity.Trip trip = tripRepository2.findById(tripId)
                 .orElseThrow(() -> new RuntimeException("Trip not found"));
             
             // Check if user owns this trip
             if (!trip.getDriver().getId().equals(userId)) {
                 return ResponseEntity.status(403).body(
-                    com.yavijexpress.dto.ApiResponse.error("You can only toggle your own trips")
+                    com.yavijexpress.dto.ApiResponse.error("You can only delete your own trips")
                 );
             }
             
-            trip.setIsActive(request.get("isActive"));
-            tripRepository.save(trip);
+            tripRepository2.delete(trip);
             
             return ResponseEntity.ok(
-                com.yavijexpress.dto.ApiResponse.success(null, "Trip updated successfully")
+                com.yavijexpress.dto.ApiResponse.success(null, "Trip deleted successfully")
             );
         } catch (Exception e) {
             return ResponseEntity.status(500).body(
-                com.yavijexpress.dto.ApiResponse.error("Failed to toggle trip: " + e.getMessage())
+                com.yavijexpress.dto.ApiResponse.error("Failed to delete trip: " + e.getMessage())
+            );
+        }
+    }
+
+    @PutMapping("/{tripId}/restart")
+    public ResponseEntity<?> restartTrip(@PathVariable Long tripId) {
+        try {
+            Long userId = com.yavijexpress.utils.SecurityUtils.getCurrentUserId();
+            com.yavijexpress.entity.Trip trip = tripRepository2.findById(tripId)
+                .orElseThrow(() -> new RuntimeException("Trip not found"));
+            
+            // Check if user owns this trip
+            if (!trip.getDriver().getId().equals(userId)) {
+                return ResponseEntity.status(403).body(
+                    com.yavijexpress.dto.ApiResponse.error("You can only restart your own trips")
+                );
+            }
+            
+            // Reset trip to scheduled status
+            trip.setStatus(com.yavijexpress.entity.Trip.TripStatus.SCHEDULED);
+            trip.setIsActive(true);
+            tripRepository2.save(trip);
+            
+            return ResponseEntity.ok(
+                com.yavijexpress.dto.ApiResponse.success(null, "Trip restarted successfully")
+            );
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to restart trip: " + e.getMessage())
             );
         }
     }
