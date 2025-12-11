@@ -18,6 +18,11 @@ export const verifyOTP = async (payload) => {
   return res.data;
 };
 
+export const getProfile = async () => {
+  const res = await api.get("/api/auth/profile");
+  return res.data?.data;
+};
+
 export const logoutApi = async () => {
   await api.post("/api/auth/logout");
 };
