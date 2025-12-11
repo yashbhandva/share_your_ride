@@ -14,9 +14,10 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
     List<Trip> findByDriverId(Long driverId);
     List<Trip> findByStatus(Trip.TripStatus status);
 
-    @Query("SELECT t FROM Trip t WHERE t.fromLocation LIKE %:from% AND t.toLocation LIKE %:to% " +
+    @Query("SELECT t FROM Trip t WHERE (:from IS NULL OR :from = '' OR LOWER(t.fromLocation) LIKE LOWER(CONCAT('%', :from, '%'))) " +
+            "AND (:to IS NULL OR :to = '' OR LOWER(t.toLocation) LIKE LOWER(CONCAT('%', :to, '%'))) " +
             "AND t.departureTime >= :startDate AND t.availableSeats >= :seats " +
-            "AND t.status = 'SCHEDULED' ORDER BY t.departureTime ASC")
+            "AND t.status = 'SCHEDULED' AND t.isActive = true ORDER BY t.departureTime ASC")
     List<Trip> searchTrips(@Param("from") String from,
                            @Param("to") String to,
                            @Param("startDate") LocalDateTime startDate,
