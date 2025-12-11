@@ -31,16 +31,20 @@ public class EmailServiceImpl  {
     @Async
     public void sendVerificationEmail(String to, String name, String otp) {
         try {
+            System.out.println("Attempting to send verification email to: " + to);
             Context context = new Context();
             context.setVariable("name", name);
             context.setVariable("otp", otp);
             context.setVariable("supportEmail", "support@yavijexpress.com");
 
             String htmlContent = templateEngine.process("email/verification", context);
+            System.out.println("Email template processed successfully");
 
             sendEmail(to, "Verify Your Email - YaVij Express", htmlContent);
+            System.out.println("Verification email sent successfully to: " + to);
         } catch (Exception e) {
-            System.err.println("Failed to send verification email: " + e.getMessage());
+            System.err.println("Failed to send verification email to " + to + ": " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -173,6 +177,7 @@ public class EmailServiceImpl  {
     }
 
     private void sendEmail(String to, String subject, String body) throws Exception {
+        System.out.println("Preparing email - From: " + fromEmail + ", To: " + to);
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
@@ -181,6 +186,8 @@ public class EmailServiceImpl  {
         helper.setSubject(subject);
         helper.setText(body, true);
 
+        System.out.println("Sending email via SMTP...");
         mailSender.send(message);
+        System.out.println("Email sent successfully!");
     }
 }
