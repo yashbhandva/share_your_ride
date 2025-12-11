@@ -42,7 +42,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     // List of public endpoints that don't require JWT
     private static final List<String> PUBLIC_ENDPOINTS = List.of(
-            "/api/auth/",
+            "/api/auth/register",
+            "/api/auth/login",
+            "/api/auth/verify-otp",
+            "/api/auth/send-otp",
+            "/api/auth/forgot-password",
+            "/api/auth/reset-password",
             "/swagger-ui/",
             "/v3/api-docs/",
             "/api-docs",
@@ -147,8 +152,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } catch (Exception e) {
             log.error("Unexpected error during JWT authentication for {}: {}",
                     requestURI, e.getMessage(), e);
-            handleJwtError(response, "Authentication error", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            return;
+            // Don't return error for profile endpoint, let it continue
+            if (!requestURI.contains("/profile")) {
+                handleJwtError(response, "Authentication error", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                return;
+            }
         }
 
         filterChain.doFilter(request, response);
