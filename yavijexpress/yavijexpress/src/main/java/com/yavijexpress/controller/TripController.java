@@ -27,12 +27,54 @@ public class TripController {
 
 
 
+    @Autowired
+    private com.yavijexpress.repository.TripRepository tripRepository;
+    
+    @Autowired
+    private com.yavijexpress.repository.UserRepository userRepository;
+    
+    @Autowired
+    private com.yavijexpress.repository.VehicleRepository vehicleRepository;
+
     @PostMapping
-    @PreAuthorize("hasRole('DRIVER')")
-    public ResponseEntity<TripDTO.TripResponse> createTrip(
-            @RequestHeader("X-User-ID") Long driverId,
+    public ResponseEntity<?> createTrip(
             @Valid @RequestBody TripDTO.TripRequest request) {
-        return ResponseEntity.ok(tripService.createTrip(driverId, request));
+        try {
+            Long driverId = com.yavijexpress.utils.SecurityUtils.getCurrentUserId();
+            
+            // Get actual user and vehicle from database
+            com.yavijexpress.entity.User user = userRepository.findById(driverId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+            com.yavijexpress.entity.Vehicle vehicle = vehicleRepository.findById(request.getVehicleId())
+                .orElseThrow(() -> new RuntimeException("Vehicle not found"));
+            
+            // Create trip
+            com.yavijexpress.entity.Trip trip = new com.yavijexpress.entity.Trip();
+            trip.setFromLocation(request.getFromLocation());
+            trip.setToLocation(request.getToLocation());
+            trip.setDepartureTime(request.getDepartureTime());
+            trip.setExpectedArrivalTime(request.getExpectedArrivalTime() != null ? 
+                request.getExpectedArrivalTime() : request.getDepartureTime().plusHours(2));
+            trip.setPricePerSeat(request.getPricePerSeat());
+            trip.setTotalSeats(request.getTotalSeats());
+            trip.setAvailableSeats(request.getTotalSeats());
+            trip.setDistanceKm(request.getDistanceKm());
+            trip.setIsFlexible(request.getIsFlexible());
+            trip.setNotes(request.getNotes());
+            trip.setStatus(com.yavijexpress.entity.Trip.TripStatus.SCHEDULED);
+            trip.setDriver(user);
+            trip.setVehicle(vehicle);
+            
+            // Save to database
+            com.yavijexpress.entity.Trip savedTrip = tripRepository.save(trip);
+            
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(savedTrip, "Trip created successfully"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to create trip: " + e.getMessage())
+            );
+        }
     }
 
     @PutMapping("/{tripId}")
