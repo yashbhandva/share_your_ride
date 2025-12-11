@@ -92,6 +92,19 @@ const DashboardDriver = () => {
     }
   };
 
+  const handleToggleTrip = async (tripId, isActive) => {
+    try {
+      setActionLoadingId(tripId);
+      setError("");
+      await api.put(`/api/trips/${tripId}/toggle`, { isActive: !isActive });
+      await loadTrips(user.id);
+    } catch (e) {
+      setError(e.response?.data?.message || "Failed to toggle trip");
+    } finally {
+      setActionLoadingId(null);
+    }
+  };
+
   useEffect(() => {
     if (!user?.id) return;
     loadTrips(user.id);
@@ -443,7 +456,10 @@ const DashboardDriver = () => {
               <li key={t.id}>
                 {t.fromLocation} → {t.toLocation} on {t.departureTime} | Seats:
                 {" "}
-                {t.availableSeats}/{t.totalSeats} | Status: {t.status}
+                {t.availableSeats}/{t.totalSeats} | Status: {t.status} | 
+                <span style={{ color: t.isActive ? "green" : "red" }}>
+                  {t.isActive ? "Active" : "Disabled"}
+                </span>
                 <div style={{ marginTop: 4 }}>
                   <button
                     onClick={() => handleStartTrip(t.id)}
@@ -465,6 +481,19 @@ const DashboardDriver = () => {
                     {actionLoadingId === t.id && t.status === "ONGOING"
                       ? "Completing..."
                       : "Complete"}
+                  </button>
+                  <button
+                    onClick={() => handleToggleTrip(t.id, t.isActive)}
+                    disabled={actionLoadingId === t.id}
+                    style={{ 
+                      marginLeft: 8, 
+                      backgroundColor: t.isActive ? "#f44336" : "#4CAF50",
+                      color: "white"
+                    }}
+                  >
+                    {actionLoadingId === t.id 
+                      ? "Updating..." 
+                      : (t.isActive ? "Disable" : "Enable")}
                   </button>
                 </div>
               </li>
