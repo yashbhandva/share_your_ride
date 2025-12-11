@@ -6,6 +6,7 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import VerifyOTP from "./pages/VerifyOTP.jsx";
 import DashboardPassenger from "./pages/DashboardPassenger.jsx";
 import DashboardDriver from "./pages/DashboardDriver.jsx";
 import DashboardAdmin from "./pages/DashboardAdmin.jsx";
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/verify-otp" element={<VerifyOTP />} />
 
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
