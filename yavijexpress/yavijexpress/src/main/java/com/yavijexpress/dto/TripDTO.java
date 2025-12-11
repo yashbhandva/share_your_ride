@@ -127,6 +127,7 @@ public class TripDTO {
         private String vehicleNumber;
         private Boolean soberDeclaration;
         private Boolean isActive;
+        private String notes;
         private LocalDateTime createdAt;
 
         public Long getId() {
@@ -263,6 +264,14 @@ public class TripDTO {
 
         public void setIsActive(Boolean active) {
             isActive = active;
+        }
+
+        public String getNotes() {
+            return notes;
+        }
+
+        public void setNotes(String notes) {
+            this.notes = notes;
         }
     }
 
