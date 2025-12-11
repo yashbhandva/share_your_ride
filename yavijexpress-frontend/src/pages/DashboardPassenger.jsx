@@ -13,9 +13,7 @@ const DashboardPassenger = () => {
   const [bookingSubmittingId, setBookingSubmittingId] = useState(null);
   const [cancelReason, setCancelReason] = useState({});
   const [cancelSubmittingId, setCancelSubmittingId] = useState(null);
-  const [ratingStars, setRatingStars] = useState({});
-  const [ratingComment, setRatingComment] = useState({});
-  const [ratingSubmittingId, setRatingSubmittingId] = useState(null);
+
   const [paymentDetails, setPaymentDetails] = useState({});
   const [paymentLoadingId, setPaymentLoadingId] = useState(null);
   const [paymentProcessingId, setPaymentProcessingId] = useState(null);
@@ -122,28 +120,7 @@ const DashboardPassenger = () => {
     }
   };
 
-  const handleSubmitRating = async (bookingId, type) => {
-    if (!user?.id) return;
-    const stars = Number(ratingStars[bookingId] || 0);
-    const comment = ratingComment[bookingId] || "";
-    if (!stars || stars < 1 || stars > 5) return;
 
-    try {
-      setRatingSubmittingId(bookingId);
-      setError("");
-      await api.post("/api/ratings", {
-        bookingId,
-        stars,
-        comment,
-        type,
-      });
-      await loadData(user.id);
-    } catch (e) {
-      setError(e.response?.data?.message || "Failed to submit rating");
-    } finally {
-      setRatingSubmittingId(null);
-    }
-  };
 
   const handleLoadPayment = async (bookingId) => {
     if (!user?.id) return;
@@ -224,24 +201,66 @@ const DashboardPassenger = () => {
           </button>
         </form>
         {searchResults.length > 0 && (
-          <ul>
+          <div>
             {searchResults.map((t) => (
-              <li key={t.id} style={{ marginBottom: 10 }}>
-                <div>
-                  {t.fromLocation} → {t.toLocation} on {t.departureTime} | Seats
-                  available: {t.availableSeats}
+              <div key={t.id} style={{ 
+                border: "1px solid #ddd", 
+                padding: "15px", 
+                marginBottom: "15px", 
+                borderRadius: "5px" 
+              }}>
+                <h4>{t.fromLocation} → {t.toLocation}</h4>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "10px" }}>
+                  <div>
+                    <p><strong>Departure:</strong> {new Date(t.departureTime).toLocaleString()}</p>
+                    <p><strong>Price per seat:</strong> ₹{t.pricePerSeat}</p>
+                    <p><strong>Available seats:</strong> {t.availableSeats}/{t.totalSeats}</p>
+                  </div>
+                  <div>
+                    <p><strong>Driver:</strong> {t.driverName}</p>
+                    <p><strong>Vehicle:</strong> {t.vehicleModel} ({t.vehicleNumber})</p>
+                    <p><strong>Distance:</strong> {t.distanceKm ? `${t.distanceKm} km` : 'Not specified'}</p>
+                  </div>
                 </div>
-                <div style={{ marginTop: 4 }}>
+                {t.notes && <p><strong>Notes:</strong> {t.notes}</p>}
+                <div style={{ marginTop: 10 }}>
+                  <input
+                    type="number"
+                    min="1"
+                    max={t.availableSeats}
+                    placeholder="Seats"
+                    value={bookingSeats[t.id] || ""}
+                    onChange={(e) =>
+                      setBookingSeats((prev) => ({
+                        ...prev,
+                        [t.id]: e.target.value,
+                      }))
+                    }
+                    style={{ marginRight: 8, width: 80 }}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Special requests (optional)"
+                    value={bookingNotes[t.id] || ""}
+                    onChange={(e) =>
+                      setBookingNotes((prev) => ({
+                        ...prev,
+                        [t.id]: e.target.value,
+                      }))
+                    }
+                    style={{ marginRight: 8, width: 200 }}
+                  />
                   <button
                     onClick={() => handleBook(t.id)}
                     disabled={bookingSubmittingId === t.id}
+                    style={{ padding: "8px 16px", backgroundColor: "#4CAF50", color: "white", border: "none", borderRadius: "3px" }}
                   >
-                    {bookingSubmittingId === t.id ? "Booking..." : "Book"}
+                    {bookingSubmittingId === t.id ? "Booking..." : `Book for ₹${t.pricePerSeat * (bookingSeats[t.id] || 1)}`}
                   </button>
                 </div>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
       </section>
 
@@ -365,46 +384,7 @@ const DashboardPassenger = () => {
                     </button>
                   </div>
                 )}
-                {b.status === "COMPLETED" && (
-                  <div style={{ marginTop: 4 }}>
-                    <input
-                      type="number"
-                      min="1"
-                      max="5"
-                      placeholder="Stars (1-5)"
-                      value={ratingStars[b.id] || ""}
-                      onChange={(e) =>
-                        setRatingStars((prev) => ({
-                          ...prev,
-                          [b.id]: e.target.value,
-                        }))
-                      }
-                      style={{ marginRight: 8, width: 80 }}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Comment (optional)"
-                      value={ratingComment[b.id] || ""}
-                      onChange={(e) =>
-                        setRatingComment((prev) => ({
-                          ...prev,
-                          [b.id]: e.target.value,
-                        }))
-                      }
-                      style={{ marginRight: 8, width: 260 }}
-                    />
-                    <button
-                      onClick={() =>
-                        handleSubmitRating(b.id, "PASSENGER_TO_DRIVER")
-                      }
-                      disabled={ratingSubmittingId === b.id}
-                    >
-                      {ratingSubmittingId === b.id
-                        ? "Submitting..."
-                        : "Rate Driver"}
-                    </button>
-                  </div>
-                )}
+
               </li>
             ))}
           </ul>
