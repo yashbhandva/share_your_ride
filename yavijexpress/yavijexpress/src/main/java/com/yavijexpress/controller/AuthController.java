@@ -2,6 +2,7 @@ package com.yavijexpress.controller;
 
 import com.yavijexpress.dto.ApiResponse;
 import com.yavijexpress.dto.AuthDTO;
+import com.yavijexpress.entity.User;
 import com.yavijexpress.service.UserService;
 import com.yavijexpress.utils.SecurityUtils;
 import jakarta.validation.Valid;
@@ -90,12 +91,42 @@ public class AuthController {
         );
     }
 
+    @GetMapping("/test-auth")
+    public ResponseEntity<ApiResponse<?>> testAuth() {
+        try {
+            String email = SecurityUtils.getCurrentUserEmail();
+            return ResponseEntity.ok(
+                    ApiResponse.success("Authenticated as: " + email, "Authentication test successful")
+            );
+        } catch (Exception e) {
+            return ResponseEntity.ok(
+                    ApiResponse.error("Authentication failed: " + e.getMessage())
+            );
+        }
+    }
+
     @GetMapping("/profile")
-    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiResponse<?>> getProfile() {
-        Long userId = SecurityUtils.getCurrentUserId();
-        return ResponseEntity.ok(
-                ApiResponse.success(userService.getProfile(userId), "Profile retrieved successfully")
-        );
+        try {
+            String email = SecurityUtils.getCurrentUserEmail();
+            if ("anonymousUser".equals(email)) {
+                return ResponseEntity.status(401).body(
+                    ApiResponse.error("Authentication required. Please login again.")
+                );
+            }
+            User user = userService.getUserByEmail(email);
+            return ResponseEntity.ok(
+                    ApiResponse.success(userService.getProfile(user.getId()), "Profile retrieved successfully")
+            );
+        } catch (Exception e) {
+            if (e.getMessage().contains("anonymousUser")) {
+                return ResponseEntity.status(401).body(
+                    ApiResponse.error("Invalid token. Please login again.")
+                );
+            }
+            return ResponseEntity.status(500).body(
+                    ApiResponse.error("Failed to retrieve profile: " + e.getMessage())
+            );
+        }
     }
 }
