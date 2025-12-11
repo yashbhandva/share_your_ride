@@ -210,12 +210,20 @@ public class TripServiceImpl implements TripService {
                 ? request.getDepartureDate()
                 : LocalDateTime.now();
 
-        List<Trip> trips = tripRepository.searchTrips(
-                request.getFromLocation(),
-                request.getToLocation(),
-                startDate,
-                request.getRequiredSeats()
-        );
+        List<Trip> trips;
+        
+        // If no search criteria provided, return all active trips
+        if ((request.getFromLocation() == null || request.getFromLocation().isEmpty()) &&
+            (request.getToLocation() == null || request.getToLocation().isEmpty())) {
+            trips = tripRepository.findAllActiveTrips();
+        } else {
+            trips = tripRepository.searchTrips(
+                    request.getFromLocation(),
+                    request.getToLocation(),
+                    startDate,
+                    request.getRequiredSeats()
+            );
+        }
 
         // Filter by max price if provided
         if (request.getMaxPrice() != null) {
