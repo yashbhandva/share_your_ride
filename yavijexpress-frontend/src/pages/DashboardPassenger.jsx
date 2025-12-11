@@ -37,8 +37,9 @@ const DashboardPassenger = () => {
         api.get(`/api/bookings/passenger/${userId}`),
       ]);
 
-      setUpcomingTrips(tripsRes.data || []);
-      setBookings(bookingsRes.data || []);
+      // Handle ApiResponse format: { success: true, data: [...], message: "..." }
+      setUpcomingTrips(tripsRes.data?.data || tripsRes.data || []);
+      setBookings(bookingsRes.data?.data || bookingsRes.data || []);
     } catch (e) {
       setError(e.response?.data?.message || "Failed to load passenger data");
     } finally {
@@ -72,8 +73,9 @@ const DashboardPassenger = () => {
         maxPrice: searchForm.maxPrice ? Number(searchForm.maxPrice) : null,
       };
       const res = await api.post("/api/trips/search", payload);
-      console.log('Search response:', res.data);
-      setSearchResults(res.data?.data || res.data || []);
+      // Handle ApiResponse format from backend
+      const results = res.data?.data || res.data || [];
+      setSearchResults(results);
     } catch (e) {
       setError(e.response?.data?.message || "Failed to search trips");
     } finally {
@@ -200,8 +202,12 @@ const DashboardPassenger = () => {
             {searchLoading ? "Searching..." : "Search"}
           </button>
         </form>
+        {searchResults.length === 0 && !searchLoading && (
+          <p>No trips found. Try adjusting your search criteria.</p>
+        )}
         {searchResults.length > 0 && (
           <div>
+            <h3>Available Trips ({searchResults.length})</h3>
             {searchResults.map((t) => (
               <div key={t.id} style={{ 
                 border: "1px solid #ddd", 
@@ -322,12 +328,14 @@ const DashboardPassenger = () => {
           <ul>
             {bookings.map((b) => (
               <li key={b.id} style={{ marginBottom: 10 }}>
-                <div>
-                  {b.tripFrom} → {b.tripTo} on {b.departureTime} | Seats:
-                  {" "}
-                  {b.seatsBooked} | Status: {b.status} | Payment:
-                  {" "}
-                  {b.paymentStatus}
+                <div style={{ border: "1px solid #ddd", padding: "10px", borderRadius: "5px" }}>
+                  <h4>{b.tripFrom} → {b.tripTo}</h4>
+                  <p><strong>Departure:</strong> {new Date(b.departureTime).toLocaleString()}</p>
+                  <p><strong>Seats Booked:</strong> {b.seatsBooked}</p>
+                  <p><strong>Status:</strong> {b.status}</p>
+                  <p><strong>Payment:</strong> {b.paymentStatus}</p>
+                  {b.specialRequests && <p><strong>Your Notes:</strong> {b.specialRequests}</p>}
+                  {b.tripNotes && <p><strong>Trip Notes:</strong> {b.tripNotes}</p>}
                 </div>
                 <div style={{ marginTop: 4 }}>
                   <button
