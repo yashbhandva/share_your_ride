@@ -54,6 +54,16 @@ public class ApiResponse<T> {
         );
     }
 
+    public static ApiResponse<?> error(String message) {
+        return new ApiResponse<>(
+                LocalDateTime.now(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                message,
+                null,
+                null
+        );
+    }
+
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
