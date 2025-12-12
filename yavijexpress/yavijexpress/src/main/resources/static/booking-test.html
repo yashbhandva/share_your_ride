@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+    <h1>Booking System Test</h1>
+    
+    <div id="notifications"></div>
+    
+    <h3>Driver Actions</h3>
+    <input type="number" id="bookingId" placeholder="Booking ID">
+    <button onclick="confirmBooking()">Accept Booking</button>
+    <button onclick="denyBooking()">Deny Booking</button>
+    
+    <h3>OTP Verification</h3>
+    <input type="text" id="otp" placeholder="OTP">
+    <button onclick="verifyOtp()">Verify OTP</button>
+    
+    <div id="results"></div>
+
+    <script>
+        let stompClient = null;
+        const userId = 1;
+        
+        function connect() {
+            const socket = new SockJS('/ws');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function(frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/notifications/' + userId, function(notification) {
+                    showNotification(JSON.parse(notification.body));
+                });
+            });
+        }
+        
+        function showNotification(notification) {
+            const div = document.createElement('div');
+            div.innerHTML = `<strong>${notification.title}</strong>: ${notification.message}`;
+            div.style.border = '1px solid #ccc';
+            div.style.padding = '10px';
+            div.style.margin = '5px';
+            
+            // Add action buttons if available
+            if (notification.actions) {
+                try {
+                    const actions = JSON.parse(notification.actions);
+                    const buttonContainer = document.createElement('div');
+                    buttonContainer.style.marginTop = '10px';
+                    
+                    actions.forEach(action => {
+                        const button = document.createElement('button');
+                        button.textContent = action.label;
+                        button.style.marginRight = '10px';
+                        button.style.padding = '5px 15px';
+                        button.style.backgroundColor = action.style === 'success' ? '#28a745' : '#dc3545';
+                        button.style.color = 'white';
+                        button.style.border = 'none';
+                        button.style.borderRadius = '4px';
+                        button.style.cursor = 'pointer';
+                        
+                        button.onclick = async () => {
+                            try {
+                                const response = await fetch(action.url, {
+                                    method: 'POST',
+                                    headers: {'Content-Type': 'application/json'}
+                                });
+                                const result = await response.json();
+                                alert(`${action.label} successful: ${result.message}`);
+                                div.remove(); // Remove notification after action
+                            } catch (error) {
+                                alert(`${action.label} failed: ${error.message}`);
+                            }
+                        };
+                        
+                        buttonContainer.appendChild(button);
+                    });
+                    
+                    div.appendChild(buttonContainer);
+                } catch (e) {
+                    console.error('Error parsing actions:', e);
+                }
+            }
+            
+            document.getElementById('notifications').appendChild(div);
+        }
+        
+        async function confirmBooking() {
+            const bookingId = document.getElementById('bookingId').value;
+            const response = await fetch(`/api/bookings/${bookingId}/confirm`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'}
+            });
+            const result = await response.json();
+            document.getElementById('results').innerHTML = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+        }
+        
+        async function denyBooking() {
+            const bookingId = document.getElementById('bookingId').value;
+            const response = await fetch(`/api/bookings/${bookingId}/deny`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'}
+            });
+            const result = await response.json();
+            document.getElementById('results').innerHTML = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+        }
+        
+        async function verifyOtp() {
+            const bookingId = document.getElementById('bookingId').value;
+            const otp = document.getElementById('otp').value;
+            const response = await fetch('/api/bookings/verify-otp', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({bookingId: parseInt(bookingId), otp: otp})
+            });
+            const result = await response.json();
+            document.getElementById('results').innerHTML = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+        }
+        
+        connect();
+    </script>
+</body>
+</html>
