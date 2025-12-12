@@ -36,6 +36,9 @@ public class Notification {
 
     private String relatedEntityType; // TRIP, BOOKING, PAYMENT, etc.
     private Long relatedEntityId;
+    
+    @Column(columnDefinition = "TEXT")
+    private String actions; // JSON string for action buttons
 
     private LocalDateTime createdAt;
 
@@ -120,5 +123,13 @@ public class Notification {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+    
+    public String getActions() {
+        return actions;
+    }
+    
+    public void setActions(String actions) {
+        this.actions = actions;
     }
 }
