@@ -15,6 +15,7 @@ import PaymentHistory from "./pages/PaymentHistory.jsx";
 import Emergency from "./pages/Emergency.jsx";
 import Profile from "./pages/Profile.jsx";
 import NotFound from "./pages/NotFound.jsx";
+
 import ProtectedRoute from "./components/common/ProtectedRoute.jsx";
 import RoleRoute from "./components/common/RoleRoute.jsx";
 
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/verify-otp" element={<VerifyOTP />} />
+
 
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
