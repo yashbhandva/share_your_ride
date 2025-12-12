@@ -17,7 +17,8 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
     @Query("SELECT t FROM Trip t WHERE t.status = 'SCHEDULED' AND t.isActive = true " +
             "AND (:from IS NULL OR :from = '' OR UPPER(t.fromLocation) LIKE UPPER(CONCAT('%', :from, '%'))) " +
             "AND (:to IS NULL OR :to = '' OR UPPER(t.toLocation) LIKE UPPER(CONCAT('%', :to, '%'))) " +
-            "AND t.departureTime >= :startDate AND t.availableSeats >= :seats " +
+            "AND (:startDate IS NULL OR t.departureTime >= :startDate) " +
+            "AND (:seats IS NULL OR t.availableSeats >= :seats) " +
             "ORDER BY t.departureTime ASC")
     List<Trip> searchTrips(@Param("from") String from,
                            @Param("to") String to,
