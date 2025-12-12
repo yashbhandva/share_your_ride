@@ -97,10 +97,13 @@ const DashboardPassenger = () => {
       setBookingSubmittingId(tripId);
       setError("");
       await api.post("/api/bookings", {
-        tripId,
-        seats,
-        specialRequests,
+        tripId: Number(tripId),
+        seats: seats,
+        specialRequests: specialRequests || null,
       });
+      // Clear the booking form for this trip
+      setBookingSeats(prev => ({ ...prev, [tripId]: "" }));
+      setBookingNotes(prev => ({ ...prev, [tripId]: "" }));
       await loadData(user.id);
     } catch (e) {
       setError(e.response?.data?.message || "Failed to create booking");
