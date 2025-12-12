@@ -24,4 +24,6 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
 
     @Query("SELECT COUNT(b) FROM Booking b WHERE b.passenger.id = :passengerId AND b.status = 'COMPLETED'")
     Long countCompletedBookingsByPassenger(@Param("passengerId") Long passengerId);
+    
+    Long countByStatus(Booking.BookingStatus status);
 }
