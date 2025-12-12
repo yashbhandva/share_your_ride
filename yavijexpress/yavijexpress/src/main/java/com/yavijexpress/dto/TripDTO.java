@@ -322,6 +322,8 @@ public class TripDTO {
         public void setMaxPrice(Double maxPrice) {
             this.maxPrice = maxPrice;
         }
+
+
     }
 
     @Data
