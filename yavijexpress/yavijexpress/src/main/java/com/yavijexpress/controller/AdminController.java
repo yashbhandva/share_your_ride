@@ -206,14 +206,21 @@ public class AdminController {
     @PutMapping("/contacts/{contactId}/status")
     public ResponseEntity<?> updateContactStatus(@PathVariable Long contactId, @RequestBody ContactMessageDTO.StatusUpdateRequest request) {
         try {
+            System.out.println("Updating contact " + contactId + " to status: " + request.getStatus());
+            
             ContactMessage contact = contactMessageRepository.findById(contactId)
                 .orElseThrow(() -> new RuntimeException("Contact not found"));
+            
+            System.out.println("Found contact: " + contact.getId() + ", current status: " + contact.getStatus());
             
             contact.setStatus(ContactMessage.Status.valueOf(request.getStatus().toUpperCase()));
             ContactMessage updated = contactMessageRepository.save(contact);
             
-            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(convertToContactResponse(updated), "Status updated"));
+            System.out.println("Updated contact status to: " + updated.getStatus());
+            
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(convertToContactResponse(updated), "Status updated successfully"));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(500).body(
                 com.yavijexpress.dto.ApiResponse.error("Failed to update status: " + e.getMessage())
             );
