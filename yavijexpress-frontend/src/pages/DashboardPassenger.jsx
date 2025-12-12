@@ -38,8 +38,11 @@ const DashboardPassenger = () => {
       ]);
 
       // Handle ApiResponse format: { success: true, data: [...], message: "..." }
-      setUpcomingTrips(tripsRes.data?.data || tripsRes.data || []);
-      setBookings(bookingsRes.data?.data || bookingsRes.data || []);
+      const trips = tripsRes.data?.data || tripsRes.data || [];
+      const bookings = bookingsRes.data?.data || bookingsRes.data || [];
+      
+      setUpcomingTrips(trips);
+      setBookings(bookings);
     } catch (e) {
       setError(e.response?.data?.message || "Failed to load passenger data");
     } finally {
@@ -72,22 +75,12 @@ const DashboardPassenger = () => {
         requiredSeats: Number(searchForm.requiredSeats) || 1,
         maxPrice: searchForm.maxPrice ? Number(searchForm.maxPrice) : null,
       };
-      console.log('Search payload:', payload);
       const res = await api.post("/api/trips/search", payload);
-      console.log('Full response:', res);
-      console.log('Response data:', res.data);
-      console.log('Response success:', res.data?.success);
-      console.log('Response data field:', res.data?.data);
-      console.log('Response message:', res.data?.message);
       
       // Handle ApiResponse format from backend
       const results = res.data?.data || res.data || [];
-      console.log('Final results:', results);
-      console.log('Results length:', results.length);
       setSearchResults(results);
     } catch (e) {
-      console.error('Search error:', e);
-      console.error('Error response:', e.response);
       setError(e.response?.data?.message || "Failed to search trips");
     } finally {
       setSearchLoading(false);
@@ -333,7 +326,8 @@ const DashboardPassenger = () => {
       </section>
 
       <section>
-        <h2>Your Bookings</h2>
+        <h2>Your Bookings ({bookings.length})</h2>
+        {loading && <p>Loading...</p>}
         {bookings.length === 0 && !loading && <p>No bookings yet.</p>}
         {bookings.length > 0 && (
           <ul>
