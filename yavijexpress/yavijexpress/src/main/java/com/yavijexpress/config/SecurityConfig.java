@@ -22,9 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
-import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,11 +35,13 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final UserDetailsService userDetailsService;
     private final LogoutService logoutService;
+    private final CorsConfigurationSource corsConfigurationSource;
 
-    public SecurityConfig(JwtAuthenticationFilter jwtAuthFilter, UserDetailsService userDetailsService, LogoutService logoutService) {
+    public SecurityConfig(JwtAuthenticationFilter jwtAuthFilter, UserDetailsService userDetailsService, LogoutService logoutService, CorsConfigurationSource corsConfigurationSource) {
         this.jwtAuthFilter = jwtAuthFilter;
         this.userDetailsService = userDetailsService;
         this.logoutService = logoutService;
+        this.corsConfigurationSource = corsConfigurationSource;
     }
 
     @Bean
@@ -51,7 +51,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
 
                 // Configure CORS
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .cors(cors -> cors.configurationSource(corsConfigurationSource))
 
                 // Configure authorization rules
                 .authorizeHttpRequests(auth -> auth
@@ -59,6 +59,16 @@ public class SecurityConfig {
                         .requestMatchers(
                                 // Authentication
                                 "/api/auth/**",
+
+                                // WebSocket
+                                "/ws/**",
+
+                                // Static resources
+                                "/booking-test.html",
+                                "/*.html",
+                                "/css/**",
+                                "/js/**",
+                                "/images/**",
 
                                 // Swagger/OpenAPI
                                 "/swagger-ui/**",
@@ -165,63 +175,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
 
-        // Allowed origins
-        configuration.setAllowedOrigins(Arrays.asList(
-                "http://localhost:4200",  // Angular dev
-                "http://localhost:3000",  // React dev
-                "http://localhost:3000",  // React dev
-                "http://localhost:5173",  // React dev
-                "http://localhost:8081",  // Alternative port
-                "https://yavij-express.com",  // Production
-                "https://www.yavij-express.com"
-        ));
-
-        // Allowed methods
-        configuration.setAllowedMethods(Arrays.asList(
-                "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"
-        ));
-
-        // Allowed headers
-        configuration.setAllowedHeaders(Arrays.asList(
-                "Authorization",
-                "Content-Type",
-                "Accept",
-                "Origin",
-                "X-Requested-With",
-                "Access-Control-Request-Method",
-                "Access-Control-Request-Headers",
-                "X-User-ID",
-                "X-User-Role",
-                "Cache-Control",
-                "Pragma"
-        ));
-
-        // Exposed headers
-        configuration.setExposedHeaders(Arrays.asList(
-                "Authorization",
-                "Content-Type",
-                "Content-Length",
-                "X-User-ID",
-                "X-User-Role",
-                "Access-Control-Allow-Origin",
-                "Access-Control-Allow-Credentials"
-        ));
-
-        // Allow credentials
-        configuration.setAllowCredentials(true);
-
-        // Max age
-        configuration.setMaxAge(3600L);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-
-        return source;
-    }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
