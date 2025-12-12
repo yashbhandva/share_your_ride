@@ -84,9 +84,15 @@ public class SecurityConfig {
                                 "/actuator/info",
 
                                 // Public APIs
-                                "/api/public/**"
+                                "/api/public/**",
+                                
+                                // Contact form (public access)
+                                "/api/contact"
                         ).permitAll()
 
+                        // ============ CONTACT FORM (Public access) ============
+                        .requestMatchers(HttpMethod.POST, "/api/contact").permitAll()
+                        
                         // ============ EMERGENCY ENDPOINTS (Limited access) ============
                         .requestMatchers(HttpMethod.POST, "/api/emergency/sos").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/emergency/panic/**").permitAll()
