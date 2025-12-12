@@ -95,7 +95,7 @@ public class BookingServiceImpl implements BookingService {
         }
 
         // Generate 4-6 digit OTP
-        String otp = String.format("%04d", (int)(Math.random() * 10000));
+        String otp = String.format("%06d", (int)(Math.random() * 1000000));
         booking.setPickupOtp(otp);
         booking.setStatus(Booking.BookingStatus.CONFIRMED);
         Booking confirmedBooking = bookingRepository.save(booking);
