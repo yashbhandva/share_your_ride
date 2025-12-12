@@ -111,6 +111,34 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    public BookingDTO.BookingResponse denyBooking(Long bookingId) {
+        Booking booking = getBookingById(bookingId);
+
+        if (booking.getStatus() != Booking.BookingStatus.PENDING) {
+            throw new BadRequestException("Booking is not in pending state");
+        }
+
+        // Update booking status to cancelled
+        booking.setStatus(Booking.BookingStatus.CANCELLED);
+        booking.setCancelledAt(LocalDateTime.now());
+        Booking deniedBooking = bookingRepository.save(booking);
+
+        // Restore available seats
+        Trip trip = booking.getTrip();
+        trip.setAvailableSeats(trip.getAvailableSeats() + booking.getSeatsBooked());
+        tripRepository.save(trip);
+
+        // Send denial notification (ignore failures)
+        try {
+            notificationService.sendBookingDeniedNotification(deniedBooking);
+        } catch (Exception e) {
+            // Log but don't fail the operation
+        }
+
+        return convertToBookingResponse(deniedBooking);
+    }
+
+    @Override
     public BookingDTO.BookingResponse cancelBooking(Long bookingId, String reason) {
         Booking booking = getBookingById(bookingId);
 
