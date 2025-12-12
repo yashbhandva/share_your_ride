@@ -20,4 +20,5 @@ public interface BookingService {
     Booking getBookingById(Long bookingId);
     void autoCancelPendingBookings(); // For cron job
     List<BookingDTO.BookingResponse> getDriverBookings(Long driverId);
+    BookingDTO.BookingResponse verifyPickupOtp(Long bookingId, String otp);
 }
