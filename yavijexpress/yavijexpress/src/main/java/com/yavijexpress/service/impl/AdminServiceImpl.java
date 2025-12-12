@@ -6,6 +6,7 @@ import com.yavijexpress.entity.Trip;
 import com.yavijexpress.entity.Booking;
 import com.yavijexpress.repository.*;
 import com.yavijexpress.service.AdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +21,9 @@ public class AdminServiceImpl implements AdminService {
     private final UserRepository userRepository;
     private final TripRepository tripRepository;
     private final BookingRepository bookingRepository;
+    
+    @Autowired
+    private ContactMessageRepository contactMessageRepository;
 
     public AdminServiceImpl(UserRepository userRepository, TripRepository tripRepository, BookingRepository bookingRepository) {
         this.userRepository = userRepository;
@@ -36,6 +40,7 @@ public class AdminServiceImpl implements AdminService {
         stats.setActiveDrivers(userRepository.countByRoleAndIsActive(User.UserRole.DRIVER, true));
         stats.setTotalBookings(bookingRepository.count());
         stats.setPendingBookings(bookingRepository.countByStatus(Booking.BookingStatus.PENDING));
+        stats.setTotalMessages(contactMessageRepository.count());
         
         // Calculate total revenue from completed bookings
         Double revenue = bookingRepository.findAll().stream()
