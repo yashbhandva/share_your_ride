@@ -3,8 +3,7 @@ package com.yavijexpress.service.impl;
 import com.yavijexpress.entity.*;
 import com.yavijexpress.repository.NotificationRepository;
 import com.yavijexpress.service.NotificationService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.yavijexpress.repository.UserRepository;import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +16,9 @@ import java.util.Map;
 public class NotificationServiceImpl implements NotificationService {
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private NotificationRepository notificationRepository;
     
     @Autowired
@@ -26,6 +28,40 @@ public class NotificationServiceImpl implements NotificationService {
     public void sendTripCreatedNotification(Trip trip) {
         // This would be sent to nearby passengers (not implemented here)
         // In production, we would have a separate service for location-based notifications
+    }
+
+    @Override
+    public void sendBroadcastNotification(User.UserRole roleFilter, String title, String message) {
+        var users = userRepository.findByRole(roleFilter);
+        for (User user : users) {
+            Notification notification = createNotification(
+                    user,
+                    title,
+                    message,
+                    Notification.NotificationType.INFO,
+                    "ADMIN_BROADCAST",
+                    null
+            );
+            Notification saved = notificationRepository.save(notification);
+            sendRealTimeNotification(user.getId(), saved);
+        }
+    }
+
+    @Override
+    public void sendBroadcastNotificationToAll(String title, String message) {
+        var users = userRepository.findAll();
+        for (User user : users) {
+            Notification notification = createNotification(
+                    user,
+                    title,
+                    message,
+                    Notification.NotificationType.INFO,
+                    "ADMIN_BROADCAST",
+                    null
+            );
+            Notification saved = notificationRepository.save(notification);
+            sendRealTimeNotification(user.getId(), saved);
+        }
     }
 
     @Override
