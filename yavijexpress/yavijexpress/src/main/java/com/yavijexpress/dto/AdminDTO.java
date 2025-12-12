@@ -11,6 +11,7 @@ public class AdminDTO {
         private Long activeDrivers;
         private Long totalBookings;
         private Long pendingBookings;
+        private Long totalMessages;
 
         public Long getTotalUsers() { return totalUsers; }
         public void setTotalUsers(Long totalUsers) { this.totalUsers = totalUsers; }
@@ -24,6 +25,8 @@ public class AdminDTO {
         public void setTotalBookings(Long totalBookings) { this.totalBookings = totalBookings; }
         public Long getPendingBookings() { return pendingBookings; }
         public void setPendingBookings(Long pendingBookings) { this.pendingBookings = pendingBookings; }
+        public Long getTotalMessages() { return totalMessages; }
+        public void setTotalMessages(Long totalMessages) { this.totalMessages = totalMessages; }
     }
 
     public static class UserManagement {
