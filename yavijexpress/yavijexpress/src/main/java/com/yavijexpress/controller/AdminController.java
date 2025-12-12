@@ -1,11 +1,16 @@
 package com.yavijexpress.controller;
 
 import com.yavijexpress.dto.AdminDTO;
+import com.yavijexpress.dto.ContactMessageDTO;
+import com.yavijexpress.entity.ContactMessage;
+import com.yavijexpress.repository.ContactMessageRepository;
 import com.yavijexpress.service.AdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.stream.Collectors;
 import com.yavijexpress.dto.NotificationDTO;
 import com.yavijexpress.service.NotificationService;
 import com.yavijexpress.entity.User;
@@ -17,6 +22,9 @@ public class AdminController {
 
     private final AdminService adminService;
     private final NotificationService notificationService;
+    
+    @Autowired
+    private ContactMessageRepository contactMessageRepository;
 
     public AdminController(AdminService adminService, NotificationService notificationService) {
         this.adminService = adminService;
@@ -70,6 +78,24 @@ public class AdminController {
         } catch (Exception e) {
             return ResponseEntity.status(500).body(
                 com.yavijexpress.dto.ApiResponse.error("Failed to get dashboard stats: " + e.getMessage())
+            );
+        }
+    }
+
+    @GetMapping("/contacts/stats")
+    public ResponseEntity<?> getContactStats() {
+        try {
+            java.util.Map<String, Object> stats = new java.util.HashMap<>();
+            stats.put("total", contactMessageRepository.count());
+            stats.put("new", contactMessageRepository.countByStatus(ContactMessage.Status.NEW));
+            stats.put("inProgress", contactMessageRepository.countByStatus(ContactMessage.Status.IN_PROGRESS));
+            stats.put("resolved", contactMessageRepository.countByStatus(ContactMessage.Status.RESOLVED));
+            stats.put("closed", contactMessageRepository.countByStatus(ContactMessage.Status.CLOSED));
+            
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(stats, "Contact stats retrieved"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to get contact stats: " + e.getMessage())
             );
         }
     }
@@ -148,5 +174,74 @@ public class AdminController {
                 com.yavijexpress.dto.ApiResponse.error("Failed to delete trip: " + e.getMessage())
             );
         }
+    }
+
+    @GetMapping("/contacts")
+    public ResponseEntity<?> getAllContacts(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        try {
+            org.springframework.data.domain.Pageable pageable = org.springframework.data.domain.PageRequest.of(page, size);
+            org.springframework.data.domain.Page<ContactMessage> contactPage = contactMessageRepository.findAll(pageable);
+            
+            List<ContactMessageDTO.ContactResponse> contacts = contactPage.getContent()
+                .stream()
+                .map(this::convertToContactResponse)
+                .collect(Collectors.toList());
+                
+            java.util.Map<String, Object> response = new java.util.HashMap<>();
+            response.put("contacts", contacts);
+            response.put("totalElements", contactPage.getTotalElements());
+            response.put("totalPages", contactPage.getTotalPages());
+            response.put("currentPage", page);
+            
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(response, "Contacts retrieved"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to get contacts: " + e.getMessage())
+            );
+        }
+    }
+
+    @PutMapping("/contacts/{contactId}/status")
+    public ResponseEntity<?> updateContactStatus(@PathVariable Long contactId, @RequestBody ContactMessageDTO.StatusUpdateRequest request) {
+        try {
+            ContactMessage contact = contactMessageRepository.findById(contactId)
+                .orElseThrow(() -> new RuntimeException("Contact not found"));
+            
+            contact.setStatus(ContactMessage.Status.valueOf(request.getStatus().toUpperCase()));
+            ContactMessage updated = contactMessageRepository.save(contact);
+            
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(convertToContactResponse(updated), "Status updated"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to update status: " + e.getMessage())
+            );
+        }
+    }
+
+    @DeleteMapping("/contacts/{contactId}")
+    public ResponseEntity<?> deleteContact(@PathVariable Long contactId) {
+        try {
+            contactMessageRepository.deleteById(contactId);
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(null, "Contact deleted successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to delete contact: " + e.getMessage())
+            );
+        }
+    }
+
+    private ContactMessageDTO.ContactResponse convertToContactResponse(ContactMessage contact) {
+        ContactMessageDTO.ContactResponse response = new ContactMessageDTO.ContactResponse();
+        response.setId(contact.getId());
+        response.setName(contact.getName());
+        response.setEmail(contact.getEmail());
+        response.setSubject(contact.getSubject());
+        response.setMessage(contact.getMessage());
+        response.setStatus(contact.getStatus().toString());
+        response.setCreatedAt(contact.getCreatedAt());
+        response.setUpdatedAt(contact.getUpdatedAt());
+        return response;
     }
 }
