@@ -1,120 +1,104 @@
 package com.yavijexpress.controller;
 
-import com.yavijexpress.dto.*;
-import com.yavijexpress.service.*;
-import lombok.RequiredArgsConstructor;
+import com.yavijexpress.dto.AdminDTO;
+import com.yavijexpress.service.AdminService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import java.util.Map;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin")
 @PreAuthorize("hasRole('ADMIN')")
 public class AdminController {
 
-    private final UserService userService;
-    private final TripService tripService;
-    private final BookingService bookingService;
+    private final AdminService adminService;
 
-    public AdminController(UserService userService, TripService tripService, BookingService bookingService) {
-        this.userService = userService;
-        this.tripService = tripService;
-        this.bookingService = bookingService;
-    }
-
-    public static class UpdateStatusRequest {
-        private Boolean isActive;
-        public Boolean getIsActive() { return isActive; }
-        public void setIsActive(Boolean isActive) { this.isActive = isActive; }
-    }
-
-    @PatchMapping("/{userId}/status")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<ApiResponse<?>> updateUserStatus(
-            @PathVariable Long userId,
-            @RequestBody UpdateStatusRequest request
-    ) {
-        userService.updateUserStatus(userId, request.getIsActive());
-        return ResponseEntity.ok(
-                ApiResponse.success(null, "User status updated successfully")
-        );
+    public AdminController(AdminService adminService) {
+        this.adminService = adminService;
     }
 
     @GetMapping("/dashboard/stats")
-    public ResponseEntity<Map<String, Object>> getDashboardStats() {
-        // Implementation for dashboard statistics
-        return ResponseEntity.ok(Map.of(
-                "totalUsers", 150,
-                "totalTrips", 500,
-                "totalRevenue", 25000.0,
-                "activeDrivers", 45
-        ));
-    }
-
-
-    @DeleteMapping("/{userId}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<ApiResponse<?>> deleteUser(@PathVariable Long userId) {
-        userService.deleteUser(userId);
-        return ResponseEntity.ok(
-                ApiResponse.success(null, "User deleted successfully")
-        );
-    }
-    @PostMapping("/{userId}/deactivate")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<ApiResponse<?>> deactivateUser(@PathVariable Long userId) {
-        userService.deactivateUser(userId);
-        return ResponseEntity.ok(
-                ApiResponse.success(null, "User deactivated successfully")
-        );
-    }
-
-    @PostMapping("/{userId}/reactivate")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<ApiResponse<?>> reactivateUser(@PathVariable Long userId) {
-        userService.reactivateUser(userId);
-        return ResponseEntity.ok(
-                ApiResponse.success(null, "User reactivated successfully")
-        );
-    }
-    @PostMapping("/users/{userId}/status")
-    public ResponseEntity<?> updateUserStatus(
-            @PathVariable Long userId,
-            @RequestParam Boolean isActive) {
-        userService.updateUserStatus(userId, isActive);
-        return ResponseEntity.ok("User status updated");
-    }
-
-    @PostMapping("/kyc/verify")
-    public ResponseEntity<?> updateKYCStatus(
-            @RequestBody UserDTO.KYCStatusUpdateRequest request) {
-        userService.updateKYCStatus(request);
-        return ResponseEntity.ok("KYC status updated");
+    public ResponseEntity<?> getDashboardStats() {
+        try {
+            AdminDTO.DashboardStats stats = adminService.getDashboardStats();
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(stats, "Dashboard stats retrieved"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to get dashboard stats: " + e.getMessage())
+            );
+        }
     }
 
     @GetMapping("/users")
-    public ResponseEntity<?> getAllUsers(@RequestParam(required = false) String role) {
-        return ResponseEntity.ok(userService.getAllUsers(role));
+    public ResponseEntity<?> getAllUsers() {
+        try {
+            List<AdminDTO.UserManagement> users = adminService.getAllUsers();
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(users, "Users retrieved"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to get users: " + e.getMessage())
+            );
+        }
     }
 
     @GetMapping("/trips")
     public ResponseEntity<?> getAllTrips() {
-        // Get all trips with filters
-        return ResponseEntity.ok("All trips");
+        try {
+            List<AdminDTO.TripManagement> trips = adminService.getAllTrips();
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(trips, "Trips retrieved"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to get trips: " + e.getMessage())
+            );
+        }
     }
 
-    @GetMapping("/bookings")
-    public ResponseEntity<?> getAllBookings() {
-        // Get all bookings with filters
-        return ResponseEntity.ok("All bookings");
+    @PutMapping("/users/{userId}/status")
+    public ResponseEntity<?> updateUserStatus(@PathVariable Long userId, @RequestParam Boolean isActive) {
+        try {
+            AdminDTO.UserManagement user = adminService.updateUserStatus(userId, isActive);
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(user, "User status updated"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to update user status: " + e.getMessage())
+            );
+        }
     }
 
-    @PostMapping("/emergency/alert")
-    public ResponseEntity<?> sendEmergencyAlert(
-            @RequestParam Long tripId,
-            @RequestParam String message) {
-        // Send emergency alert to all in trip
-        return ResponseEntity.ok("Emergency alert sent");
+    @PutMapping("/users/{userId}/verification")
+    public ResponseEntity<?> updateUserVerification(@PathVariable Long userId, @RequestParam String status) {
+        try {
+            AdminDTO.UserManagement user = adminService.updateUserVerification(userId, status);
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(user, "User verification updated"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to update verification: " + e.getMessage())
+            );
+        }
+    }
+
+    @DeleteMapping("/users/{userId}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
+        try {
+            adminService.deleteUser(userId);
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(null, "User deleted successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to delete user: " + e.getMessage())
+            );
+        }
+    }
+
+    @DeleteMapping("/trips/{tripId}")
+    public ResponseEntity<?> deleteTrip(@PathVariable Long tripId) {
+        try {
+            adminService.deleteTrip(tripId);
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(null, "Trip deleted successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to delete trip: " + e.getMessage())
+            );
+        }
     }
 }
