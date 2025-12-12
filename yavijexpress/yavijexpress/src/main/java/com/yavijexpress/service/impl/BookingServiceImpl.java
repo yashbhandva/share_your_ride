@@ -4,6 +4,7 @@ import com.yavijexpress.dto.BookingDTO;
 import com.yavijexpress.entity.*;
 import com.yavijexpress.exception.*;
 import com.yavijexpress.repository.*;
+import com.yavijexpress.repository.UserRepository;
 import com.yavijexpress.service.BookingService;
 import com.yavijexpress.service.PaymentService;
 import com.yavijexpress.service.NotificationService;
@@ -57,11 +58,11 @@ public class BookingServiceImpl implements BookingService {
                 throw new BadRequestException("Not enough seats available");
             }
 
-            // Create booking
+            // Create booking with PENDING status
             Booking booking = new Booking();
             booking.setSeatsBooked(request.getSeats());
             booking.setTotalAmount(trip.getPricePerSeat() * request.getSeats());
-            booking.setStatus(Booking.BookingStatus.CONFIRMED);
+            booking.setStatus(Booking.BookingStatus.PENDING);
             booking.setSpecialRequests(request.getSpecialRequests());
             booking.setTrip(trip);
             booking.setPassenger(passenger);
@@ -71,6 +72,13 @@ public class BookingServiceImpl implements BookingService {
             // Update available seats
             trip.setAvailableSeats(trip.getAvailableSeats() - request.getSeats());
             tripRepository.save(trip);
+
+            // Send notification to driver
+            try {
+                notificationService.sendBookingRequestNotification(savedBooking);
+            } catch (Exception e) {
+                // Log but don't fail booking
+            }
 
             return convertToBookingResponse(savedBooking);
         } catch (Exception e) {
@@ -86,10 +94,13 @@ public class BookingServiceImpl implements BookingService {
             throw new BadRequestException("Booking is not in pending state");
         }
 
+        // Generate 4-6 digit OTP
+        String otp = String.format("%04d", (int)(Math.random() * 10000));
+        booking.setPickupOtp(otp);
         booking.setStatus(Booking.BookingStatus.CONFIRMED);
         Booking confirmedBooking = bookingRepository.save(booking);
 
-        // Send confirmation notifications (ignore failures)
+        // Send confirmation notifications with OTP (ignore failures)
         try {
             notificationService.sendBookingConfirmedNotification(confirmedBooking);
         } catch (Exception e) {
@@ -175,6 +186,26 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    public BookingDTO.BookingResponse verifyPickupOtp(Long bookingId, String otp) {
+        Booking booking = getBookingById(bookingId);
+        
+        if (booking.getStatus() != Booking.BookingStatus.CONFIRMED) {
+            throw new BadRequestException("Booking is not confirmed");
+        }
+        
+        if (!otp.equals(booking.getPickupOtp())) {
+            throw new BadRequestException("Invalid OTP");
+        }
+        
+        // Mark trip as started
+        Trip trip = booking.getTrip();
+        trip.setStatus(Trip.TripStatus.ONGOING);
+        tripRepository.save(trip);
+        
+        return convertToBookingResponse(booking);
+    }
+
+    @Override
     public Booking getBookingById(Long bookingId) {
         return bookingRepository.findById(bookingId)
                 .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
@@ -190,6 +221,11 @@ public class BookingServiceImpl implements BookingService {
         response.setStatus(booking.getStatus().toString());
         response.setSpecialRequests(booking.getSpecialRequests());
         response.setTripNotes(booking.getTrip().getNotes());
+        response.setPickupOtp(booking.getPickupOtp());
+        response.setDriverName(booking.getTrip().getDriver().getName());
+        response.setDriverPhone(booking.getTrip().getDriver().getMobile());
+        response.setVehicleModel(booking.getTrip().getVehicle().getModel());
+        response.setVehicleNumber(booking.getTrip().getVehicle().getVehicleNumber());
 
         if (booking.getPayment() != null) {
             response.setPaymentStatus(booking.getPayment().getStatus().toString());
