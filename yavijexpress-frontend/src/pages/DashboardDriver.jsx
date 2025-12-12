@@ -41,9 +41,15 @@ const DashboardDriver = () => {
       setLoading(true);
       setError("");
       const res = await api.get(`/api/trips/driver/${driverId}`);
-      console.log('Trips response:', res.data);
-      setTrips(res.data?.data || res.data || []);
+      // Debug: log trips response
+      if (res.data?.data?.length === 0 || (Array.isArray(res.data) && res.data.length === 0)) {
+        console.log('No trips found for driver:', driverId);
+      }
+      const trips = res.data?.data || res.data || [];
+      setTrips(trips);
+      console.log('Loaded', trips.length, 'trips for driver');
     } catch (e) {
+      console.error('Failed to load trips:', e);
       setError(e.response?.data?.message || "Failed to load driver trips");
     } finally {
       setLoading(false);
