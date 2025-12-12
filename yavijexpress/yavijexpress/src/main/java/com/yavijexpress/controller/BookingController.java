@@ -55,16 +55,10 @@ public class BookingController {
             System.out.println("Confirming booking: " + bookingId);
             BookingDTO.BookingResponse response = bookingService.confirmBooking(bookingId);
             System.out.println("Booking confirmed successfully, OTP: " + response.getPickupOtp());
-            BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
-                bookingId, "CONFIRMED", "✅ Booking confirmed successfully. OTP sent to passenger.", true
-            );
-            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(actionResponse, "Booking confirmed successfully"));
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success("✅ Booking confirmed successfully. OTP sent to passenger.", "Booking confirmed successfully"));
         } catch (Exception e) {
             System.out.println("Failed to confirm booking: " + e.getMessage());
             e.printStackTrace();
-            BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
-                bookingId, "ERROR", e.getMessage(), false
-            );
             return ResponseEntity.status(400).body(
                 com.yavijexpress.dto.ApiResponse.error("Failed to confirm booking: " + e.getMessage())
             );
@@ -145,19 +139,13 @@ public class BookingController {
         try {
             System.out.println("OTP Verification Request: BookingId=" + request.getBookingId() + ", OTP=" + request.getOtp());
             BookingDTO.BookingResponse response = bookingService.verifyPickupOtp(request.getBookingId(), request.getOtp());
-            BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
-                request.getBookingId(), "VERIFIED", "✅ OTP Verified Successfully! Trip can now start.", true
-            );
             System.out.println("OTP Verification Success");
-            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(actionResponse, "OTP verified successfully"));
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success("✅ OTP Verified Successfully! Trip can now start.", "OTP verified successfully"));
         } catch (Exception e) {
             System.out.println("OTP Verification Failed: " + e.getMessage());
             e.printStackTrace();
-            BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
-                request.getBookingId(), "INVALID_OTP", "❌ Invalid OTP. Please check and try again.", false
-            );
             return ResponseEntity.status(400).body(
-                com.yavijexpress.dto.ApiResponse.error("OTP verification failed: " + e.getMessage())
+                com.yavijexpress.dto.ApiResponse.error("❌ Invalid OTP. Please check and try again.")
             );
         }
     }
