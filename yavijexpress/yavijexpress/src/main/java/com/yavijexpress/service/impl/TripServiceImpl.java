@@ -206,24 +206,17 @@ public class TripServiceImpl implements TripService {
 
     @Override
     public List<TripDTO.TripResponse> searchTrips(TripDTO.TripSearchRequest request) {
+        // Use current time as minimum departure if no date specified
         LocalDateTime startDate = request.getDepartureDate() != null
                 ? request.getDepartureDate()
                 : LocalDateTime.now();
 
-        List<Trip> trips;
-        
-        // If no search criteria provided, return all active trips
-        if ((request.getFromLocation() == null || request.getFromLocation().isEmpty()) &&
-            (request.getToLocation() == null || request.getToLocation().isEmpty())) {
-            trips = tripRepository.findAllActiveTrips();
-        } else {
-            trips = tripRepository.searchTrips(
-                    request.getFromLocation(),
-                    request.getToLocation(),
-                    startDate,
-                    request.getRequiredSeats()
-            );
-        }
+        List<Trip> trips = tripRepository.searchTrips(
+                request.getFromLocation(),
+                request.getToLocation(),
+                startDate,
+                request.getRequiredSeats()
+        );
 
         // Filter by max price if provided
         if (request.getMaxPrice() != null) {
@@ -315,7 +308,8 @@ public class TripServiceImpl implements TripService {
         List<Trip> trips = tripRepository.findByDepartureTimeBetween(now, future);
 
         return trips.stream()
-                .filter(trip -> trip.getStatus() == Trip.TripStatus.SCHEDULED)
+                .filter(trip -> trip.getStatus() == Trip.TripStatus.SCHEDULED && 
+                               Boolean.TRUE.equals(trip.getIsActive()))
                 .map(this::convertToTripResponse)
                 .collect(Collectors.toList());
     }
