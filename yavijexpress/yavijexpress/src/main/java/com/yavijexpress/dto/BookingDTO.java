@@ -247,4 +247,28 @@ public class BookingDTO {
             this.otp = otp;
         }
     }
+
+    @Data
+    public static class BookingActionResponse {
+        private Long bookingId;
+        private String status;
+        private String message;
+        private String otp;
+        private boolean success;
+
+        public BookingActionResponse(Long bookingId, String status, String message, boolean success) {
+            this.bookingId = bookingId;
+            this.status = status;
+            this.message = message;
+            this.success = success;
+        }
+
+        public BookingActionResponse(Long bookingId, String status, String message, String otp, boolean success) {
+            this.bookingId = bookingId;
+            this.status = status;
+            this.message = message;
+            this.otp = otp;
+            this.success = success;
+        }
+    }
 }
