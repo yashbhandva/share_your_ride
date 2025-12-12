@@ -35,6 +35,10 @@ const DashboardDriver = () => {
   });
   const [creating, setCreating] = useState(false);
   const [success, setSuccess] = useState("");
+  const [bookings, setBookings] = useState([]);
+  const [bookingLoading, setBookingLoading] = useState(false);
+  const [otpForm, setOtpForm] = useState({ bookingId: null, otp: "" });
+  const [otpVerifying, setOtpVerifying] = useState(false);
 
   const loadTrips = async (driverId) => {
     try {
@@ -65,6 +69,19 @@ const DashboardDriver = () => {
       setVehicles(list);
     } catch (e) {
       setVehicleError(e.response?.data?.message || "Failed to load vehicles");
+    }
+  };
+
+  const loadBookings = async (driverId) => {
+    try {
+      setBookingLoading(true);
+      const res = await api.get(`/api/bookings/driver/${driverId}`);
+      const data = res.data?.data || res.data || [];
+      setBookings(data);
+    } catch (e) {
+      setError(e.response?.data?.message || "Failed to load bookings");
+    } finally {
+      setBookingLoading(false);
     }
   };
 
@@ -126,10 +143,46 @@ const DashboardDriver = () => {
     }
   };
 
+  const handleConfirmBooking = async (bookingId) => {
+    try {
+      setError("");
+      const res = await api.post(`/api/bookings/${bookingId}/confirm`);
+      console.log('Confirm response:', res.data);
+      setSuccess("Booking confirmed! OTP sent to passenger.");
+      setTimeout(() => setSuccess(""), 3000);
+      await loadBookings(user.id);
+    } catch (e) {
+      setError(e.response?.data?.message || "Failed to confirm booking");
+    }
+  };
+
+  const handleVerifyOtp = async (e) => {
+    e.preventDefault();
+    try {
+      setOtpVerifying(true);
+      setError("");
+      const res = await api.post("/api/bookings/verify-otp", {
+        bookingId: otpForm.bookingId,
+        otp: otpForm.otp
+      });
+      console.log('OTP verification response:', res.data);
+      setSuccess("OTP verified! Trip started.");
+      setOtpForm({ bookingId: null, otp: "" });
+      setTimeout(() => setSuccess(""), 3000);
+      await loadTrips(user.id);
+      await loadBookings(user.id);
+    } catch (e) {
+      setError(e.response?.data?.message || "Invalid OTP");
+    } finally {
+      setOtpVerifying(false);
+    }
+  };
+
   useEffect(() => {
     if (!user?.id) return;
     loadTrips(user.id);
     loadVehicles(user.id);
+    loadBookings(user.id);
   }, [user]);
 
   const handleChange = (e) => {
@@ -279,6 +332,61 @@ const DashboardDriver = () => {
         <p><strong>Completed Trips:</strong> {Array.isArray(trips) ? trips.filter(t => t.status === 'COMPLETED').length : 0}</p>
       </div>
       {error && <p style={{ color: "red" }}>{error}</p>}
+      {success && <p style={{ color: "green" }}>{success}</p>}
+
+      <section style={{ marginBottom: 24 }}>
+        <h2>Booking Requests</h2>
+        {bookingLoading && <p>Loading bookings...</p>}
+        {bookings.length === 0 && !bookingLoading && <p>No booking requests.</p>}
+        {bookings.length > 0 && (
+          <div>
+            {bookings.map((booking) => (
+              <div key={booking.id} style={{ border: "1px solid #ddd", padding: "15px", marginBottom: "15px", borderRadius: "5px" }}>
+                <h4>Booking #{booking.id}</h4>
+                <p><strong>Passenger:</strong> {booking.passengerName}</p>
+                <p><strong>Trip:</strong> {booking.tripFrom} → {booking.tripTo}</p>
+                <p><strong>Departure:</strong> {new Date(booking.departureTime).toLocaleString()}</p>
+                <p><strong>Seats:</strong> {booking.seatsBooked}</p>
+                <p><strong>Amount:</strong> ₹{booking.totalAmount}</p>
+                <p><strong>Status:</strong> <span style={{color: booking.status === 'CONFIRMED' ? 'green' : booking.status === 'PENDING' ? 'orange' : 'red'}}>{booking.status}</span></p>
+                {booking.specialRequests && <p><strong>Special Requests:</strong> {booking.specialRequests}</p>}
+                
+                {booking.status === 'PENDING' && (
+                  <button
+                    onClick={() => handleConfirmBooking(booking.id)}
+                    style={{ backgroundColor: "#4CAF50", color: "white", border: "none", padding: "8px 16px", borderRadius: "3px" }}
+                  >
+                    Approve Booking
+                  </button>
+                )}
+                
+                {booking.status === 'CONFIRMED' && booking.pickupOtp && (
+                  <div style={{backgroundColor: '#e8f5e8', padding: '10px', marginTop: '10px', borderRadius: '5px'}}>
+                    <h5>Passenger OTP: {booking.pickupOtp}</h5>
+                    <form onSubmit={handleVerifyOtp} style={{marginTop: '10px'}}>
+                      <input
+                        type="text"
+                        placeholder="Enter OTP from passenger"
+                        value={otpForm.bookingId === booking.id ? otpForm.otp : ""}
+                        onChange={(e) => setOtpForm({bookingId: booking.id, otp: e.target.value})}
+                        style={{marginRight: '8px', padding: '5px'}}
+                        maxLength="6"
+                      />
+                      <button
+                        type="submit"
+                        disabled={otpVerifying || !otpForm.otp}
+                        style={{ backgroundColor: "#2196F3", color: "white", border: "none", padding: "5px 10px", borderRadius: "3px" }}
+                      >
+                        {otpVerifying ? "Verifying..." : "Verify & Start Trip"}
+                      </button>
+                    </form>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
 
       <section style={{ marginBottom: 24 }}>
         <h2>My Vehicle</h2>
