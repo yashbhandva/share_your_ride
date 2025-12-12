@@ -15,6 +15,7 @@ public class NotificationDTO {
         private Boolean isRead;
         private String relatedEntityType;
         private Long relatedEntityId;
+        private String actions;
         private LocalDateTime createdAt;
 
         public Long getId() {
@@ -79,6 +80,14 @@ public class NotificationDTO {
 
         public void setCreatedAt(LocalDateTime createdAt) {
             this.createdAt = createdAt;
+        }
+        
+        public String getActions() {
+            return actions;
+        }
+        
+        public void setActions(String actions) {
+            this.actions = actions;
         }
     }
 
