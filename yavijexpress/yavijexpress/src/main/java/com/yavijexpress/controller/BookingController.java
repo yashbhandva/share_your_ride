@@ -52,12 +52,16 @@ public class BookingController {
     @PostMapping("/{bookingId}/confirm")
     public ResponseEntity<?> confirmBooking(@PathVariable Long bookingId) {
         try {
+            System.out.println("Confirming booking: " + bookingId);
             BookingDTO.BookingResponse response = bookingService.confirmBooking(bookingId);
+            System.out.println("Booking confirmed successfully, OTP: " + response.getPickupOtp());
             BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
-                bookingId, "CONFIRMED", "Booking confirmed successfully. OTP sent to passenger.", true
+                bookingId, "CONFIRMED", "✅ Booking confirmed successfully. OTP sent to passenger.", true
             );
             return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(actionResponse, "Booking confirmed successfully"));
         } catch (Exception e) {
+            System.out.println("Failed to confirm booking: " + e.getMessage());
+            e.printStackTrace();
             BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
                 bookingId, "ERROR", e.getMessage(), false
             );
