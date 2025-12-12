@@ -54,7 +54,7 @@ public class BookingController {
         try {
             BookingDTO.BookingResponse response = bookingService.confirmBooking(bookingId);
             BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
-                bookingId, "CONFIRMED", "Booking confirmed successfully", response.getPickupOtp(), true
+                bookingId, "CONFIRMED", "Booking confirmed successfully. OTP sent to passenger.", true
             );
             return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(actionResponse, "Booking confirmed successfully"));
         } catch (Exception e) {
@@ -139,18 +139,27 @@ public class BookingController {
     @PostMapping("/verify-otp")
     public ResponseEntity<?> verifyPickupOtp(@Valid @RequestBody BookingDTO.OtpVerificationRequest request) {
         try {
+            System.out.println("OTP Verification Request: BookingId=" + request.getBookingId() + ", OTP=" + request.getOtp());
             BookingDTO.BookingResponse response = bookingService.verifyPickupOtp(request.getBookingId(), request.getOtp());
             BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
-                request.getBookingId(), "TRIP_STARTED", "OTP verified successfully. Trip has started.", true
+                request.getBookingId(), "VERIFIED", "✅ OTP Verified Successfully! Trip can now start.", true
             );
+            System.out.println("OTP Verification Success");
             return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(actionResponse, "OTP verified successfully"));
         } catch (Exception e) {
+            System.out.println("OTP Verification Failed: " + e.getMessage());
+            e.printStackTrace();
             BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
-                request.getBookingId(), "INVALID_OTP", e.getMessage(), false
+                request.getBookingId(), "INVALID_OTP", "❌ Invalid OTP. Please check and try again.", false
             );
             return ResponseEntity.status(400).body(
                 com.yavijexpress.dto.ApiResponse.error("OTP verification failed: " + e.getMessage())
             );
         }
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<?> testEndpoint() {
+        return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success("API is working", "Test successful"));
     }
 }
