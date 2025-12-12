@@ -178,10 +178,10 @@ const DashboardDriver = () => {
       });
       
       console.log('OTP verification response:', res.data);
-      const message = res.data?.data?.message || "✅ OTP Verified Successfully! Trip can now start.";
+      const message = res.data?.data?.message || res.data?.message || "✅ OTP Verified Successfully! Trip can now start.";
       setSuccess(message);
       setOtpForm({ bookingId: null, otp: "" });
-      setTimeout(() => setSuccess(""), 5000);
+      setTimeout(() => setSuccess(""), 8000);
       
       // Reload data
       await loadTrips(user.id);
@@ -349,8 +349,8 @@ const DashboardDriver = () => {
         <p><strong>Active Trips:</strong> {Array.isArray(trips) ? trips.filter(t => t.isActive).length : 0}</p>
         <p><strong>Completed Trips:</strong> {Array.isArray(trips) ? trips.filter(t => t.status === 'COMPLETED').length : 0}</p>
       </div>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {success && <p style={{ color: "green" }}>{success}</p>}
+      {error && <div style={{ color: "red", backgroundColor: "#ffebee", padding: "10px", borderRadius: "5px", marginBottom: "10px", border: "1px solid #f44336" }}>{error}</div>}
+      {success && <div style={{ color: "green", backgroundColor: "#e8f5e8", padding: "15px", borderRadius: "5px", marginBottom: "15px", border: "2px solid #4CAF50", fontSize: "16px", fontWeight: "bold" }}>{success}</div>}
 
       <section style={{ marginBottom: 24 }}>
         <h2>Booking Requests</h2>
