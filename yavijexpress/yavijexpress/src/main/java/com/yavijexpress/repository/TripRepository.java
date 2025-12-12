@@ -14,12 +14,7 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
     List<Trip> findByDriverId(Long driverId);
     List<Trip> findByStatus(Trip.TripStatus status);
 
-    @Query("SELECT t FROM Trip t WHERE t.status = 'SCHEDULED' AND t.isActive = true " +
-            "AND (:from IS NULL OR :from = '' OR UPPER(t.fromLocation) LIKE UPPER(CONCAT('%', :from, '%'))) " +
-            "AND (:to IS NULL OR :to = '' OR UPPER(t.toLocation) LIKE UPPER(CONCAT('%', :to, '%'))) " +
-            "AND (:startDate IS NULL OR t.departureTime >= :startDate) " +
-            "AND (:seats IS NULL OR t.availableSeats >= :seats) " +
-            "ORDER BY t.departureTime ASC")
+    @Query("SELECT t FROM Trip t WHERE t.isActive = true ORDER BY t.departureTime ASC")
     List<Trip> searchTrips(@Param("from") String from,
                            @Param("to") String to,
                            @Param("startDate") LocalDateTime startDate,
@@ -33,6 +28,6 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
 
     List<Trip> findByDepartureTimeBetween(LocalDateTime start, LocalDateTime end);
     
-    @Query("SELECT t FROM Trip t WHERE t.status = 'SCHEDULED' AND t.isActive = true ORDER BY t.departureTime ASC")
+    @Query("SELECT t FROM Trip t WHERE t.isActive = true ORDER BY t.departureTime ASC")
     List<Trip> findAllActiveTrips();
 }
