@@ -9,6 +9,7 @@ public interface BookingService {
     // Booking Operations
     BookingDTO.BookingResponse createBooking(Long passengerId, BookingDTO.BookingRequest request);
     BookingDTO.BookingResponse confirmBooking(Long bookingId);
+    BookingDTO.BookingResponse denyBooking(Long bookingId);
     BookingDTO.BookingResponse cancelBooking(Long bookingId, String reason);
 
     // Queries
