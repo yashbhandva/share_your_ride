@@ -31,9 +31,11 @@ public class AdminController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<?> getAllUsers() {
+    public ResponseEntity<?> getAllUsers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
         try {
-            List<AdminDTO.UserManagement> users = adminService.getAllUsers();
+            List<AdminDTO.UserManagement> users = adminService.getAllUsers(page, size);
             return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(users, "Users retrieved"));
         } catch (Exception e) {
             return ResponseEntity.status(500).body(
@@ -43,9 +45,11 @@ public class AdminController {
     }
 
     @GetMapping("/trips")
-    public ResponseEntity<?> getAllTrips() {
+    public ResponseEntity<?> getAllTrips(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
         try {
-            List<AdminDTO.TripManagement> trips = adminService.getAllTrips();
+            List<AdminDTO.TripManagement> trips = adminService.getAllTrips(page, size);
             return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(trips, "Trips retrieved"));
         } catch (Exception e) {
             return ResponseEntity.status(500).body(
