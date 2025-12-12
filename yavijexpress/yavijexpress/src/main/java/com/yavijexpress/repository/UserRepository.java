@@ -22,4 +22,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByRoleAndVerificationStatus(User.UserRole role, User.VerificationStatus status);
     @Query("SELECT COUNT(u) FROM User u WHERE u.role = :role")
     Long countByRole(User.UserRole role);
+    
+    Long countByRoleAndIsActive(User.UserRole role, Boolean isActive);
 }
