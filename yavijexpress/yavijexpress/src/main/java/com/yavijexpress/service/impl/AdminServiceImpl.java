@@ -8,6 +8,8 @@ import com.yavijexpress.repository.*;
 import com.yavijexpress.service.AdminService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,16 +48,18 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<AdminDTO.UserManagement> getAllUsers() {
-        return userRepository.findAll().stream()
+    public List<AdminDTO.UserManagement> getAllUsers(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return userRepository.findAll(pageable).getContent().stream()
                 .map(this::convertToUserManagement)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<AdminDTO.TripManagement> getAllTrips() {
-        List<Trip> allTrips = tripRepository.findAll();
-        System.out.println("🔍 DEBUG: Found " + allTrips.size() + " trips in database");
+    public List<AdminDTO.TripManagement> getAllTrips(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        List<Trip> allTrips = tripRepository.findAll(pageable).getContent();
+        System.out.println("🔍 DEBUG: Found " + allTrips.size() + " trips on page " + page);
         
         if (!allTrips.isEmpty()) {
             Trip firstTrip = allTrips.get(0);
