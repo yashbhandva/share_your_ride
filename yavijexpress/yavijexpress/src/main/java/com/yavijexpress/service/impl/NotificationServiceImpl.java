@@ -5,16 +5,22 @@ import com.yavijexpress.repository.NotificationRepository;
 import com.yavijexpress.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 @Transactional
 public class NotificationServiceImpl implements NotificationService {
 
     @Autowired
-    private  NotificationRepository notificationRepository;
+    private NotificationRepository notificationRepository;
+    
+    @Autowired
+    private SimpMessagingTemplate messagingTemplate;
 
     @Override
     public void sendTripCreatedNotification(Trip trip) {
@@ -131,7 +137,16 @@ public class NotificationServiceImpl implements NotificationService {
                 "BOOKING",
                 booking.getId()
         );
-        notificationRepository.save(notification);
+        
+        String actions = String.format(
+            "[{\"label\":\"Accept\",\"action\":\"confirm\",\"url\":\"/api/bookings/%d/confirm\",\"style\":\"success\"}," +
+            "{\"label\":\"Deny\",\"action\":\"deny\",\"url\":\"/api/bookings/%d/deny\",\"style\":\"danger\"}]",
+            booking.getId(), booking.getId()
+        );
+        notification.setActions(actions);
+        
+        Notification saved = notificationRepository.save(notification);
+        sendRealTimeNotification(booking.getTrip().getDriver().getId(), saved);
     }
 
     @Override
@@ -169,7 +184,22 @@ public class NotificationServiceImpl implements NotificationService {
                 "BOOKING",
                 booking.getId()
         );
-        notificationRepository.save(notification);
+        Notification saved = notificationRepository.save(notification);
+        sendRealTimeNotification(booking.getPassenger().getId(), saved);
+    }
+
+    @Override
+    public void sendBookingDeniedNotification(Booking booking) {
+        Notification notification = createNotification(
+                booking.getPassenger(),
+                "Trip Request Denied",
+                "Your trip request was denied by the driver.",
+                Notification.NotificationType.WARNING,
+                "BOOKING",
+                booking.getId()
+        );
+        Notification saved = notificationRepository.save(notification);
+        sendRealTimeNotification(booking.getPassenger().getId(), saved);
     }
 
     @Override
@@ -284,6 +314,23 @@ public class NotificationServiceImpl implements NotificationService {
         notification.setIsRead(false);
 
         return notification;
+    }
+
+    private void sendRealTimeNotification(Long userId, Notification notification) {
+        try {
+            Map<String, Object> notificationData = new HashMap<>();
+            notificationData.put("title", notification.getTitle());
+            notificationData.put("message", notification.getMessage());
+            notificationData.put("type", notification.getType().toString());
+            notificationData.put("entityType", notification.getRelatedEntityType());
+            notificationData.put("entityId", notification.getRelatedEntityId());
+            notificationData.put("actions", notification.getActions());
+            notificationData.put("timestamp", LocalDateTime.now());
+            
+            messagingTemplate.convertAndSend("/topic/notifications/" + userId, notificationData);
+        } catch (Exception e) {
+            // Log error but don't fail notification creation
+        }
     }
 
 }
