@@ -208,21 +208,32 @@ public class TripServiceImpl implements TripService {
     public List<TripDTO.TripResponse> searchTrips(TripDTO.TripSearchRequest request) {
         List<Trip> trips = tripRepository.searchTrips(null, null, null, null);
         
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime startDate = request.getDepartureDate() != null ? request.getDepartureDate() : now;
-        
         return trips.stream()
                 .filter(trip -> trip.getStatus() == Trip.TripStatus.SCHEDULED)
-                .filter(trip -> trip.getDepartureTime().isAfter(now.minusMinutes(30)))
-                .filter(trip -> request.getDepartureDate() == null || trip.getDepartureTime().isAfter(startDate))
-                .filter(trip -> request.getFromLocation() == null || 
-                       trip.getFromLocation().toLowerCase().contains(request.getFromLocation().toLowerCase()))
-                .filter(trip -> request.getToLocation() == null || 
-                       trip.getToLocation().toLowerCase().contains(request.getToLocation().toLowerCase()))
-                .filter(trip -> request.getRequiredSeats() == null || 
-                       trip.getAvailableSeats() >= request.getRequiredSeats())
-                .filter(trip -> request.getMaxPrice() == null || 
-                       trip.getPricePerSeat() <= request.getMaxPrice())
+                .filter(trip -> {
+                    if (request.getFromLocation() != null && !request.getFromLocation().trim().isEmpty()) {
+                        return trip.getFromLocation().toLowerCase().contains(request.getFromLocation().toLowerCase());
+                    }
+                    return true;
+                })
+                .filter(trip -> {
+                    if (request.getToLocation() != null && !request.getToLocation().trim().isEmpty()) {
+                        return trip.getToLocation().toLowerCase().contains(request.getToLocation().toLowerCase());
+                    }
+                    return true;
+                })
+                .filter(trip -> {
+                    if (request.getRequiredSeats() != null && request.getRequiredSeats() > 0) {
+                        return trip.getAvailableSeats() >= request.getRequiredSeats();
+                    }
+                    return true;
+                })
+                .filter(trip -> {
+                    if (request.getMaxPrice() != null && request.getMaxPrice() > 0) {
+                        return trip.getPricePerSeat() <= request.getMaxPrice();
+                    }
+                    return true;
+                })
                 .map(this::convertToTripResponse)
                 .collect(Collectors.toList());
     }
