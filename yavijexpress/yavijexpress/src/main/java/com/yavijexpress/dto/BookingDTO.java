@@ -248,13 +248,14 @@ public class BookingDTO {
         }
     }
 
-    @Data
     public static class BookingActionResponse {
         private Long bookingId;
         private String status;
         private String message;
         private String otp;
         private boolean success;
+
+        public BookingActionResponse() {}
 
         public BookingActionResponse(Long bookingId, String status, String message, boolean success) {
             this.bookingId = bookingId;
@@ -270,5 +271,16 @@ public class BookingDTO {
             this.otp = otp;
             this.success = success;
         }
+
+        public Long getBookingId() { return bookingId; }
+        public void setBookingId(Long bookingId) { this.bookingId = bookingId; }
+        public String getStatus() { return status; }
+        public void setStatus(String status) { this.status = status; }
+        public String getMessage() { return message; }
+        public void setMessage(String message) { this.message = message; }
+        public String getOtp() { return otp; }
+        public void setOtp(String otp) { this.otp = otp; }
+        public boolean isSuccess() { return success; }
+        public void setSuccess(boolean success) { this.success = success; }
     }
 }
