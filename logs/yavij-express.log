@@ -2973,3 +2973,121 @@ com.yavijexpress.controller.TripController#cancelTrip(Long, String) mapped.
 2025-12-12T10:27:05.035+05:30 DEBUG 3432 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
 2025-12-12T10:27:05.047+05:30 DEBUG 3432 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
 2025-12-12T10:27:05.070+05:30 DEBUG 3432 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-12T10:56:13.757+05:30  INFO 18060 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Starting YavijExpressApplication using Java 24.0.2 with PID 18060 (C:\yavijexpress\yavijexpress\yavijexpress\target\classes started by Dell in C:\yavijexpress)
+2025-12-12T10:56:13.761+05:30 DEBUG 18060 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-12T10:56:13.763+05:30  INFO 18060 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-12-12T10:56:15.527+05:30  INFO 18060 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-12T10:56:15.703+05:30  INFO 18060 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 157 ms. Found 10 JPA repository interfaces.
+2025-12-12T10:56:16.952+05:30  INFO 18060 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-12T10:56:16.971+05:30  INFO 18060 --- [yavij-express] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-12T10:56:16.971+05:30  INFO 18060 --- [yavij-express] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-12-12T10:56:17.075+05:30  INFO 18060 --- [yavij-express] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-12T10:56:17.076+05:30  INFO 18060 --- [yavij-express] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3207 ms
+2025-12-12T10:56:17.388+05:30  INFO 18060 --- [yavij-express] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-12T10:56:17.523+05:30  INFO 18060 --- [yavij-express] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-12-12T10:56:17.591+05:30  INFO 18060 --- [yavij-express] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-12T10:56:18.076+05:30  INFO 18060 --- [yavij-express] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-12T10:56:18.128+05:30  INFO 18060 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-12T10:56:18.487+05:30  INFO 18060 --- [yavij-express] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6eaa6b0c
+2025-12-12T10:56:18.489+05:30  INFO 18060 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-12T10:56:18.577+05:30  WARN 18060 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-12T10:56:18.579+05:30  WARN 18060 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-12-12T10:56:20.194+05:30  INFO 18060 --- [yavij-express] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-12T10:56:20.666+05:30  INFO 18060 --- [yavij-express] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12T10:56:21.165+05:30  INFO 18060 --- [yavij-express] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-12T10:56:22.011+05:30 DEBUG 18060 --- [yavij-express] [main] c.y.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2025-12-12T10:56:23.658+05:30  WARN 18060 --- [yavij-express] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-12T10:56:24.191+05:30  INFO 18060 --- [yavij-express] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@41c6dbac, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2e5f2387, org.springframework.security.web.context.SecurityContextHolderFilter@3e6046fb, org.springframework.security.web.header.HeaderWriterFilter@25983534, org.springframework.web.filter.CorsFilter@642d7996, org.springframework.security.web.authentication.logout.LogoutFilter@87852fb, com.yavijexpress.security.JwtAuthenticationFilter@410c1f44, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@17504749, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4a17b9f3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f028abf, org.springframework.security.web.session.SessionManagementFilter@7d2fc711, org.springframework.security.web.access.ExceptionTranslationFilter@12c9803d, org.springframework.security.web.access.intercept.AuthorizationFilter@42c10f3d]
+2025-12-12T10:56:24.828+05:30  INFO 18060 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-12-12T10:56:24.839+05:30  INFO 18060 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Started YavijExpressApplication in 11.874 seconds (process running for 12.904)
+2025-12-12T11:02:17.545+05:30  INFO 18060 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12T11:02:17.861+05:30  INFO 18060 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-12T11:02:18.067+05:30  INFO 18060 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-12T11:03:41.595+05:30  INFO 23260 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Starting YavijExpressApplication using Java 24.0.2 with PID 23260 (C:\yavijexpress\yavijexpress\yavijexpress\target\classes started by Dell in C:\yavijexpress)
+2025-12-12T11:03:41.600+05:30 DEBUG 23260 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-12T11:03:41.601+05:30  INFO 23260 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-12-12T11:03:44.219+05:30  INFO 23260 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-12T11:03:44.475+05:30  INFO 23260 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 227 ms. Found 10 JPA repository interfaces.
+2025-12-12T11:03:46.205+05:30  INFO 23260 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-12T11:03:46.227+05:30  INFO 23260 --- [yavij-express] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-12T11:03:46.227+05:30  INFO 23260 --- [yavij-express] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-12-12T11:03:46.342+05:30  INFO 23260 --- [yavij-express] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-12T11:03:46.343+05:30  INFO 23260 --- [yavij-express] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4607 ms
+2025-12-12T11:03:46.790+05:30  INFO 23260 --- [yavij-express] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-12T11:03:46.966+05:30  INFO 23260 --- [yavij-express] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-12-12T11:03:47.069+05:30  INFO 23260 --- [yavij-express] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-12T11:03:47.642+05:30  INFO 23260 --- [yavij-express] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-12T11:03:47.698+05:30  INFO 23260 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-12T11:03:48.057+05:30  INFO 23260 --- [yavij-express] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@315b5913
+2025-12-12T11:03:48.059+05:30  INFO 23260 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-12T11:03:48.156+05:30  WARN 23260 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-12T11:03:48.158+05:30  WARN 23260 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-12-12T11:03:50.139+05:30  INFO 23260 --- [yavij-express] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-12T11:03:50.370+05:30  INFO 23260 --- [yavij-express] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12T11:03:50.956+05:30  INFO 23260 --- [yavij-express] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-12T11:03:52.136+05:30 DEBUG 23260 --- [yavij-express] [main] c.y.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2025-12-12T11:03:53.793+05:30  WARN 23260 --- [yavij-express] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-12T11:03:54.434+05:30  INFO 23260 --- [yavij-express] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@50a4e4e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1b05c2e8, org.springframework.security.web.context.SecurityContextHolderFilter@680a5de1, org.springframework.security.web.header.HeaderWriterFilter@232fc6a6, org.springframework.web.filter.CorsFilter@25b665ca, org.springframework.security.web.authentication.logout.LogoutFilter@4f028abf, com.yavijexpress.security.JwtAuthenticationFilter@39e0fe23, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23b2ddc4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@32a7f41b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@45ec7633, org.springframework.security.web.session.SessionManagementFilter@bb6bf68, org.springframework.security.web.access.ExceptionTranslationFilter@7d2fc711, org.springframework.security.web.access.intercept.AuthorizationFilter@2982f1eb]
+2025-12-12T11:03:55.003+05:30  INFO 23260 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-12-12T11:03:55.018+05:30  INFO 23260 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Started YavijExpressApplication in 14.338 seconds (process running for 15.299)
+2025-12-12T11:05:08.791+05:30  INFO 23260 --- [yavij-express] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-12T11:05:08.792+05:30  INFO 23260 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-12T11:05:08.797+05:30  INFO 23260 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2025-12-12T11:05:08.912+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/trips/search
+2025-12-12T11:05:09.111+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/search
+2025-12-12T11:05:09.116+05:30  WARN 23260 --- [yavij-express] [http-nio-8080-exec-2] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/trips/search' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2025-12-12T11:05:12.734+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/bookings
+2025-12-12T11:05:12.754+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings
+2025-12-12T11:05:13.296+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2025-12-12T11:05:13.297+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2025-12-12T11:05:13.321+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
+2025-12-12T11:05:13.323+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-12T11:05:36.317+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2025-12-12T11:05:37.697+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/4
+2025-12-12T11:05:37.699+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/4
+2025-12-12T11:05:37.727+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/driver/4
+2025-12-12T11:05:37.736+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/vehicles/user/4
+2025-12-12T11:05:37.804+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/4
+2025-12-12T11:05:37.805+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/4
+2025-12-12T11:05:37.846+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/driver/4
+2025-12-12T11:05:37.846+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/vehicles/user/4
+2025-12-12T11:05:39.387+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2025-12-12T11:05:39.407+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/notifications
+2025-12-12T11:05:39.482+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2025-12-12T11:05:39.496+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/notifications
+2025-12-12T11:05:49.822+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/notifications/28/read
+2025-12-12T11:05:49.840+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/notifications/28/read
+2025-12-12T11:05:49.909+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2025-12-12T11:05:49.928+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/notifications
+2025-12-12T11:06:10.433+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2025-12-12T11:06:11.015+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2025-12-12T11:06:11.015+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2025-12-12T11:06:11.034+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
+2025-12-12T11:06:11.034+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-12T11:06:11.059+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2025-12-12T11:06:11.076+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
+2025-12-12T11:06:11.100+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2025-12-12T11:06:11.119+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-12T11:06:12.161+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2025-12-12T11:06:12.181+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/notifications
+2025-12-12T11:06:12.208+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2025-12-12T11:06:12.228+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/notifications
+2025-12-12T11:06:30.656+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: DELETE /api/notifications/13
+2025-12-12T11:06:30.673+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/notifications/13
+2025-12-12T11:06:30.737+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2025-12-12T11:06:30.757+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/notifications
+2025-12-12T11:06:32.855+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: DELETE /api/notifications/14
+2025-12-12T11:06:32.870+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/notifications/14
+2025-12-12T11:06:32.908+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2025-12-12T11:06:32.925+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/notifications
+2025-12-12T11:06:33.933+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: DELETE /api/notifications/24
+2025-12-12T11:06:33.949+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/notifications/24
+2025-12-12T11:06:33.994+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2025-12-12T11:06:34.011+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/notifications
+2025-12-12T11:06:34.898+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: DELETE /api/notifications/26
+2025-12-12T11:06:34.909+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/notifications/26
+2025-12-12T11:06:34.948+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2025-12-12T11:06:34.968+05:30 DEBUG 23260 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/notifications
+2025-12-12T11:07:31.073+05:30  INFO 23260 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12T11:07:31.082+05:30  INFO 23260 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-12T11:07:31.112+05:30  INFO 23260 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
