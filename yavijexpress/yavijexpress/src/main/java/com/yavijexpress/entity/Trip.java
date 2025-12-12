@@ -78,6 +78,9 @@ public class Trip {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
         availableSeats = totalSeats;
+        if (isActive == null) {
+            isActive = true;
+        }
     }
 
     @PreUpdate
