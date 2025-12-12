@@ -206,26 +206,23 @@ public class TripServiceImpl implements TripService {
 
     @Override
     public List<TripDTO.TripResponse> searchTrips(TripDTO.TripSearchRequest request) {
-        // Use current time as minimum departure if no date specified
-        LocalDateTime startDate = request.getDepartureDate() != null
-                ? request.getDepartureDate()
-                : LocalDateTime.now();
-
-        List<Trip> trips = tripRepository.searchTrips(
-                request.getFromLocation(),
-                request.getToLocation(),
-                startDate,
-                request.getRequiredSeats()
-        );
-
-        // Filter by max price if provided
-        if (request.getMaxPrice() != null) {
-            trips = trips.stream()
-                    .filter(trip -> trip.getPricePerSeat() <= request.getMaxPrice())
-                    .collect(Collectors.toList());
-        }
-
+        List<Trip> trips = tripRepository.searchTrips(null, null, null, null);
+        
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime startDate = request.getDepartureDate() != null ? request.getDepartureDate() : now;
+        
         return trips.stream()
+                .filter(trip -> trip.getStatus() == Trip.TripStatus.SCHEDULED)
+                .filter(trip -> trip.getDepartureTime().isAfter(now.minusMinutes(30)))
+                .filter(trip -> request.getDepartureDate() == null || trip.getDepartureTime().isAfter(startDate))
+                .filter(trip -> request.getFromLocation() == null || 
+                       trip.getFromLocation().toLowerCase().contains(request.getFromLocation().toLowerCase()))
+                .filter(trip -> request.getToLocation() == null || 
+                       trip.getToLocation().toLowerCase().contains(request.getToLocation().toLowerCase()))
+                .filter(trip -> request.getRequiredSeats() == null || 
+                       trip.getAvailableSeats() >= request.getRequiredSeats())
+                .filter(trip -> request.getMaxPrice() == null || 
+                       trip.getPricePerSeat() <= request.getMaxPrice())
                 .map(this::convertToTripResponse)
                 .collect(Collectors.toList());
     }
