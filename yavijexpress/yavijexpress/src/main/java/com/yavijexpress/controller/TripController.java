@@ -65,6 +65,7 @@ public class TripController {
             trip.setIsFlexible(request.getIsFlexible());
             trip.setNotes(request.getNotes());
             trip.setStatus(com.yavijexpress.entity.Trip.TripStatus.SCHEDULED);
+            trip.setIsActive(true);
             trip.setDriver(user);
             trip.setVehicle(vehicle);
             
@@ -192,7 +193,16 @@ public class TripController {
     }
 
     @GetMapping("/upcoming")
-    public ResponseEntity<List<TripDTO.TripResponse>> getUpcomingTrips() {
-        return ResponseEntity.ok(tripService.getUpcomingTrips());
+    public ResponseEntity<?> getUpcomingTrips() {
+        try {
+            List<TripDTO.TripResponse> trips = tripService.getUpcomingTrips();
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(trips, "Upcoming trips retrieved"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to get upcoming trips: " + e.getMessage())
+            );
+        }
     }
+
+
 }
