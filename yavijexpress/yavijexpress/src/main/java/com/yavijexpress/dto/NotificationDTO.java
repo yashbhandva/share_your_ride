@@ -104,4 +104,28 @@ public class NotificationDTO {
             this.notificationId = notificationId;
         }
     }
+
+    @Data
+    public static class AdminNotificationRequest {
+        @NotNull
+        private String title;
+
+        @NotNull
+        private String message;
+
+        // DRIVER, PASSENGER, or ALL
+        @NotNull
+        private String targetAudience;
+
+        public String getTitle() { return title; }
+        public void setTitle(String title) { this.title = title; }
+
+        public String getMessage() { return message; }
+        public void setMessage(String message) { this.message = message; }
+
+        public String getTargetAudience() { return targetAudience; }
+        public void setTargetAudience(String targetAudience) { this.targetAudience = targetAudience; }
+
+
+    }
 }
