@@ -100,11 +100,12 @@ const DashboardPassenger = () => {
     try {
       setBookingSubmittingId(tripId);
       setError("");
-      await api.post("/api/bookings", {
+      const res = await api.post("/api/bookings", {
         tripId: Number(tripId),
         seats: seats,
         specialRequests: specialRequests || null,
       });
+      console.log('Booking response:', res.data);
       // Clear the booking form for this trip
       setBookingSeats(prev => ({ ...prev, [tripId]: "" }));
       setBookingNotes(prev => ({ ...prev, [tripId]: "" }));
@@ -124,9 +125,10 @@ const DashboardPassenger = () => {
     try {
       setCancelSubmittingId(bookingId);
       setError("");
-      await api.post(`/api/bookings/${bookingId}/cancel`, null, {
+      const res = await api.post(`/api/bookings/${bookingId}/cancel`, null, {
         params: { reason },
       });
+      console.log('Cancel response:', res.data);
       setSuccess("Booking cancelled successfully!");
       setTimeout(() => setSuccess(""), 3000);
       await loadData(user.id);
@@ -349,17 +351,40 @@ const DashboardPassenger = () => {
                   <h4>{b.tripFrom} → {b.tripTo}</h4>
                   <p><strong>Departure:</strong> {new Date(b.departureTime).toLocaleString()}</p>
                   <p><strong>Seats Booked:</strong> {b.seatsBooked}</p>
-                  <p><strong>Status:</strong> {b.status}</p>
+                  <p><strong>Status:</strong> <span style={{color: b.status === 'CONFIRMED' ? 'green' : b.status === 'PENDING' ? 'orange' : 'red'}}>{b.status}</span></p>
                   <p><strong>Payment:</strong> {b.paymentStatus}</p>
+                  
+                  {b.status === 'CONFIRMED' && (
+                    <div style={{backgroundColor: '#e8f5e8', padding: '10px', marginTop: '10px', borderRadius: '5px'}}>
+                      <h5 style={{color: 'green', margin: '0 0 10px 0'}}>✅ Trip Booked Successfully!</h5>
+                      <p><strong>Driver:</strong> {b.driverName}</p>
+                      <p><strong>Phone:</strong> {b.driverPhone}</p>
+                      <p><strong>Vehicle:</strong> {b.vehicleModel} ({b.vehicleNumber})</p>
+                      {b.pickupOtp && (
+                        <div style={{backgroundColor: '#fff3cd', padding: '8px', borderRadius: '3px', marginTop: '8px'}}>
+                          <strong>🔑 Pickup OTP: {b.pickupOtp}</strong>
+                          <br/><small>Give this OTP to the driver during pickup</small>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  
+                  {b.status === 'PENDING' && (
+                    <div style={{backgroundColor: '#fff3cd', padding: '10px', marginTop: '10px', borderRadius: '5px'}}>
+                      <p style={{color: '#856404', margin: 0}}>⏳ Waiting for driver approval...</p>
+                    </div>
+                  )}
+                  
                   {b.status !== "CANCELLED" && b.status !== "COMPLETED" && (
                     <button
                       onClick={() => handleCancelBooking(b.id)}
                       disabled={cancelSubmittingId === b.id}
-                      style={{ backgroundColor: "#f44336", color: "white", border: "none", padding: "5px 10px", borderRadius: "3px", marginTop: "5px" }}
+                      style={{ backgroundColor: "#f44336", color: "white", border: "none", padding: "5px 10px", borderRadius: "3px", marginTop: "10px" }}
                     >
                       {cancelSubmittingId === b.id ? "Cancelling..." : "Cancel Booking"}
                     </button>
                   )}
+                  
                   {b.specialRequests && <p><strong>Your Notes:</strong> {b.specialRequests}</p>}
                   {b.tripNotes && <p><strong>Trip Notes:</strong> {b.tripNotes}</p>}
                 </div>
