@@ -18,4 +18,8 @@ public interface NotificationService {
     void sendComplaintEscalationNotification(Complaint complaint, String reason);
     void sendEmergencyNotification(User user, String title, String message, Long alertId);
     void sendAdminNotification(User admin, String title, String message, String entityType, Long entityId);
+
+    void sendBroadcastNotification(User.UserRole roleFilter, String title, String message);
+    void sendBroadcastNotificationToAll(String title, String message);
+
 }
