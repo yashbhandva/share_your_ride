@@ -26,6 +26,7 @@ const DashboardPassenger = () => {
   });
   const [searchResults, setSearchResults] = useState([]);
   const [searchLoading, setSearchLoading] = useState(false);
+  const [success, setSuccess] = useState("");
 
   const loadData = async (userId) => {
     try {
@@ -40,6 +41,9 @@ const DashboardPassenger = () => {
       // Handle ApiResponse format: { success: true, data: [...], message: "..." }
       const trips = tripsRes.data?.data || tripsRes.data || [];
       const bookings = bookingsRes.data?.data || bookingsRes.data || [];
+      
+      console.log('Loaded bookings:', bookings);
+      bookings.forEach(b => console.log(`Booking ${b.id}: status=${b.status}`));
       
       setUpcomingTrips(trips);
       setBookings(bookings);
@@ -104,6 +108,8 @@ const DashboardPassenger = () => {
       // Clear the booking form for this trip
       setBookingSeats(prev => ({ ...prev, [tripId]: "" }));
       setBookingNotes(prev => ({ ...prev, [tripId]: "" }));
+      setSuccess("Booking created successfully!");
+      setTimeout(() => setSuccess(""), 3000);
       await loadData(user.id);
     } catch (e) {
       setError(e.response?.data?.message || "Failed to create booking");
@@ -121,6 +127,8 @@ const DashboardPassenger = () => {
       await api.post(`/api/bookings/${bookingId}/cancel`, null, {
         params: { reason },
       });
+      setSuccess("Booking cancelled successfully!");
+      setTimeout(() => setSuccess(""), 3000);
       await loadData(user.id);
     } catch (e) {
       setError(e.response?.data?.message || "Failed to cancel booking");
@@ -164,6 +172,7 @@ const DashboardPassenger = () => {
       <h1>Passenger Dashboard</h1>
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
+      {success && <p style={{ color: "green" }}>{success}</p>}
 
       <section style={{ marginBottom: 24 }}>
         <h2>Search Trips</h2>
@@ -342,6 +351,15 @@ const DashboardPassenger = () => {
                   <p><strong>Seats Booked:</strong> {b.seatsBooked}</p>
                   <p><strong>Status:</strong> {b.status}</p>
                   <p><strong>Payment:</strong> {b.paymentStatus}</p>
+                  {b.status !== "CANCELLED" && b.status !== "COMPLETED" && (
+                    <button
+                      onClick={() => handleCancelBooking(b.id)}
+                      disabled={cancelSubmittingId === b.id}
+                      style={{ backgroundColor: "#f44336", color: "white", border: "none", padding: "5px 10px", borderRadius: "3px", marginTop: "5px" }}
+                    >
+                      {cancelSubmittingId === b.id ? "Cancelling..." : "Cancel Booking"}
+                    </button>
+                  )}
                   {b.specialRequests && <p><strong>Your Notes:</strong> {b.specialRequests}</p>}
                   {b.tripNotes && <p><strong>Trip Notes:</strong> {b.tripNotes}</p>}
                 </div>
@@ -376,30 +394,7 @@ const DashboardPassenger = () => {
                     </button>
                   )}
                 </div>
-                {b.status === "CONFIRMED" && (
-                  <div style={{ marginTop: 4 }}>
-                    <input
-                      type="text"
-                      placeholder="Cancel reason (optional)"
-                      value={cancelReason[b.id] || ""}
-                      onChange={(e) =>
-                        setCancelReason((prev) => ({
-                          ...prev,
-                          [b.id]: e.target.value,
-                        }))
-                      }
-                      style={{ marginRight: 8, width: 260 }}
-                    />
-                    <button
-                      onClick={() => handleCancelBooking(b.id)}
-                      disabled={cancelSubmittingId === b.id}
-                    >
-                      {cancelSubmittingId === b.id
-                        ? "Cancelling..."
-                        : "Cancel Booking"}
-                    </button>
-                  </div>
-                )}
+
 
               </li>
             ))}
