@@ -180,7 +180,7 @@ public class BookingServiceImpl implements BookingService {
     public List<BookingDTO.BookingResponse> getPassengerBookings(Long passengerId) {
         List<Booking> bookings = bookingRepository.findByPassengerId(passengerId);
         return bookings.stream()
-                .map(this::convertToBookingResponse)
+                .map(this::convertToPassengerBookingResponse)
                 .collect(Collectors.toList());
     }
 
@@ -195,7 +195,7 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public BookingDTO.BookingResponse getBookingDetails(Long bookingId) {
         Booking booking = getBookingById(bookingId);
-        return convertToBookingResponse(booking);
+        return convertToPassengerBookingResponse(booking);
     }
 
     @Override
@@ -215,22 +215,62 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public BookingDTO.BookingResponse verifyPickupOtp(Long bookingId, String otp) {
-        Booking booking = getBookingById(bookingId);
-        
-        if (booking.getStatus() != Booking.BookingStatus.CONFIRMED) {
-            throw new BadRequestException("Booking is not confirmed");
+        try {
+            System.out.println("Verifying OTP: bookingId=" + bookingId + ", otp='" + otp + "'");
+            
+            if (bookingId == null) {
+                throw new BadRequestException("Booking ID is required");
+            }
+            
+            if (otp == null || otp.trim().isEmpty()) {
+                throw new BadRequestException("OTP is required");
+            }
+            
+            Booking booking = bookingRepository.findById(bookingId)
+                    .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
+            
+            System.out.println("Found booking: status=" + booking.getStatus() + ", storedOtp='" + booking.getPickupOtp() + "'");
+            
+            if (booking.getStatus() != Booking.BookingStatus.CONFIRMED) {
+                throw new BadRequestException("Booking is not confirmed. Current status: " + booking.getStatus());
+            }
+            
+            if (booking.getPickupOtp() == null) {
+                throw new BadRequestException("No OTP found for this booking");
+            }
+            
+            String cleanOtp = otp.trim();
+            String storedOtp = booking.getPickupOtp().trim();
+            
+            if (!cleanOtp.equals(storedOtp)) {
+                System.out.println("OTP mismatch: provided='" + cleanOtp + "', stored='" + storedOtp + "'");
+                throw new BadRequestException("Invalid OTP");
+            }
+            
+            // Mark trip as started
+            Trip trip = booking.getTrip();
+            if (trip != null) {
+                trip.setStatus(Trip.TripStatus.ONGOING);
+                tripRepository.save(trip);
+                System.out.println("Trip status updated to ONGOING");
+            }
+            
+            // Create simple response without ModelMapper
+            BookingDTO.BookingResponse response = new BookingDTO.BookingResponse();
+            response.setId(booking.getId());
+            response.setStatus(booking.getStatus().toString());
+            response.setPassengerName(booking.getPassenger().getName());
+            response.setTripFrom(booking.getTrip().getFromLocation());
+            response.setTripTo(booking.getTrip().getToLocation());
+            
+            System.out.println("OTP verification successful");
+            return response;
+            
+        } catch (Exception e) {
+            System.out.println("OTP verification failed: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
         }
-        
-        if (!otp.equals(booking.getPickupOtp())) {
-            throw new BadRequestException("Invalid OTP");
-        }
-        
-        // Mark trip as started
-        Trip trip = booking.getTrip();
-        trip.setStatus(Trip.TripStatus.ONGOING);
-        tripRepository.save(trip);
-        
-        return convertToBookingResponse(booking);
     }
 
     @Override
@@ -249,7 +289,6 @@ public class BookingServiceImpl implements BookingService {
         response.setStatus(booking.getStatus().toString());
         response.setSpecialRequests(booking.getSpecialRequests());
         response.setTripNotes(booking.getTrip().getNotes());
-        response.setPickupOtp(booking.getPickupOtp());
         response.setDriverName(booking.getTrip().getDriver().getName());
         response.setDriverPhone(booking.getTrip().getDriver().getMobile());
         response.setVehicleModel(booking.getTrip().getVehicle().getModel());
@@ -261,6 +300,12 @@ public class BookingServiceImpl implements BookingService {
             response.setPaymentStatus("PENDING");
         }
 
+        return response;
+    }
+
+    private BookingDTO.BookingResponse convertToPassengerBookingResponse(Booking booking) {
+        BookingDTO.BookingResponse response = convertToBookingResponse(booking);
+        response.setPickupOtp(booking.getPickupOtp()); // Only show OTP to passenger
         return response;
     }
 }
