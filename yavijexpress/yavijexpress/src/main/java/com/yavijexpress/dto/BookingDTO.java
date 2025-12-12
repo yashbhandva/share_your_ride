@@ -52,6 +52,11 @@ public class BookingDTO {
         private String paymentStatus;
         private String specialRequests;
         private String tripNotes;
+        private String pickupOtp;
+        private String driverName;
+        private String driverPhone;
+        private String vehicleModel;
+        private String vehicleNumber;
         private LocalDateTime bookedAt;
 
         public Long getId() {
@@ -157,6 +162,46 @@ public class BookingDTO {
         public void setTripNotes(String tripNotes) {
             this.tripNotes = tripNotes;
         }
+
+        public String getPickupOtp() {
+            return pickupOtp;
+        }
+
+        public void setPickupOtp(String pickupOtp) {
+            this.pickupOtp = pickupOtp;
+        }
+
+        public String getDriverName() {
+            return driverName;
+        }
+
+        public void setDriverName(String driverName) {
+            this.driverName = driverName;
+        }
+
+        public String getDriverPhone() {
+            return driverPhone;
+        }
+
+        public void setDriverPhone(String driverPhone) {
+            this.driverPhone = driverPhone;
+        }
+
+        public String getVehicleModel() {
+            return vehicleModel;
+        }
+
+        public void setVehicleModel(String vehicleModel) {
+            this.vehicleModel = vehicleModel;
+        }
+
+        public String getVehicleNumber() {
+            return vehicleNumber;
+        }
+
+        public void setVehicleNumber(String vehicleNumber) {
+            this.vehicleNumber = vehicleNumber;
+        }
     }
 
     @Data
@@ -178,6 +223,28 @@ public class BookingDTO {
 
         public void setReason(String reason) {
             this.reason = reason;
+        }
+    }
+
+    @Data
+    public static class OtpVerificationRequest {
+        @NotNull private Long bookingId;
+        @NotBlank private String otp;
+
+        public Long getBookingId() {
+            return bookingId;
+        }
+
+        public void setBookingId(Long bookingId) {
+            this.bookingId = bookingId;
+        }
+
+        public String getOtp() {
+            return otp;
+        }
+
+        public void setOtp(String otp) {
+            this.otp = otp;
         }
     }
 }
