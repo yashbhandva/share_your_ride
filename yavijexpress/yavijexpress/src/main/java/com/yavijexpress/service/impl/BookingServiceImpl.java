@@ -89,9 +89,14 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public BookingDTO.BookingResponse confirmBooking(Long bookingId) {
         Booking booking = getBookingById(bookingId);
+        System.out.println("Current booking status: " + booking.getStatus());
 
         if (booking.getStatus() != Booking.BookingStatus.PENDING) {
-            throw new BadRequestException("Booking is not in pending state");
+            if (booking.getStatus() == Booking.BookingStatus.CONFIRMED) {
+                System.out.println("Booking already confirmed, returning existing response");
+                return convertToBookingResponse(booking);
+            }
+            throw new BadRequestException("Booking is not in pending state. Current status: " + booking.getStatus());
         }
 
         // Generate 4-6 digit OTP
@@ -99,6 +104,7 @@ public class BookingServiceImpl implements BookingService {
         booking.setPickupOtp(otp);
         booking.setStatus(Booking.BookingStatus.CONFIRMED);
         Booking confirmedBooking = bookingRepository.save(booking);
+        System.out.println("Booking confirmed with OTP: " + otp);
 
         // Send confirmation notifications with OTP (ignore failures)
         try {
