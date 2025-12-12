@@ -108,11 +108,25 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public void sendBookingRequestNotification(Booking booking) {
+        String message = String.format(
+            "New Booking Request - Status: Pending Approval\n" +
+            "Passenger: %s\n" +
+            "Trip: %s to %s\n" +
+            "Departure: %s\n" +
+            "Seats: %d\n" +
+            "Amount: ₹%.2f",
+            booking.getPassenger().getName(),
+            booking.getTrip().getFromLocation(),
+            booking.getTrip().getToLocation(),
+            booking.getTrip().getDepartureTime(),
+            booking.getSeatsBooked(),
+            booking.getTotalAmount()
+        );
+        
         Notification notification = createNotification(
                 booking.getTrip().getDriver(),
                 "New Booking Request",
-                String.format("%s has requested %d seat(s) for your trip",
-                        booking.getPassenger().getName(), booking.getSeatsBooked()),
+                message,
                 Notification.NotificationType.INFO,
                 "BOOKING",
                 booking.getId()
@@ -122,11 +136,35 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public void sendBookingConfirmedNotification(Booking booking) {
+        Trip trip = booking.getTrip();
+        User driver = trip.getDriver();
+        
+        String message = String.format(
+            "Your trip is booked successfully!\n\n" +
+            "Driver Details:\n" +
+            "Name: %s\n" +
+            "Phone: %s\n" +
+            "Vehicle: %s (%s)\n\n" +
+            "Trip Details:\n" +
+            "From: %s\n" +
+            "To: %s\n" +
+            "Departure: %s\n\n" +
+            "Pickup OTP: %s\n" +
+            "Please give this OTP to the driver during pickup.",
+            driver.getName(),
+            driver.getMobile(),
+            trip.getVehicle().getModel(),
+            trip.getVehicle().getVehicleNumber(),
+            trip.getFromLocation(),
+            trip.getToLocation(),
+            trip.getDepartureTime(),
+            booking.getPickupOtp()
+        );
+        
         Notification notification = createNotification(
                 booking.getPassenger(),
-                "Booking Confirmed",
-                String.format("Your booking for trip from %s to %s has been confirmed",
-                        booking.getTrip().getFromLocation(), booking.getTrip().getToLocation()),
+                "Trip Booked Successfully",
+                message,
                 Notification.NotificationType.SUCCESS,
                 "BOOKING",
                 booking.getId()
