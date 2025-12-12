@@ -11,9 +11,11 @@ import java.util.Optional;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Long> {
 
-    List<Booking> findByPassengerId(Long passengerId);
+    @Query("SELECT b FROM Booking b WHERE b.passenger.id = :passengerId ORDER BY b.bookedAt DESC")
+    List<Booking> findByPassengerId(@Param("passengerId") Long passengerId);
     List<Booking> findByTripId(Long tripId);
-    List<Booking> findByTripDriverId(Long driverId);
+    @Query("SELECT b FROM Booking b WHERE b.trip.driver.id = :driverId ORDER BY b.bookedAt DESC")
+    List<Booking> findByTripDriverId(@Param("driverId") Long driverId);
 
     @Query("SELECT b FROM Booking b WHERE b.trip.id = :tripId AND b.status = 'CONFIRMED'")
     List<Booking> findConfirmedBookingsByTripId(@Param("tripId") Long tripId);
