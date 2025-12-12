@@ -2,6 +2,8 @@ package com.yavijexpress.controller;
 
 import com.yavijexpress.dto.BookingDTO;
 import com.yavijexpress.service.BookingService;
+import com.yavijexpress.exception.BadRequestException;
+import com.yavijexpress.exception.ResourceNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,9 +26,23 @@ public class BookingController {
             @Valid @RequestBody BookingDTO.BookingRequest request) {
         try {
             Long passengerId = com.yavijexpress.utils.SecurityUtils.getCurrentUserId();
+            if (passengerId == null) {
+                return ResponseEntity.status(401).body(
+                    com.yavijexpress.dto.ApiResponse.error("User not authenticated")
+                );
+            }
             BookingDTO.BookingResponse response = bookingService.createBooking(passengerId, request);
             return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(response, "Booking created successfully"));
+        } catch (BadRequestException e) {
+            return ResponseEntity.status(400).body(
+                com.yavijexpress.dto.ApiResponse.error(e.getMessage())
+            );
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.status(404).body(
+                com.yavijexpress.dto.ApiResponse.error(e.getMessage())
+            );
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(500).body(
                 com.yavijexpress.dto.ApiResponse.error("Failed to create booking: " + e.getMessage())
             );
