@@ -6,6 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import com.yavijexpress.dto.NotificationDTO;
+import com.yavijexpress.service.NotificationService;
+import com.yavijexpress.entity.User;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -13,9 +16,50 @@ import java.util.List;
 public class AdminController {
 
     private final AdminService adminService;
+    private final NotificationService notificationService;
 
-    public AdminController(AdminService adminService) {
+    public AdminController(AdminService adminService, NotificationService notificationService) {
         this.adminService = adminService;
+        this.notificationService = notificationService;
+    }
+
+    @PostMapping("/notifications")
+    public ResponseEntity<?> createBroadcastNotification(
+            @RequestBody NotificationDTO.AdminNotificationRequest request) {
+        try {
+            String target = request.getTargetAudience().toUpperCase();
+
+            if ("ALL".equals(target)) {
+                notificationService.sendBroadcastNotificationToAll(
+                        request.getTitle(),
+                        request.getMessage()
+                );
+            } else if ("DRIVER".equals(target)) {
+                notificationService.sendBroadcastNotification(
+                        User.UserRole.DRIVER,
+                        request.getTitle(),
+                        request.getMessage()
+                );
+            } else if ("PASSENGER".equals(target)) {
+                notificationService.sendBroadcastNotification(
+                        User.UserRole.PASSENGER,
+                        request.getTitle(),
+                        request.getMessage()
+                );
+            } else {
+                return ResponseEntity.badRequest().body(
+                        com.yavijexpress.dto.ApiResponse.error("Invalid targetAudience")
+                );
+            }
+
+            return ResponseEntity.ok(
+                    com.yavijexpress.dto.ApiResponse.success(null, "Notification sent successfully")
+            );
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                    com.yavijexpress.dto.ApiResponse.error("Failed to send notification: " + e.getMessage())
+            );
+        }
     }
 
     @GetMapping("/dashboard/stats")
