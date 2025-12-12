@@ -15,6 +15,10 @@ const DashboardAdmin = () => {
   const [userPage, setUserPage] = useState(0);
   const [tripPage, setTripPage] = useState(0);
   const [pageSize] = useState(10);
+   const [notificationTitle, setNotificationTitle] = useState("");
+   const [notificationMessage, setNotificationMessage] = useState("");
+   const [notificationTarget, setNotificationTarget] = useState("ALL");
+   const [notificationSubmitting, setNotificationSubmitting] = useState(false);
 
   const loadDashboardStats = async () => {
     try {
@@ -24,7 +28,34 @@ const DashboardAdmin = () => {
       setError('Failed to load dashboard stats');
     }
   };
+  const handleSendNotification = async (e) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
 
+    if (!notificationTitle.trim() || !notificationMessage.trim()) {
+      setError("Title and message are required");
+      return;
+    }
+
+    try {
+      setNotificationSubmitting(true);
+      await api.post("/api/admin/notifications", {
+        title: notificationTitle.trim(),
+        message: notificationMessage.trim(),
+        targetAudience: notificationTarget
+      });
+      setSuccess("Notification sent successfully");
+      setNotificationTitle("");
+      setNotificationMessage("");
+      setNotificationTarget("ALL");
+      setTimeout(() => setSuccess(""), 3000);
+    } catch (err) {
+      setError("Failed to send notification");
+    } finally {
+      setNotificationSubmitting(false);
+    }
+  };
   const loadUsers = async (page = userPage) => {
     try {
       const res = await api.get(`/api/admin/users?page=${page}&size=${pageSize}`);
@@ -156,14 +187,15 @@ const DashboardAdmin = () => {
     <div style={{ padding: '20px', backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
       <h1 style={{ marginBottom: '20px', color: '#333' }}>Admin Dashboard</h1>
       <p style={{ marginBottom: '30px', color: '#666' }}>Welcome, {user?.name}!</p>
-      
+
       {error && <div style={{ color: 'red', backgroundColor: '#ffebee', padding: '10px', borderRadius: '5px', marginBottom: '15px' }}>{error}</div>}
       {success && <div style={{ color: 'green', backgroundColor: '#e8f5e8', padding: '15px', borderRadius: '5px', marginBottom: '15px', fontWeight: 'bold' }}>{success}</div>}
-      
+
       <div style={{ marginBottom: '30px' }}>
         <TabButton id="dashboard" label="📊 Dashboard" active={activeTab === 'dashboard'} onClick={setActiveTab} />
         <TabButton id="users" label="👥 Users" active={activeTab === 'users'} onClick={setActiveTab} />
         <TabButton id="trips" label="🚗 Trips" active={activeTab === 'trips'} onClick={setActiveTab} />
+        <TabButton id="notifications" label="🔔 Notifications" active={activeTab === 'notifications'} onClick={setActiveTab} />
       </div>
 
       {activeTab === 'dashboard' && (
@@ -204,9 +236,9 @@ const DashboardAdmin = () => {
                     <td style={{ padding: '12px' }}>{user.name}</td>
                     <td style={{ padding: '12px' }}>{user.email}</td>
                     <td style={{ padding: '12px' }}>
-                      <span style={{ 
-                        padding: '4px 8px', 
-                        borderRadius: '4px', 
+                      <span style={{
+                        padding: '4px 8px',
+                        borderRadius: '4px',
                         fontSize: '12px',
                         backgroundColor: user.role === 'ADMIN' ? '#f44336' : user.role === 'DRIVER' ? '#4CAF50' : '#2196F3',
                         color: 'white'
@@ -220,8 +252,8 @@ const DashboardAdmin = () => {
                       </span>
                     </td>
                     <td style={{ padding: '12px' }}>
-                      <span style={{ 
-                        color: user.verificationStatus === 'VERIFIED' ? 'green' : 
+                      <span style={{
+                        color: user.verificationStatus === 'VERIFIED' ? 'green' :
                                user.verificationStatus === 'PENDING' ? 'orange' : 'red'
                       }}>
                         {user.verificationStatus}
@@ -342,7 +374,7 @@ const DashboardAdmin = () => {
                           padding: '4px 8px',
                           borderRadius: '4px',
                           fontSize: '12px',
-                          backgroundColor: 
+                          backgroundColor:
                             trip.status === 'SCHEDULED' ? '#4CAF50' :
                             trip.status === 'ONGOING' ? '#FF9800' :
                             trip.status === 'COMPLETED' ? '#2196F3' : '#f44336',
@@ -390,6 +422,94 @@ const DashboardAdmin = () => {
             >
               Next
             </button>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'notifications' && (
+        <div>
+          <h2 style={{ marginBottom: '20px' }}>🔔 Create Notification</h2>
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '8px',
+            padding: '20px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            maxWidth: '600px'
+          }}>
+            <form onSubmit={handleSendNotification}>
+              <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+                  Notification Title
+                </label>
+                <input
+                  type="text"
+                  value={notificationTitle}
+                  onChange={(e) => setNotificationTitle(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '10px',
+                    borderRadius: '4px',
+                    border: '1px solid #ccc'
+                  }}
+                  placeholder="Enter title"
+                />
+              </div>
+
+              <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+                  Notification Message
+                </label>
+                <textarea
+                  value={notificationMessage}
+                  onChange={(e) => setNotificationMessage(e.target.value)}
+                  rows={4}
+                  style={{
+                    width: '100%',
+                    padding: '10px',
+                    borderRadius: '4px',
+                    border: '1px solid #ccc',
+                    resize: 'vertical'
+                  }}
+                  placeholder="Enter detailed message"
+                />
+              </div>
+
+              <div style={{ marginBottom: '20px' }}>
+                <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+                  Target Audience
+                </label>
+                <select
+                  value={notificationTarget}
+                  onChange={(e) => setNotificationTarget(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '10px',
+                    borderRadius: '4px',
+                    border: '1px solid #ccc'
+                  }}
+                >
+                  <option value="ALL">All Users</option>
+                  <option value="DRIVER">Drivers</option>
+                  <option value="PASSENGER">Passengers</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                disabled={notificationSubmitting}
+                style={{
+                  padding: '10px 20px',
+                  border: 'none',
+                  borderRadius: '4px',
+                  backgroundColor: notificationSubmitting ? '#ccc' : '#4CAF50',
+                  color: 'white',
+                  cursor: notificationSubmitting ? 'not-allowed' : 'pointer',
+                  fontWeight: 'bold'
+                }}
+              >
+                {notificationSubmitting ? 'Sending...' : 'Send Notification'}
+              </button>
+            </form>
           </div>
         </div>
       )}
