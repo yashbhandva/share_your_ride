@@ -204,5 +204,17 @@ public class TripController {
         }
     }
 
+    @GetMapping("/debug/all-active")
+    public ResponseEntity<?> getAllActiveTrips() {
+        try {
+            List<com.yavijexpress.entity.Trip> trips = tripRepository.findAllActiveTrips();
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(trips, "All active trips retrieved for debugging"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to get active trips: " + e.getMessage())
+            );
+        }
+    }
+
 
 }
