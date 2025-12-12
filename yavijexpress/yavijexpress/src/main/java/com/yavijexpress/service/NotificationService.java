@@ -10,6 +10,7 @@ public interface NotificationService {
     void sendTripCompletedNotification(Trip trip);
     void sendBookingRequestNotification(Booking booking);
     void sendBookingConfirmedNotification(Booking booking);
+    void sendBookingDeniedNotification(Booking booking);
     void sendBookingCancelledNotification(Booking booking, String reason);
     void sendPaymentSuccessNotification(Payment payment);
     void sendComplaintSubmittedNotification(Complaint complaint);
