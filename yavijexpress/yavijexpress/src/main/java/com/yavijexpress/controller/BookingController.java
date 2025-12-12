@@ -53,10 +53,34 @@ public class BookingController {
     public ResponseEntity<?> confirmBooking(@PathVariable Long bookingId) {
         try {
             BookingDTO.BookingResponse response = bookingService.confirmBooking(bookingId);
-            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(response, "Booking confirmed successfully"));
+            BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
+                bookingId, "CONFIRMED", "Booking confirmed successfully", response.getPickupOtp(), true
+            );
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(actionResponse, "Booking confirmed successfully"));
         } catch (Exception e) {
+            BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
+                bookingId, "ERROR", e.getMessage(), false
+            );
             return ResponseEntity.status(400).body(
                 com.yavijexpress.dto.ApiResponse.error("Failed to confirm booking: " + e.getMessage())
+            );
+        }
+    }
+
+    @PostMapping("/{bookingId}/deny")
+    public ResponseEntity<?> denyBooking(@PathVariable Long bookingId) {
+        try {
+            BookingDTO.BookingResponse response = bookingService.denyBooking(bookingId);
+            BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
+                bookingId, "DENIED", "Booking denied successfully", true
+            );
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(actionResponse, "Booking denied successfully"));
+        } catch (Exception e) {
+            BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
+                bookingId, "ERROR", e.getMessage(), false
+            );
+            return ResponseEntity.status(400).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to deny booking: " + e.getMessage())
             );
         }
     }
@@ -116,8 +140,14 @@ public class BookingController {
     public ResponseEntity<?> verifyPickupOtp(@Valid @RequestBody BookingDTO.OtpVerificationRequest request) {
         try {
             BookingDTO.BookingResponse response = bookingService.verifyPickupOtp(request.getBookingId(), request.getOtp());
-            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(response, "OTP verified successfully"));
+            BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
+                request.getBookingId(), "TRIP_STARTED", "OTP verified successfully. Trip has started.", true
+            );
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(actionResponse, "OTP verified successfully"));
         } catch (Exception e) {
+            BookingDTO.BookingActionResponse actionResponse = new BookingDTO.BookingActionResponse(
+                request.getBookingId(), "INVALID_OTP", e.getMessage(), false
+            );
             return ResponseEntity.status(400).body(
                 com.yavijexpress.dto.ApiResponse.error("OTP verification failed: " + e.getMessage())
             );
