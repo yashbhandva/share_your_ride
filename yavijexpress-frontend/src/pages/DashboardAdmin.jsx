@@ -19,6 +19,9 @@ const DashboardAdmin = () => {
    const [notificationMessage, setNotificationMessage] = useState("");
    const [notificationTarget, setNotificationTarget] = useState("ALL");
    const [notificationSubmitting, setNotificationSubmitting] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [messagePage, setMessagePage] = useState(0);
+  const [messageStats, setMessageStats] = useState({});
 
   const loadDashboardStats = async () => {
     try {
@@ -78,14 +81,63 @@ const DashboardAdmin = () => {
     }
   };
 
+  const loadMessages = async (page = messagePage) => {
+    try {
+      const res = await api.get(`/api/admin/contacts?page=${page}&size=${pageSize}`);
+      setMessages(res.data?.data?.contacts || []);
+    } catch (e) {
+      setError('Failed to load messages');
+    }
+  };
+
+  const loadMessageStats = async () => {
+    try {
+      const res = await api.get('/api/admin/contacts/stats');
+      setMessageStats(res.data?.data || {});
+    } catch (e) {
+      setError('Failed to load message stats');
+    }
+  };
+
   useEffect(() => {
     const loadData = async () => {
       setLoading(true);
-      await Promise.all([loadDashboardStats(), loadUsers(), loadTrips()]);
+      await Promise.all([loadDashboardStats(), loadUsers(), loadTrips(), loadMessages(), loadMessageStats()]);
       setLoading(false);
     };
     loadData();
   }, []);
+
+  const handleMessageStatusUpdate = async (messageId, status) => {
+    try {
+      setActionLoading(messageId);
+      await api.put(`/api/admin/contacts/${messageId}/status`, { status });
+      setSuccess('Message status updated successfully');
+      setTimeout(() => setSuccess(''), 3000);
+      await loadMessages();
+      await loadMessageStats();
+    } catch (e) {
+      setError('Failed to update message status');
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
+  const handleDeleteMessage = async (messageId) => {
+    if (!confirm('Are you sure you want to delete this message?')) return;
+    try {
+      setActionLoading(messageId);
+      await api.delete(`/api/admin/contacts/${messageId}`);
+      setSuccess('Message deleted successfully');
+      setTimeout(() => setSuccess(''), 3000);
+      await loadMessages();
+      await loadMessageStats();
+    } catch (e) {
+      setError('Failed to delete message');
+    } finally {
+      setActionLoading(null);
+    }
+  };
 
   const handleUserStatusToggle = async (userId, currentStatus) => {
     try {
@@ -195,6 +247,7 @@ const DashboardAdmin = () => {
         <TabButton id="dashboard" label="📊 Dashboard" active={activeTab === 'dashboard'} onClick={setActiveTab} />
         <TabButton id="users" label="👥 Users" active={activeTab === 'users'} onClick={setActiveTab} />
         <TabButton id="trips" label="🚗 Trips" active={activeTab === 'trips'} onClick={setActiveTab} />
+        <TabButton id="messages" label="💬 Messages" active={activeTab === 'messages'} onClick={setActiveTab} />
         <TabButton id="notifications" label="🔔 Notifications" active={activeTab === 'notifications'} onClick={setActiveTab} />
       </div>
 
@@ -208,6 +261,7 @@ const DashboardAdmin = () => {
             <StatCard title="Active Drivers" value={stats.activeDrivers || 0} color="#9C27B0" icon="🚙" />
             <StatCard title="Total Bookings" value={stats.totalBookings || 0} color="#F44336" icon="📋" />
             <StatCard title="Pending Bookings" value={stats.pendingBookings || 0} color="#FF5722" icon="⏳" />
+            <StatCard title="Total Messages" value={stats.totalMessages || 0} color="#607D8B" icon="💬" />
           </div>
         </div>
       )}
@@ -419,6 +473,116 @@ const DashboardAdmin = () => {
               onClick={() => { setTripPage(p => p + 1); loadTrips(tripPage + 1); }}
               disabled={trips.length < pageSize}
               style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: trips.length < pageSize ? '#ccc' : '#4CAF50', color: 'white', cursor: trips.length < pageSize ? 'not-allowed' : 'pointer' }}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'messages' && (
+        <div>
+          <h2 style={{ marginBottom: '20px' }}>💬 Contact Messages</h2>
+          
+          {/* Message Stats */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px', marginBottom: '20px' }}>
+            <StatCard title="New" value={messageStats.new || 0} color="#2196F3" icon="🆕" />
+            <StatCard title="In Progress" value={messageStats.inProgress || 0} color="#FF9800" icon="⏳" />
+            <StatCard title="Resolved" value={messageStats.resolved || 0} color="#4CAF50" icon="✅" />
+            <StatCard title="Closed" value={messageStats.closed || 0} color="#9E9E9E" icon="🔒" />
+          </div>
+
+          <div style={{ backgroundColor: 'white', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead>
+                <tr style={{ backgroundColor: '#f5f5f5' }}>
+                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>ID</th>
+                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Name</th>
+                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Email</th>
+                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Subject</th>
+                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Message</th>
+                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Status</th>
+                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Date</th>
+                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {messages.length === 0 ? (
+                  <tr>
+                    <td colSpan="8" style={{ padding: '20px', textAlign: 'center', color: '#666' }}>
+                      💭 No messages found.
+                    </td>
+                  </tr>
+                ) : (
+                  messages.map((message) => (
+                    <tr key={message.id} style={{ borderBottom: '1px solid #eee' }}>
+                      <td style={{ padding: '12px' }}>{message.id}</td>
+                      <td style={{ padding: '12px' }}>{message.name}</td>
+                      <td style={{ padding: '12px' }}>{message.email}</td>
+                      <td style={{ padding: '12px' }}>{message.subject}</td>
+                      <td style={{ padding: '12px', maxWidth: '200px' }}>
+                        <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={message.message}>
+                          {message.message}
+                        </div>
+                      </td>
+                      <td style={{ padding: '12px' }}>
+                        <select
+                          value={message.status}
+                          onChange={(e) => handleMessageStatusUpdate(message.id, e.target.value)}
+                          disabled={actionLoading === message.id}
+                          style={{
+                            padding: '4px 8px',
+                            borderRadius: '4px',
+                            border: '1px solid #ccc',
+                            backgroundColor:
+                              message.status === 'NEW' ? '#e3f2fd' :
+                              message.status === 'IN_PROGRESS' ? '#fff3e0' :
+                              message.status === 'RESOLVED' ? '#e8f5e8' : '#f5f5f5'
+                          }}
+                        >
+                          <option value="NEW">New</option>
+                          <option value="IN_PROGRESS">In Progress</option>
+                          <option value="RESOLVED">Resolved</option>
+                          <option value="CLOSED">Closed</option>
+                        </select>
+                      </td>
+                      <td style={{ padding: '12px' }}>{new Date(message.createdAt).toLocaleDateString()}</td>
+                      <td style={{ padding: '12px' }}>
+                        <button
+                          onClick={() => handleDeleteMessage(message.id)}
+                          disabled={actionLoading === message.id}
+                          style={{
+                            padding: '4px 8px',
+                            border: 'none',
+                            borderRadius: '3px',
+                            fontSize: '12px',
+                            cursor: 'pointer',
+                            backgroundColor: '#f44336',
+                            color: 'white'
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+            <button
+              onClick={() => { setMessagePage(p => Math.max(0, p - 1)); loadMessages(Math.max(0, messagePage - 1)); }}
+              disabled={messagePage === 0}
+              style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: messagePage === 0 ? '#ccc' : '#4CAF50', color: 'white', cursor: messagePage === 0 ? 'not-allowed' : 'pointer' }}
+            >
+              Previous
+            </button>
+            <span style={{ margin: '0 15px', fontWeight: 'bold' }}>Page {messagePage + 1}</span>
+            <button
+              onClick={() => { setMessagePage(p => p + 1); loadMessages(messagePage + 1); }}
+              disabled={messages.length < pageSize}
+              style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: messages.length < pageSize ? '#ccc' : '#4CAF50', color: 'white', cursor: messages.length < pageSize ? 'not-allowed' : 'pointer' }}
             >
               Next
             </button>
