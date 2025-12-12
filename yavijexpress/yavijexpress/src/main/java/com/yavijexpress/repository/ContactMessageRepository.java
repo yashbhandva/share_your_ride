@@ -7,6 +7,7 @@ import java.util.List;
 
 @Repository
 public interface ContactMessageRepository extends JpaRepository<ContactMessage, Long> {
-    List<ContactMessage> findByStatusOrderByCreatedAtDesc(ContactMessage.Status status);
     List<ContactMessage> findAllByOrderByCreatedAtDesc();
+    List<ContactMessage> findByStatusOrderByCreatedAtDesc(ContactMessage.Status status);
+    Long countByStatus(ContactMessage.Status status);
 }
