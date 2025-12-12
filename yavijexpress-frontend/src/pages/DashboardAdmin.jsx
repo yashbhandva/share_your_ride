@@ -116,8 +116,7 @@ const DashboardAdmin = () => {
       console.log('Status update response:', response.data);
       setSuccess('Message status updated successfully');
       setTimeout(() => setSuccess(''), 3000);
-      await loadMessages();
-      await loadMessageStats();
+      await Promise.all([loadMessages(), loadMessageStats(), loadDashboardStats()]);
     } catch (e) {
       console.error('Status update error:', e);
       setError('Failed to update message status: ' + (e.response?.data?.message || e.message));
@@ -134,8 +133,7 @@ const DashboardAdmin = () => {
       await api.delete(`/api/admin/contacts/${messageId}`);
       setSuccess('Message deleted successfully');
       setTimeout(() => setSuccess(''), 3000);
-      await loadMessages();
-      await loadMessageStats();
+      await Promise.all([loadMessages(), loadMessageStats(), loadDashboardStats()]);
     } catch (e) {
       setError('Failed to delete message');
     } finally {
