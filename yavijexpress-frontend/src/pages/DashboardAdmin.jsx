@@ -110,14 +110,18 @@ const DashboardAdmin = () => {
 
   const handleMessageStatusUpdate = async (messageId, status) => {
     try {
+      console.log('Updating message status:', messageId, status);
       setActionLoading(messageId);
-      await api.put(`/api/admin/contacts/${messageId}/status`, { status });
+      const response = await api.put(`/api/admin/contacts/${messageId}/status`, { status });
+      console.log('Status update response:', response.data);
       setSuccess('Message status updated successfully');
       setTimeout(() => setSuccess(''), 3000);
       await loadMessages();
       await loadMessageStats();
     } catch (e) {
-      setError('Failed to update message status');
+      console.error('Status update error:', e);
+      setError('Failed to update message status: ' + (e.response?.data?.message || e.message));
+      setTimeout(() => setError(''), 5000);
     } finally {
       setActionLoading(null);
     }
