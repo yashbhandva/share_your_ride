@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface AdminService {
     AdminDTO.DashboardStats getDashboardStats();
-    List<AdminDTO.UserManagement> getAllUsers();
-    List<AdminDTO.TripManagement> getAllTrips();
+    List<AdminDTO.UserManagement> getAllUsers(int page, int size);
+    List<AdminDTO.TripManagement> getAllTrips(int page, int size);
     AdminDTO.UserManagement updateUserStatus(Long userId, Boolean isActive);
     AdminDTO.UserManagement updateUserVerification(Long userId, String status);
     void deleteUser(Long userId);
