@@ -50,17 +50,30 @@ public class BookingController {
     }
 
     @PostMapping("/{bookingId}/confirm")
-    @PreAuthorize("hasRole('DRIVER')")
-    public ResponseEntity<BookingDTO.BookingResponse> confirmBooking(@PathVariable Long bookingId) {
-        return ResponseEntity.ok(bookingService.confirmBooking(bookingId));
+    public ResponseEntity<?> confirmBooking(@PathVariable Long bookingId) {
+        try {
+            BookingDTO.BookingResponse response = bookingService.confirmBooking(bookingId);
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(response, "Booking confirmed successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to confirm booking: " + e.getMessage())
+            );
+        }
     }
 
     @PostMapping("/{bookingId}/cancel")
-    public ResponseEntity<BookingDTO.BookingResponse> cancelBooking(
+    public ResponseEntity<?> cancelBooking(
             @PathVariable Long bookingId,
             @RequestParam(required = false) String reason) {
-        return ResponseEntity.ok(bookingService.cancelBooking(bookingId,
-                reason != null ? reason : "Cancelled by user"));
+        try {
+            BookingDTO.BookingResponse response = bookingService.cancelBooking(bookingId,
+                    reason != null ? reason : "Cancelled by user");
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(response, "Booking cancelled successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to cancel booking: " + e.getMessage())
+            );
+        }
     }
 
     @GetMapping("/passenger/{passengerId}")
@@ -82,8 +95,32 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.getTripBookings(tripId));
     }
 
+    @GetMapping("/driver/{driverId}")
+    public ResponseEntity<?> getDriverBookings(@PathVariable Long driverId) {
+        try {
+            List<BookingDTO.BookingResponse> bookings = bookingService.getDriverBookings(driverId);
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(bookings, "Driver bookings retrieved successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                com.yavijexpress.dto.ApiResponse.error("Failed to get driver bookings: " + e.getMessage())
+            );
+        }
+    }
+
     @GetMapping("/{bookingId}")
     public ResponseEntity<BookingDTO.BookingResponse> getBookingDetails(@PathVariable Long bookingId) {
         return ResponseEntity.ok(bookingService.getBookingDetails(bookingId));
+    }
+
+    @PostMapping("/verify-otp")
+    public ResponseEntity<?> verifyPickupOtp(@Valid @RequestBody BookingDTO.OtpVerificationRequest request) {
+        try {
+            BookingDTO.BookingResponse response = bookingService.verifyPickupOtp(request.getBookingId(), request.getOtp());
+            return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(response, "OTP verified successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(
+                com.yavijexpress.dto.ApiResponse.error("OTP verification failed: " + e.getMessage())
+            );
+        }
     }
 }
