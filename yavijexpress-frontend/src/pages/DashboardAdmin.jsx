@@ -12,6 +12,9 @@ const DashboardAdmin = () => {
   const [trips, setTrips] = useState([]);
   const [activeTab, setActiveTab] = useState('dashboard');
   const [actionLoading, setActionLoading] = useState(null);
+  const [userPage, setUserPage] = useState(0);
+  const [tripPage, setTripPage] = useState(0);
+  const [pageSize] = useState(10);
 
   const loadDashboardStats = async () => {
     try {
@@ -22,18 +25,18 @@ const DashboardAdmin = () => {
     }
   };
 
-  const loadUsers = async () => {
+  const loadUsers = async (page = userPage) => {
     try {
-      const res = await api.get('/api/admin/users');
+      const res = await api.get(`/api/admin/users?page=${page}&size=${pageSize}`);
       setUsers(res.data?.data || []);
     } catch (e) {
       setError('Failed to load users');
     }
   };
 
-  const loadTrips = async () => {
+  const loadTrips = async (page = tripPage) => {
     try {
-      const res = await api.get('/api/admin/trips');
+      const res = await api.get(`/api/admin/trips?page=${page}&size=${pageSize}`);
       console.log('🔍 DEBUG: Trip API Response:', res.data);
       const tripData = res.data?.data || [];
       console.log('🔍 DEBUG: Parsed trips:', tripData);
@@ -281,6 +284,23 @@ const DashboardAdmin = () => {
               </tbody>
             </table>
           </div>
+          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+            <button
+              onClick={() => { setUserPage(p => Math.max(0, p - 1)); loadUsers(Math.max(0, userPage - 1)); }}
+              disabled={userPage === 0}
+              style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: userPage === 0 ? '#ccc' : '#4CAF50', color: 'white', cursor: userPage === 0 ? 'not-allowed' : 'pointer' }}
+            >
+              Previous
+            </button>
+            <span style={{ margin: '0 15px', fontWeight: 'bold' }}>Page {userPage + 1}</span>
+            <button
+              onClick={() => { setUserPage(p => p + 1); loadUsers(userPage + 1); }}
+              disabled={users.length < pageSize}
+              style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: users.length < pageSize ? '#ccc' : '#4CAF50', color: 'white', cursor: users.length < pageSize ? 'not-allowed' : 'pointer' }}
+            >
+              Next
+            </button>
+          </div>
         </div>
       )}
 
@@ -353,6 +373,23 @@ const DashboardAdmin = () => {
                 )}
               </tbody>
             </table>
+          </div>
+          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+            <button
+              onClick={() => { setTripPage(p => Math.max(0, p - 1)); loadTrips(Math.max(0, tripPage - 1)); }}
+              disabled={tripPage === 0}
+              style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: tripPage === 0 ? '#ccc' : '#4CAF50', color: 'white', cursor: tripPage === 0 ? 'not-allowed' : 'pointer' }}
+            >
+              Previous
+            </button>
+            <span style={{ margin: '0 15px', fontWeight: 'bold' }}>Page {tripPage + 1}</span>
+            <button
+              onClick={() => { setTripPage(p => p + 1); loadTrips(tripPage + 1); }}
+              disabled={trips.length < pageSize}
+              style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: trips.length < pageSize ? '#ccc' : '#4CAF50', color: 'white', cursor: trips.length < pageSize ? 'not-allowed' : 'pointer' }}
+            >
+              Next
+            </button>
           </div>
         </div>
       )}
