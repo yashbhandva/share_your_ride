@@ -39,8 +39,10 @@ public class NotificationController {
                     response.setTitle(notification.getTitle());
                     response.setMessage(notification.getMessage());
                     response.setType(notification.getType().toString());
-                    response.setIsRead(notification.getRead());                    response.setRelatedEntityType(notification.getRelatedEntityType());
+                    response.setIsRead(notification.getRead());
+                    response.setRelatedEntityType(notification.getRelatedEntityType());
                     response.setRelatedEntityId(notification.getRelatedEntityId());
+                    response.setActions(notification.getActions());
                     response.setCreatedAt(notification.getCreatedAt());
                     return response;
                 })
@@ -116,5 +118,12 @@ public class NotificationController {
         notificationRepository.deleteAll(notifications);
 
         return ResponseEntity.ok(ApiResponse.success(null, "All notifications deleted"));
+    }
+
+    @GetMapping("/test-actions")
+    public ResponseEntity<?> testActions() {
+        List<Notification> notifications = notificationRepository.findAll();
+        return ResponseEntity.ok(notifications.stream().map(n -> 
+            "ID: " + n.getId() + ", Actions: " + n.getActions()).toList());
     }
 }
