@@ -361,9 +361,11 @@ const DashboardPassenger = () => {
                       <p><strong>Phone:</strong> {b.driverPhone}</p>
                       <p><strong>Vehicle:</strong> {b.vehicleModel} ({b.vehicleNumber})</p>
                       {b.pickupOtp && (
-                        <div style={{backgroundColor: '#fff3cd', padding: '8px', borderRadius: '3px', marginTop: '8px'}}>
-                          <strong>🔑 Pickup OTP: {b.pickupOtp}</strong>
-                          <br/><small>Give this OTP to the driver during pickup</small>
+                        <div style={{backgroundColor: '#d4edda', border: '1px solid #c3e6cb', padding: '12px', borderRadius: '5px', marginTop: '10px'}}>
+                          <div style={{fontSize: '18px', fontWeight: 'bold', color: '#155724', marginBottom: '5px'}}>
+                            🔑 Your Pickup OTP: <span style={{fontSize: '24px', letterSpacing: '2px'}}>{b.pickupOtp}</span>
+                          </div>
+                          <small style={{color: '#155724'}}>📱 Give this 6-digit OTP to the driver during pickup to start your trip</small>
                         </div>
                       )}
                     </div>
