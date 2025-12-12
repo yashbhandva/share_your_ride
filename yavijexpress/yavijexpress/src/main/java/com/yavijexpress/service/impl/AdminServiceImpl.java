@@ -21,14 +21,13 @@ public class AdminServiceImpl implements AdminService {
     private final UserRepository userRepository;
     private final TripRepository tripRepository;
     private final BookingRepository bookingRepository;
-    
-    @Autowired
-    private ContactMessageRepository contactMessageRepository;
+    private final ContactMessageRepository contactMessageRepository;
 
-    public AdminServiceImpl(UserRepository userRepository, TripRepository tripRepository, BookingRepository bookingRepository) {
+    public AdminServiceImpl(UserRepository userRepository, TripRepository tripRepository, BookingRepository bookingRepository, ContactMessageRepository contactMessageRepository) {
         this.userRepository = userRepository;
         this.tripRepository = tripRepository;
         this.bookingRepository = bookingRepository;
+        this.contactMessageRepository = contactMessageRepository;
     }
 
     @Override
