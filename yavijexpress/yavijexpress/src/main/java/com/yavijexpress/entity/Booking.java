@@ -30,6 +30,9 @@ public class Booking {
     @Column(columnDefinition = "TEXT")
     private String specialRequests;
 
+    @Column(length = 6)
+    private String pickupOtp;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip trip;
@@ -143,5 +146,13 @@ public class Booking {
 
     public void setCancelledAt(LocalDateTime cancelledAt) {
         this.cancelledAt = cancelledAt;
+    }
+
+    public String getPickupOtp() {
+        return pickupOtp;
+    }
+
+    public void setPickupOtp(String pickupOtp) {
+        this.pickupOtp = pickupOtp;
     }
 }
