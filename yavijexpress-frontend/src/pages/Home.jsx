@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -9,7 +8,6 @@ import {
   FaUserFriends,
   FaRupeeSign,
   FaArrowRight,
-  FaCheckCircle,
   FaUsers,
   FaHeart
 } from "react-icons/fa";
@@ -43,12 +41,20 @@ const Home = () => {
     }
   ];
 
-  // Stats data
+  // Stats data - FOR HERO SECTION
+  const heroStats = [
+    { value: "5000+", label: "Happy Riders" },
+    { value: "1000+", label: "Verified Drivers" },
+    { value: "25+", label: "Cities" },
+    { value: "4.8★", label: "Rating" }
+  ];
+
+  // Stats data - FOR STATS SECTION
   const stats = [
-    { value: "5000+", label: "Happy Riders", icon: <FaUserFriends /> },
-    { value: "1000+", label: "Verified Drivers", icon: <FaCar /> },
+    { value: "50K+", label: "Registered Users", icon: <FaUserFriends /> },
     { value: "25+", label: "Cities", icon: "🏙️" },
-    { value: "4.8", label: "Rating", icon: <FaStar /> }
+    { value: "4.9", label: "Rating", icon: <FaStar /> },
+    { value: "1M+", label: "Rides Completed", icon: <FaCar /> }
   ];
 
   // Testimonials
@@ -88,6 +94,23 @@ const Home = () => {
               India's fastest-growing ride-sharing platform connecting passengers
               with verified drivers across 25+ cities.
             </p>
+
+            {/* ===== HERO STATS SECTION - ADDED HERE ===== */}
+            <motion.div
+              className="hero-stats"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              {heroStats.map((stat, index) => (
+                <div key={index} className="hero-stat">
+                  <div className="stat-number">{stat.value}</div>
+                  <div className="stat-label">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
+            {/* ===== END HERO STATS ===== */}
+
             <div className="hero-buttons">
               <Link to="/register" className="btn btn-primary">
                 <FaUsers />
