@@ -74,11 +74,11 @@ const Footer = () => {
           <ul className="footer-links">
             <li>
               <FaShieldAlt className="link-icon" />
-              <a href="#">Privacy Policy</a>
+              <a href="/Privacy-Policy">Privacy Policy</a>
             </li>
             <li>
               <FaFileContract className="link-icon" />
-              <a href="#">Terms of Service</a>
+              <a href="/terms">Terms of Service</a>
             </li>
             <li>
               <FaHeadset className="link-icon" />
