@@ -18341,3 +18341,283 @@ html, body {
         border-radius: 12px;
         border-left: 4px solid var(--quantum-blue);
       }
+
+
+
+
+      /* ============================================
+         CUSTOM LOGO STYLING FOR NAVBAR
+         ============================================ */
+
+      /* Logo Container */
+      .logo-container {
+        position: relative;
+        width: 90px;
+        height: 90px;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-purple));
+        box-shadow: 0 4px 15px rgba(58, 54, 224, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .navbar-scrolled .logo-container {
+        width: 45px;
+        height: 45px;
+      }
+
+      /* Custom Logo Image */
+      .custom-logo {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 8px;
+        transition: transform 0.3s ease;
+        filter: brightness(1.2) contrast(1.1);
+      }
+
+      .navbar-brand:hover .custom-logo {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      /* Logo Loading State */
+      .logo-loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,
+          rgba(255,255,255,0.1) 25%,
+          rgba(255,255,255,0.2) 50%,
+          rgba(255,255,255,0.1) 75%);
+        background-size: 200% 100%;
+        animation: logoShine 1.5s infinite;
+        display: none;
+      }
+
+      @keyframes logoShine {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+
+      .custom-logo[data-loaded="false"] + .logo-loader {
+        display: block;
+      }
+
+      /* Logo Fallback (if image fails to load) */
+      .logo-fallback {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-purple));
+      }
+
+      .logo-icon {
+        font-size: 2rem;
+        color: white;
+        animation: gentleFloat 3s ease-in-out infinite;
+      }
+
+      @keyframes gentleFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+      }
+
+      /* Brand Text Updates */
+      .brand-text {
+        display: flex;
+        flex-direction: column;
+        margin-left: 12px;
+      }
+
+      .brand-primary {
+        font-size: 1.5rem;
+        font-weight: 900;
+        background: linear-gradient(45deg, var(--quantum-blue), var(--quantum-purple));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+      }
+
+      .navbar-scrolled .brand-primary {
+        font-size: 1.3rem;
+      }
+
+      .brand-secondary {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--quantum-green);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      .navbar-scrolled .brand-secondary {
+        font-size: 0.8rem;
+      }
+
+      .brand-tagline {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 500;
+        margin-top: 2px;
+        letter-spacing: 0.5px;
+      }
+
+      .navbar-scrolled .brand-tagline {
+        display: none;
+      }
+
+      /* Brand Logo Layout */
+      .brand-logo {
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+
+      /* Mobile Logo */
+      .mobile-brand {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .mobile-logo {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-purple));
+        padding: 10px;
+        box-shadow: 0 4px 15px rgba(58, 54, 224, 0.3);
+      }
+
+      .mobile-logo-fallback {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-purple));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+      }
+
+      .mobile-brand-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .mobile-brand-primary {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: white;
+        letter-spacing: -0.5px;
+      }
+
+      .mobile-brand-tagline {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 2px;
+      }
+
+      /* Light Theme Logo Adjustments */
+      .light-theme .logo-container {
+        background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-purple));
+        box-shadow: 0 4px 15px rgba(58, 54, 224, 0.2);
+      }
+
+      .light-theme .custom-logo {
+        filter: brightness(1) contrast(1.2);
+      }
+
+      .light-theme .logo-fallback {
+        background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-purple));
+      }
+
+      .light-theme .brand-primary {
+        background: linear-gradient(45deg, var(--quantum-blue), var(--quantum-purple));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .light-theme .brand-secondary {
+        color: var(--quantum-green);
+      }
+
+      /* Responsive Logo */
+      @media (max-width: 768px) {
+        .logo-container {
+          width: 45px;
+          height: 45px;
+        }
+
+        .custom-logo {
+          padding: 6px;
+        }
+
+        .brand-primary {
+          font-size: 1.3rem;
+        }
+
+        .brand-secondary {
+          font-size: 0.8rem;
+        }
+
+        .brand-tagline {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo-container {
+          width: 40px;
+          height: 40px;
+        }
+
+        .custom-logo {
+          padding: 5px;
+        }
+
+        .brand-text {
+          margin-left: 10px;
+        }
+
+        .brand-primary {
+          font-size: 1.2rem;
+        }
+
+        .brand-secondary {
+          font-size: 0.7rem;
+        }
+      }
+
+      /* Logo Hover Effects */
+      .navbar-brand:hover .logo-container {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(58, 54, 224, 0.4);
+      }
+
+      /* Scrolled State Animation */
+      .navbar.navbar-scrolled .brand-logo {
+        animation: slideInLogo 0.3s ease;
+      }
+
+      @keyframes slideInLogo {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
