@@ -12137,3 +12137,1502 @@ html, body {
     color: #333 !important;
   }
 }
+
+
+
+
+/* ===== QUANTUM DRIVER DASHBOARD UNIVERSE ===== */
+/* ===== EXACT QUANTUM COLORS FROM FOOTER ===== */
+:root {
+  /* QUANTUM COLORS */
+  --quantum-blue: #3A36E0;
+  --quantum-green: #10B981;
+  --quantum-gold: #F59E0B;
+  --quantum-purple: #8B5CF6;
+  --quantum-pink: #EC4899;
+  --quantum-cyan: #06B6D4;
+  --dark-bg: #0F172A;
+  --darker-bg: #020617;
+  --light-text: #E2E8F0;
+  --gray-text: #94A3B8;
+
+  /* QUANTUM GRADIENTS */
+  --quantum-gradient: linear-gradient(135deg, #3A36E0 0%, #10B981 100%);
+  --quantum-gradient-reverse: linear-gradient(135deg, #10B981 0%, #3A36E0 100%);
+  --quantum-secondary-gradient: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+  --quantum-warning-gradient: linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
+  --quantum-danger-gradient: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  --quantum-success-gradient: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  --quantum-info-gradient: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
+
+  /* GLASS MORPHISM */
+  --glass-bg: rgba(30, 41, 59, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+  /* DIMENSIONS */
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --radius-full: 9999px;
+
+  /* ANIMATIONS */
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* TYPOGRAPHY */
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== CRITICAL: NO SCROLLING ISSUES ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ===== QUANTUM DRIVER DASHBOARD BACKGROUND ===== */
+.driver-dashboard {
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-family);
+  color: var(--light-text);
+  position: relative;
+  overflow: hidden !important;
+}
+
+/* Quantum Energy Particles */
+.driver-dashboard::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(58, 54, 224, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+  z-index: 0;
+  pointer-events: none;
+  animation: quantum-drift 40s linear infinite;
+}
+
+@keyframes quantum-drift {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1.02); }
+}
+
+/* Main Container */
+.driver-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ===== QUANTUM DRIVER HEADER ===== */
+.driver-header {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 2.5rem;
+  box-shadow:
+    var(--glass-shadow),
+    0 0 0 1px var(--glass-border),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  animation: quantum-slide-down 0.8s var(--ease-bounce);
+}
+
+/* Energy Barrier */
+.driver-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--quantum-blue),
+    var(--quantum-green),
+    transparent);
+  background-size: 200% 100%;
+  animation: quantum-energy-flow 3s linear infinite;
+}
+
+@keyframes quantum-slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes quantum-energy-flow {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.driver-title {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(135deg,
+    #FFFFFF 0%,
+    var(--quantum-blue) 33%,
+    var(--quantum-green) 66%,
+    #FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 300%;
+  animation: title-quantum-flow 4s ease-in-out infinite;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+@keyframes title-quantum-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.driver-welcome {
+  font-size: 1.3rem;
+  color: var(--gray-text);
+  margin: 0;
+  font-weight: 500;
+}
+
+.driver-name {
+  color: var(--quantum-green);
+  font-weight: 700;
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+.driver-name::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--quantum-green);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  animation: driver-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes driver-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    transform: translateY(-50%) scale(1.1);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* ===== QUANTUM ALERT SYSTEM ===== */
+.alert-container {
+  margin-bottom: 2.5rem;
+  animation: quantum-fade-in 0.6s 0.2s both;
+}
+
+@keyframes quantum-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.driver-alert {
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: quantum-slide-up 0.4s var(--ease-smooth);
+}
+
+@keyframes quantum-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.driver-alert::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent);
+  transition: left 0.7s var(--ease-smooth);
+}
+
+.driver-alert:hover::before {
+  left: 100%;
+}
+
+.error-alert {
+  background: var(--quantum-danger-gradient);
+  color: white;
+  border-left: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 8px 32px rgba(239, 68, 68, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.success-alert {
+  background: var(--quantum-success-gradient);
+  color: white;
+  border-left: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 8px 32px rgba(16, 185, 129, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ===== QUANTUM STATS UNIVERSE ===== */
+.driver-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  animation: quantum-stats-appear 0.8s 0.4s both;
+}
+
+@keyframes quantum-stats-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.driver-stat-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.5s var(--ease-smooth);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    var(--glass-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  animation: stat-card-float 6s ease-in-out infinite alternate;
+}
+
+@keyframes stat-card-float {
+  0%, 100% {
+    transform: translateY(0) rotateX(0);
+  }
+  50% {
+    transform: translateY(-8px) rotateX(5deg);
+  }
+}
+
+.driver-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--quantum-gradient);
+  background-size: 200% 100%;
+  animation: quantum-energy-flow 3s linear infinite;
+}
+
+.driver-stat-card:hover {
+  transform: translateY(-10px) scale(1.03) rotateX(5deg);
+  border-color: var(--quantum-blue);
+  box-shadow:
+    0 25px 60px rgba(58, 54, 224, 0.3),
+    0 0 0 1px rgba(58, 54, 224, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.driver-stat-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+  color: var(--quantum-green);
+  filter: drop-shadow(0 4px 12px rgba(16, 185, 129, 0.4));
+  animation: icon-float 4s var(--ease-bounce) infinite;
+}
+
+@keyframes icon-float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.1);
+  }
+}
+
+.driver-stat-content {
+  flex: 1;
+}
+
+.driver-stat-title {
+  font-size: 1rem;
+  color: var(--gray-text);
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.driver-stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: inline-block;
+}
+
+.driver-stat-value::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--quantum-gradient);
+  border-radius: 2px;
+  transition: width 0.6s var(--ease-bounce);
+}
+
+.driver-stat-card:hover .driver-stat-value::after {
+  width: 100px;
+}
+
+/* ===== QUANTUM SECTIONS ===== */
+.driver-section {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  box-shadow:
+    var(--glass-shadow),
+    0 0 0 1px var(--glass-border),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  animation: quantum-fade-up 0.8s var(--ease-bounce);
+}
+
+@keyframes quantum-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin: 0 0 2rem 0;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: var(--quantum-gradient);
+  border-radius: 2px;
+}
+
+.section-icon {
+  font-size: 1.5rem;
+  color: var(--quantum-green);
+}
+
+/* ===== QUANTUM API TEST BUTTON ===== */
+.api-test-btn {
+  padding: 1rem 2rem;
+  background: var(--quantum-warning-gradient);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-smooth);
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.api-test-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent);
+  transition: left 0.6s;
+}
+
+.api-test-btn:hover::before {
+  left: 100%;
+}
+
+.api-test-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+}
+
+/* ===== QUANTUM LOADING ===== */
+.loading-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  color: var(--gray-text);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--quantum-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.loading-spinner::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: var(--quantum-gradient);
+  filter: blur(12px);
+  opacity: 0.3;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  from { opacity: 0.2; }
+  to { opacity: 0.4; }
+}
+
+/* ===== QUANTUM EMPTY STATE ===== */
+.empty-state {
+  text-align: center;
+  padding: 4rem;
+  color: var(--gray-text);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  color: var(--quantum-blue);
+  opacity: 0.5;
+  animation: empty-pulse 3s ease-in-out infinite;
+}
+
+@keyframes empty-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.05); }
+}
+
+.empty-text {
+  font-size: 1.3rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ===== QUANTUM BOOKING CARDS ===== */
+.booking-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2rem;
+}
+
+.booking-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.booking-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--quantum-gradient);
+}
+
+.booking-card:hover {
+  transform: translateY(-8px) rotateX(5deg);
+  border-color: var(--quantum-blue);
+  box-shadow:
+    0 25px 60px rgba(58, 54, 224, 0.3),
+    0 0 0 1px rgba(58, 54, 224, 0.2);
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.booking-id {
+  font-size: 1.4rem;
+  margin: 0;
+  color: white;
+  font-weight: 700;
+}
+
+.booking-status {
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid transparent;
+}
+
+.booking-status-pending {
+  background: var(--quantum-warning-gradient);
+  color: white;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.booking-status-confirmed {
+  background: var(--quantum-success-gradient);
+  color: white;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.booking-status-cancelled {
+  background: var(--quantum-danger-gradient);
+  color: white;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.booking-details {
+  margin-bottom: 1.5rem;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: var(--gray-text);
+  min-width: 140px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  color: white;
+  flex: 1;
+  font-weight: 500;
+}
+
+/* ===== QUANTUM OTP VERIFICATION ===== */
+.otp-verification {
+  background: linear-gradient(135deg,
+    rgba(14, 165, 233, 0.15) 0%,
+    rgba(59, 130, 246, 0.1) 100%);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  border-left: 4px solid var(--quantum-cyan);
+}
+
+.otp-title {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--quantum-cyan);
+  font-weight: 700;
+}
+
+.otp-subtitle {
+  font-size: 0.95rem;
+  color: var(--gray-text);
+  margin: 0 0 1.5rem 0;
+}
+
+.otp-form {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.otp-input {
+  flex: 1;
+  min-width: 250px;
+  padding: 1rem 1.2rem;
+  border: 2px solid rgba(14, 165, 233, 0.3);
+  border-radius: var(--radius-md);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.otp-input:focus {
+  outline: none;
+  border-color: var(--quantum-cyan);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2);
+}
+
+.otp-submit-btn {
+  padding: 1rem 2rem;
+  background: var(--quantum-info-gradient);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-smooth);
+  min-width: 160px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.otp-submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent);
+  transition: left 0.6s;
+}
+
+.otp-submit-btn:hover::before {
+  left: 100%;
+}
+
+.otp-submit-btn:hover:not(.loading) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(14, 165, 233, 0.4);
+}
+
+.otp-submit-btn.loading {
+  background: linear-gradient(135deg,
+    rgba(100, 116, 139, 0.3) 0%,
+    rgba(71, 85, 105, 0.2) 100%);
+  cursor: not-allowed;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.debug-info {
+  font-size: 0.85rem;
+  color: var(--gray-text);
+  margin-top: 1rem;
+  font-family: 'Courier New', monospace;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ===== QUANTUM FORMS ===== */
+.vehicle-form, .trip-form {
+  margin-bottom: 2.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-label {
+  font-weight: 600;
+  color: white;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-input, .form-select, .form-textarea {
+  padding: 1rem 1.2rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  transition: all 0.3s var(--ease-smooth);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-family: var(--font-family);
+}
+
+.form-input::placeholder,
+.form-select::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--quantum-blue);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 0 4px rgba(58, 54, 224, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+/* ===== QUANTUM SUBMIT BUTTONS ===== */
+.submit-btn {
+  padding: 1.2rem 2.5rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-smooth);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent);
+  transition: left 0.8s;
+}
+
+.submit-btn:hover::before {
+  left: 100%;
+}
+
+.submit-btn:hover:not(.loading) {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.submit-btn.loading {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.create-btn {
+  background: var(--quantum-success-gradient);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ===== QUANTUM VEHICLES LIST ===== */
+.vehicles-list {
+  margin-top: 2.5rem;
+}
+
+.vehicles-title {
+  font-size: 1.8rem;
+  margin: 0 0 1.5rem 0;
+  color: white;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.vehicles-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--quantum-gradient);
+}
+
+.vehicle-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.vehicle-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.vehicle-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--quantum-gradient);
+}
+
+.vehicle-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--quantum-green);
+  box-shadow:
+    0 20px 50px rgba(16, 185, 129, 0.3),
+    0 0 0 1px rgba(16, 185, 129, 0.2);
+}
+
+.vehicle-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vehicle-number {
+  font-size: 1.5rem;
+  margin: 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 700;
+}
+
+.vehicle-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.vehicle-detail {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  color: var(--gray-text);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vehicle-type {
+  background: var(--quantum-info-gradient) !important;
+  color: white !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+.vehicle-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+/* ===== QUANTUM ACTION BUTTONS ===== */
+.action-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent);
+  transition: left 0.6s;
+}
+
+.action-btn:hover::before {
+  left: 100%;
+}
+
+.action-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.confirm-btn {
+  background: var(--quantum-success-gradient);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.edit-btn {
+  background: var(--quantum-warning-gradient);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.delete-btn {
+  background: var(--quantum-danger-gradient);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.start-btn {
+  background: var(--quantum-info-gradient);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.complete-btn {
+  background: var(--quantum-success-gradient);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.restart-btn {
+  background: var(--quantum-secondary-gradient);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ===== QUANTUM TRIPS LIST ===== */
+.trip-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.trip-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.trip-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--quantum-gradient);
+}
+
+.trip-card:hover {
+  transform: translateY(-8px) rotateX(5deg);
+  border-color: var(--quantum-blue);
+  box-shadow:
+    0 25px 60px rgba(58, 54, 224, 0.3),
+    0 0 0 1px rgba(58, 54, 224, 0.2);
+}
+
+.trip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trip-route {
+  font-size: 1.5rem;
+  margin: 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  font-weight: 700;
+}
+
+.trip-from, .trip-to {
+  font-weight: 800;
+}
+
+.trip-arrow {
+  color: var(--quantum-green);
+  font-weight: bold;
+  animation: arrow-bounce 2s ease-in-out infinite;
+}
+
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+.trip-status-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.trip-status {
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid transparent;
+}
+
+.trip-status-scheduled {
+  background: var(--quantum-success-gradient);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.trip-status-ongoing {
+  background: var(--quantum-warning-gradient);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.trip-status-completed {
+  background: var(--quantum-info-gradient);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.trip-status-cancelled {
+  background: var(--quantum-danger-gradient);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.trip-active {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.trip-active.active {
+  color: var(--quantum-green);
+}
+
+.trip-active.inactive {
+  color: #f44336;
+}
+
+.trip-details {
+  margin-bottom: 2rem;
+}
+
+.trip-detail {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: var(--gray-text);
+}
+
+.detail-icon {
+  font-size: 1.2rem;
+  color: var(--quantum-green);
+  width: 24px;
+}
+
+.detail-label {
+  font-weight: 600;
+  min-width: 100px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  color: white;
+  font-weight: 500;
+}
+
+.trip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+/* ===== QUANTUM VEHICLE ERROR ===== */
+.vehicle-error {
+  background: var(--quantum-danger-gradient);
+  color: white;
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+  border-left: 4px solid rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ===== QUANTUM RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+  .driver-container {
+    padding: 1.5rem;
+  }
+
+  .booking-cards,
+  .trip-cards {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .form-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .vehicle-cards {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .driver-dashboard {
+    padding: 1rem;
+  }
+
+  .driver-header {
+    padding: 2rem 1.5rem;
+  }
+
+  .driver-title {
+    font-size: 2rem;
+  }
+
+  .driver-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .driver-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-cards,
+  .trip-cards,
+  .vehicle-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trip-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .trip-status-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .trip-actions {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+
+  .otp-form {
+    flex-direction: column;
+  }
+
+  .otp-input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .driver-header {
+    padding: 1.5rem;
+  }
+
+  .driver-title {
+    font-size: 1.8rem;
+  }
+
+  .driver-stat-value {
+    font-size: 2rem;
+  }
+
+  .driver-stat-icon {
+    font-size: 2.5rem;
+  }
+
+  .trip-route {
+    font-size: 1.3rem;
+  }
+}
+
+/* ===== QUANTUM SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--quantum-gradient);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--quantum-gradient-reverse);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--quantum-blue) rgba(15, 23, 42, 0.8);
+}
+
+/* ===== QUANTUM SELECTION ===== */
+::selection {
+  background: rgba(58, 54, 224, 0.5);
+  color: white;
+}
+
+/* ===== QUANTUM REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .driver-dashboard::before,
+  .driver-header::before,
+  .driver-stat-card,
+  .booking-card,
+  .trip-card,
+  .vehicle-card,
+  .action-btn,
+  .submit-btn,
+  .api-test-btn,
+  .otp-submit-btn {
+    animation: none !important;
+  }
+
+  .action-btn:hover,
+  .submit-btn:hover,
+  .api-test-btn:hover,
+  .otp-submit-btn:hover,
+  .driver-stat-card:hover,
+  .booking-card:hover,
+  .trip-card:hover,
+  .vehicle-card:hover {
+    transform: none !important;
+  }
+}
+
+/* ===== QUANTUM ANIMATION SEQUENCE ===== */
+.driver-header { animation-delay: 0.1s; }
+.alert-container { animation-delay: 0.2s; }
+.driver-stats-grid { animation-delay: 0.3s; }
+.driver-section { animation-delay: 0.4s; }
+.booking-cards, .trip-cards, .vehicle-cards { animation-delay: 0.5s; }
+
+/* ===== QUANTUM UTILITY CLASSES ===== */
+.quantum-badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+}
+
+.quantum-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+}
+
+.quantum-gradient-text {
+  background: var(--quantum-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
