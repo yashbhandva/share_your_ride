@@ -38,7 +38,7 @@ const Footer = () => {
             <a href="#" className="social-icon" aria-label="LinkedIn">
               <FaLinkedin />
             </a>
-            <a href="#" className="social-icon" aria-label="Instagram">
+            <a href="https://www.instagram.com/_y_a_s_h004/?next=%2F" className="social-icon" aria-label="Instagram">
               <FaInstagram />
             </a>
           </div>
