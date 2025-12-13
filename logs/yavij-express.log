@@ -7384,3 +7384,39 @@ Caused by: java.sql.SQLSyntaxErrorException: Duplicate column name 'actions'
 2025-12-13T22:10:27.468+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/notifications/23
 2025-12-13T22:10:27.599+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
 2025-12-13T22:10:27.648+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/notifications
+2025-12-13T22:11:37.988+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2025-12-13T22:11:38.041+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/test-auth
+2025-12-13T22:11:38.113+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2025-12-13T22:11:38.120+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2025-12-13T22:11:38.132+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/test-auth
+2025-12-13T22:11:38.136+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/profile
+2025-12-13T22:11:38.314+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2025-12-13T22:11:38.367+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/profile
+2025-12-13T22:13:41.998+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2025-12-13T22:13:42.043+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/test-auth
+2025-12-13T22:13:42.055+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2025-12-13T22:13:42.165+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/test-auth
+2025-12-13T22:13:42.165+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2025-12-13T22:13:42.271+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/profile
+2025-12-13T22:13:42.321+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2025-12-13T22:13:42.365+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/profile
+2025-12-13T22:13:43.150+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2025-12-13T22:13:43.174+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/test-auth
+2025-12-13T22:13:43.292+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2025-12-13T22:13:43.310+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/profile
+2025-12-13T22:16:13.044+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2025-12-13T22:16:13.326+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/test-auth
+2025-12-13T22:16:13.473+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2025-12-13T22:16:13.537+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/test-auth
+2025-12-13T22:16:13.585+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2025-12-13T22:16:13.619+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/profile
+2025-12-13T22:16:13.981+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2025-12-13T22:16:14.022+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/profile
+2025-12-13T22:23:10.515+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2025-12-13T22:23:13.770+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/test-auth
+2025-12-13T22:23:15.230+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2025-12-13T22:23:15.327+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2025-12-13T22:23:15.417+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/test-auth
+2025-12-13T22:23:15.500+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/profile
+2025-12-13T22:23:15.964+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2025-12-13T22:23:16.109+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/profile
