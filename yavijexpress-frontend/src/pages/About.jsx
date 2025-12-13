@@ -33,20 +33,20 @@ const About = () => {
   // SIRF 2 NEW TEAM MEMBERS - Both CEOs with real photos
   const teamMembers = [
     {
-      name: "Aarav Sharma",
+      name: "Yash Bhandva",
       role: "CEO & Co-Founder",
       bio: "IIT Delhi graduate with 12+ years in tech startups. Previously founded two successful SaaS companies. Passionate about solving India's mobility challenges through technology.",
       image: "👨‍💼",
       photo: ceo1Photo, // Real photo path
       color: "#3A36E0",
-      skills: ["Entrepreneurship", "Strategy", "Funding", "Growth Hacking", "Leadership"],
+      skills: ["Entrepreneurship", "Strategy", "Funding", "Growth Hacking", "Leadership", "Java"],
       linkedin: "#",
       twitter: "#",
       isRealPhoto: true,
       isNew: true
     },
     {
-      name: "Ananya Singh",
+      name: "Vijay Bhandva",
       role: "COO & Co-Founder",
       bio: "Ex-McKinsey consultant with deep expertise in operations and scaling. Led operations for India's largest logistics company. MBA from IIM Ahmedabad with focus on sustainable mobility.",
       image: "👩‍💼",
