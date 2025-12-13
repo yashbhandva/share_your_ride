@@ -18159,3 +18159,185 @@ html, body {
       UX Experience: ⭐⭐⭐⭐⭐
       Performance: ⚡⚡⚡⚡⚡
       ============================================ */
+
+
+
+
+
+
+
+      /* 🖼️ PERFECT ROUND PHOTOS FOR 2 CEOS */
+      .team-avatar {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin: 0 auto 2rem;
+        background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-purple));
+        border: 4px solid white;
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.3),
+          inset 0 4px 20px rgba(255, 255, 255, 0.2);
+        overflow: hidden;
+        transition: all 0.5s var(--smooth-ease);
+      }
+
+      /* Real Photos Styling */
+      .avatar-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        transition: transform 0.6s var(--smooth-ease);
+        filter: brightness(1.05) contrast(1.1);
+      }
+
+      .team-card:hover .avatar-photo {
+        transform: scale(1.08);
+      }
+
+      /* Avatar Badge */
+      .avatar-badge {
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--quantum-gradient);
+        color: white;
+        padding: 0.6rem 1.8rem;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 800;
+        z-index: 3;
+        white-space: nowrap;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        min-width: 140px;
+        text-align: center;
+        letter-spacing: 0.5px;
+      }
+
+      /* Team Grid for 2 Members */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      @media (min-width: 768px) {
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Tech Section Updates */
+      .about-tech {
+        padding: 6rem 2rem;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .tech-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        backdrop-filter: blur(10px);
+        transition: all 0.4s var(--smooth-ease);
+      }
+
+      .tech-card:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-8px);
+        border-color: var(--quantum-blue);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .tech-icon {
+        font-size: 2.5rem;
+        color: var(--quantum-blue);
+        margin-bottom: 1rem;
+      }
+
+      .tech-card h3 {
+        font-size: 1.3rem;
+        color: white;
+        margin-bottom: 0.5rem;
+      }
+
+      .tech-desc {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+      }
+
+      /* Photo Error Handling */
+      .team-avatar {
+        position: relative;
+      }
+
+      .avatar-emoji {
+        font-size: 5rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .team-avatar {
+          width: 150px;
+          height: 150px;
+        }
+
+        .avatar-emoji {
+          font-size: 4rem;
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr;
+          max-width: 400px;
+        }
+
+        .tech-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .team-avatar {
+          width: 130px;
+          height: 130px;
+        }
+
+        .avatar-emoji {
+          font-size: 3.5rem;
+        }
+
+        .tech-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Hero Mention */
+      .tech-mention {
+        display: block;
+        margin-top: 1rem;
+        color: var(--quantum-blue);
+        font-weight: 600;
+        font-size: 1.1rem;
+        background: rgba(58, 54, 224, 0.1);
+        padding: 0.8rem 1.5rem;
+        border-radius: 12px;
+        border-left: 4px solid var(--quantum-blue);
+      }
