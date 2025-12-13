@@ -173,16 +173,21 @@ const DashboardAdmin = () => {
   };
 
   const handleDeleteUser = async (userId) => {
-    if (!confirm('Are you sure you want to delete this user?')) return;
+    if (!confirm('Are you sure you want to delete this user? This will also delete all related data including trips, bookings, ratings, and notifications.')) return;
     try {
+      console.log('🔴 DEBUG: Attempting to delete user:', userId);
       setActionLoading(userId);
-      await api.delete(`/api/admin/users/${userId}`);
+      const response = await api.delete(`/api/admin/users/${userId}`);
+      console.log('✅ DEBUG: Delete response:', response.data);
       setSuccess('User deleted successfully');
       setTimeout(() => setSuccess(''), 3000);
       await loadUsers();
       await loadDashboardStats();
     } catch (e) {
-      setError('Failed to delete user');
+      console.error('❌ DEBUG: Delete user error:', e);
+      const errorMessage = e.response?.data?.message || e.message || 'Failed to delete user';
+      setError(`Failed to delete user: ${errorMessage}`);
+      setTimeout(() => setError(''), 5000);
     } finally {
       setActionLoading(null);
     }
