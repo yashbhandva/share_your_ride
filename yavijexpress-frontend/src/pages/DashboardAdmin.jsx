@@ -15,10 +15,10 @@ const DashboardAdmin = () => {
   const [userPage, setUserPage] = useState(0);
   const [tripPage, setTripPage] = useState(0);
   const [pageSize] = useState(10);
-   const [notificationTitle, setNotificationTitle] = useState("");
-   const [notificationMessage, setNotificationMessage] = useState("");
-   const [notificationTarget, setNotificationTarget] = useState("ALL");
-   const [notificationSubmitting, setNotificationSubmitting] = useState(false);
+  const [notificationTitle, setNotificationTitle] = useState("");
+  const [notificationMessage, setNotificationMessage] = useState("");
+  const [notificationTarget, setNotificationTarget] = useState("ALL");
+  const [notificationSubmitting, setNotificationSubmitting] = useState(false);
   const [messages, setMessages] = useState([]);
   const [messagePage, setMessagePage] = useState(0);
   const [messageStats, setMessageStats] = useState({});
@@ -31,6 +31,7 @@ const DashboardAdmin = () => {
       setError('Failed to load dashboard stats');
     }
   };
+
   const handleSendNotification = async (e) => {
     e.preventDefault();
     setError("");
@@ -59,6 +60,7 @@ const DashboardAdmin = () => {
       setNotificationSubmitting(false);
     }
   };
+
   const loadUsers = async (page = userPage) => {
     try {
       const res = await api.get(`/api/admin/users?page=${page}&size=${pageSize}`);
@@ -203,49 +205,37 @@ const DashboardAdmin = () => {
   };
 
   const StatCard = ({ title, value, color, icon }) => (
-    <div style={{
-      backgroundColor: 'white',
-      padding: '20px',
-      borderRadius: '8px',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-      border: `3px solid ${color}`,
-      textAlign: 'center'
-    }}>
-      <div style={{ fontSize: '24px', marginBottom: '8px' }}>{icon}</div>
-      <h3 style={{ margin: '0 0 8px 0', color: color }}>{title}</h3>
-      <p style={{ fontSize: '24px', fontWeight: 'bold', margin: 0, color: '#333' }}>{value}</p>
+    <div className="stat-card">
+      <div className="stat-icon">{icon}</div>
+      <h3 className="stat-title">{title}</h3>
+      <p className="stat-value">{value}</p>
     </div>
   );
 
   const TabButton = ({ id, label, active, onClick }) => (
     <button
       onClick={() => onClick(id)}
-      style={{
-        padding: '10px 20px',
-        border: 'none',
-        backgroundColor: active ? '#4CAF50' : '#f5f5f5',
-        color: active ? 'white' : '#333',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        marginRight: '10px',
-        fontWeight: active ? 'bold' : 'normal'
-      }}
+      className={`tab-button ${active ? 'active-tab' : ''}`}
     >
       {label}
     </button>
   );
 
-  if (loading) return <div style={{ padding: '20px' }}>Loading admin dashboard...</div>;
+  if (loading) return <div className="loading-container">Loading admin dashboard...</div>;
 
   return (
-    <div style={{ padding: '20px', backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
-      <h1 style={{ marginBottom: '20px', color: '#333' }}>Admin Dashboard</h1>
-      <p style={{ marginBottom: '30px', color: '#666' }}>Welcome, {user?.name}!</p>
+    <div className="admin-dashboard">
+      <div className="dashboard-header">
+        <h1 className="dashboard-title">Admin Dashboard</h1>
+        <p className="dashboard-subtitle">Welcome, <span className="admin-name">{user?.name}</span>!</p>
+      </div>
 
-      {error && <div style={{ color: 'red', backgroundColor: '#ffebee', padding: '10px', borderRadius: '5px', marginBottom: '15px' }}>{error}</div>}
-      {success && <div style={{ color: 'green', backgroundColor: '#e8f5e8', padding: '15px', borderRadius: '5px', marginBottom: '15px', fontWeight: 'bold' }}>{success}</div>}
+      <div className="alert-container">
+        {error && <div className="alert error-alert">{error}</div>}
+        {success && <div className="alert success-alert">{success}</div>}
+      </div>
 
-      <div style={{ marginBottom: '30px' }}>
+      <div className="tabs-container">
         <TabButton id="dashboard" label="📊 Dashboard" active={activeTab === 'dashboard'} onClick={setActiveTab} />
         <TabButton id="users" label="👥 Users" active={activeTab === 'users'} onClick={setActiveTab} />
         <TabButton id="trips" label="🚗 Trips" active={activeTab === 'trips'} onClick={setActiveTab} />
@@ -254,9 +244,9 @@ const DashboardAdmin = () => {
       </div>
 
       {activeTab === 'dashboard' && (
-        <div>
-          <h2 style={{ marginBottom: '20px' }}>📊 Dashboard Overview</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginBottom: '30px' }}>
+        <div className="dashboard-section">
+          <h2 className="section-title">📊 Dashboard Overview</h2>
+          <div className="stats-grid">
             <StatCard title="Total Users" value={stats.totalUsers || 0} color="#2196F3" icon="👥" />
             <StatCard title="Total Trips" value={stats.totalTrips || 0} color="#4CAF50" icon="🚗" />
             <StatCard title="Total Revenue" value={`₹${(stats.totalRevenue || 0).toFixed(2)}`} color="#FF9800" icon="💰" />
@@ -269,67 +259,50 @@ const DashboardAdmin = () => {
       )}
 
       {activeTab === 'users' && (
-        <div>
-          <h2 style={{ marginBottom: '20px' }}>👥 User Management</h2>
-          <div style={{ backgroundColor: 'white', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <div className="users-section">
+          <h2 className="section-title">👥 User Management</h2>
+          <div className="table-container">
+            <table className="data-table">
               <thead>
-                <tr style={{ backgroundColor: '#f5f5f5' }}>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>ID</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Name</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Email</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Role</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Status</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Verification</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Rating</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Actions</th>
+                <tr className="table-header">
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Verification</th>
+                  <th>Rating</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {users.map((user) => (
-                  <tr key={user.id} style={{ borderBottom: '1px solid #eee' }}>
-                    <td style={{ padding: '12px' }}>{user.id}</td>
-                    <td style={{ padding: '12px' }}>{user.name}</td>
-                    <td style={{ padding: '12px' }}>{user.email}</td>
-                    <td style={{ padding: '12px' }}>
-                      <span style={{
-                        padding: '4px 8px',
-                        borderRadius: '4px',
-                        fontSize: '12px',
-                        backgroundColor: user.role === 'ADMIN' ? '#f44336' : user.role === 'DRIVER' ? '#4CAF50' : '#2196F3',
-                        color: 'white'
-                      }}>
+                  <tr key={user.id} className="table-row">
+                    <td>{user.id}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>
+                      <span className={`role-badge role-${user.role?.toLowerCase()}`}>
                         {user.role}
                       </span>
                     </td>
-                    <td style={{ padding: '12px' }}>
-                      <span style={{ color: user.isActive ? 'green' : 'red' }}>
+                    <td>
+                      <span className={`status-badge ${user.isActive ? 'active' : 'inactive'}`}>
                         {user.isActive ? '✅ Active' : '❌ Inactive'}
                       </span>
                     </td>
-                    <td style={{ padding: '12px' }}>
-                      <span style={{
-                        color: user.verificationStatus === 'VERIFIED' ? 'green' :
-                               user.verificationStatus === 'PENDING' ? 'orange' : 'red'
-                      }}>
+                    <td>
+                      <span className={`verification-badge verification-${user.verificationStatus?.toLowerCase()}`}>
                         {user.verificationStatus}
                       </span>
                     </td>
-                    <td style={{ padding: '12px' }}>{user.avgRating?.toFixed(1) || 'N/A'}</td>
-                    <td style={{ padding: '12px' }}>
-                      <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
+                    <td className="rating-cell">{user.avgRating?.toFixed(1) || 'N/A'}</td>
+                    <td>
+                      <div className="action-buttons">
                         <button
                           onClick={() => handleUserStatusToggle(user.id, user.isActive)}
                           disabled={actionLoading === user.id}
-                          style={{
-                            padding: '4px 8px',
-                            border: 'none',
-                            borderRadius: '3px',
-                            fontSize: '12px',
-                            cursor: 'pointer',
-                            backgroundColor: user.isActive ? '#f44336' : '#4CAF50',
-                            color: 'white'
-                          }}
+                          className={`action-btn status-btn ${user.isActive ? 'deactivate' : 'activate'}`}
                         >
                           {user.isActive ? 'Deactivate' : 'Activate'}
                         </button>
@@ -337,15 +310,7 @@ const DashboardAdmin = () => {
                           <button
                             onClick={() => handleUserVerification(user.id, 'VERIFIED')}
                             disabled={actionLoading === user.id}
-                            style={{
-                              padding: '4px 8px',
-                              border: 'none',
-                              borderRadius: '3px',
-                              fontSize: '12px',
-                              cursor: 'pointer',
-                              backgroundColor: '#4CAF50',
-                              color: 'white'
-                            }}
+                            className="action-btn verify-btn"
                           >
                             Verify
                           </button>
@@ -353,15 +318,7 @@ const DashboardAdmin = () => {
                         <button
                           onClick={() => handleDeleteUser(user.id)}
                           disabled={actionLoading === user.id}
-                          style={{
-                            padding: '4px 8px',
-                            border: 'none',
-                            borderRadius: '3px',
-                            fontSize: '12px',
-                            cursor: 'pointer',
-                            backgroundColor: '#f44336',
-                            color: 'white'
-                          }}
+                          className="action-btn delete-btn"
                         >
                           Delete
                         </button>
@@ -372,19 +329,19 @@ const DashboardAdmin = () => {
               </tbody>
             </table>
           </div>
-          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+          <div className="pagination-container">
             <button
               onClick={() => { setUserPage(p => Math.max(0, p - 1)); loadUsers(Math.max(0, userPage - 1)); }}
               disabled={userPage === 0}
-              style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: userPage === 0 ? '#ccc' : '#4CAF50', color: 'white', cursor: userPage === 0 ? 'not-allowed' : 'pointer' }}
+              className={`pagination-btn ${userPage === 0 ? 'disabled' : ''}`}
             >
               Previous
             </button>
-            <span style={{ margin: '0 15px', fontWeight: 'bold' }}>Page {userPage + 1}</span>
+            <span className="page-indicator">Page {userPage + 1}</span>
             <button
               onClick={() => { setUserPage(p => p + 1); loadUsers(userPage + 1); }}
               disabled={users.length < pageSize}
-              style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: users.length < pageSize ? '#ccc' : '#4CAF50', color: 'white', cursor: users.length < pageSize ? 'not-allowed' : 'pointer' }}
+              className={`pagination-btn ${users.length < pageSize ? 'disabled' : ''}`}
             >
               Next
             </button>
@@ -393,65 +350,48 @@ const DashboardAdmin = () => {
       )}
 
       {activeTab === 'trips' && (
-        <div>
-          <h2 style={{ marginBottom: '20px' }}>🚗 Trip Management</h2>
-          <div style={{ backgroundColor: 'white', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <div className="trips-section">
+          <h2 className="section-title">🚗 Trip Management</h2>
+          <div className="table-container">
+            <table className="data-table">
               <thead>
-                <tr style={{ backgroundColor: '#f5f5f5' }}>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>ID</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Route</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Driver</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Departure</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Price</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Seats</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Status</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Actions</th>
+                <tr className="table-header">
+                  <th>ID</th>
+                  <th>Route</th>
+                  <th>Driver</th>
+                  <th>Departure</th>
+                  <th>Price</th>
+                  <th>Seats</th>
+                  <th>Status</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {trips.length === 0 ? (
                   <tr>
-                    <td colSpan="8" style={{ padding: '20px', textAlign: 'center', color: '#666' }}>
+                    <td colSpan="8" className="no-data-cell">
                       📭 No trips found in database. Check console for debugging info.
                     </td>
                   </tr>
                 ) : (
                   trips.map((trip) => (
-                    <tr key={trip.id} style={{ borderBottom: '1px solid #eee' }}>
-                      <td style={{ padding: '12px' }}>{trip.id}</td>
-                      <td style={{ padding: '12px' }}>{trip.fromLocation} → {trip.toLocation}</td>
-                      <td style={{ padding: '12px' }}>{trip.driverName}</td>
-                      <td style={{ padding: '12px' }}>{new Date(trip.departureTime).toLocaleString()}</td>
-                      <td style={{ padding: '12px' }}>₹{trip.pricePerSeat}</td>
-                      <td style={{ padding: '12px' }}>{trip.availableSeats}/{trip.totalSeats}</td>
-                      <td style={{ padding: '12px' }}>
-                        <span style={{
-                          padding: '4px 8px',
-                          borderRadius: '4px',
-                          fontSize: '12px',
-                          backgroundColor:
-                            trip.status === 'SCHEDULED' ? '#4CAF50' :
-                            trip.status === 'ONGOING' ? '#FF9800' :
-                            trip.status === 'COMPLETED' ? '#2196F3' : '#f44336',
-                          color: 'white'
-                        }}>
+                    <tr key={trip.id} className="table-row">
+                      <td>{trip.id}</td>
+                      <td>{trip.fromLocation} → {trip.toLocation}</td>
+                      <td>{trip.driverName}</td>
+                      <td>{new Date(trip.departureTime).toLocaleString()}</td>
+                      <td className="price-cell">₹{trip.pricePerSeat}</td>
+                      <td className="seats-cell">{trip.availableSeats}/{trip.totalSeats}</td>
+                      <td>
+                        <span className={`trip-status trip-status-${trip.status?.toLowerCase()}`}>
                           {trip.status}
                         </span>
                       </td>
-                      <td style={{ padding: '12px' }}>
+                      <td>
                         <button
                           onClick={() => handleDeleteTrip(trip.id)}
                           disabled={actionLoading === trip.id}
-                          style={{
-                            padding: '4px 8px',
-                            border: 'none',
-                            borderRadius: '3px',
-                            fontSize: '12px',
-                            cursor: 'pointer',
-                            backgroundColor: '#f44336',
-                            color: 'white'
-                          }}
+                          className="action-btn delete-btn"
                         >
                           Delete
                         </button>
@@ -462,19 +402,19 @@ const DashboardAdmin = () => {
               </tbody>
             </table>
           </div>
-          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+          <div className="pagination-container">
             <button
               onClick={() => { setTripPage(p => Math.max(0, p - 1)); loadTrips(Math.max(0, tripPage - 1)); }}
               disabled={tripPage === 0}
-              style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: tripPage === 0 ? '#ccc' : '#4CAF50', color: 'white', cursor: tripPage === 0 ? 'not-allowed' : 'pointer' }}
+              className={`pagination-btn ${tripPage === 0 ? 'disabled' : ''}`}
             >
               Previous
             </button>
-            <span style={{ margin: '0 15px', fontWeight: 'bold' }}>Page {tripPage + 1}</span>
+            <span className="page-indicator">Page {tripPage + 1}</span>
             <button
               onClick={() => { setTripPage(p => p + 1); loadTrips(tripPage + 1); }}
               disabled={trips.length < pageSize}
-              style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: trips.length < pageSize ? '#ccc' : '#4CAF50', color: 'white', cursor: trips.length < pageSize ? 'not-allowed' : 'pointer' }}
+              className={`pagination-btn ${trips.length < pageSize ? 'disabled' : ''}`}
             >
               Next
             </button>
@@ -483,64 +423,55 @@ const DashboardAdmin = () => {
       )}
 
       {activeTab === 'messages' && (
-        <div>
-          <h2 style={{ marginBottom: '20px' }}>💬 Contact Messages</h2>
-          
-          {/* Message Stats */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px', marginBottom: '20px' }}>
+        <div className="messages-section">
+          <h2 className="section-title">💬 Contact Messages</h2>
+
+          <div className="message-stats-grid">
             <StatCard title="New" value={messageStats.new || 0} color="#2196F3" icon="🆕" />
             <StatCard title="In Progress" value={messageStats.inProgress || 0} color="#FF9800" icon="⏳" />
             <StatCard title="Resolved" value={messageStats.resolved || 0} color="#4CAF50" icon="✅" />
             <StatCard title="Closed" value={messageStats.closed || 0} color="#9E9E9E" icon="🔒" />
           </div>
 
-          <div style={{ backgroundColor: 'white', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <div className="table-container">
+            <table className="data-table">
               <thead>
-                <tr style={{ backgroundColor: '#f5f5f5' }}>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>ID</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Name</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Email</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Subject</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Message</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Status</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Date</th>
-                  <th style={{ padding: '12px', textAlign: 'left', borderBottom: '1px solid #ddd' }}>Actions</th>
+                <tr className="table-header">
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Subject</th>
+                  <th>Message</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {messages.length === 0 ? (
                   <tr>
-                    <td colSpan="8" style={{ padding: '20px', textAlign: 'center', color: '#666' }}>
+                    <td colSpan="8" className="no-data-cell">
                       💭 No messages found.
                     </td>
                   </tr>
                 ) : (
                   messages.map((message) => (
-                    <tr key={message.id} style={{ borderBottom: '1px solid #eee' }}>
-                      <td style={{ padding: '12px' }}>{message.id}</td>
-                      <td style={{ padding: '12px' }}>{message.name}</td>
-                      <td style={{ padding: '12px' }}>{message.email}</td>
-                      <td style={{ padding: '12px' }}>{message.subject}</td>
-                      <td style={{ padding: '12px', maxWidth: '200px' }}>
-                        <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={message.message}>
+                    <tr key={message.id} className="table-row">
+                      <td>{message.id}</td>
+                      <td>{message.name}</td>
+                      <td>{message.email}</td>
+                      <td>{message.subject}</td>
+                      <td className="message-cell">
+                        <div className="message-preview" title={message.message}>
                           {message.message}
                         </div>
                       </td>
-                      <td style={{ padding: '12px' }}>
+                      <td>
                         <select
                           value={message.status}
                           onChange={(e) => handleMessageStatusUpdate(message.id, e.target.value)}
                           disabled={actionLoading === message.id}
-                          style={{
-                            padding: '4px 8px',
-                            borderRadius: '4px',
-                            border: '1px solid #ccc',
-                            backgroundColor:
-                              message.status === 'NEW' ? '#e3f2fd' :
-                              message.status === 'IN_PROGRESS' ? '#fff3e0' :
-                              message.status === 'RESOLVED' ? '#e8f5e8' : '#f5f5f5'
-                          }}
+                          className={`status-select status-${message.status?.toLowerCase()}`}
                         >
                           <option value="NEW">New</option>
                           <option value="IN_PROGRESS">In Progress</option>
@@ -548,20 +479,12 @@ const DashboardAdmin = () => {
                           <option value="CLOSED">Closed</option>
                         </select>
                       </td>
-                      <td style={{ padding: '12px' }}>{new Date(message.createdAt).toLocaleDateString()}</td>
-                      <td style={{ padding: '12px' }}>
+                      <td>{new Date(message.createdAt).toLocaleDateString()}</td>
+                      <td>
                         <button
                           onClick={() => handleDeleteMessage(message.id)}
                           disabled={actionLoading === message.id}
-                          style={{
-                            padding: '4px 8px',
-                            border: 'none',
-                            borderRadius: '3px',
-                            fontSize: '12px',
-                            cursor: 'pointer',
-                            backgroundColor: '#f44336',
-                            color: 'white'
-                          }}
+                          className="action-btn delete-btn"
                         >
                           Delete
                         </button>
@@ -572,19 +495,19 @@ const DashboardAdmin = () => {
               </tbody>
             </table>
           </div>
-          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+          <div className="pagination-container">
             <button
               onClick={() => { setMessagePage(p => Math.max(0, p - 1)); loadMessages(Math.max(0, messagePage - 1)); }}
               disabled={messagePage === 0}
-              style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: messagePage === 0 ? '#ccc' : '#4CAF50', color: 'white', cursor: messagePage === 0 ? 'not-allowed' : 'pointer' }}
+              className={`pagination-btn ${messagePage === 0 ? 'disabled' : ''}`}
             >
               Previous
             </button>
-            <span style={{ margin: '0 15px', fontWeight: 'bold' }}>Page {messagePage + 1}</span>
+            <span className="page-indicator">Page {messagePage + 1}</span>
             <button
               onClick={() => { setMessagePage(p => p + 1); loadMessages(messagePage + 1); }}
               disabled={messages.length < pageSize}
-              style={{ padding: '8px 16px', margin: '0 5px', border: 'none', borderRadius: '4px', backgroundColor: messages.length < pageSize ? '#ccc' : '#4CAF50', color: 'white', cursor: messages.length < pageSize ? 'not-allowed' : 'pointer' }}
+              className={`pagination-btn ${messages.length < pageSize ? 'disabled' : ''}`}
             >
               Next
             </button>
@@ -593,66 +516,44 @@ const DashboardAdmin = () => {
       )}
 
       {activeTab === 'notifications' && (
-        <div>
-          <h2 style={{ marginBottom: '20px' }}>🔔 Create Notification</h2>
-          <div style={{
-            backgroundColor: 'white',
-            borderRadius: '8px',
-            padding: '20px',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-            maxWidth: '600px'
-          }}>
-            <form onSubmit={handleSendNotification}>
-              <div style={{ marginBottom: '15px' }}>
-                <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+        <div className="notifications-section">
+          <h2 className="section-title">🔔 Create Notification</h2>
+          <div className="notification-form-container">
+            <form onSubmit={handleSendNotification} className="notification-form">
+              <div className="form-group">
+                <label className="form-label">
                   Notification Title
                 </label>
                 <input
                   type="text"
                   value={notificationTitle}
                   onChange={(e) => setNotificationTitle(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '10px',
-                    borderRadius: '4px',
-                    border: '1px solid #ccc'
-                  }}
+                  className="form-input"
                   placeholder="Enter title"
                 />
               </div>
 
-              <div style={{ marginBottom: '15px' }}>
-                <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              <div className="form-group">
+                <label className="form-label">
                   Notification Message
                 </label>
                 <textarea
                   value={notificationMessage}
                   onChange={(e) => setNotificationMessage(e.target.value)}
                   rows={4}
-                  style={{
-                    width: '100%',
-                    padding: '10px',
-                    borderRadius: '4px',
-                    border: '1px solid #ccc',
-                    resize: 'vertical'
-                  }}
+                  className="form-textarea"
                   placeholder="Enter detailed message"
                 />
               </div>
 
-              <div style={{ marginBottom: '20px' }}>
-                <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              <div className="form-group">
+                <label className="form-label">
                   Target Audience
                 </label>
                 <select
                   value={notificationTarget}
                   onChange={(e) => setNotificationTarget(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '10px',
-                    borderRadius: '4px',
-                    border: '1px solid #ccc'
-                  }}
+                  className="form-select"
                 >
                   <option value="ALL">All Users</option>
                   <option value="DRIVER">Drivers</option>
@@ -663,15 +564,7 @@ const DashboardAdmin = () => {
               <button
                 type="submit"
                 disabled={notificationSubmitting}
-                style={{
-                  padding: '10px 20px',
-                  border: 'none',
-                  borderRadius: '4px',
-                  backgroundColor: notificationSubmitting ? '#ccc' : '#4CAF50',
-                  color: 'white',
-                  cursor: notificationSubmitting ? 'not-allowed' : 'pointer',
-                  fontWeight: 'bold'
-                }}
+                className={`submit-btn ${notificationSubmitting ? 'disabled' : ''}`}
               >
                 {notificationSubmitting ? 'Sending...' : 'Send Notification'}
               </button>
