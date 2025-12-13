@@ -2934,6 +2934,11 @@ function App() {
   padding: 5rem 0;
   background: linear-gradient(135deg, rgba(58, 54, 224, 0.1), rgba(16, 185, 129, 0.1));
 }
+.stats-section .container {
+  max-width: 95%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
 
 .light-theme .stats-section {
   background: linear-gradient(135deg, rgba(58, 54, 224, 0.05), rgba(16, 185, 129, 0.05));
@@ -2941,18 +2946,22 @@ function App() {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+  width: 100%;
 }
+
+
 
 .stat-card {
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 2.5rem 2rem;
+  padding: 5rem 8rem; /* box visually bada */
   text-align: center;
   transition: all 0.3s ease;
 }
+
 
 .light-theme .stat-card {
   background: white;
