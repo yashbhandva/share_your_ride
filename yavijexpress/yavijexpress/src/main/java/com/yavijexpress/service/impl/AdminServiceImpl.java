@@ -22,12 +22,21 @@ public class AdminServiceImpl implements AdminService {
     private final TripRepository tripRepository;
     private final BookingRepository bookingRepository;
     private final ContactMessageRepository contactMessageRepository;
+    private final NotificationRepository notificationRepository;
+    private final RatingRepository ratingRepository;
+    private final EmergencyAlertRepository emergencyAlertRepository;
 
-    public AdminServiceImpl(UserRepository userRepository, TripRepository tripRepository, BookingRepository bookingRepository, ContactMessageRepository contactMessageRepository) {
+    public AdminServiceImpl(UserRepository userRepository, TripRepository tripRepository, 
+                           BookingRepository bookingRepository, ContactMessageRepository contactMessageRepository,
+                           NotificationRepository notificationRepository, RatingRepository ratingRepository,
+                           EmergencyAlertRepository emergencyAlertRepository) {
         this.userRepository = userRepository;
         this.tripRepository = tripRepository;
         this.bookingRepository = bookingRepository;
         this.contactMessageRepository = contactMessageRepository;
+        this.notificationRepository = notificationRepository;
+        this.ratingRepository = ratingRepository;
+        this.emergencyAlertRepository = emergencyAlertRepository;
     }
 
     @Override
@@ -98,7 +107,43 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void deleteUser(Long userId) {
-        userRepository.deleteById(userId);
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        
+        System.out.println("🔄 DEBUG: Starting cascade deletion for user: " + userId + " (" + user.getName() + ")");
+        
+        // Delete related entities first to avoid foreign key constraint violations
+        
+        // Delete user's emergency alerts
+        emergencyAlertRepository.deleteByUserId(userId);
+        System.out.println("✅ DEBUG: Deleted emergency alerts for user: " + userId);
+        
+        // Delete user's notifications
+        notificationRepository.deleteByUser(user);
+        System.out.println("✅ DEBUG: Deleted notifications for user: " + userId);
+        
+        // Delete user's ratings (both given and received)
+        ratingRepository.deleteByGivenBy(user);
+        ratingRepository.deleteByGivenTo(user);
+        System.out.println("✅ DEBUG: Deleted ratings for user: " + userId);
+        
+        // Delete user's bookings (if user is a passenger)
+        bookingRepository.deleteByPassenger(user);
+        System.out.println("✅ DEBUG: Deleted bookings for user: " + userId);
+        
+        // Delete user's trips (if user is a driver)
+        if (user.getRole() == User.UserRole.DRIVER) {
+            tripRepository.deleteByDriver(user);
+            System.out.println("✅ DEBUG: Deleted trips for driver: " + userId);
+        }
+        
+        // Delete user's vehicles
+        user.getVehicles().clear();
+        System.out.println("✅ DEBUG: Cleared vehicles for user: " + userId);
+        
+        // Now delete the user
+        userRepository.delete(user);
+        System.out.println("✅ DEBUG: Successfully deleted user: " + userId);
     }
 
     @Override
