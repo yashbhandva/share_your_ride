@@ -6525,3 +6525,48 @@ Caused by: java.sql.SQLSyntaxErrorException: Duplicate column name 'actions'
 2025-12-13T14:21:24.099+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /
 2025-12-13T14:21:24.099+05:30  WARN 20900 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Missing or invalid Authorization header for: /
 2025-12-13T14:28:22.528+05:30  INFO 20900 --- [yavij-express] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2025-12-13T14:35:22.854+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/users
+2025-12-13T14:35:22.857+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/trips
+2025-12-13T14:35:22.855+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts/stats
+2025-12-13T14:35:22.854+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/dashboard/stats
+2025-12-13T14:35:22.857+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts
+2025-12-13T14:35:23.765+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts
+2025-12-13T14:35:23.765+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/trips
+2025-12-13T14:35:23.765+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts/stats
+2025-12-13T14:35:23.765+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/dashboard/stats
+2025-12-13T14:35:23.766+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/users
+2025-12-13T14:35:24.155+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/trips
+2025-12-13T14:35:24.164+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/users
+2025-12-13T14:35:24.186+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/trips
+2025-12-13T14:35:24.232+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts
+2025-12-13T14:35:24.268+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts
+2025-12-13T14:35:24.320+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/users
+2025-12-13T14:35:24.363+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts/stats
+2025-12-13T14:35:24.392+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/dashboard/stats
+2025-12-13T14:35:24.398+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts/stats
+2025-12-13T14:35:24.424+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/dashboard/stats
+2025-12-13T14:40:13.245+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2025-12-13T14:40:13.295+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/notifications
+2025-12-13T14:40:13.417+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2025-12-13T14:40:13.445+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/notifications
+2025-12-13T14:44:30.753+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/dashboard/stats
+2025-12-13T14:44:30.760+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/users
+2025-12-13T14:44:30.761+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/trips
+2025-12-13T14:44:30.761+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts/stats
+2025-12-13T14:44:30.762+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts
+2025-12-13T14:44:30.793+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts
+2025-12-13T14:44:30.796+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/dashboard/stats
+2025-12-13T14:44:30.797+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts/stats
+2025-12-13T14:44:30.807+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/trips
+2025-12-13T14:44:30.809+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/users
+2025-12-13T14:44:30.858+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts
+2025-12-13T14:44:30.857+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/users
+2025-12-13T14:44:30.870+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/trips
+2025-12-13T14:44:30.895+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts
+2025-12-13T14:44:30.905+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/trips
+2025-12-13T14:44:30.911+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/users
+2025-12-13T14:44:30.946+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts/stats
+2025-12-13T14:44:31.082+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts/stats
+2025-12-13T14:44:31.086+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/dashboard/stats
+2025-12-13T14:44:31.108+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/dashboard/stats
+2025-12-13T14:58:22.601+05:30  INFO 20900 --- [yavij-express] [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 0, completed tasks = 2]
