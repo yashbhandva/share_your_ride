@@ -7420,3 +7420,108 @@ Caused by: java.sql.SQLSyntaxErrorException: Duplicate column name 'actions'
 2025-12-13T22:23:15.500+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/profile
 2025-12-13T22:23:15.964+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
 2025-12-13T22:23:16.109+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/auth/profile
+2025-12-13T22:29:45.417+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2025-12-13T22:29:45.417+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2025-12-13T22:29:46.687+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-13T22:29:46.687+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
+2025-12-13T22:29:47.154+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2025-12-13T22:29:47.241+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
+2025-12-13T22:29:48.846+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2025-12-13T22:29:49.036+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-13T22:29:53.725+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/trips/search
+2025-12-13T22:29:53.781+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/search
+2025-12-13T22:30:10.762+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/bookings
+2025-12-13T22:30:10.863+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings
+2025-12-13T22:30:11.214+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2025-12-13T22:30:11.219+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2025-12-13T22:30:11.276+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
+2025-12-13T22:30:11.284+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-13T22:30:27.269+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2025-12-13T22:30:28.929+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/dashboard/stats
+2025-12-13T22:30:28.939+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/users
+2025-12-13T22:30:28.946+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/trips
+2025-12-13T22:30:28.954+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts
+2025-12-13T22:30:28.965+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/dashboard/stats
+2025-12-13T22:30:28.973+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts/stats
+2025-12-13T22:30:29.007+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts
+2025-12-13T22:30:29.021+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/trips
+2025-12-13T22:30:29.034+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/users
+2025-12-13T22:30:29.036+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts/stats
+2025-12-13T22:30:29.054+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts
+2025-12-13T22:30:29.085+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/trips
+2025-12-13T22:30:29.086+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/users
+2025-12-13T22:30:29.086+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts
+2025-12-13T22:30:29.146+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/users
+2025-12-13T22:30:29.166+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/dashboard/stats
+2025-12-13T22:30:29.191+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/trips
+2025-12-13T22:30:29.207+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/dashboard/stats
+2025-12-13T22:30:29.209+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts/stats
+2025-12-13T22:30:29.241+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts/stats
+2025-12-13T22:30:45.258+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2025-12-13T22:30:46.794+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/4
+2025-12-13T22:30:46.810+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/4
+2025-12-13T22:30:46.811+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/4
+2025-12-13T22:30:46.815+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/driver/4
+2025-12-13T22:30:46.830+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/vehicles/user/4
+2025-12-13T22:30:46.841+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/driver/4
+2025-12-13T22:30:46.853+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/4
+2025-12-13T22:30:46.873+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/4
+2025-12-13T22:30:46.877+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/driver/4
+2025-12-13T22:30:46.909+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/vehicles/user/4
+2025-12-13T22:30:46.935+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/4
+2025-12-13T22:30:46.982+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/driver/4
+2025-12-13T22:30:51.794+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/bookings/13/confirm
+2025-12-13T22:30:51.827+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/13/confirm
+2025-12-13T22:30:51.977+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/4
+2025-12-13T22:30:52.016+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/driver/4
+2025-12-13T22:31:11.471+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2025-12-13T22:31:13.071+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2025-12-13T22:31:13.075+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2025-12-13T22:31:13.093+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-13T22:31:13.096+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
+2025-12-13T22:31:13.132+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2025-12-13T22:31:13.160+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
+2025-12-13T22:31:13.162+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2025-12-13T22:31:13.185+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-13T22:33:20.784+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2025-12-13T22:33:20.787+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2025-12-13T22:33:24.754+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
+2025-12-13T22:33:24.756+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-13T22:33:24.905+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2025-12-13T22:33:25.038+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
+2025-12-13T22:33:25.098+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2025-12-13T22:33:25.177+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-13T22:34:05.422+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2025-12-13T22:34:07.018+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2025-12-13T22:34:07.197+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2025-12-13T22:34:07.262+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
+2025-12-13T22:34:07.286+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-13T22:34:07.309+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2025-12-13T22:34:07.391+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/trips/upcoming
+2025-12-13T22:34:07.499+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2025-12-13T22:34:07.549+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yy@gmail.com for /api/bookings/passenger/8
+2025-12-13T22:34:21.349+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2025-12-13T22:34:23.008+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/4
+2025-12-13T22:34:23.012+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/4
+2025-12-13T22:34:23.013+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/4
+2025-12-13T22:34:23.043+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/driver/4
+2025-12-13T22:34:23.045+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/driver/4
+2025-12-13T22:34:23.045+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/vehicles/user/4
+2025-12-13T22:34:23.096+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/4
+2025-12-13T22:34:23.127+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/vehicles/user/4
+2025-12-13T22:34:23.183+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/4
+2025-12-13T22:34:23.183+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/4
+2025-12-13T22:34:23.204+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/driver/4
+2025-12-13T22:34:23.205+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/driver/4
+2025-12-13T22:34:29.765+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/bookings/verify-otp
+2025-12-13T22:34:29.793+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/verify-otp
+2025-12-13T22:34:30.141+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/4
+2025-12-13T22:34:30.177+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/driver/4
+2025-12-13T22:34:30.222+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/4
+2025-12-13T22:34:30.271+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/driver/4
+2025-12-13T22:34:44.488+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/bookings/verify-otp
+2025-12-13T22:34:44.560+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/verify-otp
+2025-12-13T22:35:05.052+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: DELETE /api/trips/8/delete
+2025-12-13T22:35:05.104+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/8/delete
+2025-12-13T22:35:05.292+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/4
+2025-12-13T22:35:05.337+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/driver/4
