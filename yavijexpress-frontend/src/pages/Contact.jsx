@@ -340,7 +340,7 @@ const Contact = () => {
             <div className="emergency-text">
               <h3>Emergency Support</h3>
               <p>Need immediate assistance? Call our 24/7 emergency line</p>
-              <a href="tel:+911800123456" className="emergency-phone">
+              <a href="tel:+91 95125 70683" className="emergency-phone">
                 📞 1800-123-456
               </a>
             </div>
