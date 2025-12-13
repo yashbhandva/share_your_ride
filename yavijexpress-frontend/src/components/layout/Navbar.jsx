@@ -18,6 +18,10 @@ import {
   FaSun
 } from "react-icons/fa";
 
+// TERA CUSTOM LOGO IMPORT KARNA
+import customLogo from "/img/logo.jpg.png"; // Tera logo path
+// Ya fir: import customLogo from "/images/logo.png";
+
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
   const location = useLocation();
@@ -87,10 +91,30 @@ const Navbar = () => {
         <div className="navbar-left">
           <Link to="/" className="navbar-brand">
             <div className="brand-logo">
-              <div className="logo-icon">🚖</div>
+              {/* TERA CUSTOM LOGO YAHAN */}
+              <div className="logo-container">
+                <img
+                  src={customLogo}
+                  alt="YaVij Express Logo"
+                  className="custom-logo"
+                  onError={(e) => {
+                    // If logo fails to load, show fallback
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = `
+                      <div class="logo-fallback">
+                        <div class="logo-icon">🚖</div>
+                      </div>
+                    `;
+                  }}
+                />
+                {/* Loading State */}
+                <div className="logo-loader"></div>
+              </div>
+
               <div className="brand-text">
                 <span className="brand-primary">YaVij</span>
                 <span className="brand-secondary">Express</span>
+                <div className="brand-tagline">Ride with Confidence</div>
               </div>
             </div>
           </Link>
@@ -194,20 +218,22 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <div className={`mobile-menu ${isMenuOpen ? "open" : ""}`}>
           <div className="mobile-menu-header">
-            <div className="mobile-user-info">
-              {user ? (
-                <>
-                  <div className="mobile-avatar">
-                    {user.name?.charAt(0) || user.email?.charAt(0) || "U"}
-                  </div>
-                  <div>
-                    <div className="mobile-user-name">{user.name || "User"}</div>
-                    <div className="mobile-user-email">{user.email}</div>
-                  </div>
-                </>
-              ) : (
-                <div className="welcome-text">Welcome to YaVij Express</div>
-              )}
+            <div className="mobile-brand">
+              <img
+                src={customLogo}
+                alt="YaVij Express Logo"
+                className="mobile-logo"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.parentElement.innerHTML = `
+                    <div class="mobile-logo-fallback">🚖</div>
+                  `;
+                }}
+              />
+              <div className="mobile-brand-text">
+                <div className="mobile-brand-primary">YaVij Express</div>
+                <div className="mobile-brand-tagline">Ride with Confidence</div>
+              </div>
             </div>
           </div>
 
