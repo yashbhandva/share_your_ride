@@ -25,6 +25,7 @@ const Profile = lazy(() => import("./pages/Profile.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 const PrivacyPolicy = lazy(() => import("./pages/Privacy-Policy.jsx"));
 const TermOfService = lazy(() => import("./pages/Terms.jsx"));
+const Faq = lazy(() => import("./pages/faq.jsx"));
 
 
 const App = () => {
@@ -234,6 +235,14 @@ const App = () => {
                               }
                    />
 
+                <Route
+                    path="/faq"
+                    element={
+                        <RouteTransition>
+                            <Faq />
+                        </RouteTransition>
+                    }
+                />
                 </Route>
 
                 {/* 404 - Not Found */}
