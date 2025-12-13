@@ -7539,3 +7539,9 @@ Caused by: java.sql.SQLSyntaxErrorException: Duplicate column name 'actions'
 2025-12-13T23:10:48.551+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/driver/4
 2025-12-13T23:10:48.569+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/4
 2025-12-13T23:10:48.659+05:30 DEBUG 4844 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/driver/4
+2025-12-13T23:13:57.717+05:30  INFO 4844 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-12-13T23:13:57.718+05:30  INFO 4844 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@12c53d97]]
+2025-12-13T23:13:57.720+05:30  INFO 4844 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-12-13T23:13:57.934+05:30  INFO 4844 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-13T23:13:58.038+05:30  INFO 4844 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-13T23:13:58.067+05:30  INFO 4844 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
