@@ -82,9 +82,9 @@ const Footer = () => {
             </li>
             <li>
               <FaHeadset className="link-icon" />
-              <a href="#">24/7 Support</a>
+              <a href="/contact">24/7 Support</a>
             </li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="/faq">FAQ</a></li>
             <li><a href="#">Careers</a></li>
           </ul>
         </div>
