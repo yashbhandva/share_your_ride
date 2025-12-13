@@ -6492,3 +6492,35 @@ Caused by: java.sql.SQLSyntaxErrorException: Duplicate column name 'actions'
 2025-12-13T14:14:05.093+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/trips
 2025-12-13T14:14:05.092+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/dashboard/stats
 2025-12-13T14:14:05.109+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/dashboard/stats
+2025-12-13T14:20:32.769+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /
+2025-12-13T14:20:32.841+05:30  WARN 20900 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Missing or invalid Authorization header for: /
+2025-12-13T14:20:53.123+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /HNAP1/
+2025-12-13T14:20:53.124+05:30  WARN 20900 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Missing or invalid Authorization header for: /HNAP1/
+2025-12-13T14:20:56.667+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /loginMsg.js
+2025-12-13T14:20:56.667+05:30  WARN 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Missing or invalid Authorization header for: /loginMsg.js
+2025-12-13T14:20:56.694+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /cgi/get.cgi
+2025-12-13T14:20:56.696+05:30  WARN 20900 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Missing or invalid Authorization header for: /cgi/get.cgi
+2025-12-13T14:21:07.762+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/contact
+2025-12-13T14:21:08.165+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/contact
+2025-12-13T14:21:18.813+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/dashboard/stats
+2025-12-13T14:21:18.829+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/users
+2025-12-13T14:21:18.829+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/trips
+2025-12-13T14:21:18.834+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts
+2025-12-13T14:21:18.854+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts/stats
+2025-12-13T14:21:18.913+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/dashboard/stats
+2025-12-13T14:21:18.913+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/trips
+2025-12-13T14:21:18.918+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/users
+2025-12-13T14:21:18.932+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts/stats
+2025-12-13T14:21:18.949+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts
+2025-12-13T14:21:19.014+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts
+2025-12-13T14:21:19.015+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/users
+2025-12-13T14:21:19.024+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/trips
+2025-12-13T14:21:19.077+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts
+2025-12-13T14:21:19.085+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/users
+2025-12-13T14:21:19.087+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/trips
+2025-12-13T14:21:19.145+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts/stats
+2025-12-13T14:21:19.175+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/dashboard/stats
+2025-12-13T14:21:19.198+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/contacts/stats
+2025-12-13T14:21:19.215+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: y01@gmail.com for /api/admin/dashboard/stats
+2025-12-13T14:21:24.099+05:30 DEBUG 20900 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /
+2025-12-13T14:21:24.099+05:30  WARN 20900 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Missing or invalid Authorization header for: /
