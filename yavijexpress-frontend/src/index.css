@@ -1342,118 +1342,268 @@ button {
  .light-theme .search-input:focus + .search-icon {
    color: var(--quantum-blue);
  }
+/* ===== QUANTUM UNIVERSE FOOTER ===== */
+:root {
+  --quantum-blue: #3A36E0;
+  --quantum-green: #10B981;
+  --quantum-gold: #F59E0B;
+  --quantum-purple: #8B5CF6;
+  --quantum-pink: #EC4899;
+  --dark-bg: #0F172A;
+  --darker-bg: #020617;
+  --light-text: #E2E8F0;
+  --glass-bg: rgba(30, 41, 59, 0.95);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --smooth-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --quantum-timing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --footer-glow: 0 0 40px rgba(58, 54, 224, 0.3);
+}
 
-/* ===== FOOTER STYLES ===== */
+/* QUANTUM FOOTER UNIVERSE */
 .footer {
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-  color: #E2E8F0;
-  padding: 3rem 1rem 1rem;
+  background: linear-gradient(180deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+  color: var(--light-text);
+  padding: 5rem 1rem 2rem;
   margin-top: auto;
   position: relative;
   overflow: hidden;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
+/* Quantum Energy Barrier */
 .footer::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #3A36E0, #10B981);
+  height: 6px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--quantum-blue),
+    var(--quantum-green),
+    var(--quantum-purple),
+    transparent);
+  animation: energy-barrier 4s linear infinite;
+  z-index: 2;
+}
+
+@keyframes energy-barrier {
+  0% { background-position: -100% 0; opacity: 0.3; }
+  50% { background-position: 200% 0; opacity: 0.7; }
+  100% { background-position: -100% 0; opacity: 0.3; }
+}
+
+/* Quantum Particle Field */
+.footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(58, 54, 224, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 90%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+    repeating-linear-gradient(45deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.01) 2px,
+      rgba(255, 255, 255, 0.01) 4px);
+  animation: quantum-field 30s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes quantum-field {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1); }
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2.5rem;
-  padding: 0 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 4rem;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  animation: footer-entrance 1s var(--quantum-timing);
+}
+
+@keyframes footer-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .footer-section {
-  animation: slideUp 0.6s ease-out;
+  animation: section-float 1s var(--quantum-timing) both;
 }
 
+@keyframes section-float {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.footer-section:nth-child(1) { animation-delay: 0.1s; }
+.footer-section:nth-child(2) { animation-delay: 0.2s; }
+.footer-section:nth-child(3) { animation-delay: 0.3s; }
+.footer-section:nth-child(4) { animation-delay: 0.4s; }
+.footer-section:nth-child(5) { animation-delay: 0.5s; }
+
+/* QUANTUM BRAND SECTION */
 .company-info {
   grid-column: 1 / -1;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .company-info {
     grid-column: span 2;
   }
   .footer-container {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 2fr 1fr 1fr 1fr;
   }
 }
 
+/* QUANTUM LOGO - STABLE */
 .footer-logo {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
 }
 
 .logo-text {
-  font-size: 2.2rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #FFFFFF, #60A5FA);
+  font-size: 2.8rem;
+  font-weight: 900;
+  background: linear-gradient(90deg,
+    #FFFFFF,
+    var(--quantum-blue),
+    var(--quantum-green));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 0.5rem;
+  background-size: 200% 200%;
+  animation: none !important;
+  transition: none !important;
+  margin-bottom: 0.8rem;
+  display: inline-block;
 }
 
 .logo-highlight {
-  color: #10B981;
-  -webkit-text-fill-color: #10B981;
+  color: var(--quantum-green);
+  -webkit-text-fill-color: var(--quantum-green);
 }
 
 .footer-tagline {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   color: #94A3B8;
   font-style: italic;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  animation: tagline-fade 2s ease-in-out infinite alternate;
+}
+
+@keyframes tagline-fade {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
 }
 
 .footer-description {
   color: #CBD5E1;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+  max-width: 500px;
 }
 
+/* QUANTUM SOCIAL UNIVERSE */
 .social-links {
   display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  animation: social-orbit 1s 0.6s both;
+}
+
+@keyframes social-orbit {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .social-icon {
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #E2E8F0;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.3rem;
+  transition: all 0.4s var(--smooth-ease);
+  border: 1px solid var(--glass-border);
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent);
+  transition: left 0.7s;
+}
+
+.social-icon:hover::before {
+  left: 100%;
 }
 
 .social-icon:hover {
-  background: #3A36E0;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(58, 54, 224, 0.4);
+  background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-green));
+  transform: translateY(-8px) scale(1.1);
+  box-shadow:
+    0 15px 40px rgba(58, 54, 224, 0.4),
+    var(--footer-glow);
+  border-color: transparent;
 }
 
+/* QUANTUM NAVIGATION COLUMNS */
 .footer-heading {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
   color: #FFFFFF;
   position: relative;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
 .footer-heading::after {
@@ -1461,60 +1611,137 @@ button {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 40px;
-  height: 2px;
-  background: #10B981;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--quantum-blue), var(--quantum-green));
+  border-radius: 2px;
+  animation: heading-line 3s ease-in-out infinite alternate;
+}
+
+@keyframes heading-line {
+  0% { width: 60px; }
+  100% { width: 120px; }
 }
 
 .footer-links {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-links li {
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 0.5rem 0;
+}
+
+.footer-links li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent);
+  transition: left 0.6s;
+}
+
+.footer-links li:hover::before {
+  left: 100%;
 }
 
 .footer-links a {
   color: #CBD5E1;
   text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
+  transition: all 0.4s var(--smooth-ease);
+  font-size: 1rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  position: relative;
+  z-index: 2;
 }
 
 .footer-links a:hover {
-  color: #60A5FA;
-  transform: translateX(5px);
+  color: var(--quantum-blue);
+  transform: translateX(10px);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .link-icon {
-  font-size: 0.9rem;
-  color: #10B981;
+  font-size: 1rem;
+  color: var(--quantum-green);
   flex-shrink: 0;
+  transition: all 0.3s;
 }
 
+.footer-links a:hover .link-icon {
+  color: var(--quantum-blue);
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* QUANTUM DIVIDER - ENERGY FLOW */
 .footer-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  margin: 2.5rem auto;
-  max-width: 1200px;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    var(--quantum-blue),
+    var(--quantum-green),
+    rgba(255, 255, 255, 0.1),
+    transparent);
+  margin: 5rem auto 3rem;
+  max-width: 1400px;
+  border-radius: 2px;
+  animation: divider-flow 3s linear infinite;
 }
 
+@keyframes divider-flow {
+  0% {
+    background-position: -100% 0;
+    opacity: 0.5;
+  }
+  100% {
+    background-position: 200% 0;
+    opacity: 1;
+  }
+}
+
+/* QUANTUM BOTTOM SECTION */
 .footer-bottom {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2.5rem;
   align-items: center;
   justify-content: space-between;
+  animation: bottom-rise 1s 0.8s both;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes bottom-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (min-width: 768px) {
@@ -1523,128 +1750,289 @@ button {
   }
 }
 
+/* QUANTUM COPYRIGHT UNIVERSE */
 .footer-copyright {
   color: #94A3B8;
-  font-size: 0.9rem;
+  font-size: 1rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
+  animation: copyright-fade 2s ease-in-out infinite alternate;
+}
+
+@keyframes copyright-fade {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
 }
 
 .made-with {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
   color: #F87171;
+  font-weight: 600;
 }
 
 .heart-icon {
   color: #F87171;
-  animation: pulse 1.5s infinite;
+  animation: heart-pulse 1.5s ease-in-out infinite;
 }
 
+@keyframes heart-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(248, 113, 113, 0.3));
+  }
+  50% {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 15px rgba(248, 113, 113, 0.6));
+  }
+}
+
+/* QUANTUM ACTIONS UNIVERSE */
 .footer-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: center;
   justify-content: center;
 }
 
+/* Quantum Back to Top */
 .back-to-top {
-  background: rgba(58, 54, 224, 0.2);
-  color: #60A5FA;
-  border: 1px solid rgba(58, 54, 224, 0.4);
-  padding: 0.6rem 1.2rem;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  color: var(--quantum-blue);
+  border: 1px solid var(--glass-border);
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.back-to-top:hover {
-  background: #3A36E0;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(58, 54, 224, 0.3);
-}
-
-.app-version {
+  transition: all 0.4s var(--smooth-ease);
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  padding: 0.5rem 1rem;
-  background: rgba(16, 185, 129, 0.1);
-  border-radius: 20px;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  animation: top-pulse 3s ease-in-out infinite alternate;
+  transform: translateZ(0);
+}
+
+@keyframes top-pulse {
+  0% {
+    box-shadow: 0 5px 20px rgba(58, 54, 224, 0.2);
+  }
+  100% {
+    box-shadow: 0 10px 30px rgba(58, 54, 224, 0.4);
+  }
+}
+
+.back-to-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent);
+  transition: left 0.7s;
+  z-index: -1;
+}
+
+.back-to-top:hover::before {
+  left: 100%;
+}
+
+.back-to-top:hover {
+  background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-green));
+  color: white;
+  transform: translateY(-8px);
+  border-color: transparent;
+  animation: top-hover 0.6s var(--quantum-timing);
+}
+
+@keyframes top-hover {
+  0% { transform: translateY(-8px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(-8px); }
+}
+
+/* Quantum Version Badge */
+.app-version {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 1.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  border: 1px solid var(--glass-border);
+  animation: version-float 2s ease-in-out infinite alternate;
+}
+
+@keyframes version-float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
 }
 
 .version-badge {
-  background: #10B981;
+  background: linear-gradient(135deg, var(--quantum-green), var(--quantum-blue));
   color: white;
-  padding: 0.2rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  animation: badge-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes badge-glow {
+  0% {
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+  }
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #10B981;
+  background: var(--quantum-green);
   position: relative;
+  flex-shrink: 0;
 }
 
 .status-dot.online::after {
   content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
   border-radius: 50%;
   background: rgba(16, 185, 129, 0.3);
-  animation: pulse 2s infinite;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.5); opacity: 0.6; }
 }
 
 .status-text {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #94A3B8;
+  font-weight: 600;
 }
 
+/* QUANTUM CONTACT PORTAL */
 .contact-float {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: linear-gradient(135deg, #3A36E0, #10B981);
+  bottom: 40px;
+  right: 40px;
+  background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-green));
   color: white;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.2rem;
+  gap: 0.3rem;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(58, 54, 224, 0.4);
-  transition: all 0.3s ease;
-  z-index: 1000;
+  box-shadow:
+    0 10px 40px rgba(58, 54, 224, 0.4),
+    var(--footer-glow);
+  transition: all 0.6s var(--quantum-timing);
+  z-index: 10000;
   overflow: hidden;
+  animation: contact-float 3s ease-in-out infinite alternate;
+  transform: translateZ(0);
+}
+
+@keyframes contact-float {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow:
+      0 10px 40px rgba(58, 54, 224, 0.4),
+      var(--footer-glow);
+  }
+  100% {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow:
+      0 20px 60px rgba(58, 54, 224, 0.6),
+      var(--footer-glow);
+  }
+}
+
+.contact-float::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent);
+  transition: left 0.8s;
+}
+
+.contact-float:hover::before {
+  left: 100%;
 }
 
 .contact-float:hover {
-  width: 160px;
-  border-radius: 30px;
-  gap: 0.5rem;
+  width: 200px;
+  border-radius: 40px;
+  gap: 0.8rem;
+  padding: 0 2rem;
+  animation: contact-expand 0.6s var(--quantum-timing);
+}
+
+@keyframes contact-expand {
+  0% {
+    width: 70px;
+    border-radius: 50%;
+  }
+  100% {
+    width: 200px;
+    border-radius: 40px;
+  }
+}
+
+.contact-float svg {
+  font-size: 1.6rem;
+  transition: all 0.4s var(--smooth-ease);
+  flex-shrink: 0;
+}
+
+.contact-float:hover svg {
+  transform: rotate(360deg) scale(1.2);
+}
+
+.float-text {
+  font-size: 0.9rem;
+  font-weight: 800;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.4s var(--smooth-ease);
+  white-space: nowrap;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .contact-float:hover .float-text {
@@ -1652,50 +2040,44 @@ button {
   transform: translateY(0);
 }
 
-.contact-float svg {
-  font-size: 1.4rem;
-  transition: all 0.3s ease;
-}
-
-.float-text {
-  font-size: 0.8rem;
-  font-weight: 600;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-/* Dark/Light Theme Variations */
-:root {
-  --footer-bg-light: #FFFFFF;
-  --footer-text-light: #374151;
-  --footer-border-light: #E5E7EB;
-}
-
+/* QUANTUM LIGHT THEME */
 .light-theme .footer {
-  background: var(--footer-bg-light);
-  color: var(--footer-text-light);
-  border-top: 1px solid var(--footer-border-light);
+  background: linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 100%);
+  color: var(--darker-bg);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .light-theme .footer::before {
-  background: linear-gradient(90deg, #3A36E0, #10B981);
+  background: linear-gradient(90deg,
+    transparent,
+    var(--quantum-blue),
+    var(--quantum-green),
+    var(--quantum-purple),
+    transparent);
+}
+
+.light-theme .footer::after {
+  opacity: 0.1;
+}
+
+.light-theme .logo-text {
+  background: linear-gradient(90deg, var(--darker-bg), var(--quantum-blue), var(--quantum-green));
 }
 
 .light-theme .social-icon {
-  background: #F3F4F6;
-  color: #4B5563;
-  border-color: #E5E7EB;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--darker-bg);
+  backdrop-filter: blur(20px);
 }
 
 .light-theme .social-icon:hover {
-  background: #3A36E0;
+  background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-green));
   color: white;
 }
 
 .light-theme .footer-heading {
-  color: #111827;
+  color: var(--darker-bg);
 }
 
 .light-theme .footer-links a {
@@ -1703,11 +2085,18 @@ button {
 }
 
 .light-theme .footer-links a:hover {
-  color: #3A36E0;
+  color: var(--quantum-blue);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .light-theme .footer-divider {
-  background: linear-gradient(90deg, transparent, #E5E7EB, transparent);
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(0, 0, 0, 0.1),
+    var(--quantum-blue),
+    var(--quantum-green),
+    rgba(0, 0, 0, 0.1),
+    transparent);
 }
 
 .light-theme .footer-copyright {
@@ -1715,310 +2104,303 @@ button {
 }
 
 .light-theme .back-to-top {
-  background: #F3F4F6;
-  color: #4B5563;
-  border-color: #D1D5DB;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--darker-bg);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
 }
 
 .light-theme .back-to-top:hover {
-  background: #3A36E0;
+  background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-green));
   color: white;
 }
 
 .light-theme .app-version {
-  background: #ECFDF5;
-  border-color: #A7F3D0;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+.light-theme .contact-float {
+  box-shadow:
+    0 10px 40px rgba(58, 54, 224, 0.3),
+    0 0 30px rgba(58, 54, 224, 0.2);
+}
+
+/* QUANTUM RESPONSIVE SYSTEM */
+@media (max-width: 1200px) {
+  .footer-container {
+    gap: 3rem;
+    padding: 0 1.5rem;
   }
-  to {
+
+  .footer {
+    padding: 4rem 1rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 0 1rem;
+  }
+
+  .company-info {
+    grid-column: 1;
+  }
+
+  .footer {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .logo-text {
+    font-size: 2.2rem;
+  }
+
+  .footer-heading {
+    font-size: 1.2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .contact-float {
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .contact-float:hover {
+    width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 1.8rem;
+  }
+
+  .footer-tagline {
+    font-size: 1rem;
+  }
+
+  .social-links {
+    gap: 1rem;
+  }
+
+  .social-icon {
+    width: 46px;
+    height: 46px;
+    font-size: 1.1rem;
+  }
+
+  .contact-float {
+    bottom: 15px;
+    right: 15px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .contact-float:hover {
+    width: 160px;
+  }
+
+  .float-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* QUANTUM PERFORMANCE OPTIMIZATIONS */
+.footer,
+.footer-container,
+.footer-section,
+.social-icon,
+.back-to-top,
+.app-version,
+.contact-float {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* QUANTUM REDUCED MOTION SUPPORT */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .footer::before,
+  .footer::after,
+  .heart-icon,
+  .contact-float,
+  .back-to-top,
+  .app-version {
+    animation: none !important;
+  }
+
+  .social-icon:hover,
+  .back-to-top:hover,
+  .contact-float:hover,
+  .footer-links a:hover {
+    transform: none !important;
+  }
+}
+
+/* QUANTUM FOOTER ANIMATION SEQUENCE */
+.footer {
+  animation: footer-quantum 0.8s var(--quantum-timing);
+}
+
+@keyframes footer-quantum {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes slideUp {
-  from {
+/* QUANTUM NEWSLETTER SECTION */
+.newsletter-section {
+  margin-top: 2rem;
+  animation: newsletter-appear 1s 0.7s both;
+}
+
+@keyframes newsletter-appear {
+  0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(30px) scale(0.9);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+.newsletter-title {
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
 
-.fade-in {
-  animation: fadeIn 0.8s ease-out;
-}
-/* ===== AUTH CONTEXT STYLES ===== */
-.auth-loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+.newsletter-form {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
+  gap: 0.5rem;
+  max-width: 400px;
 }
 
-.auth-loader {
-  text-align: center;
-  color: white;
-}
-
-.loader-spinner {
-  width: 60px;
-  height: 60px;
-  border: 4px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  border-top-color: #3A36E0;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 1.5rem;
-}
-
-.auth-loader p {
-  font-size: 1rem;
-  color: #94A3B8;
-  letter-spacing: 0.5px;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Session Warning Notification */
-.session-warning-notification {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: linear-gradient(135deg, #F59E0B, #F97316);
-  color: white;
-  padding: 1rem 1.5rem;
+.newsletter-input {
+  flex: 1;
+  padding: 0.9rem 1.2rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
-  z-index: 9998;
-  animation: slideInRight 0.3s ease-out;
-  max-width: 400px;
-  border-left: 4px solid #D97706;
-}
-
-.session-warning-content {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.session-warning-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.session-warning-text h4 {
-  margin: 0 0 0.3rem 0;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.session-warning-text p {
-  margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-.session-warning-actions {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.8rem;
-}
-
-.session-warning-btn {
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  border: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.session-warning-btn.primary {
-  background: white;
-  color: #F59E0B;
-}
-
-.session-warning-btn.secondary {
-  background: transparent;
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.95rem;
+  transition: all 0.3s;
 }
 
-.session-warning-btn:hover {
+.newsletter-input:focus {
+  outline: none;
+  border-color: var(--quantum-blue);
+  box-shadow: 0 0 0 3px rgba(58, 54, 224, 0.2);
+}
+
+.newsletter-btn {
+  background: linear-gradient(135deg, var(--quantum-blue), var(--quantum-green));
+  color: white;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.newsletter-btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(58, 54, 224, 0.4);
 }
 
-/* Session Expired Modal */
-.session-expired-modal {
+.light-theme .newsletter-title {
+  color: var(--darker-bg);
+}
+
+.light-theme .newsletter-input {
+  background: white;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: var(--darker-bg);
+}
+
+/* QUANTUM SCROLL PROGRESS */
+.scroll-progress {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--quantum-blue),
+    var(--quantum-green),
+    var(--quantum-purple));
+  transform-origin: 0%;
+  z-index: 10001;
+  animation: progress-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes progress-glow {
+  0% {
+    box-shadow: 0 0 10px rgba(58, 54, 224, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(58, 54, 224, 0.6);
+  }
+}
+
+/* QUANTUM FOOTER WAVES */
+.footer-waves {
+  position: absolute;
   bottom: 0;
-  background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-  animation: fadeIn 0.3s ease-out;
+  left: 0;
+  right: 0;
+  height: 100px;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.session-expired-content {
-  background: rgba(30, 41, 59, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 2.5rem;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  animation: slideUp 0.4s ease-out;
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path fill="rgba(58, 54, 224, 0.1)" d="M0 32l48 42.7C96 107 192 149 288 154.7 384 160 480 128 576 122.7 672 117 768 139 864 149.3 960 160 1056 160 1152 138.7 1248 117 1344 75 1440 11.3 1488-16L1536-43v163H0z"></path></svg>');
+  animation: wave 10s linear infinite;
+  opacity: 0.5;
 }
 
-.session-expired-icon {
-  font-size: 3rem;
-  color: #EF4444;
-  margin-bottom: 1.5rem;
+.wave:nth-child(2) {
+  animation: wave 15s linear infinite;
+  opacity: 0.3;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path fill="rgba(16, 185, 129, 0.1)" d="M0 32l48 42.7C96 107 192 149 288 154.7 384 160 480 128 576 122.7 672 117 768 139 864 149.3 960 160 1056 160 1152 138.7 1248 117 1344 75 1440 11.3 1488-16L1536-43v163H0z"></path></svg>');
 }
 
-.session-expired-title {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0.8rem;
-}
-
-.session-expired-message {
-  color: #94A3B8;
-  margin-bottom: 2rem;
-  line-height: 1.5;
-}
-
-.session-expired-btn {
-  background: linear-gradient(135deg, #3A36E0, #10B981);
-  color: white;
-  border: none;
-  padding: 0.8rem 2rem;
-  border-radius: 25px;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.session-expired-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(58, 54, 224, 0.4);
-}
-
-/* Light Theme Variations */
-.light-theme .auth-loading-screen {
-  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
-}
-
-.light-theme .auth-loader p {
-  color: #64748B;
-}
-
-.light-theme .loader-spinner {
-  border-color: rgba(0, 0, 0, 0.1);
-  border-top-color: #3A36E0;
-}
-
-.light-theme .session-warning-notification {
-  background: linear-gradient(135deg, #FEF3C7, #FDE68A);
-  color: #92400E;
-  border-left-color: #F59E0B;
-}
-
-.light-theme .session-warning-btn.primary {
-  color: #92400E;
-}
-
-.light-theme .session-warning-btn.secondary {
-  color: #92400E;
-  border-color: rgba(146, 64, 14, 0.3);
-}
-
-.light-theme .session-expired-modal {
-  background: rgba(255, 255, 255, 0.95);
-}
-
-.light-theme .session-expired-content {
-  background: white;
-  border-color: #E5E7EB;
-}
-
-.light-theme .session-expired-title {
-  color: #111827;
-}
-
-.light-theme .session-expired-message {
-  color: #6B7280;
-}
-
-/* Animations */
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* Optional: Add these event listeners in your App.jsx */
