@@ -155,9 +155,19 @@ public class AdminController {
     @DeleteMapping("/users/{userId}")
     public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
         try {
+            System.out.println("🔴 DEBUG: Attempting to delete user with ID: " + userId);
             adminService.deleteUser(userId);
+            System.out.println("✅ DEBUG: User deleted successfully: " + userId);
             return ResponseEntity.ok(com.yavijexpress.dto.ApiResponse.success(null, "User deleted successfully"));
+        } catch (RuntimeException e) {
+            System.err.println("❌ DEBUG: RuntimeException deleting user " + userId + ": " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.status(404).body(
+                com.yavijexpress.dto.ApiResponse.error("User not found: " + e.getMessage())
+            );
         } catch (Exception e) {
+            System.err.println("❌ DEBUG: Exception deleting user " + userId + ": " + e.getMessage());
+            e.printStackTrace();
             return ResponseEntity.status(500).body(
                 com.yavijexpress.dto.ApiResponse.error("Failed to delete user: " + e.getMessage())
             );
