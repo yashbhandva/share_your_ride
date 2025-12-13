@@ -23,6 +23,9 @@ const PaymentHistory = lazy(() => import("./pages/PaymentHistory.jsx"));
 const Emergency = lazy(() => import("./pages/Emergency.jsx"));
 const Profile = lazy(() => import("./pages/Profile.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
+const PrivacyPolicy = lazy(() => import("./pages/Privacy-Policy.jsx"));
+const TermOfService = lazy(() => import("./pages/Terms.jsx"));
+
 
 const App = () => {
   const location = useLocation();
@@ -212,6 +215,25 @@ const App = () => {
                       }
                     />
                   </Route>
+
+                  <Route
+                    path="/privacy-policy"
+                    element={
+                      <RouteTransition>
+                        <PrivacyPolicy />
+                      </RouteTransition>
+                    }
+                  />
+
+                   <Route
+                     path="/terms"
+                     element={
+                       <RouteTransition>
+                            <TermOfService />
+                        </RouteTransition>
+                              }
+                   />
+
                 </Route>
 
                 {/* 404 - Not Found */}
