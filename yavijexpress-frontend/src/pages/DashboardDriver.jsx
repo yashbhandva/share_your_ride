@@ -340,94 +340,169 @@ const DashboardDriver = () => {
     }
   };
 
-  return (
-    <div>
-      <h1>Driver Dashboard</h1>
-      <div style={{ marginBottom: "20px", padding: "10px", backgroundColor: "#f5f5f5", borderRadius: "5px" }}>
-        <h3>Statistics</h3>
-        <p><strong>Total Trips:</strong> {Array.isArray(trips) ? trips.length : 0}</p>
-        <p><strong>Active Trips:</strong> {Array.isArray(trips) ? trips.filter(t => t.isActive).length : 0}</p>
-        <p><strong>Completed Trips:</strong> {Array.isArray(trips) ? trips.filter(t => t.status === 'COMPLETED').length : 0}</p>
+  const StatCard = ({ title, value, icon, color }) => (
+    <div className="driver-stat-card">
+      <div className="driver-stat-icon" style={{ color }}>{icon}</div>
+      <div className="driver-stat-content">
+        <h3 className="driver-stat-title">{title}</h3>
+        <p className="driver-stat-value">{value}</p>
       </div>
-      {error && <div style={{ color: "red", backgroundColor: "#ffebee", padding: "10px", borderRadius: "5px", marginBottom: "10px", border: "1px solid #f44336" }}>{error}</div>}
-      {success && <div style={{ color: "green", backgroundColor: "#e8f5e8", padding: "15px", borderRadius: "5px", marginBottom: "15px", border: "2px solid #4CAF50", fontSize: "16px", fontWeight: "bold" }}>{success}</div>}
+    </div>
+  );
 
-      <section style={{ marginBottom: 24 }}>
-        <h2>Booking Requests</h2>
-        <button 
-          onClick={async () => {
-            try {
-              const res = await api.get('/api/bookings/test');
-              console.log('Test response:', res.data);
-              setSuccess('API Test: ' + JSON.stringify(res.data));
-            } catch (e) {
-              console.error('Test failed:', e);
-              setError('API Test Failed: ' + e.message);
-            }
-          }}
-          style={{marginBottom: '10px', padding: '5px 10px'}}
-        >
-          Test API Connection
-        </button>
-        {bookingLoading && <p>Loading bookings...</p>}
-        {bookings.length === 0 && !bookingLoading && <p>No booking requests.</p>}
+  return (
+    <div className="driver-dashboard">
+      <div className="driver-header">
+        <h1 className="driver-title">🚗 Driver Dashboard</h1>
+        <p className="driver-welcome">Welcome back, <span className="driver-name">{user?.name}</span>!</p>
+      </div>
+
+      <div className="alert-container">
+        {error && <div className="driver-alert error-alert">{error}</div>}
+        {success && <div className="driver-alert success-alert">{success}</div>}
+      </div>
+
+      {/* Statistics Section */}
+      <div className="driver-stats-grid">
+        <StatCard
+          title="Total Trips"
+          value={Array.isArray(trips) ? trips.length : 0}
+          icon="📊"
+          color="#2196F3"
+        />
+        <StatCard
+          title="Active Trips"
+          value={Array.isArray(trips) ? trips.filter(t => t.isActive).length : 0}
+          icon="🚗"
+          color="#4CAF50"
+        />
+        <StatCard
+          title="Completed Trips"
+          value={Array.isArray(trips) ? trips.filter(t => t.status === 'COMPLETED').length : 0}
+          icon="✅"
+          color="#FF9800"
+        />
+        <StatCard
+          title="Vehicles"
+          value={Array.isArray(vehicles) ? vehicles.length : 0}
+          icon="🚙"
+          color="#9C27B0"
+        />
+      </div>
+
+      {/* Booking Requests Section */}
+      <section className="driver-section bookings-section">
+        <h2 className="section-title">
+          <span className="section-icon">📋</span>
+          Booking Requests
+        </h2>
+
+{/*         <button */}
+{/*           onClick={async () => { */}
+{/*             try { */}
+{/*               const res = await api.get('/api/bookings/test'); */}
+{/*               console.log('Test response:', res.data); */}
+{/*               setSuccess('API Test: ' + JSON.stringify(res.data)); */}
+{/*             } catch (e) { */}
+{/*               console.error('Test failed:', e); */}
+{/*               setError('API Test Failed: ' + e.message); */}
+{/*             } */}
+{/*           }} */}
+{/*           className="api-test-btn" */}
+{/*         > */}
+{/*           🔧 Test API Connection */}
+{/*         </button> */}
+
+        {bookingLoading && (
+          <div className="loading-placeholder">
+            <div className="loading-spinner"></div>
+            <p>Loading bookings...</p>
+          </div>
+        )}
+
+        {bookings.length === 0 && !bookingLoading && (
+          <div className="empty-state">
+            <div className="empty-icon">📭</div>
+            <p className="empty-text">No booking requests yet.</p>
+          </div>
+        )}
+
         {bookings.length > 0 && (
-          <div>
+          <div className="booking-cards">
             {bookings.map((booking) => (
-              <div key={booking.id} style={{ border: "1px solid #ddd", padding: "15px", marginBottom: "15px", borderRadius: "5px" }}>
-                <h4>Booking #{booking.id}</h4>
-                <p><strong>Passenger:</strong> {booking.passengerName}</p>
-                <p><strong>Trip:</strong> {booking.tripFrom} → {booking.tripTo}</p>
-                <p><strong>Departure:</strong> {new Date(booking.departureTime).toLocaleString()}</p>
-                <p><strong>Seats:</strong> {booking.seatsBooked}</p>
-                <p><strong>Amount:</strong> ₹{booking.totalAmount}</p>
-                <p><strong>Status:</strong> <span style={{color: booking.status === 'CONFIRMED' ? 'green' : booking.status === 'PENDING' ? 'orange' : 'red'}}>{booking.status}</span></p>
-                {booking.specialRequests && <p><strong>Special Requests:</strong> {booking.specialRequests}</p>}
-                
+              <div key={booking.id} className="booking-card">
+                <div className="booking-header">
+                  <h3 className="booking-id">Booking #{booking.id}</h3>
+                  <span className={`booking-status booking-status-${booking.status?.toLowerCase()}`}>
+                    {booking.status}
+                  </span>
+                </div>
+
+                <div className="booking-details">
+                  <div className="detail-row">
+                    <span className="detail-label">👤 Passenger:</span>
+                    <span className="detail-value">{booking.passengerName}</span>
+                  </div>
+                  <div className="detail-row">
+                    <span className="detail-label">📍 Route:</span>
+                    <span className="detail-value">{booking.tripFrom} → {booking.tripTo}</span>
+                  </div>
+                  <div className="detail-row">
+                    <span className="detail-label">⏰ Departure:</span>
+                    <span className="detail-value">{new Date(booking.departureTime).toLocaleString()}</span>
+                  </div>
+                  <div className="detail-row">
+                    <span className="detail-label">💺 Seats:</span>
+                    <span className="detail-value">{booking.seatsBooked}</span>
+                  </div>
+                  <div className="detail-row">
+                    <span className="detail-label">💰 Amount:</span>
+                    <span className="detail-value">₹{booking.totalAmount}</span>
+                  </div>
+                  {booking.specialRequests && (
+                    <div className="detail-row">
+                      <span className="detail-label">💭 Special Requests:</span>
+                      <span className="detail-value">{booking.specialRequests}</span>
+                    </div>
+                  )}
+                </div>
+
                 {booking.status === 'PENDING' && (
                   <button
                     onClick={() => handleConfirmBooking(booking.id)}
-                    style={{ backgroundColor: "#4CAF50", color: "white", border: "none", padding: "8px 16px", borderRadius: "3px" }}
+                    className="action-btn confirm-btn"
                   >
-                    Approve Booking
+                    ✅ Approve Booking
                   </button>
                 )}
-                
+
                 {booking.status === 'CONFIRMED' && (
-                  <div style={{backgroundColor: '#e8f5e8', padding: '10px', marginTop: '10px', borderRadius: '5px'}}>
-                    <h5>🔐 OTP Verification Required</h5>
-                    <p style={{fontSize: '14px', margin: '5px 0'}}>Ask passenger for their 6-digit OTP</p>
-                    <form onSubmit={handleVerifyOtp} style={{marginTop: '10px'}}>
+                  <div className="otp-verification">
+                    <h4 className="otp-title">🔐 OTP Verification Required</h4>
+                    <p className="otp-subtitle">Ask passenger for their 6-digit OTP</p>
+                    <form onSubmit={handleVerifyOtp} className="otp-form">
                       <input
                         type="text"
                         placeholder="Enter 6-digit OTP from passenger"
                         value={otpForm.bookingId === booking.id ? otpForm.otp : ""}
                         onChange={(e) => {
-                          const value = e.target.value.replace(/[^0-9]/g, ''); // Only numbers
+                          const value = e.target.value.replace(/[^0-9]/g, '');
                           setOtpForm({bookingId: booking.id, otp: value});
                         }}
-                        style={{marginRight: '8px', padding: '8px', fontSize: '16px', width: '200px'}}
+                        className="otp-input"
                         maxLength="6"
                         autoComplete="off"
                       />
                       <button
                         type="submit"
                         disabled={otpVerifying || !otpForm.otp || otpForm.otp.length < 4}
-                        style={{ 
-                          backgroundColor: otpVerifying ? "#ccc" : "#2196F3", 
-                          color: "white", 
-                          border: "none", 
-                          padding: "8px 16px", 
-                          borderRadius: "3px", 
-                          fontSize: '14px',
-                          cursor: otpVerifying ? "not-allowed" : "pointer"
-                        }}
+                        className={`otp-submit-btn ${otpVerifying ? 'loading' : ''}`}
                       >
                         {otpVerifying ? "Verifying..." : "Verify & Start Trip"}
                       </button>
                     </form>
-                    <div style={{fontSize: '12px', color: '#666', marginTop: '5px'}}>
-                      Debug: BookingId={booking.id}, OTP='{otpForm.bookingId === booking.id ? otpForm.otp : 'none'}'
+                    <div className="debug-info">
+                      Debug: BookingId={booking.id}
                     </div>
                   </div>
                 )}
@@ -437,81 +512,113 @@ const DashboardDriver = () => {
         )}
       </section>
 
-      <section style={{ marginBottom: 24 }}>
-        <h2>My Vehicle</h2>
-        {vehicleError && <p style={{ color: "red" }}>{vehicleError}</p>}
-        <form onSubmit={handleVehicleSubmit} style={{ marginBottom: 16 }}>
-          <div style={{ marginBottom: 8 }}>
-            <label>Vehicle Number:&nbsp;</label>
-            <input
-              name="vehicleNumber"
-              value={vehicleForm.vehicleNumber}
-              onChange={handleVehicleChange}
-              required
-            />
+      {/* Vehicle Management Section */}
+      <section className="driver-section vehicles-section">
+        <h2 className="section-title">
+          <span className="section-icon">🚙</span>
+          My Vehicle
+        </h2>
+
+        {vehicleError && <div className="vehicle-error">{vehicleError}</div>}
+
+        <form onSubmit={handleVehicleSubmit} className="vehicle-form">
+          <div className="form-grid">
+            <div className="form-group">
+              <label className="form-label">Vehicle Number *</label>
+              <input
+                name="vehicleNumber"
+                value={vehicleForm.vehicleNumber}
+                onChange={handleVehicleChange}
+                className="form-input"
+                required
+                placeholder="e.g., MH01AB1234"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Model *</label>
+              <input
+                name="model"
+                value={vehicleForm.model}
+                onChange={handleVehicleChange}
+                className="form-input"
+                required
+                placeholder="e.g., Honda City"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Color *</label>
+              <input
+                name="color"
+                value={vehicleForm.color}
+                onChange={handleVehicleChange}
+                className="form-input"
+                required
+                placeholder="e.g., Red"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Total Seats *</label>
+              <input
+                type="number"
+                name="totalSeats"
+                value={vehicleForm.totalSeats}
+                onChange={handleVehicleChange}
+                className="form-input"
+                required
+                placeholder="e.g., 4"
+                min="1"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Insurance Number *</label>
+              <input
+                name="insuranceNumber"
+                value={vehicleForm.insuranceNumber}
+                onChange={handleVehicleChange}
+                className="form-input"
+                required
+                placeholder="Insurance policy number"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Insurance Expiry</label>
+              <input
+                type="datetime-local"
+                name="insuranceExpiry"
+                value={vehicleForm.insuranceExpiry}
+                onChange={handleVehicleChange}
+                className="form-input"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Vehicle Type *</label>
+              <select
+                name="vehicleType"
+                value={vehicleForm.vehicleType}
+                onChange={handleVehicleChange}
+                className="form-select"
+                required
+              >
+                <option value="CAR">Car</option>
+                <option value="BIKE">Bike</option>
+                <option value="AUTO">Auto</option>
+                <option value="SUV">SUV</option>
+                <option value="VAN">Van</option>
+              </select>
+            </div>
           </div>
-          <div style={{ marginBottom: 8 }}>
-            <label>Model:&nbsp;</label>
-            <input
-              name="model"
-              value={vehicleForm.model}
-              onChange={handleVehicleChange}
-              required
-            />
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <label>Color:&nbsp;</label>
-            <input
-              name="color"
-              value={vehicleForm.color}
-              onChange={handleVehicleChange}
-              required
-            />
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <label>Total Seats:&nbsp;</label>
-            <input
-              type="number"
-              name="totalSeats"
-              value={vehicleForm.totalSeats}
-              onChange={handleVehicleChange}
-              required
-            />
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <label>Insurance Number:&nbsp;</label>
-            <input
-              name="insuranceNumber"
-              value={vehicleForm.insuranceNumber}
-              onChange={handleVehicleChange}
-              required
-            />
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <label>Insurance Expiry:&nbsp;</label>
-            <input
-              type="datetime-local"
-              name="insuranceExpiry"
-              value={vehicleForm.insuranceExpiry}
-              onChange={handleVehicleChange}
-            />
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <label>Vehicle Type:&nbsp;</label>
-            <select
-              name="vehicleType"
-              value={vehicleForm.vehicleType}
-              onChange={handleVehicleChange}
-              required
-            >
-              <option value="CAR">Car</option>
-              <option value="BIKE">Bike</option>
-              <option value="AUTO">Auto</option>
-              <option value="SUV">SUV</option>
-              <option value="VAN">Van</option>
-            </select>
-          </div>
-          <button type="submit" disabled={vehicleSaving}>
+
+          <button
+            type="submit"
+            disabled={vehicleSaving}
+            className={`submit-btn ${vehicleSaving ? 'loading' : ''}`}
+          >
             {vehicleSaving
               ? editingVehicleId
                 ? "Updating..."
@@ -523,185 +630,256 @@ const DashboardDriver = () => {
         </form>
 
         {Array.isArray(vehicles) && vehicles.length > 0 && (
-          <div style={{ marginTop: 8 }}>
-            <h3>Your Registered Vehicles</h3>
-            <ul>
-              {Array.isArray(vehicles) && vehicles.map((v) => (
-                <li key={v.id}>
-                  #{v.id} - {v.vehicleNumber} ({v.model}, {v.color}) - Seats: {v.totalSeats} - Type: {v.vehicleType}
-                  <div style={{ marginTop: 4 }}>
-                    <button
-                      type="button"
-                      onClick={() => handleVehicleEdit(v)}
-                      style={{ marginRight: 8 }}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleVehicleDelete(v.id)}
-                    >
-                      Delete
-                    </button>
+          <div className="vehicles-list">
+            <h3 className="vehicles-title">Your Registered Vehicles</h3>
+            <div className="vehicle-cards">
+              {vehicles.map((v) => (
+                <div key={v.id} className="vehicle-card">
+                  <div className="vehicle-info">
+                    <h4 className="vehicle-number">
+                      <span className="vehicle-icon">🚙</span>
+                      {v.vehicleNumber}
+                    </h4>
+                    <div className="vehicle-details">
+                      <span className="vehicle-detail">{v.model}</span>
+                      <span className="vehicle-detail">{v.color}</span>
+                      <span className="vehicle-detail">Seats: {v.totalSeats}</span>
+                      <span className="vehicle-detail badge vehicle-type">{v.vehicleType}</span>
+                    </div>
+                    <div className="vehicle-actions">
+                      <button
+                        onClick={() => handleVehicleEdit(v)}
+                        className="action-btn edit-btn"
+                      >
+                        ✏️ Edit
+                      </button>
+                      <button
+                        onClick={() => handleVehicleDelete(v.id)}
+                        className="action-btn delete-btn"
+                      >
+                        🗑️ Delete
+                      </button>
+                    </div>
                   </div>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         )}
       </section>
 
-      <section style={{ marginBottom: 24 }}>
-        <h2>Create Trip</h2>
-        {success && <div style={{ color: "green", marginBottom: "10px" }}>{success}</div>}
-        <form onSubmit={handleCreateTrip}>
-          <div style={{ marginBottom: 8 }}>
-            <label>From:&nbsp;</label>
-            <input
-              name="fromLocation"
-              value={form.fromLocation}
-              onChange={handleChange}
-              required
-            />
+      {/* Create Trip Section */}
+      <section className="driver-section create-trip-section">
+        <h2 className="section-title">
+          <span className="section-icon">➕</span>
+          Create New Trip
+        </h2>
+
+        <form onSubmit={handleCreateTrip} className="trip-form">
+          <div className="form-grid">
+            <div className="form-group">
+              <label className="form-label">From Location *</label>
+              <input
+                name="fromLocation"
+                value={form.fromLocation}
+                onChange={handleChange}
+                className="form-input"
+                required
+                placeholder="Starting point"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">To Location *</label>
+              <input
+                name="toLocation"
+                value={form.toLocation}
+                onChange={handleChange}
+                className="form-input"
+                required
+                placeholder="Destination"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Departure Time *</label>
+              <input
+                type="datetime-local"
+                name="departureTime"
+                value={form.departureTime}
+                onChange={handleChange}
+                className="form-input"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Price per seat (₹) *</label>
+              <input
+                type="number"
+                name="pricePerSeat"
+                value={form.pricePerSeat}
+                onChange={handleChange}
+                className="form-input"
+                required
+                placeholder="e.g., 150"
+                min="1"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Total seats *</label>
+              <input
+                type="number"
+                name="totalSeats"
+                value={form.totalSeats}
+                onChange={handleChange}
+                className="form-input"
+                required
+                placeholder="e.g., 4"
+                min="1"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Select Vehicle *</label>
+              <select
+                name="vehicleId"
+                value={form.vehicleId}
+                onChange={handleChange}
+                className="form-select"
+                required
+              >
+                <option value="">Choose a vehicle</option>
+                {vehicles.map((v) => (
+                  <option key={v.id} value={v.id}>
+                    #{v.id} - {v.vehicleNumber} ({v.model})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="form-group full-width">
+              <label className="form-label">Additional Notes</label>
+              <textarea
+                name="notes"
+                value={form.notes}
+                onChange={handleChange}
+                className="form-textarea"
+                placeholder="Any special instructions or details..."
+                rows="3"
+              />
+            </div>
           </div>
-          <div style={{ marginBottom: 8 }}>
-            <label>To:&nbsp;</label>
-            <input
-              name="toLocation"
-              value={form.toLocation}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <label>Departure:&nbsp;</label>
-            <input
-              type="datetime-local"
-              name="departureTime"
-              value={form.departureTime}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <label>Price per seat (₹):&nbsp;</label>
-            <input
-              type="number"
-              name="pricePerSeat"
-              value={form.pricePerSeat}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <label>Total seats:&nbsp;</label>
-            <input
-              type="number"
-              name="totalSeats"
-              value={form.totalSeats}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <label>Vehicle:&nbsp;</label>
-            <select
-              name="vehicleId"
-              value={form.vehicleId}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select a vehicle</option>
-              {vehicles.map((v) => (
-                <option key={v.id} value={v.id}>
-                  #{v.id} - {v.vehicleNumber} ({v.model})
-                </option>
-              ))}
-            </select>
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <label>Notes:&nbsp;</label>
-            <input
-              name="notes"
-              value={form.notes}
-              onChange={handleChange}
-            />
-          </div>
-          <button type="submit" disabled={creating}>
-            {creating ? "Creating..." : "Create Trip"}
+
+          <button
+            type="submit"
+            disabled={creating}
+            className={`submit-btn create-btn ${creating ? 'loading' : ''}`}
+          >
+            {creating ? "Creating Trip..." : "🚀 Create Trip"}
           </button>
         </form>
       </section>
 
-      <section>
-        <h2>Your Trips</h2>
-        {loading && <p>Loading trips...</p>}
-        {trips.length === 0 && !loading && <p>No trips found.</p>}
-        {trips.length > 0 && (
-          <ul>
-            {trips.map((t) => {
-              console.log('Trip data:', t);
-              return (
-              <li key={t.id}>
-                {t.fromLocation} → {t.toLocation} on {t.departureTime} | Seats:
-                {" "}
-                {t.availableSeats}/{t.totalSeats} | Status: {t.status} | 
-                <span style={{ color: t.isActive ? "green" : "red" }}>
-                  {t.isActive ? "Active" : "Disabled"}
-                </span>
-                <br />
-                <small>Debug: Status={t.status}, Active={String(t.isActive)}</small>
-                <div style={{ marginTop: 4 }}>
+      {/* Trips List Section */}
+      <section className="driver-section trips-section">
+        <h2 className="section-title">
+          <span className="section-icon">📋</span>
+          Your Trips
+        </h2>
+
+        {loading ? (
+          <div className="loading-placeholder">
+            <div className="loading-spinner"></div>
+            <p>Loading trips...</p>
+          </div>
+        ) : trips.length === 0 ? (
+          <div className="empty-state">
+            <div className="empty-icon">🚗</div>
+            <p className="empty-text">No trips found. Create your first trip!</p>
+          </div>
+        ) : (
+          <div className="trip-cards">
+            {trips.map((t) => (
+              <div key={t.id} className="trip-card">
+                <div className="trip-header">
+                  <h3 className="trip-route">
+                    <span className="trip-from">{t.fromLocation}</span>
+                    <span className="trip-arrow">→</span>
+                    <span className="trip-to">{t.toLocation}</span>
+                  </h3>
+                  <div className="trip-status-container">
+                    <span className={`trip-status trip-status-${t.status?.toLowerCase()}`}>
+                      {t.status}
+                    </span>
+                    <span className={`trip-active ${t.isActive ? 'active' : 'inactive'}`}>
+                      {t.isActive ? "🟢 Active" : "🔴 Disabled"}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="trip-details">
+                  <div className="trip-detail">
+                    <span className="detail-icon">⏰</span>
+                    <span className="detail-label">Departure:</span>
+                    <span className="detail-value">{new Date(t.departureTime).toLocaleString()}</span>
+                  </div>
+                  <div className="trip-detail">
+                    <span className="detail-icon">💺</span>
+                    <span className="detail-label">Seats:</span>
+                    <span className="detail-value">{t.availableSeats}/{t.totalSeats}</span>
+                  </div>
+                  <div className="trip-detail">
+                    <span className="detail-icon">💰</span>
+                    <span className="detail-label">Price:</span>
+                    <span className="detail-value">₹{t.pricePerSeat}</span>
+                  </div>
+                </div>
+
+                <div className="trip-actions">
                   <button
                     onClick={() => handleStartTrip(t.id)}
                     disabled={
                       actionLoadingId === t.id || t.status !== "SCHEDULED" || t.isActive === false
                     }
-                    style={{ marginRight: 8 }}
+                    className={`action-btn start-btn ${actionLoadingId === t.id ? 'loading' : ''}`}
                   >
                     {actionLoadingId === t.id && t.status === "SCHEDULED"
-                      ? "Starting..."
-                      : "Start"}
+                      ? "⏳ Starting..."
+                      : "▶️ Start Trip"}
                   </button>
                   <button
                     onClick={() => handleCompleteTrip(t.id)}
                     disabled={
                       actionLoadingId === t.id || t.status !== "ONGOING" || t.isActive === false
                     }
+                    className={`action-btn complete-btn ${actionLoadingId === t.id ? 'loading' : ''}`}
                   >
                     {actionLoadingId === t.id && t.status === "ONGOING"
-                      ? "Completing..."
-                      : "Complete"}
+                      ? "⏳ Completing..."
+                      : "✅ Complete"}
                   </button>
                   <button
                     onClick={() => handleDeleteTrip(t.id)}
                     disabled={actionLoadingId === t.id}
-                    style={{ 
-                      marginLeft: 8, 
-                      backgroundColor: "#f44336",
-                      color: "white"
-                    }}
+                    className={`action-btn delete-btn ${actionLoadingId === t.id ? 'loading' : ''}`}
                   >
-                    {actionLoadingId === t.id ? "Deleting..." : "Delete"}
+                    {actionLoadingId === t.id ? "🗑️ Deleting..." : "🗑️ Delete"}
                   </button>
                   {(t.status === "COMPLETED" || t.status === "CANCELLED") && (
                     <button
                       onClick={() => handleRestartTrip(t.id)}
                       disabled={actionLoadingId === t.id}
-                      style={{ 
-                        marginLeft: 8, 
-                        backgroundColor: "#4CAF50",
-                        color: "white"
-                      }}
+                      className={`action-btn restart-btn ${actionLoadingId === t.id ? 'loading' : ''}`}
                     >
-                      {actionLoadingId === t.id ? "Restarting..." : "Restart"}
+                      {actionLoadingId === t.id ? "⏳ Restarting..." : "🔄 Restart"}
                     </button>
                   )}
                 </div>
-              </li>
-            );
-            })}
-          </ul>
+              </div>
+            ))}
+          </div>
         )}
       </section>
     </div>
