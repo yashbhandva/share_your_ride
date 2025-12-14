@@ -10,8 +10,8 @@ import {
   FaChartLine,
   FaHandshake,
   FaStar,
-  FaLinkedin,
-  FaTwitter,
+  FaWhatsapp,
+  FaInstagram,
   FaGithub,
   FaCode,
   FaServer,
@@ -22,8 +22,8 @@ import {
 } from "react-icons/fa";
 
 // 2 NEW CEO PHOTOS IMPORT - Adjust paths as needed
-import ceo1Photo from '/img/logo.jpg.png'; // First CEO photo
-import ceo2Photo from '/img/logo.jpg.png'; // Second CEO photo
+import ceo1Photo from '/img/yash.jpg'; // First CEO photo
+import ceo2Photo from '/img/vijay.jpg'; // Second CEO photo
 
 // Alternative: Use public folder paths
 // const ceo1Photo = "/images/ceo1.jpg";
@@ -36,12 +36,12 @@ const About = () => {
       name: "Yash Bhandva",
       role: "CEO & Co-Founder",
       bio: "IIT Delhi graduate with 12+ years in tech startups. Previously founded two successful SaaS companies. Passionate about solving India's mobility challenges through technology.",
-      image: "👨‍💼",
+      image: "👨",
       photo: ceo1Photo, // Real photo path
       color: "#3A36E0",
       skills: ["Entrepreneurship", "Strategy", "Funding", "Growth Hacking", "Leadership", "Java"],
-      linkedin: "#",
-      twitter: "#",
+      whatsapp: "https://wa.me/919512570683",
+      instagram: "https://www.instagram.com/_y_a_s_h004/",
       isRealPhoto: true,
       isNew: true
     },
@@ -49,12 +49,12 @@ const About = () => {
       name: "Vijay Bhandva",
       role: "COO & Co-Founder",
       bio: "Ex-McKinsey consultant with deep expertise in operations and scaling. Led operations for India's largest logistics company. MBA from IIM Ahmedabad with focus on sustainable mobility.",
-      image: "👩‍💼",
+      image: "👨",
       photo: ceo2Photo, // Real photo path
       color: "#10B981",
       skills: ["Operations", "Logistics", "Scale Management", "Process Optimization", "Team Building"],
-      linkedin: "#",
-      twitter: "#",
+      whatsapp: "https://wa.me/919016376642",
+      instagram: "https://www.instagram.com/_y_a_s_h004/",
       isRealPhoto: true,
       isNew: true
     }
@@ -142,7 +142,7 @@ const About = () => {
             <span className="gradient-text">Redefining Urban Mobility</span>
           </h1>
           <p className="about-subtitle">
-            Founded by visionary leaders <strong>Aarav Sharma</strong> and <strong>Ananya Singh</strong>,
+            Founded by visionary leaders <strong>Yash Bhandva</strong> and <strong>Vijay Bhandva</strong>,
             YaVij Express is India's fastest-growing ride-sharing platform.
             <br />
             <span className="tech-mention">
@@ -170,8 +170,8 @@ const About = () => {
         </div>
         <div className="hero-graphic">
           <div className="floating-car">🚖</div>
-          <div className="floating-map">🗺️</div>
-          <div className="floating-star">⭐</div>
+          <div className="floating-map">📍</div>
+          <div className="floating-star">🌟</div>
         </div>
       </motion.section>
 
@@ -190,20 +190,23 @@ const About = () => {
         <motion.div className="story-content" variants={fadeInUp}>
           <div className="story-text">
             <p>
-              Founded in 2020 by <strong>Aarav Sharma</strong> and <strong>Ananya Singh</strong>,
+              Founded in 2020 by <strong>Yash Bhandva</strong> and <strong>Vijay Bhandva</strong>,
               YaVij Express began with a mission to solve urban transportation challenges in India.
             </p>
             <p>
-              With complementary backgrounds in technology and operations, the founders built a platform
-              that combines innovative tech with efficient logistics.
+             YaVij-Express was born from a simple but powerful idea — making everyday travel easier, safer, and more reliable for everyone. Like many people, we noticed how difficult it can be to find trustworthy transportation at the right time, especially for daily commuting, long-distance travel, or urgent trips.
             </p>
             <p>
-              What started as a small startup in Bengaluru has now grown into a pan-India platform,
-              serving over 100,000 users daily with safe, reliable, and affordable rides.
+              The name YaVij represents the collaboration and shared vision of its founders, combining innovation, responsibility, and dedication to solving real-world mobility problems. We wanted to create a platform where people don't just book rides, but travel with confidence.
             </p>
             <p>
-              Our name "YaVij" symbolizes <em>"Journey of Victory"</em> - celebrating every successful
-              journey we facilitate for our customers and partners.
+             From the beginning, our focus has been on community-based ride sharing. By connecting verified drivers with genuine passengers, YaVij-Express helps reduce travel stress, save costs, and make better use of existing vehicles — all while keeping safety at the center.
+            </p>
+            <p>
+             We believe technology should serve people, not complicate their lives. That's why YaVij-Express is built using modern, secure, and scalable technologies, ensuring smooth performance, strong data protection, and a user-friendly experience across all devices.
+            </p>
+            <p>
+                Today, YaVij-Express is more than just an app — it is a growing travel community driven by trust, transparency, and innovation. As we continue to evolve, our mission remains the same: to redefine the way people move, connect, and travel together.
             </p>
           </div>
           <div className="story-image">
@@ -335,14 +338,14 @@ const About = () => {
                 </div>
 
                 <div className="team-social">
-                  {member.linkedin && (
-                    <a href={member.linkedin} className="social-link" aria-label={`${member.name} LinkedIn`}>
-                      <FaLinkedin />
+                  {member.whatsapp && (
+                    <a href={member.whatsapp} className="social-link" aria-label={`${member.name} WhatsApp`}>
+                      <FaWhatsapp />
                     </a>
                   )}
-                  {member.twitter && (
-                    <a href={member.twitter} className="social-link" aria-label={`${member.name} Twitter`}>
-                      <FaTwitter />
+                  {member.instagram && (
+                    <a href={member.instagram} className="social-link" aria-label={`${member.name} Instagram`}>
+                      <FaInstagram />
                     </a>
                   )}
                   {member.github && (
@@ -404,9 +407,7 @@ const About = () => {
               <h3>Our Mission</h3>
             </div>
             <p>
-              To make urban transportation accessible, affordable, and safe for
-              every Indian by leveraging cutting-edge technology and building
-              sustainable partnerships with drivers and communities.
+              Our mission at YaVij-Express is to make transportation simple, safe, affordable, and accessible for everyone. We aim to connect verified drivers and passengers through a trusted digital platform that reduces travel difficulties, lowers transportation costs, and promotes efficient use of available vehicles. By focusing on safety, transparency, and community trust, we strive to deliver a reliable ride-sharing experience for daily commuters, students, professionals, and long-distance travelers.
             </p>
           </motion.div>
           <motion.div className="vision-card" variants={fadeInUp}>
@@ -415,9 +416,7 @@ const About = () => {
               <h3>Our Vision</h3>
             </div>
             <p>
-              To become India's most trusted mobility platform, connecting
-              100+ cities and creating economic opportunities for 100,000+
-              driver-partners by 2026.
+              Our vision is to become a leading community-driven mobility platform that transforms how people travel together. We aspire to create a future where transportation is not only convenient but also eco-friendly, secure, and socially responsible. By continuously innovating and adopting modern technologies, YaVij-Express envisions a connected travel ecosystem that minimizes empty seats, reduces traffic congestion, and builds a strong network of responsible drivers and passengers across cities and regions.
             </p>
           </motion.div>
         </div>
