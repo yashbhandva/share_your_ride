@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/common/ProtectedRoute.jsx";
 import RoleRoute from "./components/common/RoleRoute.jsx";
 import RouteTransition from "./components/common/RouteTransition.jsx";
 import LoadingScreen from "./components/common/LoadingScreen.jsx";
+import "./index.css";
 
 // Lazy load pages for better performance
 const Home = lazy(() => import("./pages/Home.jsx"));
@@ -24,7 +25,7 @@ const Emergency = lazy(() => import("./pages/Emergency.jsx"));
 const Profile = lazy(() => import("./pages/Profile.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 const PrivacyPolicy = lazy(() => import("./pages/Privacy-Policy.jsx"));
-const TermOfService = lazy(() => import("./pages/Terms.jsx"));
+const TermOfService = lazy(() => import("./pages/terms.jsx"));
 const Faq = lazy(() => import("./pages/faq.jsx"));
 const Careers = lazy(() => import("./pages/careers.jsx"));
 
