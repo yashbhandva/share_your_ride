@@ -14,7 +14,7 @@ import {
   FaInstagram,
   FaGithub,
   FaCode,
-  FaServer,
+  FaJava ,
   FaCloud,
   FaMobileAlt,
   FaGlobe,
@@ -22,12 +22,8 @@ import {
 } from "react-icons/fa";
 
 // 2 NEW CEO PHOTOS IMPORT - Adjust paths as needed
-import ceo1Photo from '/img/yash.jpg'; // First CEO photo
+import ceo1Photo from '/img/y.png'; // First CEO photo
 import ceo2Photo from '/img/vijay.jpg'; // Second CEO photo
-
-// Alternative: Use public folder paths
-// const ceo1Photo = "/images/ceo1.jpg";
-// const ceo2Photo = "/images/ceo2.jpg";
 
 const About = () => {
   // SIRF 2 NEW TEAM MEMBERS - Both CEOs with real photos
@@ -47,7 +43,7 @@ const About = () => {
     },
     {
       name: "Vijay Bhandva",
-      role: "COO & Co-Founder",
+      role: "CFO & Co-Founder",
       bio: "Ex-McKinsey consultant with deep expertise in operations and scaling. Led operations for India's largest logistics company. MBA from IIM Ahmedabad with focus on sustainable mobility.",
       image: "👨",
       photo: ceo2Photo, // Real photo path
@@ -107,7 +103,7 @@ const About = () => {
   // Tech Stack - Platform ke technologies show karne ke liye
   const techStack = [
     { icon: <FaCode />, name: "React/Next.js", description: "Frontend Framework" },
-    { icon: <FaServer />, name: "Node.js", description: "Backend API" },
+    { icon: <FaJava  />, name: "Java • Spring Boot", description: "Backend API" },
     { icon: <FaDatabase />, name: "MongoDB", description: "Database" },
     { icon: <FaCloud />, name: "AWS", description: "Cloud Infrastructure" },
     { icon: <FaMobileAlt />, name: "React Native", description: "Mobile Apps" },
@@ -167,11 +163,6 @@ const About = () => {
               <div className="stat-label">Avg Pickup Time</div>
             </div>
           </div>
-        </div>
-        <div className="hero-graphic">
-          <div className="floating-car">🚖</div>
-          <div className="floating-map">📍</div>
-          <div className="floating-star">🌟</div>
         </div>
       </motion.section>
 
