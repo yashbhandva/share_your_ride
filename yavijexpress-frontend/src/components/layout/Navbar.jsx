@@ -110,12 +110,6 @@ const Navbar = () => {
                 {/* Loading State */}
                 <div className="logo-loader"></div>
               </div>
-
-              <div className="brand-text">
-                <span className="brand-primary">YaVij</span>
-                <span className="brand-secondary">Express</span>
-                <div className="brand-tagline">Ride with Confidence</div>
-              </div>
             </div>
           </Link>
 
