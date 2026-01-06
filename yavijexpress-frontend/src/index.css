@@ -6169,20 +6169,11 @@ NOTIFICATION PAGE
   background: var(--success-green);
 }
 
-
-/*==================================================================
-
-VERIFY OTP PAGE
-
-==================================================================*/
-
-
 /* ====================================================================
 
 VERIFY OTP PAGE STYLES
 
 ==================================================================== */
-
 /* ===== CSS VARIABLES ===== */
 :root {
   /* Primary Colors */
@@ -6248,6 +6239,9 @@ VERIFY OTP PAGE STYLES
   justify-content: center;
   padding: var(--space-lg);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Prevent iOS bounce */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ===== OTP CONTAINER ===== */
@@ -6262,6 +6256,9 @@ VERIFY OTP PAGE STYLES
   border: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
+  /* iOS fix */
+  transform: translateZ(0);
+  box-sizing: border-box;
 }
 
 .otp-container::before {
@@ -6280,6 +6277,7 @@ VERIFY OTP PAGE STYLES
 .otp-header {
   text-align: center;
   margin-bottom: var(--space-xl);
+  padding: 0 var(--space-sm);
 }
 
 .otp-icon {
@@ -6305,6 +6303,7 @@ VERIFY OTP PAGE STYLES
   color: var(--text-secondary);
   line-height: 1.6;
   margin-top: var(--space-md);
+  padding: 0 var(--space-xs);
 }
 
 .email-highlight {
@@ -6319,11 +6318,14 @@ VERIFY OTP PAGE STYLES
   font-family: 'Monaco', 'Consolas', monospace;
   font-size: 0.95rem;
   word-break: break-all;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* ===== ALERTS ===== */
 .alert-container {
   margin-bottom: var(--space-xl);
+  padding: 0 var(--space-sm);
 }
 
 .otp-alert {
@@ -6363,10 +6365,15 @@ VERIFY OTP PAGE STYLES
 /* ===== OTP FORM ===== */
 .otp-form {
   margin-bottom: var(--space-xl);
+  width: 100%;
+  overflow: hidden;
+  padding: 0 var(--space-sm);
+  box-sizing: border-box;
 }
 
 .form-group {
   margin-bottom: var(--space-xl);
+  width: 100%;
 }
 
 .form-label {
@@ -6375,6 +6382,8 @@ VERIFY OTP PAGE STYLES
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: var(--space-lg);
+  text-align: center;
+  padding: 0 var(--space-xs);
 }
 
 .form-hint {
@@ -6390,6 +6399,7 @@ VERIFY OTP PAGE STYLES
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
+  width: 100%;
 }
 
 /* Single Input Method */
@@ -6406,13 +6416,16 @@ VERIFY OTP PAGE STYLES
   color: var(--text-primary);
   transition: all var(--transition-normal) ease;
   font-family: 'Monaco', 'Consolas', monospace;
+  box-sizing: border-box;
+  /* iOS zoom prevention */
+  transform: translateZ(0);
 }
 
 .otp-single-input:focus {
   outline: none;
   border-color: var(--primary-blue);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-  transform: translateY(-2px);
+  transform: translateY(-2px) translateZ(0);
 }
 
 .otp-single-input::placeholder {
@@ -6426,14 +6439,15 @@ VERIFY OTP PAGE STYLES
   position: relative;
   text-align: center;
   margin: var(--space-lg) 0;
+  padding: 0 var(--space-sm);
 }
 
 .method-divider::before {
   content: '';
   position: absolute;
   top: 50%;
-  left: 0;
-  right: 0;
+  left: var(--space-sm);
+  right: var(--space-sm);
   height: 1px;
   background: var(--border-color);
   transform: translateY(-50%);
@@ -6455,6 +6469,9 @@ VERIFY OTP PAGE STYLES
 /* Individual Digit Boxes Method */
 .otp-boxes-method {
   text-align: center;
+  width: 100%;
+  padding: 0 var(--space-xs);
+  box-sizing: border-box;
 }
 
 .method-label {
@@ -6462,19 +6479,26 @@ VERIFY OTP PAGE STYLES
   color: var(--text-secondary);
   margin-bottom: var(--space-lg);
   font-weight: 500;
+  padding: 0 var(--space-xs);
 }
 
 .otp-input-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: var(--space-sm);
   margin-bottom: var(--space-lg);
+  width: 100%;
+  max-width: 100%;
+  padding: 0 var(--space-xs);
+  box-sizing: border-box;
 }
 
 .otp-digit-wrapper {
   position: relative;
-  width: 60px;
+  flex: 1;
+  min-width: 0;
   height: 80px;
+  max-width: 80px;
 }
 
 .otp-digit-input {
@@ -6490,13 +6514,21 @@ VERIFY OTP PAGE STYLES
   transition: all var(--transition-normal) ease;
   caret-color: transparent;
   font-family: 'Monaco', 'Consolas', monospace;
+  box-sizing: border-box;
+  /* iOS zoom prevention */
+  transform: translateZ(0);
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .otp-digit-input:focus {
   outline: none;
   border-color: var(--primary-blue);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-  transform: translateY(-3px);
+  transform: translateY(-3px) translateZ(0);
   background: var(--bg-primary);
 }
 
@@ -6516,6 +6548,8 @@ VERIFY OTP PAGE STYLES
   background: var(--bg-secondary);
   border-radius: var(--radius-lg);
   margin-top: var(--space-xl);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .timer-icon {
@@ -6554,6 +6588,7 @@ VERIFY OTP PAGE STYLES
   gap: var(--space-sm);
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .submit-btn:hover:not(:disabled) {
@@ -6591,12 +6626,15 @@ VERIFY OTP PAGE STYLES
   gap: var(--space-lg);
   padding-top: var(--space-lg);
   border-top: 1px solid var(--border-color);
+  width: 100%;
 }
 
 .resend-section,
 .back-section,
 .help-section {
   text-align: center;
+  width: 100%;
+  padding: 0 var(--space-sm);
 }
 
 .resend-text,
@@ -6620,6 +6658,7 @@ VERIFY OTP PAGE STYLES
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
+  box-sizing: border-box;
 }
 
 .resend-btn:hover,
@@ -6636,6 +6675,8 @@ VERIFY OTP PAGE STYLES
   border-radius: var(--radius-lg);
   padding: var(--space-md);
   transition: all var(--transition-normal) ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .help-details[open] {
@@ -6653,6 +6694,7 @@ VERIFY OTP PAGE STYLES
   cursor: pointer;
   list-style: none;
   user-select: none;
+  width: 100%;
 }
 
 .help-summary::-webkit-details-marker {
@@ -6672,6 +6714,7 @@ VERIFY OTP PAGE STYLES
   padding-top: var(--space-md);
   border-top: 1px solid var(--border-color);
   animation: fadeIn 0.3s ease;
+  width: 100%;
 }
 
 .help-list {
@@ -6679,6 +6722,7 @@ VERIFY OTP PAGE STYLES
   padding: 0;
   margin: 0;
   text-align: left;
+  width: 100%;
 }
 
 .help-list li {
@@ -6687,6 +6731,7 @@ VERIFY OTP PAGE STYLES
   padding: var(--space-xs) 0;
   padding-left: var(--space-lg);
   position: relative;
+  box-sizing: border-box;
 }
 
 .help-list li::before {
@@ -6758,11 +6803,23 @@ VERIFY OTP PAGE STYLES
 @media (max-width: 768px) {
   .verify-otp-page {
     padding: var(--space-md);
+    /* iOS fix for scroll */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .otp-container {
     padding: var(--space-lg);
     border-radius: var(--radius-lg);
+    margin: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+    width: calc(100% - var(--space-md) * 2);
   }
 
   .otp-title {
@@ -6773,9 +6830,18 @@ VERIFY OTP PAGE STYLES
     font-size: 3rem;
   }
 
+  .otp-header,
+  .alert-container,
+  .otp-form,
+  .resend-section,
+  .back-section,
+  .help-section {
+    padding: 0;
+  }
+
   .otp-digit-wrapper {
-    width: 50px;
     height: 70px;
+    max-width: 70px;
   }
 
   .otp-digit-input {
@@ -6786,11 +6852,48 @@ VERIFY OTP PAGE STYLES
     font-size: 1.25rem;
     padding: var(--space-md);
   }
+
+  .otp-input-container {
+    gap: var(--space-xs);
+    padding: 0;
+  }
+
+  /* iOS specific fixes */
+  @supports (-webkit-touch-callout: none) {
+    .otp-digit-input {
+      font-size: 1.8rem;
+    }
+
+    .otp-single-input {
+      font-size: 1.1rem;
+    }
+
+    .otp-digit-wrapper {
+      height: 65px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .otp-input-container {
+    gap: 8px;
+  }
+
+  .otp-digit-wrapper {
+    height: 65px;
+    max-width: 65px;
+  }
+
+  .otp-digit-input {
+    font-size: 1.8rem;
+  }
 }
 
 @media (max-width: 480px) {
   .otp-container {
     padding: var(--space-md);
+    max-height: 85vh;
+    width: calc(100% - var(--space-sm) * 2);
   }
 
   .otp-title {
@@ -6798,12 +6901,12 @@ VERIFY OTP PAGE STYLES
   }
 
   .otp-input-container {
-    gap: var(--space-xs);
+    gap: 6px;
   }
 
   .otp-digit-wrapper {
-    width: 45px;
     height: 60px;
+    max-width: 55px;
   }
 
   .otp-digit-input {
@@ -6820,6 +6923,37 @@ VERIFY OTP PAGE STYLES
     padding: var(--space-xs) var(--space-md);
     font-size: 0.9rem;
   }
+
+  /* iOS specific fixes */
+  @supports (-webkit-touch-callout: none) {
+    .otp-digit-input {
+      font-size: 1.5rem;
+    }
+
+    .otp-input-container {
+      gap: 5px;
+    }
+
+    .otp-digit-wrapper {
+      height: 58px;
+      max-width: 52px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .otp-input-container {
+    gap: 5px;
+  }
+
+  .otp-digit-wrapper {
+    height: 55px;
+    max-width: 50px;
+  }
+
+  .otp-digit-input {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 350px) {
@@ -6828,12 +6962,47 @@ VERIFY OTP PAGE STYLES
   }
 
   .otp-digit-wrapper {
-    width: 40px;
-    height: 55px;
+    height: 50px;
+    max-width: 45px;
   }
 
   .otp-digit-input {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  .otp-container {
+    padding: var(--space-sm);
+  }
+
+  /* iOS specific fixes */
+  @supports (-webkit-touch-callout: none) {
+    .otp-digit-input {
+      font-size: 1.3rem;
+    }
+
+    .otp-digit-wrapper {
+      height: 48px;
+      max-width: 43px;
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .otp-input-container {
+    gap: 3px;
+  }
+
+  .otp-digit-wrapper {
+    height: 45px;
+    max-width: 40px;
+  }
+
+  .otp-digit-input {
+    font-size: 1.2rem;
+  }
+
+  .otp-container {
+    padding: var(--space-xs);
   }
 }
 
@@ -6880,6 +7049,29 @@ VERIFY OTP PAGE STYLES
   .submit-btn {
     border: 2px solid var(--primary-blue);
   }
+}
+
+/* iOS input zoom prevention - Important fix */
+@supports (-webkit-touch-callout: none) {
+  .otp-digit-input,
+  .otp-single-input {
+    font-size: 16px !important;
+  }
+
+  .otp-digit-input:focus,
+  .otp-single-input:focus {
+    font-size: 16px !important;
+  }
+
+  /* Adjust size for better appearance on iOS */
+  .otp-digit-wrapper {
+    height: 60px;
+  }
+}
+
+/* Ensure all elements are properly contained */
+* {
+  box-sizing: border-box;
 }
 /* ====================================================================
 
@@ -14296,85 +14488,6 @@ DRIVER DASHBOARD STYLES
   color: var(--text-primary);
   font-weight: 600;
   flex: 1;
-}
-
-/* ===== OTP VERIFICATION ===== */
-.otp-verification {
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-md);
-  padding: var(--space-lg);
-  margin-top: var(--space-lg);
-  border-left: 4px solid var(--primary-blue);
-}
-
-.otp-title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: var(--space-xs);
-  color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-}
-
-.otp-subtitle {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-md);
-}
-
-.otp-form {
-  display: flex;
-  gap: var(--space-sm);
-}
-
-.otp-input {
-  flex: 1;
-  padding: var(--space-md);
-  background: var(--bg-primary);
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-md);
-  font-size: 1.125rem;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 2px;
-  color: var(--text-primary);
-  transition: all var(--transition-fast) ease;
-}
-
-.otp-input:focus {
-  outline: none;
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-}
-
-.otp-submit-btn {
-  padding: var(--space-md) var(--space-lg);
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple));
-  color: white;
-  border: none;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--transition-normal) ease;
-  white-space: nowrap;
-}
-
-.otp-submit-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: var(--hover-shadow);
-}
-
-.otp-submit-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.debug-info {
-  margin-top: var(--space-sm);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  font-family: 'Monaco', 'Consolas', monospace;
 }
 
 /* ===== VEHICLE MANAGEMENT ===== */
