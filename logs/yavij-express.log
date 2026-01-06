@@ -3,3 +3,54 @@
 2026-01-07T00:41:11.429+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/verify-otp
 2026-01-07T00:42:11.388+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
 2026-01-07T00:42:38.395+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/verify-otp
+2026-01-07T00:45:00.718+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2026-01-07T00:45:34.654+05:30  INFO 1896 --- [yavij-express] [MessageBroker-3] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 6, active threads = 1, queued tasks = 0, completed tasks = 5]
+2026-01-07T00:45:42.736+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2026-01-07T00:45:48.565+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/users
+2026-01-07T00:45:48.567+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/dashboard/stats
+2026-01-07T00:45:48.591+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts/stats
+2026-01-07T00:45:48.599+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/trips
+2026-01-07T00:45:48.607+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts
+2026-01-07T00:45:48.707+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: admin@gmail.com for /api/admin/contacts/stats
+2026-01-07T00:45:48.733+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: admin@gmail.com for /api/admin/contacts
+2026-01-07T00:45:48.738+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: admin@gmail.com for /api/admin/trips
+2026-01-07T00:45:48.743+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: admin@gmail.com for /api/admin/dashboard/stats
+2026-01-07T00:45:48.755+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: admin@gmail.com for /api/admin/users
+2026-01-07T00:45:49.528+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts
+2026-01-07T00:45:49.548+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/contacts/stats
+2026-01-07T00:45:49.572+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/trips
+2026-01-07T00:45:49.573+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/users
+2026-01-07T00:45:49.588+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: admin@gmail.com for /api/admin/contacts
+2026-01-07T00:45:49.597+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: admin@gmail.com for /api/admin/contacts/stats
+2026-01-07T00:45:49.625+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: admin@gmail.com for /api/admin/trips
+2026-01-07T00:45:49.632+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: admin@gmail.com for /api/admin/users
+2026-01-07T00:45:49.741+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/admin/dashboard/stats
+2026-01-07T00:45:49.770+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: admin@gmail.com for /api/admin/dashboard/stats
+2026-01-07T00:47:37.151+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/admin/notifications
+2026-01-07T00:47:37.182+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: admin@gmail.com for /api/admin/notifications
+2026-01-07T00:47:46.643+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-07T00:47:46.642+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-07T00:47:46.644+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-07T00:47:46.680+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-07T00:47:46.695+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-07T00:47:46.704+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-07T00:47:46.755+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-07T00:47:46.765+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-07T00:47:46.776+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-07T00:47:46.788+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-07T00:47:46.832+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-07T00:47:46.867+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-07T00:47:55.293+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-07T00:47:55.323+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/notifications
+2026-01-07T00:47:55.371+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-07T00:47:55.409+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/notifications
+2026-01-07T00:48:24.467+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-07T00:48:24.499+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/notifications
+2026-01-07T00:48:24.526+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-07T00:48:24.553+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/notifications
+2026-01-07T00:57:46.113+05:30  INFO 1896 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-01-07T00:57:46.128+05:30  INFO 1896 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4743220d]]
+2026-01-07T00:57:46.129+05:30  INFO 1896 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-01-07T00:57:46.341+05:30  INFO 1896 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-07T00:57:46.468+05:30  INFO 1896 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-07T00:57:46.497+05:30  INFO 1896 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
