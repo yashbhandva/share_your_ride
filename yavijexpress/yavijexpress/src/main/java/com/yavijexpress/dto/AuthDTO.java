@@ -12,6 +12,34 @@ public class AuthDTO {
         @NotBlank @Size(min = 8) private String password;
         @NotBlank @Pattern(regexp = "^[0-9]{10}$") private String mobile;
         @NotBlank private String role; // ADMIN, DRIVER, PASSENGER
+        @NotBlank @Pattern(regexp = "^[0-9]{12}$") private String aadhaarNumber;
+        private String drivingLicense; // Optional, only required for drivers
+
+        public String getAadhaarNumber() {
+            return aadhaarNumber;
+        }
+
+        public RegisterRequest(String name, String email, String password, String mobile, String role, String aadhaarNumber, String drivingLicense) {
+            this.name = name;
+            this.email = email;
+            this.password = password;
+            this.mobile = mobile;
+            this.role = role;
+            this.aadhaarNumber = aadhaarNumber;
+            this.drivingLicense = drivingLicense;
+        }
+
+        public void setAadhaarNumber(String aadhaarNumber) {
+            this.aadhaarNumber = aadhaarNumber;
+        }
+
+        public String getDrivingLicense() {
+            return drivingLicense;
+        }
+
+        public void setDrivingLicense(String drivingLicense) {
+            this.drivingLicense = drivingLicense;
+        }
 
         public String getName() {
             return name;
