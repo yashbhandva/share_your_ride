@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { verifyOTP } from "../api/authApi";
 
@@ -7,10 +7,45 @@ const VerifyOTP = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
   const navigate = useNavigate();
   const location = useLocation();
-  
+
+  // Refs for digit inputs
+  const inputRefs = useRef([]);
+
   const email = location.state?.email || "";
+
+  // Timer Effect
+  useEffect(() => {
+    if (timeLeft <= 0) return;
+
+    const timerId = setInterval(() => {
+      setTimeLeft((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(timerId);
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timerId);
+  }, [timeLeft]);
+
+  // Focus first input on mount
+  useEffect(() => {
+    if (inputRefs.current[0]) {
+      inputRefs.current[0].focus();
+    }
+  }, []);
+
+  // Format time as MM:SS
+  const formatTime = () => {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +59,12 @@ const VerifyOTP = () => {
       return;
     }
 
+    if (timeLeft <= 0) {
+      setError("OTP has expired. Please request a new one.");
+      setLoading(false);
+      return;
+    }
+
     try {
       await verifyOTP({ email, otp });
       setSuccess("Email verified successfully!");
@@ -31,7 +72,7 @@ const VerifyOTP = () => {
     } catch (err) {
       const respData = err.response?.data;
       let errorMessage = "OTP verification failed. Please try again.";
-      
+
       if (typeof respData === "string") {
         const cleanMessage = respData.split('\n').pop().trim();
         if (cleanMessage) {
@@ -40,7 +81,7 @@ const VerifyOTP = () => {
       } else if (respData?.message) {
         errorMessage = respData.message;
       }
-      
+
       setError(errorMessage);
     } finally {
       setLoading(false);
@@ -50,6 +91,60 @@ const VerifyOTP = () => {
   const handleOtpChange = (e) => {
     const value = e.target.value.replace(/\D/g, '').slice(0, 6);
     setOtp(value);
+
+    // Focus first digit box if OTP is complete
+    if (value.length === 6 && inputRefs.current[0]) {
+      inputRefs.current[0].focus();
+    }
+  };
+
+  const handleDigitChange = (index, value) => {
+    const newValue = value.replace(/\D/g, '');
+    if (newValue) {
+      const newOtp = otp.split('');
+      newOtp[index] = newValue;
+      const updatedOtp = newOtp.join('');
+      setOtp(updatedOtp);
+
+      // Auto-focus next input
+      if (index < 5 && newValue) {
+        setTimeout(() => {
+          if (inputRefs.current[index + 1]) {
+            inputRefs.current[index + 1].focus();
+          }
+        }, 10);
+      }
+    }
+  };
+
+  const handleDigitKeyDown = (index, e) => {
+    if (e.key === 'Backspace' && !otp[index] && index > 0) {
+      // Focus previous input on backspace if current is empty
+      setTimeout(() => {
+        if (inputRefs.current[index - 1]) {
+          inputRefs.current[index - 1].focus();
+        }
+      }, 10);
+    }
+
+    // If backspace is pressed and current has value, clear it
+    if (e.key === 'Backspace' && otp[index]) {
+      const newOtp = otp.split('');
+      newOtp[index] = '';
+      setOtp(newOtp.join(''));
+    }
+  };
+
+  const handlePaste = (e) => {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6);
+    if (pastedData.length === 6) {
+      setOtp(pastedData);
+      // Focus back to first input
+      if (inputRefs.current[0]) {
+        inputRefs.current[0].focus();
+      }
+    }
   };
 
   const OTPDigitInput = () => {
@@ -63,39 +158,26 @@ const VerifyOTP = () => {
               type="text"
               maxLength="1"
               value={digits[index] || ""}
-              onChange={(e) => {
-                const newValue = e.target.value.replace(/\D/g, '');
-                if (newValue) {
-                  const newOtp = otp.split('');
-                  newOtp[index] = newValue;
-                  setOtp(newOtp.join(''));
-
-                  // Auto-focus next input
-                  if (index < 5) {
-                    const nextInput = document.getElementById(`otp-digit-${index + 1}`);
-                    if (nextInput) nextInput.focus();
-                  }
-                } else {
-                  const newOtp = otp.split('');
-                  newOtp[index] = '';
-                  setOtp(newOtp.join(''));
-                }
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Backspace' && !digits[index] && index > 0) {
-                  const prevInput = document.getElementById(`otp-digit-${index - 1}`);
-                  if (prevInput) prevInput.focus();
-                }
-              }}
-              id={`otp-digit-${index}`}
+              onChange={(e) => handleDigitChange(index, e.target.value)}
+              onKeyDown={(e) => handleDigitKeyDown(index, e)}
+              onPaste={handlePaste}
+              ref={(el) => (inputRefs.current[index] = el)}
               className={`otp-digit-input ${digits[index] ? 'filled' : ''}`}
-              autoFocus={index === 0}
               inputMode="numeric"
+              autoComplete="one-time-code"
             />
           </div>
         ))}
       </div>
     );
+  };
+
+  const handleResendOTP = () => {
+    // Add resend OTP logic here
+    setTimeLeft(300); // Reset timer to 5 minutes
+    setError("");
+    setSuccess("New OTP sent to your email!");
+    // You would call an API here to resend OTP
   };
 
   return (
@@ -140,12 +222,15 @@ const VerifyOTP = () => {
                 type="text"
                 value={otp}
                 onChange={handleOtpChange}
+                onPaste={handlePaste}
                 maxLength="6"
                 placeholder="123456"
                 className="otp-single-input"
                 inputMode="numeric"
+                autoComplete="one-time-code"
               />
 
+              {/* OR Divider */}
               <div className="method-divider">
                 <span className="divider-text">OR</span>
               </div>
@@ -160,14 +245,17 @@ const VerifyOTP = () => {
             <div className="otp-timer">
               <div className="timer-icon">⏰</div>
               <div className="timer-text">
-                OTP expires in: <span className="timer-value">05:00</span>
+                OTP expires in:
+                <span className={`timer-value ${timeLeft < 60 ? 'expiring' : ''}`}>
+                  {formatTime()}
+                </span>
               </div>
             </div>
           </div>
 
           <button
             type="submit"
-            disabled={loading || otp.length !== 6}
+            disabled={loading || otp.length !== 6 || timeLeft <= 0}
             className={`submit-btn ${loading ? 'loading' : ''}`}
           >
             {loading ? (
@@ -185,8 +273,9 @@ const VerifyOTP = () => {
           <div className="resend-section">
             <p className="resend-text">Didn't receive the code?</p>
             <button
-              onClick={() => {/* Add resend logic here */}}
+              onClick={handleResendOTP}
               className="resend-btn"
+              disabled={timeLeft > 0 && timeLeft < 300}
             >
               🔄 Resend OTP
             </button>
