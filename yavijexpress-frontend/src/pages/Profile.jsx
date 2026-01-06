@@ -14,33 +14,43 @@ const Profile = () => {
   const [pwdMessage, setPwdMessage] = useState("");
 
   useEffect(() => {
-    const testAuth = async () => {
-      try {
-        console.log('Testing auth with token:', localStorage.getItem('accessToken'));
-        const testRes = await api.get("/api/auth/test-auth");
-        console.log('Auth test response:', testRes.data);
-      } catch (e) {
-        console.error('Auth test failed:', e.response);
-      }
-    };
-
     const loadProfile = async () => {
       try {
         setLoading(true);
         setError("");
-        
-        // Test auth first
-        await testAuth();
-        
-        console.log('Loading profile with token:', localStorage.getItem('accessToken'));
+
+        console.log('Loading profile...');
         const res = await api.get("/api/auth/profile");
-        console.log('Profile response:', res.data);
-        // Backend wraps in ApiResponse
-        setProfile(res.data?.data || res.data);
+
+        // Response structure check करें
+        console.log('Full API Response:', res);
+        console.log('Response data:', res.data);
+        console.log('Response data.data:', res.data?.data);
+        console.log('All keys in response:', Object.keys(res.data || {}));
+
+        // Different API response structures handle करें
+        const profileData = res.data?.data || res.data;
+
+        // Profile data check करें
+        if (profileData) {
+          console.log('Profile data keys:', Object.keys(profileData));
+          console.log('Profile data:', profileData);
+          setProfile(profileData);
+        } else {
+          setError("Profile data not found in response");
+        }
+
       } catch (e) {
-        console.error('Profile error:', e.response);
+        console.error('Profile error details:', {
+          status: e.response?.status,
+          data: e.response?.data,
+          headers: e.response?.headers
+        });
+
         if (e.response?.status === 401) {
           setError("Please login again to access your profile.");
+          // Redirect to login
+          // navigate('/login');
         } else {
           setError(e.response?.data?.message || e.response?.data || "Failed to load profile");
         }
@@ -70,6 +80,13 @@ const Profile = () => {
     } finally {
       setPwdLoading(false);
     }
+  };
+
+  // Update profile information (KYC details for driver)
+  const handleUpdateDriverInfo = async (e) => {
+    e.preventDefault();
+    // Implement update driver info logic
+    console.log("Update driver info");
   };
 
   const ProfileInfoItem = ({ icon, label, value, color }) => (
@@ -157,18 +174,8 @@ const Profile = () => {
                   <RoleBadge role={profile.role} />
                   <StatusBadge status={profile.verificationStatus} />
                 </div>
-                <div className="profile-stats">
-                  <div className="stat-item">
-                    <span className="stat-icon">🚗</span>
-                    <span className="stat-label">Total Rides</span>
-                    <span className="stat-value">{profile.totalRides || 0}</span>
-                  </div>
-                  <div className="stat-item">
-                    <span className="stat-icon">⭐</span>
-                    <span className="stat-label">Rating</span>
-                    <RatingDisplay rating={profile.avgRating} />
-                  </div>
-                </div>
+
+
               </div>
             </div>
           </div>
@@ -206,113 +213,124 @@ const Profile = () => {
                   value={<StatusBadge status={profile.verificationStatus} />}
                   color="#FF9800"
                 />
-              </div>
-            </section>
-
-            {/* Emergency Contacts Section */}
-            <section className="profile-section">
-              <h2 className="section-title">
-                <span className="section-icon">🚨</span>
-                Emergency Contacts
-              </h2>
-
-              <div className="info-grid">
-                <ProfileInfoItem
-                  icon="📞"
-                  label="Emergency Contact 1"
-                  value={profile.emergencyContact1}
-                  color="#F44336"
-                />
-                <ProfileInfoItem
-                  icon="📞"
-                  label="Emergency Contact 2"
-                  value={profile.emergencyContact2}
-                  color="#FF5722"
-                />
-              </div>
-
-              <div className="update-form">
-                <h3 className="form-title">Update Emergency Contacts</h3>
-                <form className="form-grid">
-                  <div className="form-group">
-                    <label className="form-label">Emergency Contact 1</label>
-                    <input
-                      type="tel"
-                      placeholder="Emergency contact number"
-                      className="form-input"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Emergency Contact 2</label>
-                    <input
-                      type="tel"
-                      placeholder="Secondary emergency contact"
-                      className="form-input"
-                    />
-                  </div>
-                  <div className="form-group full-width">
-                    <button type="submit" className="submit-btn update-btn">
-                      📝 Update Contacts
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </section>
-
-            {/* Driver Specific Information */}
-            {profile.role === 'DRIVER' && (
-              <section className="profile-section">
-                <h2 className="section-title">
-                  <span className="section-icon">🚗</span>
-                  Driver Information
-                </h2>
-
-                <div className="info-grid">
+                {profile.createdAt && (
                   <ProfileInfoItem
-                    icon="🆔"
-                    label="Aadhaar Number"
-                    value={profile.aadhaarNumber}
+                    icon="📅"
+                    label="Member Since"
+                    value={new Date(profile.createdAt).toLocaleDateString('en-IN', {
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric'
+                    })}
                     color="#607D8B"
                   />
-                  <ProfileInfoItem
-                    icon="📄"
-                    label="Driving License"
-                    value={profile.drivingLicense}
-                    color="#795548"
-                  />
-                </div>
+                )}
+                <ProfileInfoItem
+                  icon="✅"
+                  label="Account Status"
+                  value={profile.active ? 'Active' : 'Inactive'}
+                  color={profile.active ? "#4CAF50" : "#F44336"}
+                />
+              </div>
+            </section>
 
-                <div className="update-form">
-                  <h3 className="form-title">Update Driver Information</h3>
-                  <form className="form-grid">
-                    <div className="form-group">
-                      <label className="form-label">Aadhaar Number</label>
-                      <input
-                        type="text"
-                        placeholder="12-digit Aadhaar number"
-                        maxLength="12"
-                        className="form-input"
-                      />
+            {/* Driver Specific Information - ONLY show for DRIVER role */}
+            {profile.role === 'DRIVER' && (
+              <>
+                <section className="profile-section">
+                  <h2 className="section-title">
+                    <span className="section-icon">🆔</span>
+                    KYC Documents
+                  </h2>
+
+                  <div className="info-grid">
+                    <ProfileInfoItem
+                      icon="📄"
+                      label="Aadhaar Number"
+                      value={profile.aadhaarNumber || 'Not provided'}
+                      color="#607D8B"
+                    />
+                    <ProfileInfoItem
+                      icon="🚗"
+                      label="Driving License"
+                      value={profile.drivingLicense || 'Not provided'}
+                      color="#795548"
+                    />
+                  </div>
+
+                  <div className="update-form">
+                    <h3 className="form-title">Update KYC Information</h3>
+                    <form onSubmit={handleUpdateDriverInfo} className="form-grid">
+                      <div className="form-group">
+                        <label className="form-label">Aadhaar Number</label>
+                        <input
+                          type="text"
+                          placeholder="12-digit Aadhaar number"
+                          maxLength="12"
+                          className="form-input"
+                          defaultValue={profile.aadhaarNumber || ''}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label className="form-label">Driving License</label>
+                        <input
+                          type="text"
+                          placeholder="Driving license number"
+                          className="form-input"
+                          defaultValue={profile.drivingLicense || ''}
+                        />
+                      </div>
+                      <div className="form-group full-width">
+                        <button type="submit" className="submit-btn update-btn">
+                          📝 Update KYC Info
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </section>
+
+                {/* Vehicles Section - Only for DRIVER */}
+                {profile.vehicles && profile.vehicles.length > 0 && (
+                  <section className="profile-section">
+                    <h2 className="section-title">
+                      <span className="section-icon">🚗</span>
+                      My Vehicles
+                    </h2>
+
+                    <div className="vehicles-grid">
+                      {profile.vehicles.map((vehicle) => (
+                        <div key={vehicle.id} className="vehicle-card">
+                          <div className="vehicle-header">
+                            <h4 className="vehicle-model">{vehicle.model || 'Vehicle'}</h4>
+                            <span className="vehicle-number">{vehicle.vehicleNumber}</span>
+                          </div>
+                          <div className="vehicle-details">
+                            <div className="vehicle-detail-item">
+                              <span className="detail-label">Color:</span>
+                              <span className="detail-value">{vehicle.color}</span>
+                            </div>
+                            <div className="vehicle-detail-item">
+                              <span className="detail-label">Insurance:</span>
+                              <span className="detail-value">{vehicle.insuranceNumber}</span>
+                            </div>
+                            {vehicle.insuranceExpiry && (
+                              <div className="vehicle-detail-item">
+                                <span className="detail-label">Insurance Expiry:</span>
+                                <span className="detail-value">
+                                  {new Date(vehicle.insuranceExpiry).toLocaleDateString('en-IN')}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                    <div className="form-group">
-                      <label className="form-label">Driving License</label>
-                      <input
-                        type="text"
-                        placeholder="Driving license number"
-                        className="form-input"
-                      />
-                    </div>
-                    <div className="form-group full-width">
-                      <button type="submit" className="submit-btn update-btn">
-                        📝 Update Driver Info
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </section>
+                  </section>
+                )}
+              </>
             )}
 
-            {/* Change Password Section */}
+            {/* Change Password Section - For all users */}
             <section className="profile-section password-section">
               <h2 className="section-title">
                 <span className="section-icon">🔒</span>
@@ -360,6 +378,7 @@ const Profile = () => {
                     <li>Use at least 8 characters</li>
                     <li>Include uppercase and lowercase letters</li>
                     <li>Add numbers and special characters</li>
+                    <li>Avoid common passwords</li>
                   </ul>
                 </div>
 
@@ -386,6 +405,12 @@ const Profile = () => {
           <div className="empty-icon">👤</div>
           <h3 className="empty-title">Profile Not Found</h3>
           <p className="empty-text">Unable to load your profile. Please try again later.</p>
+          <button
+            className="retry-btn"
+            onClick={() => window.location.reload()}
+          >
+            🔄 Retry
+          </button>
         </div>
       )}
     </div>
