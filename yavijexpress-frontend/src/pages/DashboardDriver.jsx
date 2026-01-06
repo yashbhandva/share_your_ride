@@ -159,30 +159,30 @@ const DashboardDriver = () => {
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     console.log('OTP verification started:', { bookingId: otpForm.bookingId, otp: otpForm.otp });
-    
+
     if (!otpForm.bookingId || !otpForm.otp) {
       setError("Please enter OTP");
       return;
     }
-    
+
     try {
       setOtpVerifying(true);
       setError("");
       setSuccess("");
-      
+
       const cleanOtp = otpForm.otp.trim();
       console.log('Sending OTP verification request...', { bookingId: otpForm.bookingId, otp: cleanOtp });
       const res = await api.post("/api/bookings/verify-otp", {
         bookingId: otpForm.bookingId,
         otp: cleanOtp
       });
-      
+
       console.log('OTP verification response:', res.data);
       const message = res.data?.data?.message || res.data?.message || "✅ OTP Verified Successfully! Trip can now start.";
       setSuccess(message);
       setOtpForm({ bookingId: null, otp: "" });
       setTimeout(() => setSuccess(""), 8000);
-      
+
       // Reload data
       await loadTrips(user.id);
       await loadBookings(user.id);
