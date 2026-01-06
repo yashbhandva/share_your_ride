@@ -64,3 +64,733 @@
 2026-01-06T15:29:14.241+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
 2026-01-06T15:29:46.235+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/verify-otp
 2026-01-06T15:29:51.497+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2026-01-06T15:43:04.557+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2026-01-06T15:44:05.767+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2026-01-06T15:44:09.474+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T15:44:09.483+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T15:44:09.501+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T15:44:09.658+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T15:44:09.667+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T15:44:09.847+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T15:44:10.091+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T15:44:10.156+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T15:44:10.170+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T15:44:10.176+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T15:44:10.223+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T15:44:10.247+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T15:44:15.847+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T15:44:16.106+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T15:44:16.373+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T15:44:16.450+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T15:44:16.552+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T15:44:16.567+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T15:44:19.389+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T15:44:19.421+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T15:45:06.217+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T15:45:06.234+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T15:45:06.240+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T15:45:06.243+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T15:45:06.259+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T15:45:06.262+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T15:45:06.274+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T15:45:06.292+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T15:45:35.735+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T15:45:35.766+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T15:45:35.776+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T15:45:35.783+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T15:45:35.806+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T15:45:35.807+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T15:45:35.834+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T15:45:35.877+05:30 DEBUG 23940 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T15:51:05.115+05:30  INFO 23940 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-01-06T15:51:05.145+05:30  INFO 23940 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5b61d156]]
+2026-01-06T15:51:05.147+05:30  INFO 23940 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-01-06T15:51:05.383+05:30  INFO 23940 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-06T15:51:05.510+05:30  INFO 23940 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-06T15:51:05.546+05:30  INFO 23940 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-06T15:51:16.880+05:30  INFO 22764 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Starting YavijExpressApplication using Java 24.0.2 with PID 22764 (C:\yavijexpress\yavijexpress\yavijexpress\target\classes started by Dell in C:\yavijexpress)
+2026-01-06T15:51:16.883+05:30 DEBUG 22764 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-01-06T15:51:16.885+05:30  INFO 22764 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-01-06T15:51:19.361+05:30  INFO 22764 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-06T15:51:19.597+05:30  INFO 22764 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 219 ms. Found 11 JPA repository interfaces.
+2026-01-06T15:51:22.741+05:30  INFO 22764 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-06T15:51:22.751+05:30  INFO 22764 --- [yavij-express] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-06T15:51:22.752+05:30  INFO 22764 --- [yavij-express] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-01-06T15:51:22.856+05:30  INFO 22764 --- [yavij-express] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-06T15:51:22.858+05:30  INFO 22764 --- [yavij-express] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5850 ms
+2026-01-06T15:51:23.174+05:30  INFO 22764 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-06T15:51:24.059+05:30  INFO 22764 --- [yavij-express] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2aa14ae6
+2026-01-06T15:51:24.064+05:30  INFO 22764 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-06T15:51:24.297+05:30  INFO 22764 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2026-01-06T15:51:24.299+05:30  INFO 22764 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2026-01-06T15:51:24.301+05:30  INFO 22764 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : 
+2026-01-06T15:51:24.334+05:30  INFO 22764 --- [yavij-express] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/yavij_express_db (PostgreSQL 18.1)
+2026-01-06T15:51:24.346+05:30  WARN 22764 --- [yavij-express] [main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.1 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-01-06T15:51:24.413+05:30  INFO 22764 --- [yavij-express] [main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.035s)
+2026-01-06T15:51:24.414+05:30  WARN 22764 --- [yavij-express] [main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-01-06T15:51:24.442+05:30  INFO 22764 --- [yavij-express] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-01-06T15:51:24.454+05:30  INFO 22764 --- [yavij-express] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-01-06T15:51:24.699+05:30  INFO 22764 --- [yavij-express] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-06T15:51:24.894+05:30  INFO 22764 --- [yavij-express] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-01-06T15:51:25.031+05:30  INFO 22764 --- [yavij-express] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-06T15:51:25.648+05:30  INFO 22764 --- [yavij-express] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-06T15:51:25.812+05:30  WARN 22764 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-06T15:51:28.246+05:30  INFO 22764 --- [yavij-express] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-06T15:51:28.570+05:30  INFO 22764 --- [yavij-express] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-06T15:51:29.167+05:30  INFO 22764 --- [yavij-express] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-06T15:51:30.252+05:30 DEBUG 22764 --- [yavij-express] [main] c.y.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2026-01-06T15:51:32.404+05:30  WARN 22764 --- [yavij-express] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-06T15:51:33.207+05:30  INFO 22764 --- [yavij-express] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@302b6367, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@8922006, org.springframework.security.web.context.SecurityContextHolderFilter@475ca2c6, org.springframework.security.web.header.HeaderWriterFilter@2f0170e, org.springframework.web.filter.CorsFilter@3d5a6aca, org.springframework.security.web.authentication.logout.LogoutFilter@2c174215, com.yavijexpress.security.JwtAuthenticationFilter@5a1216b0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@32142479, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7aece85c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@13cdfd26, org.springframework.security.web.session.SessionManagementFilter@3c9163df, org.springframework.security.web.access.ExceptionTranslationFilter@7531ba53, org.springframework.security.web.access.intercept.AuthorizationFilter@46ce6678]
+2026-01-06T15:51:35.652+05:30  INFO 22764 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-01-06T15:51:35.659+05:30  INFO 22764 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-01-06T15:51:35.665+05:30  INFO 22764 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@e31d9c2]]
+2026-01-06T15:51:35.667+05:30  INFO 22764 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-01-06T15:51:35.779+05:30  INFO 22764 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Started YavijExpressApplication in 19.771 seconds (process running for 20.726)
+2026-01-06T15:52:19.497+05:30  INFO 22764 --- [yavij-express] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-06T15:52:19.498+05:30  INFO 22764 --- [yavij-express] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-06T15:52:19.501+05:30  INFO 22764 --- [yavij-express] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-01-06T15:52:19.569+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T15:52:19.952+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T15:52:19.956+05:30  WARN 22764 --- [yavij-express] [http-nio-8080-exec-3] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/auth/test-auth' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-01-06T15:52:20.093+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T15:52:20.096+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T15:52:20.108+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T15:52:20.117+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T15:52:20.274+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T15:52:20.293+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T15:52:35.541+05:30  INFO 22764 --- [yavij-express] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-01-06T15:53:25.782+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2026-01-06T15:53:27.181+05:30  INFO 22764 --- [yavij-express] [http-nio-8080-exec-9] .s.a.AnnotationAsyncExecutionInterceptor : More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [clientInboundChannelExecutor, clientOutboundChannelExecutor, brokerChannelExecutor]
+2026-01-06T15:54:29.563+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/verify-otp
+2026-01-06T15:54:35.589+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2026-01-06T15:54:37.677+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/6
+2026-01-06T15:54:37.679+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/6
+2026-01-06T15:54:37.679+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/6
+2026-01-06T15:54:37.699+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: ram1@gmail.com for /api/trips/driver/6
+2026-01-06T15:54:37.701+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: ram1@gmail.com for /api/vehicles/user/6
+2026-01-06T15:54:37.709+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: ram1@gmail.com for /api/bookings/driver/6
+2026-01-06T15:54:37.801+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/6
+2026-01-06T15:54:37.804+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/6
+2026-01-06T15:54:37.854+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: ram1@gmail.com for /api/vehicles/user/6
+2026-01-06T15:54:37.855+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: ram1@gmail.com for /api/trips/driver/6
+2026-01-06T15:54:38.026+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/6
+2026-01-06T15:54:38.105+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: ram1@gmail.com for /api/bookings/driver/6
+2026-01-06T15:55:46.008+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2026-01-06T15:56:55.431+05:30 DEBUG 22764 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/verify-otp
+2026-01-06T15:58:45.232+05:30  INFO 22764 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-01-06T15:58:45.234+05:30  INFO 22764 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@e31d9c2]]
+2026-01-06T15:58:45.235+05:30  INFO 22764 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-01-06T15:58:45.370+05:30  INFO 22764 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-06T15:58:45.434+05:30  INFO 22764 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-06T15:58:45.453+05:30  INFO 22764 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-06T21:25:25.281+05:30  INFO 12556 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Starting YavijExpressApplication using Java 24.0.2 with PID 12556 (C:\yavijexpress\yavijexpress\yavijexpress\target\classes started by Dell in C:\yavijexpress)
+2026-01-06T21:25:25.288+05:30 DEBUG 12556 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-01-06T21:25:25.290+05:30  INFO 12556 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-01-06T21:25:28.825+05:30  INFO 12556 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-06T21:25:29.064+05:30  INFO 12556 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 209 ms. Found 11 JPA repository interfaces.
+2026-01-06T21:25:31.511+05:30  INFO 12556 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-06T21:25:31.549+05:30  INFO 12556 --- [yavij-express] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-06T21:25:31.550+05:30  INFO 12556 --- [yavij-express] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-01-06T21:25:31.784+05:30  INFO 12556 --- [yavij-express] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-06T21:25:31.786+05:30  INFO 12556 --- [yavij-express] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6248 ms
+2026-01-06T21:25:32.161+05:30  INFO 12556 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-06T21:25:32.773+05:30  INFO 12556 --- [yavij-express] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6bce313
+2026-01-06T21:25:32.778+05:30  INFO 12556 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-06T21:25:33.034+05:30  INFO 12556 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2026-01-06T21:25:33.034+05:30  INFO 12556 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2026-01-06T21:25:33.034+05:30  INFO 12556 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : 
+2026-01-06T21:25:33.074+05:30  INFO 12556 --- [yavij-express] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/yavij_express_db (PostgreSQL 18.1)
+2026-01-06T21:25:33.088+05:30  WARN 12556 --- [yavij-express] [main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.1 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-01-06T21:25:33.184+05:30  INFO 12556 --- [yavij-express] [main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.048s)
+2026-01-06T21:25:33.185+05:30  WARN 12556 --- [yavij-express] [main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-01-06T21:25:33.217+05:30  INFO 12556 --- [yavij-express] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-01-06T21:25:33.229+05:30  INFO 12556 --- [yavij-express] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-01-06T21:25:33.633+05:30  INFO 12556 --- [yavij-express] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-06T21:25:33.850+05:30  INFO 12556 --- [yavij-express] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-01-06T21:25:34.036+05:30  INFO 12556 --- [yavij-express] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-06T21:25:34.853+05:30  INFO 12556 --- [yavij-express] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-06T21:25:35.011+05:30  WARN 12556 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-06T21:25:38.030+05:30  INFO 12556 --- [yavij-express] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-06T21:25:38.502+05:30  INFO 12556 --- [yavij-express] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-06T21:25:39.235+05:30  INFO 12556 --- [yavij-express] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-06T21:25:40.410+05:30 DEBUG 12556 --- [yavij-express] [main] c.y.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2026-01-06T21:25:45.231+05:30  WARN 12556 --- [yavij-express] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-06T21:25:48.266+05:30  INFO 12556 --- [yavij-express] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@36fb5ba, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1972346b, org.springframework.security.web.context.SecurityContextHolderFilter@75dc1d5a, org.springframework.security.web.header.HeaderWriterFilter@18d3e7fc, org.springframework.web.filter.CorsFilter@1a2454b0, org.springframework.security.web.authentication.logout.LogoutFilter@61f9cab2, com.yavijexpress.security.JwtAuthenticationFilter@591be976, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3c9163df, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7d07e6aa, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@46ce6678, org.springframework.security.web.session.SessionManagementFilter@25892fe3, org.springframework.security.web.access.ExceptionTranslationFilter@456a0e9e, org.springframework.security.web.access.intercept.AuthorizationFilter@3a273e53]
+2026-01-06T21:25:51.829+05:30  INFO 12556 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-01-06T21:25:51.833+05:30  INFO 12556 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-01-06T21:25:51.837+05:30  INFO 12556 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3033e54c]]
+2026-01-06T21:25:51.837+05:30  INFO 12556 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-01-06T21:25:51.868+05:30  INFO 12556 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Started YavijExpressApplication in 27.588 seconds (process running for 45.313)
+2026-01-06T21:26:52.104+05:30  INFO 12556 --- [yavij-express] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-01-06T21:28:45.037+05:30  INFO 12556 --- [yavij-express] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-06T21:28:45.066+05:30  INFO 12556 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-06T21:28:45.254+05:30  INFO 12556 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 184 ms
+2026-01-06T21:28:45.713+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2026-01-06T21:28:45.758+05:30  WARN 12556 --- [yavij-express] [http-nio-8080-exec-4] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/auth/register' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-01-06T21:28:49.677+05:30  INFO 12556 --- [yavij-express] [http-nio-8080-exec-4] .s.a.AnnotationAsyncExecutionInterceptor : More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [clientInboundChannelExecutor, clientOutboundChannelExecutor, brokerChannelExecutor]
+2026-01-06T21:29:28.191+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/verify-otp
+2026-01-06T21:29:36.080+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2026-01-06T21:29:40.738+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2026-01-06T21:29:40.741+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T21:29:41.039+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/bookings/passenger/8
+2026-01-06T21:29:41.045+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/trips/upcoming
+2026-01-06T21:29:41.144+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T21:29:41.176+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/trips/upcoming
+2026-01-06T21:29:41.233+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2026-01-06T21:29:41.256+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/bookings/passenger/8
+2026-01-06T21:41:07.756+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/users/profile/8
+2026-01-06T21:41:08.623+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/users/profile/8
+2026-01-06T21:41:09.639+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/users/profile/8
+2026-01-06T21:41:09.797+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/users/profile/8
+2026-01-06T21:42:41.203+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T21:42:41.208+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2026-01-06T21:42:41.251+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/trips/upcoming
+2026-01-06T21:42:41.251+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/bookings/passenger/8
+2026-01-06T21:42:41.990+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T21:42:42.043+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/trips/upcoming
+2026-01-06T21:42:42.160+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/8
+2026-01-06T21:42:42.181+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/bookings/passenger/8
+2026-01-06T21:42:51.054+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T21:42:51.080+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T21:42:51.126+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T21:42:51.139+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T21:42:51.161+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T21:42:51.178+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T21:42:51.909+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T21:42:51.938+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T21:45:57.382+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T21:45:57.758+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T21:45:57.788+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T21:45:57.793+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T21:45:57.822+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T21:45:57.836+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T21:45:57.869+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T21:45:57.903+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T21:46:27.797+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T21:46:27.888+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T21:46:27.922+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T21:46:27.923+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T21:46:27.988+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T21:46:28.013+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T21:46:28.067+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T21:46:28.113+05:30 DEBUG 12556 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T21:52:35.759+05:30  INFO 12556 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-01-06T21:52:35.806+05:30  INFO 12556 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3033e54c]]
+2026-01-06T21:52:35.810+05:30  INFO 12556 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-01-06T21:52:36.461+05:30  INFO 12556 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-06T21:52:36.736+05:30  INFO 12556 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-06T21:52:36.849+05:30  INFO 12556 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-06T21:52:47.292+05:30  INFO 3832 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Starting YavijExpressApplication using Java 24.0.2 with PID 3832 (C:\yavijexpress\yavijexpress\yavijexpress\target\classes started by Dell in C:\yavijexpress)
+2026-01-06T21:52:47.296+05:30 DEBUG 3832 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-01-06T21:52:47.298+05:30  INFO 3832 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-01-06T21:52:50.739+05:30  INFO 3832 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-06T21:52:52.064+05:30  INFO 3832 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1288 ms. Found 11 JPA repository interfaces.
+2026-01-06T21:52:53.845+05:30  INFO 3832 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-06T21:52:53.869+05:30  INFO 3832 --- [yavij-express] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-06T21:52:53.869+05:30  INFO 3832 --- [yavij-express] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-01-06T21:52:54.019+05:30  INFO 3832 --- [yavij-express] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-06T21:52:54.020+05:30  INFO 3832 --- [yavij-express] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6598 ms
+2026-01-06T21:52:54.284+05:30  INFO 3832 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-06T21:52:54.774+05:30  INFO 3832 --- [yavij-express] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2c2c3947
+2026-01-06T21:52:54.782+05:30  INFO 3832 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-06T21:52:55.050+05:30  INFO 3832 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2026-01-06T21:52:55.050+05:30  INFO 3832 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2026-01-06T21:52:55.050+05:30  INFO 3832 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : 
+2026-01-06T21:52:55.097+05:30  INFO 3832 --- [yavij-express] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/yavij_express_db (PostgreSQL 18.1)
+2026-01-06T21:52:55.111+05:30  WARN 3832 --- [yavij-express] [main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.1 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-01-06T21:52:55.166+05:30  INFO 3832 --- [yavij-express] [main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.030s)
+2026-01-06T21:52:55.167+05:30  WARN 3832 --- [yavij-express] [main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-01-06T21:52:55.195+05:30  INFO 3832 --- [yavij-express] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-01-06T21:52:55.214+05:30  INFO 3832 --- [yavij-express] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-01-06T21:52:55.496+05:30  INFO 3832 --- [yavij-express] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-06T21:52:55.691+05:30  INFO 3832 --- [yavij-express] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-01-06T21:52:55.804+05:30  INFO 3832 --- [yavij-express] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-06T21:52:56.437+05:30  INFO 3832 --- [yavij-express] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-06T21:52:56.578+05:30  WARN 3832 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-06T21:52:58.916+05:30  INFO 3832 --- [yavij-express] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-06T21:52:59.216+05:30  INFO 3832 --- [yavij-express] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-06T21:52:59.818+05:30  INFO 3832 --- [yavij-express] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-06T21:53:01.073+05:30 DEBUG 3832 --- [yavij-express] [main] c.y.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2026-01-06T21:53:02.780+05:30  WARN 3832 --- [yavij-express] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-06T21:53:03.397+05:30  INFO 3832 --- [yavij-express] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@52148669, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1ff02deb, org.springframework.security.web.context.SecurityContextHolderFilter@2a4edf0b, org.springframework.security.web.header.HeaderWriterFilter@7a56c3c7, org.springframework.web.filter.CorsFilter@156290d9, org.springframework.security.web.authentication.logout.LogoutFilter@4151d8a3, com.yavijexpress.security.JwtAuthenticationFilter@344db28d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1972346b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a2454b0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2ee4c028, org.springframework.security.web.session.SessionManagementFilter@29701f1f, org.springframework.security.web.access.ExceptionTranslationFilter@1e620fe7, org.springframework.security.web.access.intercept.AuthorizationFilter@55abf66a]
+2026-01-06T21:53:04.150+05:30  INFO 3832 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-01-06T21:53:04.154+05:30  INFO 3832 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-01-06T21:53:04.156+05:30  INFO 3832 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@463bdee9]]
+2026-01-06T21:53:04.156+05:30  INFO 3832 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-01-06T21:53:04.166+05:30  INFO 3832 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Started YavijExpressApplication in 17.9 seconds (process running for 18.877)
+2026-01-06T21:53:10.300+05:30  INFO 3832 --- [yavij-express] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-06T21:53:10.300+05:30  INFO 3832 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-06T21:53:10.302+05:30  INFO 3832 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-01-06T21:53:10.387+05:30 DEBUG 3832 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T21:53:11.020+05:30 DEBUG 3832 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T21:53:11.033+05:30  WARN 3832 --- [yavij-express] [http-nio-8080-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/auth/test-auth' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-01-06T21:53:11.281+05:30 DEBUG 3832 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T21:53:11.310+05:30 DEBUG 3832 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T21:53:11.316+05:30 DEBUG 3832 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T21:53:11.346+05:30 DEBUG 3832 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T21:53:11.998+05:30 DEBUG 3832 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T21:53:12.238+05:30 DEBUG 3832 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T21:54:04.134+05:30  INFO 3832 --- [yavij-express] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-01-06T22:06:44.749+05:30  INFO 3832 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-01-06T22:06:44.763+05:30  INFO 3832 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@463bdee9]]
+2026-01-06T22:06:44.764+05:30  INFO 3832 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-01-06T22:06:45.023+05:30  INFO 3832 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-06T22:06:45.120+05:30  INFO 3832 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-06T22:06:45.171+05:30  INFO 3832 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-06T22:08:02.940+05:30  INFO 2544 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Starting YavijExpressApplication using Java 24.0.2 with PID 2544 (C:\yavijexpress\yavijexpress\yavijexpress\target\classes started by Dell in C:\yavijexpress)
+2026-01-06T22:08:02.944+05:30 DEBUG 2544 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-01-06T22:08:02.946+05:30  INFO 2544 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-01-06T22:08:05.436+05:30  INFO 2544 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-06T22:08:05.649+05:30  INFO 2544 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 191 ms. Found 11 JPA repository interfaces.
+2026-01-06T22:08:07.670+05:30  INFO 2544 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-06T22:08:07.703+05:30  INFO 2544 --- [yavij-express] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-06T22:08:07.703+05:30  INFO 2544 --- [yavij-express] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-01-06T22:08:07.877+05:30  INFO 2544 --- [yavij-express] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-06T22:08:07.877+05:30  INFO 2544 --- [yavij-express] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4789 ms
+2026-01-06T22:08:08.183+05:30  INFO 2544 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-06T22:08:08.842+05:30  INFO 2544 --- [yavij-express] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@604d28c6
+2026-01-06T22:08:08.847+05:30  INFO 2544 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-06T22:08:09.106+05:30  INFO 2544 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2026-01-06T22:08:09.106+05:30  INFO 2544 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2026-01-06T22:08:09.106+05:30  INFO 2544 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : 
+2026-01-06T22:08:09.143+05:30  INFO 2544 --- [yavij-express] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/yavij_express_db (PostgreSQL 18.1)
+2026-01-06T22:08:09.156+05:30  WARN 2544 --- [yavij-express] [main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.1 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-01-06T22:08:09.230+05:30  INFO 2544 --- [yavij-express] [main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.039s)
+2026-01-06T22:08:09.231+05:30  WARN 2544 --- [yavij-express] [main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-01-06T22:08:09.256+05:30  INFO 2544 --- [yavij-express] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-01-06T22:08:09.266+05:30  INFO 2544 --- [yavij-express] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-01-06T22:08:09.520+05:30  INFO 2544 --- [yavij-express] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-06T22:08:09.682+05:30  INFO 2544 --- [yavij-express] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-01-06T22:08:09.812+05:30  INFO 2544 --- [yavij-express] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-06T22:08:10.436+05:30  INFO 2544 --- [yavij-express] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-06T22:08:10.575+05:30  WARN 2544 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-06T22:08:12.561+05:30  INFO 2544 --- [yavij-express] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-06T22:08:12.914+05:30  INFO 2544 --- [yavij-express] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-06T22:08:13.489+05:30  INFO 2544 --- [yavij-express] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-06T22:08:14.504+05:30 DEBUG 2544 --- [yavij-express] [main] c.y.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2026-01-06T22:08:16.086+05:30  WARN 2544 --- [yavij-express] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-06T22:08:16.693+05:30  INFO 2544 --- [yavij-express] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@b068ddf, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@445dc8dc, org.springframework.security.web.context.SecurityContextHolderFilter@dd7b622, org.springframework.security.web.header.HeaderWriterFilter@475ca2c6, org.springframework.web.filter.CorsFilter@4bb13671, org.springframework.security.web.authentication.logout.LogoutFilter@78168463, com.yavijexpress.security.JwtAuthenticationFilter@7c8d382e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c3b3f04, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2c174215, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@28d61fc, org.springframework.security.web.session.SessionManagementFilter@d9e61f2, org.springframework.security.web.access.ExceptionTranslationFilter@7d07e6aa, org.springframework.security.web.access.intercept.AuthorizationFilter@7f0e0db3]
+2026-01-06T22:08:18.011+05:30  INFO 2544 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-01-06T22:08:18.015+05:30  INFO 2544 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-01-06T22:08:18.017+05:30  INFO 2544 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1b34721a]]
+2026-01-06T22:08:18.018+05:30  INFO 2544 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-01-06T22:08:18.032+05:30  INFO 2544 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Started YavijExpressApplication in 16.121 seconds (process running for 17.029)
+2026-01-06T22:08:25.134+05:30  INFO 2544 --- [yavij-express] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-06T22:08:25.135+05:30  INFO 2544 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-06T22:08:25.138+05:30  INFO 2544 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-01-06T22:08:25.224+05:30 DEBUG 2544 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:08:25.982+05:30 DEBUG 2544 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T22:08:25.988+05:30  WARN 2544 --- [yavij-express] [http-nio-8080-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/auth/test-auth' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-01-06T22:08:26.281+05:30 DEBUG 2544 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:08:26.292+05:30 DEBUG 2544 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:08:26.316+05:30 DEBUG 2544 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T22:08:26.324+05:30 DEBUG 2544 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T22:08:26.553+05:30 DEBUG 2544 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:08:26.589+05:30 DEBUG 2544 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T22:09:17.987+05:30  INFO 2544 --- [yavij-express] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-01-06T22:14:08.520+05:30  INFO 2544 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-01-06T22:14:08.535+05:30  INFO 2544 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1b34721a]]
+2026-01-06T22:14:08.538+05:30  INFO 2544 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-01-06T22:14:09.060+05:30  INFO 2544 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-06T22:14:09.342+05:30  INFO 2544 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-06T22:14:09.464+05:30  INFO 2544 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-06T22:14:18.127+05:30  INFO 1896 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Starting YavijExpressApplication using Java 24.0.2 with PID 1896 (C:\yavijexpress\yavijexpress\yavijexpress\target\classes started by Dell in C:\yavijexpress)
+2026-01-06T22:14:18.131+05:30 DEBUG 1896 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-01-06T22:14:18.133+05:30  INFO 1896 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-01-06T22:14:20.580+05:30  INFO 1896 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-06T22:14:20.841+05:30  INFO 1896 --- [yavij-express] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 233 ms. Found 11 JPA repository interfaces.
+2026-01-06T22:14:22.331+05:30  INFO 1896 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-06T22:14:22.352+05:30  INFO 1896 --- [yavij-express] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-06T22:14:22.353+05:30  INFO 1896 --- [yavij-express] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-01-06T22:14:22.496+05:30  INFO 1896 --- [yavij-express] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-06T22:14:22.496+05:30  INFO 1896 --- [yavij-express] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4231 ms
+2026-01-06T22:14:22.719+05:30  INFO 1896 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-06T22:14:23.368+05:30  INFO 1896 --- [yavij-express] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3af10d0b
+2026-01-06T22:14:23.374+05:30  INFO 1896 --- [yavij-express] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-06T22:14:23.589+05:30  INFO 1896 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2026-01-06T22:14:23.589+05:30  INFO 1896 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2026-01-06T22:14:23.590+05:30  INFO 1896 --- [yavij-express] [main] o.f.c.internal.license.VersionPrinter    : 
+2026-01-06T22:14:23.636+05:30  INFO 1896 --- [yavij-express] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/yavij_express_db (PostgreSQL 18.1)
+2026-01-06T22:14:23.649+05:30  WARN 1896 --- [yavij-express] [main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.1 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2026-01-06T22:14:23.713+05:30  INFO 1896 --- [yavij-express] [main] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.024s)
+2026-01-06T22:14:23.713+05:30  WARN 1896 --- [yavij-express] [main] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2026-01-06T22:14:23.736+05:30  INFO 1896 --- [yavij-express] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-01-06T22:14:23.743+05:30  INFO 1896 --- [yavij-express] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-01-06T22:14:24.690+05:30  INFO 1896 --- [yavij-express] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-06T22:14:24.940+05:30  INFO 1896 --- [yavij-express] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-01-06T22:14:25.095+05:30  INFO 1896 --- [yavij-express] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-06T22:14:25.639+05:30  INFO 1896 --- [yavij-express] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-06T22:14:25.745+05:30  WARN 1896 --- [yavij-express] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-06T22:14:28.035+05:30  INFO 1896 --- [yavij-express] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-06T22:14:28.325+05:30  INFO 1896 --- [yavij-express] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-06T22:14:28.869+05:30  INFO 1896 --- [yavij-express] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-06T22:14:29.958+05:30 DEBUG 1896 --- [yavij-express] [main] c.y.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2026-01-06T22:14:31.505+05:30  WARN 1896 --- [yavij-express] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-06T22:14:32.124+05:30  INFO 1896 --- [yavij-express] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3fde6c3b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@36810c06, org.springframework.security.web.context.SecurityContextHolderFilter@7a56c3c7, org.springframework.security.web.header.HeaderWriterFilter@17765082, org.springframework.web.filter.CorsFilter@4015ebf1, org.springframework.security.web.authentication.logout.LogoutFilter@1a2454b0, com.yavijexpress.security.JwtAuthenticationFilter@3ebfe048, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4f168322, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@411acaed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@d22c288, org.springframework.security.web.session.SessionManagementFilter@dc6c5ca, org.springframework.security.web.access.ExceptionTranslationFilter@44f4c619, org.springframework.security.web.access.intercept.AuthorizationFilter@fff33b4]
+2026-01-06T22:14:32.820+05:30  INFO 1896 --- [yavij-express] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-01-06T22:14:32.823+05:30  INFO 1896 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-01-06T22:14:32.824+05:30  INFO 1896 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4743220d]]
+2026-01-06T22:14:32.825+05:30  INFO 1896 --- [yavij-express] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-01-06T22:14:32.836+05:30  INFO 1896 --- [yavij-express] [main] c.yavijexpress.YavijExpressApplication   : Started YavijExpressApplication in 15.624 seconds (process running for 16.521)
+2026-01-06T22:14:39.367+05:30  INFO 1896 --- [yavij-express] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-06T22:14:39.369+05:30  INFO 1896 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-06T22:14:39.374+05:30  INFO 1896 --- [yavij-express] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-01-06T22:14:39.455+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:14:40.041+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T22:14:40.046+05:30  WARN 1896 --- [yavij-express] [http-nio-8080-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/auth/test-auth' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-01-06T22:14:40.258+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:14:40.264+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:14:40.283+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T22:14:40.292+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T22:14:40.379+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:14:40.396+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T22:15:32.807+05:30  INFO 1896 --- [yavij-express] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-01-06T22:21:30.037+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:21:32.682+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T22:21:33.188+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:21:33.206+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:21:33.270+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T22:21:33.319+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T22:21:33.557+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:21:34.054+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T22:21:53.250+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:21:53.290+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T22:21:53.307+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:21:53.310+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:21:53.344+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T22:21:53.348+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T22:21:53.380+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:21:53.403+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T22:26:05.895+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:26:06.345+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T22:26:06.463+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:26:06.476+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:26:06.513+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/test-auth
+2026-01-06T22:26:06.549+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T22:26:06.610+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:26:06.653+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: dewaugruffefa-9301@yopmail.com for /api/auth/profile
+2026-01-06T22:26:48.962+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2026-01-06T22:27:22.056+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2026-01-06T22:27:24.644+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T22:27:24.645+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T22:27:24.651+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T22:27:24.668+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T22:27:24.670+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T22:27:24.680+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T22:27:24.802+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T22:27:24.802+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T22:27:24.822+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T22:27:24.822+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T22:27:25.040+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T22:27:25.111+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T22:27:54.064+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:27:54.096+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T22:27:54.116+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:27:54.120+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:27:54.151+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T22:27:54.171+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T22:27:54.285+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:27:54.325+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T22:30:53.700+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:30:53.800+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T22:30:53.843+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:30:53.851+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:30:53.911+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T22:30:53.915+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T22:30:54.003+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:30:54.044+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T22:32:11.185+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:32:11.250+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T22:32:11.276+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:32:11.282+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:32:11.334+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T22:32:11.383+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T22:32:11.477+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:32:11.543+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T22:34:20.199+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/register
+2026-01-06T22:34:22.692+05:30  INFO 1896 --- [yavij-express] [http-nio-8080-exec-5] .s.a.AnnotationAsyncExecutionInterceptor : More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [clientInboundChannelExecutor, clientOutboundChannelExecutor, brokerChannelExecutor]
+2026-01-06T22:35:02.551+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/verify-otp
+2026-01-06T22:35:09.254+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2026-01-06T22:35:11.962+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T22:35:11.969+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T22:35:11.994+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T22:35:11.994+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T22:35:12.133+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T22:35:12.175+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T22:35:12.183+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T22:35:12.214+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T22:35:16.965+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:35:16.998+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/test-auth
+2026-01-06T22:35:17.017+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:35:17.108+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:35:17.131+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/profile
+2026-01-06T22:35:17.131+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/test-auth
+2026-01-06T22:35:17.157+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:35:17.183+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/profile
+2026-01-06T22:35:29.400+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:35:29.432+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/test-auth
+2026-01-06T22:35:29.442+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:35:29.468+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:35:29.482+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/test-auth
+2026-01-06T22:35:29.506+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/profile
+2026-01-06T22:35:29.536+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:35:29.567+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/profile
+2026-01-06T22:36:24.100+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/auth/login
+2026-01-06T22:36:25.804+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T22:36:25.814+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T22:36:25.820+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T22:36:25.838+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T22:36:25.842+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T22:36:25.848+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T22:36:25.897+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T22:36:25.897+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T22:36:25.898+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T22:36:25.930+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T22:36:25.931+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T22:36:25.936+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T22:36:33.859+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:36:33.883+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T22:36:33.897+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:36:33.915+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:36:33.940+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/test-auth
+2026-01-06T22:36:33.962+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T22:36:34.036+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:36:34.081+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/auth/profile
+2026-01-06T22:38:21.251+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:38:21.310+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/test-auth
+2026-01-06T22:38:21.330+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T22:38:21.335+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:38:21.361+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/test-auth
+2026-01-06T22:38:21.408+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/profile
+2026-01-06T22:38:21.529+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T22:38:21.562+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/profile
+2026-01-06T22:38:28.522+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T22:38:28.522+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T22:38:28.541+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T22:38:28.542+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T22:38:28.632+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T22:38:28.652+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T22:38:28.697+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T22:38:28.701+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T22:38:36.816+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T22:38:36.818+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T22:38:36.819+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T22:38:36.859+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T22:38:36.861+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T22:38:36.898+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T22:38:36.906+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T22:38:36.912+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T22:38:36.938+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T22:38:36.974+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T22:38:36.981+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T22:38:37.021+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T22:40:05.993+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/vehicles
+2026-01-06T22:40:06.026+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles
+2026-01-06T22:40:06.929+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T22:40:06.945+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T22:40:46.350+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: PUT /api/vehicles/1
+2026-01-06T22:40:46.381+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/1
+2026-01-06T22:40:46.447+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T22:40:46.464+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T22:40:54.216+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: PUT /api/vehicles/1
+2026-01-06T22:40:54.297+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/1
+2026-01-06T22:40:54.361+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T22:40:54.383+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T22:41:06.079+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: PUT /api/vehicles/1
+2026-01-06T22:41:06.098+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/1
+2026-01-06T22:41:06.129+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T22:41:06.143+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T22:41:16.840+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: PUT /api/vehicles/1
+2026-01-06T22:41:16.866+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/1
+2026-01-06T22:41:16.906+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T22:41:16.914+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T22:42:12.556+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/trips
+2026-01-06T22:42:12.580+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips
+2026-01-06T22:42:12.860+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T22:42:12.884+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T22:42:56.259+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/trips/search
+2026-01-06T22:42:56.274+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/search
+2026-01-06T22:43:15.524+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/trips/search
+2026-01-06T22:43:15.543+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/search
+2026-01-06T22:45:21.808+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T22:45:21.808+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T22:45:21.887+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T22:45:21.893+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T22:45:32.773+05:30  INFO 1896 --- [yavij-express] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2026-01-06T22:49:41.846+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T22:49:41.846+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T22:49:42.127+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T22:49:42.130+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T22:59:59.657+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T22:59:59.658+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:00:01.044+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:00:01.247+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:00:02.002+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T23:00:02.067+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:00:02.146+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:00:02.165+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:00:34.791+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/trips/search
+2026-01-06T23:00:34.832+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/search
+2026-01-06T23:01:09.583+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/bookings
+2026-01-06T23:01:09.611+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings
+2026-01-06T23:01:11.083+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T23:01:11.086+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:01:11.116+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:01:11.119+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:01:56.350+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/trips/1/start
+2026-01-06T23:01:56.375+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/1/start
+2026-01-06T23:01:56.586+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T23:01:56.595+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T23:02:25.263+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-06T23:02:25.290+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/notifications
+2026-01-06T23:02:25.431+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-06T23:02:25.446+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/notifications
+2026-01-06T23:02:41.858+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/notifications/16/read
+2026-01-06T23:02:41.879+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/notifications/16/read
+2026-01-06T23:02:41.949+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-06T23:02:41.982+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/notifications
+2026-01-06T23:02:57.997+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:02:57.997+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T23:02:58.019+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:02:58.022+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:02:58.041+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T23:02:58.061+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:02:58.075+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:02:58.099+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:03:32.788+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/notifications/4/read
+2026-01-06T23:03:32.815+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/notifications/4/read
+2026-01-06T23:03:32.855+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-06T23:03:32.877+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/notifications
+2026-01-06T23:03:35.741+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/notifications/read-all
+2026-01-06T23:03:35.779+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/notifications/read-all
+2026-01-06T23:03:35.829+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-06T23:03:35.845+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/notifications
+2026-01-06T23:03:39.164+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-06T23:03:39.189+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/notifications
+2026-01-06T23:03:45.527+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T23:03:45.527+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T23:03:45.530+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T23:03:45.553+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T23:03:45.556+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T23:03:45.593+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T23:03:45.593+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T23:03:45.596+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T23:03:45.630+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T23:03:45.631+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T23:03:45.725+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T23:03:45.756+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T23:03:53.646+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/bookings/1/confirm
+2026-01-06T23:03:53.679+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/1/confirm
+2026-01-06T23:03:53.798+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T23:03:53.825+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T23:04:29.819+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-06T23:04:29.844+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/notifications
+2026-01-06T23:04:29.864+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-06T23:04:29.889+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/notifications
+2026-01-06T23:04:35.789+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/notifications/17/read
+2026-01-06T23:04:35.808+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/notifications/17/read
+2026-01-06T23:04:35.855+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-06T23:04:35.880+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/notifications
+2026-01-06T23:04:58.989+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/bookings/verify-otp
+2026-01-06T23:04:59.029+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/verify-otp
+2026-01-06T23:04:59.127+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T23:04:59.149+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T23:04:59.180+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T23:04:59.191+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T23:05:15.326+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T23:05:15.326+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:05:15.348+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:05:15.355+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:05:15.392+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T23:05:15.420+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:05:15.427+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:05:15.461+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:12:46.124+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/bookings/1/cancel
+2026-01-06T23:12:46.461+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/1/cancel
+2026-01-06T23:12:47.999+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T23:12:48.005+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:12:48.068+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:12:48.073+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:13:09.847+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T23:13:09.849+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T23:13:09.857+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T23:13:09.876+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T23:13:09.880+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T23:13:09.888+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T23:13:09.951+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T23:13:09.962+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T23:13:09.963+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T23:13:09.988+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T23:13:10.006+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T23:13:10.011+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T23:14:43.641+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/trips
+2026-01-06T23:14:43.673+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips
+2026-01-06T23:14:43.919+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T23:14:43.942+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T23:15:32.778+05:30  INFO 1896 --- [yavij-express] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 0, completed tasks = 2]
+2026-01-06T23:15:41.822+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/vehicles
+2026-01-06T23:15:41.847+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles
+2026-01-06T23:15:41.893+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T23:15:41.911+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T23:17:00.253+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/trips
+2026-01-06T23:17:00.271+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips
+2026-01-06T23:17:00.370+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T23:17:00.393+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T23:17:34.786+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/trips/search
+2026-01-06T23:17:34.815+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/search
+2026-01-06T23:18:09.779+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/bookings
+2026-01-06T23:18:09.804+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings
+2026-01-06T23:18:09.880+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:18:09.880+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T23:18:09.900+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:18:09.905+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-5] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:18:36.037+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T23:18:36.039+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T23:18:36.037+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T23:18:36.062+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T23:18:36.063+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T23:18:36.071+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T23:18:36.133+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/vehicles/user/3
+2026-01-06T23:18:36.136+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T23:18:36.135+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T23:18:36.163+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/vehicles/user/3
+2026-01-06T23:18:36.186+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T23:18:36.198+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T23:18:43.592+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/bookings/2/confirm
+2026-01-06T23:18:43.616+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/2/confirm
+2026-01-06T23:18:43.682+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T23:18:43.816+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T23:19:07.624+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:19:07.624+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T23:19:07.645+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:19:07.645+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-7] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:19:07.669+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T23:19:07.694+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:19:07.709+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:19:07.738+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:19:19.764+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: POST /api/bookings/verify-otp
+2026-01-06T23:19:19.775+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/verify-otp
+2026-01-06T23:19:19.828+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/driver/3
+2026-01-06T23:19:19.835+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
+2026-01-06T23:19:19.851+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
+2026-01-06T23:19:19.867+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-06T23:19:34.218+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T23:19:34.219+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:19:34.232+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-4] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:19:34.232+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-3] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:19:34.250+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/trips/upcoming
+2026-01-06T23:19:34.266+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-9] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/trips/upcoming
+2026-01-06T23:19:34.283+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/passenger/9
+2026-01-06T23:19:34.303+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/bookings/passenger/9
+2026-01-06T23:19:41.070+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-06T23:19:41.082+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/notifications
+2026-01-06T23:19:41.097+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/notifications
+2026-01-06T23:19:41.105+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-1] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/notifications
+2026-01-06T23:19:58.378+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T23:19:58.397+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-2] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/test-auth
+2026-01-06T23:19:58.404+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/test-auth
+2026-01-06T23:19:58.418+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T23:19:58.425+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/test-auth
+2026-01-06T23:19:58.439+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/profile
+2026-01-06T23:19:58.468+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/auth/profile
+2026-01-06T23:19:58.487+05:30 DEBUG 1896 --- [yavij-express] [http-nio-8080-exec-8] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: yash@gmail.com for /api/auth/profile
