@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -80,6 +81,8 @@ public class UserServiceImpl implements UserService {
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setMobile(request.getMobile());
+        user.setAadhaarNumber(request.getAadhaarNumber());
+        user.setDrivingLicense(request.getDrivingLicense());
         user.setRole(role);
         user.setVerificationStatus(User.VerificationStatus.PENDING);
         user.setIsActive(true);
@@ -414,11 +417,62 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + email));
     }
 
-    // Helper method
+    // UserServiceImpl.java में
     private UserDTO.UserResponse convertToUserResponse(User user) {
-        UserDTO.UserResponse response = modelMapper.map(user, UserDTO.UserResponse.class);
-        response.setVerificationStatus(user.getVerificationStatus().toString());
+        UserDTO.UserResponse response = new UserDTO.UserResponse();
+
+        // Map basic fields
+        response.setId(user.getId());
+        response.setName(user.getName());
+        response.setEmail(user.getEmail());
+        response.setMobile(user.getMobile());
         response.setRole(user.getRole().toString());
+        response.setVerificationStatus(user.getVerificationStatus().toString());
+
+        // KYC Documents
+        response.setAadhaarNumber(user.getAadhaarNumber());
+        response.setDrivingLicense(user.getDrivingLicense());
+
+        // Stats and status
+        response.setTotalRides(user.getTotalRides());
+        response.setAvgRating(user.getAvgRating());
+        response.setActive(user.getIsActive());
+
+        // Timestamps
+        response.setCreatedAt(user.getCreatedAt());
+        response.setUpdatedAt(user.getUpdatedAt()); // ADD THIS
+
+        // Vehicles for drivers - ADD THIS SECTION
+        if (user.getRole() == User.UserRole.DRIVER &&
+                user.getVehicles() != null &&
+                !user.getVehicles().isEmpty()) {
+
+            Set<VehicleDTO.VehicleResponse> vehicleResponses = user.getVehicles().stream()
+                    .map(this::convertToVehicleResponse)
+                    .collect(Collectors.toSet());
+            response.setVehicles(vehicleResponses);
+        }
+
+        return response;
+    }
+
+    // Add this helper method for vehicle conversion
+    private VehicleDTO.VehicleResponse convertToVehicleResponse(Vehicle vehicle) {
+        VehicleDTO.VehicleResponse response = new VehicleDTO.VehicleResponse();
+
+        response.setId(vehicle.getId());
+        response.setVehicleNumber(vehicle.getVehicleNumber());
+        response.setModel(vehicle.getModel());
+        response.setColor(vehicle.getColor());
+        response.setInsuranceNumber(vehicle.getInsuranceNumber());
+        response.setInsuranceExpiry(vehicle.getInsuranceExpiry());
+
+        // Set owner info
+        if (vehicle.getUser() != null) {
+            response.setUserId(vehicle.getUser().getId());
+            response.setOwnerName(vehicle.getUser().getName());
+        }
+
         return response;
     }
 }
