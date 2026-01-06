@@ -2,6 +2,9 @@ package com.yavijexpress.dto;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+import java.util.Set;
+
 public class UserDTO {
 
     @Data
@@ -12,9 +15,41 @@ public class UserDTO {
         private String mobile;
         private String role;
         private String verificationStatus;
+        private String aadhaarNumber;
+        private String drivingLicense;
         private Double avgRating;
         private Integer totalRides;
         private Boolean isActive;
+        private LocalDateTime createdAt;
+        // ADD THESE MISSING FIELDS:
+        private LocalDateTime updatedAt;
+        private Set<VehicleDTO.VehicleResponse> vehicles; // For drivers only
+
+        // Getters and setters (keep your existing ones and add new ones below)
+
+        public LocalDateTime getUpdatedAt() {
+            return updatedAt;
+        }
+
+        public void setUpdatedAt(LocalDateTime updatedAt) {
+            this.updatedAt = updatedAt;
+        }
+
+        public Set<VehicleDTO.VehicleResponse> getVehicles() {
+            return vehicles;
+        }
+
+        public void setVehicles(Set<VehicleDTO.VehicleResponse> vehicles) {
+            this.vehicles = vehicles;
+        }
+
+        public void setCreatedAt(LocalDateTime createdAt) {
+            this.createdAt = createdAt;
+        }
+
+        public LocalDateTime getCreatedAt() {
+            return createdAt;
+        }
 
         public Long getId() {
             return id;
@@ -62,6 +97,22 @@ public class UserDTO {
 
         public void setVerificationStatus(String verificationStatus) {
             this.verificationStatus = verificationStatus;
+        }
+
+        public String getAadhaarNumber() {
+            return aadhaarNumber;
+        }
+
+        public void setAadhaarNumber(String aadhaarNumber) {
+            this.aadhaarNumber = aadhaarNumber;
+        }
+
+        public String getDrivingLicense() {
+            return drivingLicense;
+        }
+
+        public void setDrivingLicense(String drivingLicense) {
+            this.drivingLicense = drivingLicense;
         }
 
         public Double getAvgRating() {
