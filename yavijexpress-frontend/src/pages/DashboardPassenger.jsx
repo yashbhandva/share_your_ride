@@ -41,10 +41,10 @@ const DashboardPassenger = () => {
       // Handle ApiResponse format: { success: true, data: [...], message: "..." }
       const trips = tripsRes.data?.data || tripsRes.data || [];
       const bookings = bookingsRes.data?.data || bookingsRes.data || [];
-      
+
       console.log('Loaded bookings:', bookings);
       bookings.forEach(b => console.log(`Booking ${b.id}: status=${b.status}`));
-      
+
       setUpcomingTrips(trips);
       setBookings(bookings);
     } catch (e) {
@@ -80,7 +80,7 @@ const DashboardPassenger = () => {
         maxPrice: searchForm.maxPrice ? Number(searchForm.maxPrice) : null,
       };
       const res = await api.post("/api/trips/search", payload);
-      
+
       // Handle ApiResponse format from backend
       const results = res.data?.data || res.data || [];
       setSearchResults(results);
@@ -442,18 +442,6 @@ const DashboardPassenger = () => {
                 name="requiredSeats"
                 min="1"
                 value={searchForm.requiredSeats}
-                onChange={handleSearchChange}
-                className="search-input"
-              />
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Max Price (₹)</label>
-              <input
-                type="number"
-                name="maxPrice"
-                placeholder="No limit"
-                value={searchForm.maxPrice}
                 onChange={handleSearchChange}
                 className="search-input"
               />
