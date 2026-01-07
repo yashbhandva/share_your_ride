@@ -1,14 +1,11 @@
 package com.yavijexpress.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "contact_messages")
-@Data
-@NoArgsConstructor
+
 public class ContactMessage {
 
     @Id
