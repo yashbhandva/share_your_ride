@@ -7,7 +7,6 @@ import com.yavijexpress.repository.*;
 import com.yavijexpress.security.JwtService;
 import com.yavijexpress.service.*;
 import com.yavijexpress.utils.*;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
