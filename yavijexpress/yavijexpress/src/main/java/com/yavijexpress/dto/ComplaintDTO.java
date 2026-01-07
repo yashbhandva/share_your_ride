@@ -1,13 +1,11 @@
 package com.yavijexpress.dto;
 
 import jakarta.validation.constraints.*;
-import lombok.Data;
 
 import java.time.LocalDateTime;
 
 public class ComplaintDTO {
 
-    @Data
     public static class ComplaintRequest {
         @NotBlank private String title;
         @NotBlank private String description;
@@ -56,7 +54,6 @@ public class ComplaintDTO {
         }
     }
 
-    @Data
     public static class ComplaintResponse {
         private Long id;
         private String title;
@@ -150,7 +147,6 @@ public class ComplaintDTO {
         }
     }
 
-    @Data
     public static class ComplaintUpdateRequest {
         @NotBlank private String status; // IN_PROGRESS, RESOLVED, REJECTED
         private String adminResponse;
