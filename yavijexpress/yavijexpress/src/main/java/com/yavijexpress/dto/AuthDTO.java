@@ -1,11 +1,9 @@
 package com.yavijexpress.dto;
 
 import jakarta.validation.constraints.*;
-import lombok.Data;
 
 public class AuthDTO {
 
-    @Data
     public static class RegisterRequest {
         @NotBlank private String name;
         @Email @NotBlank private String email;
@@ -82,7 +80,6 @@ public class AuthDTO {
         }
     }
 
-    @Data
     public static class LoginRequest {
         @NotBlank private String email;
         @NotBlank private String password;
@@ -104,7 +101,6 @@ public class AuthDTO {
         }
     }
 
-    @Data
     public static class OTPVerifyRequest {
         @NotBlank private String email;
         @NotBlank @Pattern(regexp = "^[0-9]{6}$") private String otp;
@@ -126,7 +122,6 @@ public class AuthDTO {
         }
     }
 
-    @Data
     public static class JwtResponse {
         private String token;
         private String type = "Bearer";
@@ -193,7 +188,6 @@ public class AuthDTO {
         }
     }
 
-    @Data
     public static class PasswordChangeRequest {
         @NotBlank private String oldPassword;
         @NotBlank @Size(min = 8) private String newPassword;
