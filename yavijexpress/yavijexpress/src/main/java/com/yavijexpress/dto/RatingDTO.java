@@ -1,13 +1,11 @@
 package com.yavijexpress.dto;
 
 import jakarta.validation.constraints.*;
-import lombok.Data;
 
 import java.time.LocalDateTime;
 
 public class RatingDTO {
 
-    @Data
     public static class RatingRequest {
         @NotNull private Long bookingId;
         @NotNull @Min(1) @Max(5) private Integer stars;
@@ -47,7 +45,6 @@ public class RatingDTO {
         }
     }
 
-    @Data
     public static class RatingResponse {
         private Long id;
         private Integer stars;
