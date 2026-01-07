@@ -3,7 +3,6 @@ package com.yavijexpress.controller;
 import com.yavijexpress.dto.EmergencyDTO;
 import com.yavijexpress.service.EmergencyService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
