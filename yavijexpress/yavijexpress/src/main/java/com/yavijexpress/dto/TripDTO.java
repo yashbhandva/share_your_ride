@@ -1,12 +1,10 @@
 package com.yavijexpress.dto;
 
 import jakarta.validation.constraints.*;
-import lombok.Data;
 import java.time.LocalDateTime;
 
 public class TripDTO {
 
-    @Data
     public static class TripRequest {
         @NotBlank private String fromLocation;
         @NotBlank private String toLocation;
@@ -109,7 +107,6 @@ public class TripDTO {
         }
     }
 
-    @Data
     public static class TripResponse {
         private Long id;
         private String fromLocation;
@@ -275,7 +272,6 @@ public class TripDTO {
         }
     }
 
-    @Data
     public static class TripSearchRequest {
         private String fromLocation;
         private String toLocation;
@@ -326,7 +322,6 @@ public class TripDTO {
 
     }
 
-    @Data
     public static class SoberDeclarationRequest {
         @NotNull private Boolean soberDeclaration;
         @NotBlank private String otp; // Sent to driver's mobile
