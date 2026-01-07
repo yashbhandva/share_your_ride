@@ -1,14 +1,10 @@
 // FILE: ApiResponse.java
 package com.yavijexpress.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 import java.time.LocalDateTime;
 
-@Data
-@NoArgsConstructor
+
 public class ApiResponse<T> {
     private LocalDateTime timestamp;
     private int status;
