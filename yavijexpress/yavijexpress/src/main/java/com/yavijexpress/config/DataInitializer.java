@@ -3,7 +3,6 @@ package com.yavijexpress.config;
 
 import com.yavijexpress.entity.User;
 import com.yavijexpress.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
