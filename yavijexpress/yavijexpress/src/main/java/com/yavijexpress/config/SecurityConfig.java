@@ -2,7 +2,6 @@ package com.yavijexpress.config;
 
 import com.yavijexpress.security.JwtAuthenticationFilter;
 import com.yavijexpress.security.LogoutService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
