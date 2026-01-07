@@ -6,7 +6,6 @@ import com.yavijexpress.exception.*;
 import com.yavijexpress.repository.*;
 import com.yavijexpress.service.TripService;
 import com.yavijexpress.service.NotificationService;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
