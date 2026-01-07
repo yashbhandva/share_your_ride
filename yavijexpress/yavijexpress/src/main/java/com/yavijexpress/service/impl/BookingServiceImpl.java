@@ -8,7 +8,6 @@ import com.yavijexpress.repository.UserRepository;
 import com.yavijexpress.service.BookingService;
 import com.yavijexpress.service.PaymentService;
 import com.yavijexpress.service.NotificationService;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
