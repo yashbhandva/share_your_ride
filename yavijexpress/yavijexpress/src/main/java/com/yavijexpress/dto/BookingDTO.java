@@ -1,13 +1,11 @@
 package com.yavijexpress.dto;
 
 import jakarta.validation.constraints.*;
-import lombok.Data;
 
 import java.time.LocalDateTime;
 
 public class BookingDTO {
 
-    @Data
     public static class BookingRequest {
         @NotNull private Long tripId;
         @NotNull @Min(1) private Integer seats;
@@ -38,7 +36,6 @@ public class BookingDTO {
         }
     }
 
-    @Data
     public static class BookingResponse {
         private Long id;
         private Integer seatsBooked;
@@ -204,7 +201,6 @@ public class BookingDTO {
         }
     }
 
-    @Data
     public static class BookingStatusUpdateRequest {
         @NotBlank private String status; // CONFIRMED, CANCELLED
         private String reason;
@@ -226,7 +222,6 @@ public class BookingDTO {
         }
     }
 
-    @Data
     public static class OtpVerificationRequest {
         @NotNull private Long bookingId;
         @NotBlank private String otp;
