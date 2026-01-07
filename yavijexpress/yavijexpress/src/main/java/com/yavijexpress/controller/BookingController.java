@@ -5,7 +5,6 @@ import com.yavijexpress.service.BookingService;
 import com.yavijexpress.exception.BadRequestException;
 import com.yavijexpress.exception.ResourceNotFoundException;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
