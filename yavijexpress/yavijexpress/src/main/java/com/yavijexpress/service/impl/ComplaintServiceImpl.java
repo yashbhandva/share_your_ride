@@ -7,7 +7,6 @@ import com.yavijexpress.repository.ComplaintRepository;
 import com.yavijexpress.service.ComplaintService;
 import com.yavijexpress.service.UserService;
 import com.yavijexpress.service.NotificationService;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
