@@ -7,7 +7,6 @@ import com.yavijexpress.repository.RatingRepository;
 import com.yavijexpress.service.BookingService;
 import com.yavijexpress.service.RatingService;
 import com.yavijexpress.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
