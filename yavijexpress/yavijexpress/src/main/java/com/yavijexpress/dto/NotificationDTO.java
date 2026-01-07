@@ -1,12 +1,10 @@
 package com.yavijexpress.dto;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
 import java.time.LocalDateTime;
 
 public class NotificationDTO {
 
-    @Data
     public static class NotificationResponse {
         private Long id;
         private String title;
@@ -91,7 +89,6 @@ public class NotificationDTO {
         }
     }
 
-    @Data
     public static class NotificationMarkReadRequest {
         @NotNull
         private Long notificationId;
@@ -105,7 +102,6 @@ public class NotificationDTO {
         }
     }
 
-    @Data
     public static class AdminNotificationRequest {
         @NotNull
         private String title;
