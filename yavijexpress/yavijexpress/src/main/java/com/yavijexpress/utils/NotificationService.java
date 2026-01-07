@@ -2,7 +2,6 @@ package com.yavijexpress.utils;
 
 import com.yavijexpress.entity.*;
 import com.yavijexpress.repository.NotificationRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
