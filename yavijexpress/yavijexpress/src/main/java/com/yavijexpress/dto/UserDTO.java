@@ -1,13 +1,11 @@
 package com.yavijexpress.dto;
 
-import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
 public class UserDTO {
 
-    @Data
     public static class UserResponse {
         private Long id;
         private String name;
@@ -140,7 +138,6 @@ public class UserDTO {
         }
     }
 
-    @Data
     public static class UserUpdateRequest {
         private String name;
         private String mobile;
@@ -180,7 +177,6 @@ public class UserDTO {
         }
     }
 
-    @Data
     public static class DriverVerificationRequest {
         private String aadhaarNumber;
         private String drivingLicense;
@@ -202,7 +198,6 @@ public class UserDTO {
         }
     }
 
-    @Data
     public static class KYCStatusUpdateRequest {
         private Long userId;
         private String status; // VERIFIED, REJECTED
