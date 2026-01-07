@@ -1,13 +1,11 @@
 package com.yavijexpress.dto;
 
 import jakarta.validation.constraints.*;
-import lombok.Data;
 
 import java.time.LocalDateTime;
 
 public class PaymentDTO {
 
-    @Data
     public static class PaymentRequest {
         @NotNull private Long bookingId;
         @NotBlank private String method; // RAZORPAY, CASH
@@ -29,7 +27,6 @@ public class PaymentDTO {
         }
     }
 
-    @Data
     public static class RazorpayOrderRequest {
         @NotNull private Long bookingId;
         @NotNull @Positive private Double amount;
@@ -60,7 +57,6 @@ public class PaymentDTO {
         }
     }
 
-    @Data
     public static class RazorpayOrderResponse {
         private String orderId;
         private String amount;
@@ -127,7 +123,6 @@ public class PaymentDTO {
         }
     }
 
-    @Data
     public static class PaymentVerifyRequest {
         @NotBlank private String razorpayPaymentId;
         @NotBlank private String razorpayOrderId;
@@ -167,7 +162,6 @@ public class PaymentDTO {
         }
     }
 
-    @Data
     public static class PaymentResponse {
         private Long id;
         private String transactionId;
