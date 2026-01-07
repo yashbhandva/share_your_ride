@@ -3,7 +3,6 @@ package com.yavijexpress.controller;
 import com.yavijexpress.dto.TripDTO;
 import com.yavijexpress.service.TripService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
