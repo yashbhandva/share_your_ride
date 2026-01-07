@@ -1,12 +1,10 @@
 package com.yavijexpress.dto;
 
 import jakarta.validation.constraints.*;
-import lombok.Data;
 import java.time.LocalDateTime;
 
 public class VehicleDTO {
 
-    @Data
     public static class VehicleRequest {
         @NotBlank private String vehicleNumber;
         @NotBlank private String model;
@@ -73,7 +71,6 @@ public class VehicleDTO {
         }
     }
 
-    @Data
     public static class VehicleResponse {
         private Long id;
         private String vehicleNumber;
