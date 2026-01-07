@@ -1,13 +1,11 @@
 package com.yavijexpress.dto;
 
 import jakarta.validation.constraints.*;
-import lombok.Data;
 
 import java.time.LocalDateTime;
 
 public class EmergencyDTO {
 
-    @Data
     public static class SOSRequest {
         @NotNull private Long tripId;
         @NotBlank private String message;
@@ -47,7 +45,6 @@ public class EmergencyDTO {
         }
     }
 
-    @Data
     public static class EmergencyAlertResponse {
         private Long alertId;
         private String status;
@@ -96,7 +93,6 @@ public class EmergencyDTO {
         }
     }
 
-    @Data
     public static class LiveLocationRequest {
         @NotNull private Long tripId;
         @NotNull private Double latitude;
