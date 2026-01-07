@@ -8,7 +8,6 @@ import com.yavijexpress.service.EmergencyService;
 import com.yavijexpress.service.NotificationService;
 import com.yavijexpress.service.UserService;
 import com.yavijexpress.utils.*;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
