@@ -2,12 +2,10 @@ package com.yavijexpress.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
 import java.time.LocalDateTime;
 
 public class ContactMessageDTO {
 
-    @Data
     public static class ContactRequest {
         @NotBlank private String name;
         @NotBlank @Email private String email;
@@ -47,7 +45,6 @@ public class ContactMessageDTO {
         }
     }
 
-    @Data
     public static class ContactResponse {
         private Long id;
         private String name;
@@ -123,7 +120,7 @@ public class ContactMessageDTO {
         }
     }
 
-    @Data
+
     public static class StatusUpdateRequest {
         @NotBlank private String status;
         
