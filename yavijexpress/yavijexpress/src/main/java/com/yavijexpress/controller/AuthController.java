@@ -6,7 +6,6 @@ import com.yavijexpress.entity.User;
 import com.yavijexpress.service.UserService;
 import com.yavijexpress.utils.SecurityUtils;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
