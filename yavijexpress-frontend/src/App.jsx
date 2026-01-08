@@ -140,6 +140,38 @@ const App = () => {
                     </RouteTransition>
                   }
                 />
+                <Route
+                  path="/privacy-policy"
+                  element={
+                    <RouteTransition>
+                      <PrivacyPolicy />
+                    </RouteTransition>
+                  }
+                />
+                <Route
+                  path="/terms"
+                  element={
+                    <RouteTransition>
+                      <TermOfService />
+                    </RouteTransition>
+                  }
+                />
+                <Route
+                  path="/faq"
+                  element={
+                    <RouteTransition>
+                      <Faq />
+                    </RouteTransition>
+                  }
+                />
+                <Route
+                  path="/careers"
+                  element={
+                    <RouteTransition>
+                      <Careers />
+                    </RouteTransition>
+                  }
+                />
 
                 {/* Protected Routes */}
                 <Route element={<ProtectedRoute />}>
@@ -218,43 +250,6 @@ const App = () => {
                       }
                     />
                   </Route>
-
-                  <Route
-                    path="/privacy-policy"
-                    element={
-                      <RouteTransition>
-                        <PrivacyPolicy />
-                      </RouteTransition>
-                    }
-                  />
-
-                   <Route
-                     path="/terms"
-                     element={
-                       <RouteTransition>
-                            <TermOfService />
-                        </RouteTransition>
-                              }
-                   />
-
-                <Route
-                    path="/faq"
-                    element={
-                        <RouteTransition>
-                            <Faq />
-                        </RouteTransition>
-                    }
-                />
-
-                <Route
-                      path="/careers"
-                      element={
-                          <RouteTransition>
-                              <Careers />
-                          </RouteTransition>
-                      }
-                  />
-
                 </Route>
 
                 {/* 404 - Not Found */}

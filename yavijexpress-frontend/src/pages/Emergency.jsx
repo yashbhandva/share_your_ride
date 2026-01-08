@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import api from "../api/axiosClient";
+import LocationPicker from "../components/common/LocationPicker.jsx";
 
 import {
   FaMapMarkerAlt,
@@ -12,7 +13,12 @@ import {
   FaPhone,
   FaUser,
   FaGlobe,
-  FaSpinner
+  FaSpinner,
+  FaMap,
+  FaCrosshairs,
+  FaTimes,
+  FaExpand,
+  FaCompress
 } from "react-icons/fa";
 
 const Emergency = () => {
@@ -25,17 +31,98 @@ const Emergency = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState(null);
-  const [showCoordinates, setShowCoordinates] = useState(false);
+  const [showLocationPicker, setShowLocationPicker] = useState(true);
+  const [mapType, setMapType] = useState("roadmap");
+  const [isMapExpanded, setIsMapExpanded] = useState(false);
+  const [locationError, setLocationError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleLocationSelect = (latlng) => {
+    setForm((prev) => ({
+      ...prev,
+      latitude: latlng.lat.toFixed(6),
+      longitude: latlng.lng.toFixed(6),
+    }));
+    setLocationError("");
+  };
+
+  const handleUseCurrentLocation = () => {
+    if (!navigator.geolocation) {
+      setLocationError("Geolocation is not supported by your browser");
+      return;
+    }
+
+    setLocationError("Getting your location...");
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setForm(prev => ({
+          ...prev,
+          latitude: position.coords.latitude.toFixed(6),
+          longitude: position.coords.longitude.toFixed(6)
+        }));
+        setLocationError("");
+
+        // Center map on current location
+        if (window.mapInstance) {
+          window.mapInstance.setCenter({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          });
+          window.mapInstance.setZoom(15);
+        }
+      },
+      (error) => {
+        let errorMessage = "Failed to get your location";
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            errorMessage = "Please allow location access to use this feature";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            errorMessage = "Location information is unavailable";
+            break;
+          case error.TIMEOUT:
+            errorMessage = "Location request timed out";
+            break;
+        }
+        setLocationError(errorMessage);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+      }
+    );
+  };
+
+  const handleClearLocation = () => {
+    setForm(prev => ({
+      ...prev,
+      latitude: '',
+      longitude: ''
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setResult(null);
+
+    // Validate trip ID
+    if (!form.tripId.trim()) {
+      setError("Please enter a valid Trip ID");
+      return;
+    }
+
+    // Validate message
+    if (!form.message.trim()) {
+      setError("Please describe the emergency situation");
+      return;
+    }
 
     try {
       setLoading(true);
@@ -47,6 +134,19 @@ const Emergency = () => {
       };
       const res = await api.post("/api/emergency/sos", payload);
       setResult(res.data || null);
+
+      // Reset form after successful submission
+      setForm({
+        tripId: "",
+        message: "",
+        latitude: "",
+        longitude: ""
+      });
+
+      // Auto-hide success message after 10 seconds
+      setTimeout(() => {
+        setResult(null);
+      }, 10000);
     } catch (e) {
       setError(e.response?.data?.message || "Failed to send SOS alert. Please try again.");
     } finally {
@@ -55,24 +155,142 @@ const Emergency = () => {
   };
 
   const emergencyTypes = [
-    { id: 1, title: "Medical Emergency", desc: "Need immediate medical assistance" },
-    { id: 2, title: "Accident", desc: "Vehicle accident or collision" },
-    { id: 3, title: "Safety Concern", desc: "Feel unsafe or threatened" },
-    { id: 4, title: "Vehicle Breakdown", desc: "Stranded due to vehicle issue" },
+    { id: 1, title: "Medical Emergency", desc: "Need immediate medical assistance", icon: "🚑" },
+    { id: 2, title: "Accident", desc: "Vehicle accident or collision", icon: "💥" },
+    { id: 3, title: "Safety Concern", desc: "Feel unsafe or threatened", icon: "🛡️" },
+    { id: 4, title: "Vehicle Breakdown", desc: "Stranded due to vehicle issue", icon: "🚗" },
+    { id: 5, title: "Road Hazard", desc: "Dangerous road conditions", icon: "⚠️" },
+    { id: 6, title: "Other Emergency", desc: "Other critical situation", icon: "🚨" },
   ];
 
   const handleEmergencyTypeClick = (title) => {
     setForm(prev => ({ ...prev, message: title }));
   };
 
+  const handleMapTypeChange = (type) => {
+    setMapType(type);
+    // You can pass this to LocationPicker if it supports map type
+  };
+
   return (
     <div className="emergency-page">
-      <div className="emergency-container">
-        {/* Left Section - Form */}
+      <div className="emergency-container-with-map">
+
+        {/* ===== BIG MAP BOX SECTION ===== */}
+        <div className="big-map-section">
+          <div className={`map-container ${isMapExpanded ? 'expanded' : ''}`}>
+            <div className="map-header">
+              <div>
+                <div className="map-title">
+                  <FaMapMarkerAlt className="map-title-icon" />
+                  <span>Emergency Location Map</span>
+                </div>
+                <div className="map-subtitle">
+                  Click on the map to set your emergency location. This helps responders find you faster.
+                </div>
+              </div>
+              <div className="map-controls">
+                <button
+                  className={`map-control-btn ${mapType === 'roadmap' ? 'active' : ''}`}
+                  onClick={() => handleMapTypeChange('roadmap')}
+                >
+                  <FaMap />
+                  Map
+                </button>
+                <button
+                  className={`map-control-btn ${mapType === 'satellite' ? 'active' : ''}`}
+                  onClick={() => handleMapTypeChange('satellite')}
+                >
+                  <FaGlobe />
+                  Satellite
+                </button>
+                <button
+                  className="map-control-btn"
+                  onClick={() => setIsMapExpanded(!isMapExpanded)}
+                >
+                  {isMapExpanded ? <FaCompress /> : <FaExpand />}
+                  {isMapExpanded ? 'Collapse' : 'Expand'}
+                </button>
+              </div>
+            </div>
+
+            <div className="map-body">
+              {showLocationPicker ? (
+                <>
+                  <LocationPicker
+                    onLocationSelect={handleLocationSelect}
+                    height="100%"
+                    width="100%"
+                    showControls={true}
+                    mapType={mapType}
+                  />
+
+                  {locationError && (
+                    <div className="map-status">
+                      <div className="map-alert map-error">
+                        <FaExclamationTriangle />
+                        {locationError}
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="map-placeholder">
+                  <div className="placeholder-icon">🗺️</div>
+                  <div className="placeholder-title">Emergency Location Map</div>
+                  <div className="placeholder-subtitle">
+                    Enable location services to see your current position on the map.
+                    Click anywhere on the map to set your emergency location.
+                  </div>
+                  <button
+                    className="use-current-location"
+                    onClick={() => setShowLocationPicker(true)}
+                  >
+                    <FaMapMarkerAlt />
+                    Show Map
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div className="map-actions">
+              <div className="current-location">
+                <div className="location-label">Selected Coordinates:</div>
+                <div className="coordinates-display">
+                  <span className="coordinate lat">
+                    {form.latitude ? `Lat: ${form.latitude}` : 'Not set'}
+                  </span>
+                  <span className="coordinate lng">
+                    {form.longitude ? `Lng: ${form.longitude}` : 'Not set'}
+                  </span>
+                </div>
+              </div>
+              <div className="map-action-buttons">
+                <button
+                  className="use-current-location"
+                  onClick={handleUseCurrentLocation}
+                >
+                  <FaCrosshairs />
+                  Use Current Location
+                </button>
+                <button
+                  className="clear-location"
+                  onClick={handleClearLocation}
+                  disabled={!form.latitude && !form.longitude}
+                >
+                  <FaTimes />
+                  Clear
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ===== LEFT SECTION - FORM ===== */}
         <motion.div
           className="emergency-form-section"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           <div className="form-wrapper">
@@ -98,7 +316,11 @@ const Emergency = () => {
                   exit={{ opacity: 0, height: 0 }}
                 >
                   <div className="alert-content">
-                    <FaExclamationTriangle /> {error}
+                    <FaExclamationTriangle />
+                    <div>
+                      <strong>Error!</strong>
+                      <p>{error}</p>
+                    </div>
                   </div>
                 </motion.div>
               )}
@@ -115,6 +337,7 @@ const Emergency = () => {
                     <div>
                       <strong>SOS Alert Sent Successfully!</strong>
                       <p>Response ID: {result.id || "N/A"} • Time: {new Date().toLocaleTimeString()}</p>
+                      <p className="success-note">Emergency services have been notified. Stay on the line.</p>
                     </div>
                   </div>
                 </motion.div>
@@ -126,7 +349,7 @@ const Emergency = () => {
               <div className="form-group">
                 <label htmlFor="tripId">
                   <FaUser className="input-icon" />
-                  <span>Trip ID</span>
+                  <span>Trip ID *</span>
                 </label>
                 <input
                   id="tripId"
@@ -145,7 +368,7 @@ const Emergency = () => {
               <div className="form-group">
                 <label htmlFor="message">
                   <FaExclamationTriangle className="input-icon" />
-                  <span>Emergency Description</span>
+                  <span>Emergency Description *</span>
                 </label>
                 <textarea
                   id="message"
@@ -176,6 +399,7 @@ const Emergency = () => {
                       }`}
                       onClick={() => handleEmergencyTypeClick(type.title)}
                     >
+                      <span className="type-icon">{type.icon}</span>
                       <span className="type-title">{type.title}</span>
                       <span className="type-desc">{type.desc}</span>
                     </button>
@@ -183,63 +407,13 @@ const Emergency = () => {
                 </div>
               </div>
 
-              {/* Coordinates Toggle */}
-              <div className="form-group">
-                <div className="coordinates-toggle">
-                  <button
-                    type="button"
-                    className={`toggle-btn ${showCoordinates ? 'active' : ''}`}
-                    onClick={() => setShowCoordinates(!showCoordinates)}
-                  >
-                    <FaGlobe />
-                    {showCoordinates ? 'Hide Coordinates' : 'Add Location Coordinates'}
-                  </button>
-                  <p className="toggle-hint">Optional: Provide exact GPS coordinates for faster response</p>
-                </div>
+              {/* Map Connection Info */}
+              <div className="map-connection-info">
+                <p>
+                  <FaMapMarkerAlt />
+                  Your location is set from the map above. Click on the map to change it.
+                </p>
               </div>
-
-              {/* Coordinates Fields (Conditional) */}
-              <AnimatePresence>
-                {showCoordinates && (
-                  <motion.div
-                    className="coordinates-grid"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                  >
-                    <div className="form-group">
-                      <label htmlFor="latitude">
-                        <FaMapMarkerAlt className="input-icon" />
-                        <span>Latitude</span>
-                      </label>
-                      <input
-                        id="latitude"
-                        type="text"
-                        name="latitude"
-                        value={form.latitude}
-                        onChange={handleChange}
-                        placeholder="e.g., 28.7041"
-                        className="form-input"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="longitude">
-                        <FaMapMarkerAlt className="input-icon" />
-                        <span>Longitude</span>
-                      </label>
-                      <input
-                        id="longitude"
-                        type="text"
-                        name="longitude"
-                        value={form.longitude}
-                        onChange={handleChange}
-                        placeholder="e.g., 77.1025"
-                        className="form-input"
-                      />
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
 
               {/* Important Note */}
               <div className="warning-note">
@@ -249,7 +423,7 @@ const Emergency = () => {
                 </div>
                 <p>
                   This will trigger a real emergency response. Use only in genuine emergencies.
-                  False alerts may lead to legal action.
+                  False alerts may lead to legal action and penalties.
                 </p>
               </div>
 
@@ -257,7 +431,7 @@ const Emergency = () => {
               <button
                 type="submit"
                 className={`submit-btn ${loading ? "loading" : ""}`}
-                disabled={loading}
+                disabled={loading || !form.tripId.trim() || !form.message.trim()}
               >
                 {loading ? (
                   <>
@@ -275,11 +449,11 @@ const Emergency = () => {
           </div>
         </motion.div>
 
-        {/* Right Section - Info */}
+        {/* ===== RIGHT SECTION - INFO ===== */}
         <motion.div
           className="emergency-info-section"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <div className="info-wrapper">
