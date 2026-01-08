@@ -310,3 +310,9 @@
 2026-01-08T23:22:23.498+05:30 DEBUG 1848 --- [yavij-express] [http-nio-8080-exec-10] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/trips/driver/3
 2026-01-08T23:22:23.592+05:30 DEBUG 1848 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Processing request: GET /api/bookings/driver/3
 2026-01-08T23:22:23.667+05:30 DEBUG 1848 --- [yavij-express] [http-nio-8080-exec-6] com.yavijexpress.utils.SMSServiceImpl    : Authenticated user: driver@gmail.com for /api/bookings/driver/3
+2026-01-08T23:32:50.852+05:30  INFO 1848 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-01-08T23:32:50.893+05:30  INFO 1848 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4b91ac30]]
+2026-01-08T23:32:50.895+05:30  INFO 1848 --- [yavij-express] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-01-08T23:32:51.151+05:30  INFO 1848 --- [yavij-express] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-08T23:32:51.288+05:30  INFO 1848 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-08T23:32:51.327+05:30  INFO 1848 --- [yavij-express] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
