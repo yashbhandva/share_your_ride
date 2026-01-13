@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import "../assets/faq.scss";
+
 import {
   FaQuestionCircle,
   FaUserCheck,

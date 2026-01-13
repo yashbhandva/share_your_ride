@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api/axiosClient";
+import "../assets/profile.scss";
+
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);

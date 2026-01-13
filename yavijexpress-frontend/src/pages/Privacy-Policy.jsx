@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import "../assets/privacy_policy.scss";
+
 import {
   FaShieldAlt,
   FaDatabase,

@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import "../assets/not_found.scss";
+
 import { FaHome, FaExclamationTriangle, FaArrowLeft } from "react-icons/fa";
 
 const NotFound = () => {

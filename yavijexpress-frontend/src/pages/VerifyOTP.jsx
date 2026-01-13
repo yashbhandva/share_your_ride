@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { verifyOTP } from "../api/authApi";
+import "../assets/verify_otp.scss";
+
 
 const VerifyOTP = () => {
   const [otp, setOtp] = useState("");

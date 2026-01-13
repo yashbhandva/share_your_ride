@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { register } from "../api/authApi";
+import "../assets/register.scss";
+
 import {
   FaUser,
   FaEnvelope,

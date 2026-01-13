@@ -7,7 +7,6 @@ import ProtectedRoute from "./components/common/ProtectedRoute.jsx";
 import RoleRoute from "./components/common/RoleRoute.jsx";
 import RouteTransition from "./components/common/RouteTransition.jsx";
 import LoadingScreen from "./components/common/LoadingScreen.jsx";
-import "./index.css";
 
 // Lazy load pages for better performance
 const Home = lazy(() => import("./pages/Home.jsx"));

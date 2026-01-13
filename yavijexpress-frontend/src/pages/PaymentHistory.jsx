@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import api from "../api/axiosClient";
 import { useAuth } from "../context/AuthContext.jsx";
+import "../assets/payment.scss";
+
 
 const PaymentHistory = () => {
   const { user } = useAuth();

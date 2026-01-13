@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api/axiosClient";
+import "../assets/notification.scss";
+
 
 const Notifications = () => {
   const [items, setItems] = useState([]);

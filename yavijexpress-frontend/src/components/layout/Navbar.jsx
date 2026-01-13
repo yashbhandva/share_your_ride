@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
+import '../../assets/header.scss';
+
 import {
   FaHome,
   FaUser,

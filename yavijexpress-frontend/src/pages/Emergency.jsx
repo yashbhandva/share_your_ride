@@ -2,6 +2,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import api from "../api/axiosClient";
 import LocationPicker from "../components/common/LocationPicker.jsx";
+import "../assets/home.scss";
+import "../assets/emergency.scss";
+
 
 import {
   FaMapMarkerAlt,

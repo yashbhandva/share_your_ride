@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import "../assets/terms_of_service.scss";
+
 import {
   FaFileContract,
   FaUserCheck,

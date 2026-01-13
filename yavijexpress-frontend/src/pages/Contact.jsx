@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import api from "../api/axiosClient";
+import "../assets/contact_us.scss";
+
 import {
   FaPaperPlane,
   FaEnvelope,

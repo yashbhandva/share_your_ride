@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import "../assets/about_us.scss";
+
 import { 
   FaRocket, 
   FaShieldAlt, 

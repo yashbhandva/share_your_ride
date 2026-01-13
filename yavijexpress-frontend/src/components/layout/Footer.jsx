@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FaHeart, FaShieldAlt, FaFileContract, FaHeadset, FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import '../../assets/footer.scss';
 
 const Footer = () => {
   const year = new Date().getFullYear();
