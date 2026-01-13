@@ -113,7 +113,7 @@ HEADER (NAVBAR)
 
 .logo-container {
   position: relative;
-  width: 48px;
+  width: 70px;
   height: 48px;
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -389,16 +389,14 @@ HEADER (NAVBAR)
 }
 
 .btn-outline {
-  color: var(--primary-blue);
-  border-color: var(--primary-blue);
-  background: transparent;
+  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple));
+  color: white;
+  border: none;
 }
 
 .btn-outline:hover {
-  background: var(--primary-blue);
-  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
 .btn-primary {
@@ -714,3 +712,4 @@ HEADER (NAVBAR)
     border-width: 2px;
   }
 }
+
