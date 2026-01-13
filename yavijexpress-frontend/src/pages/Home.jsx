@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "../assets/home.scss";
+import { useEffect } from "react";
 
 import {
   FaCar,
@@ -15,6 +16,12 @@ import {
 } from "react-icons/fa";
 
 const Home = () => {
+  // Reusable animation variant for scroll-triggered animations
+  const fadeInUp = {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0 },
+  };
+
   // Features data
   const features = [
     {
@@ -83,10 +90,11 @@ const Home = () => {
       <section className="home-hero">
         <div className="hero-content">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
             className="hero-text"
+            initial="initial"
+            animate="animate"
+            variants={fadeInUp}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="hero-title">
               Welcome to
@@ -97,24 +105,25 @@ const Home = () => {
               with verified drivers across 25+ cities.
             </p>
 
-            {/* ===== HERO STATS SECTION - ADDED HERE ===== */}
             <motion.div
               className="hero-stats"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              variants={fadeInUp}
+              transition={{ delay: 0.2, duration: 0.8 }}
             >
-              {heroStats.map((stat, index) => (
-                <div key={index} className="hero-stat">
+              {heroStats.map((stat) => (
+                <div key={stat.label} className="hero-stat hover-lift">
                   <div className="stat-number">{stat.value}</div>
                   <div className="stat-label">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
-            {/* ===== END HERO STATS ===== */}
 
-            <div className="hero-buttons">
-              <Link to="/register" className="btn btn-primary">
+            <motion.div
+              className="hero-buttons"
+              variants={fadeInUp}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              <Link to="/register" className="btn btn-primary hover-glow">
                 <FaUsers />
                 Start Riding
               </Link>
@@ -122,29 +131,28 @@ const Home = () => {
                 <FaCar />
                 Become a Driver
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="features-section">
+      <motion.section
+        className="features-section"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ staggerChildren: 0.1 }}
+      >
         <div className="container">
-          <div className="section-header">
+          <motion.div className="section-header" variants={fadeInUp}>
             <h2 className="section-title">Why Choose YaVij?</h2>
             <p className="section-subtitle">Experience the best in ride-sharing</p>
-          </div>
+          </motion.div>
 
           <div className="features-grid">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="feature-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
+            {features.map((feature) => (
+              <motion.div key={feature.title} className="feature-card hover-lift" variants={fadeInUp}>
                 <div className="feature-icon" style={{ color: feature.color }}>
                   {feature.icon}
                 </div>
@@ -154,21 +162,20 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Stats Section */}
-      <section className="stats-section">
+      <motion.section
+        className="stats-section"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ staggerChildren: 0.1 }}
+      >
         <div className="container">
           <div className="stats-grid">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                className="stat-card"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
+            {stats.map((stat) => (
+              <motion.div key={stat.label} className="stat-card hover-lift" variants={fadeInUp}>
                 <div className="stat-icon">
                   {stat.icon}
                 </div>
@@ -178,26 +185,25 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Testimonials */}
-      <section className="testimonials-section">
+      <motion.section
+        className="testimonials-section"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ staggerChildren: 0.1 }}
+      >
         <div className="container">
-          <div className="section-header">
+          <motion.div className="section-header" variants={fadeInUp}>
             <h2 className="section-title">What People Say</h2>
             <p className="section-subtitle">Trusted by thousands of users</p>
-          </div>
+          </motion.div>
 
           <div className="testimonials-grid">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                className="testimonial-card"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-              >
+            {testimonials.map((testimonial) => (
+              <motion.div key={testimonial.name} className="testimonial-card hover-lift" variants={fadeInUp}>
                 <div className="testimonial-header">
                   <div className="testimonial-avatar">
                     {testimonial.avatar}
@@ -217,28 +223,28 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section */}
-      <section className="cta-section">
+      <motion.section
+        className="cta-section"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.5 }}
+      >
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="cta-content"
-          >
+          <motion.div className="cta-content" variants={fadeInUp}>
             <h2>Ready to Join Our Community?</h2>
             <p>Sign up today and get your first ride with 20% discount</p>
             <div className="cta-buttons">
-              <Link to="/register" className="cta-btn">
+              <Link to="/register" className="cta-btn hover-glow">
                 <FaArrowRight />
                 Get Started Now
               </Link>
             </div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
