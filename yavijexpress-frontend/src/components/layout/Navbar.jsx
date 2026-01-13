@@ -47,7 +47,7 @@ const Navbar = () => {
   const handleLogout = () => {
     logoutUser();
     navigate("/");
-  };
+  }
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
