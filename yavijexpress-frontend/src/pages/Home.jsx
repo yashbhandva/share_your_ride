@@ -124,15 +124,6 @@ const Home = () => {
               </Link>
             </div>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="hero-image"
-          >
-            <div className="floating-car">🚖</div>
-          </motion.div>
         </div>
       </section>
 
