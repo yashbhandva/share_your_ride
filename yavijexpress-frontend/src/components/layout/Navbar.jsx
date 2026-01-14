@@ -50,10 +50,22 @@ const Navbar = () => {
   }
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark-theme", !isDarkMode);
-    document.documentElement.classList.toggle("light-theme", isDarkMode);
+    const newIsDarkMode = !isDarkMode;
+    setIsDarkMode(newIsDarkMode);
+    localStorage.setItem('isDarkMode', newIsDarkMode);
+    document.documentElement.classList.toggle("dark-theme", newIsDarkMode);
+    document.documentElement.classList.toggle("light-theme", !newIsDarkMode);
   };
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('isDarkMode');
+    if (savedTheme) {
+      const newIsDarkMode = savedTheme === 'true';
+      setIsDarkMode(newIsDarkMode);
+      document.documentElement.classList.toggle("dark-theme", newIsDarkMode);
+      document.documentElement.classList.toggle("light-theme", !newIsDarkMode);
+    }
+  }, []);
 
   const navItems = [
     { path: "/", label: "Home", icon: <FaHome />, show: true },
@@ -301,9 +313,6 @@ const Navbar = () => {
           <div className="mobile-overlay" onClick={() => setIsMenuOpen(false)}></div>
         )}
       </nav>
-
-      {/* Navbar Spacer */}
-      <div className="navbar-spacer"></div>
     </>
   );
 };
