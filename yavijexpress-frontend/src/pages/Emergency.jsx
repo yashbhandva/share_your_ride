@@ -177,6 +177,15 @@ const Emergency = () => {
 
   return (
     <div className="emergency-page">
+           <section className="portfolio-hero">
+                        <div className="container">
+                          <div className="hero-content">
+                            <h1 className="hero-title">🚨 Emergency</h1>
+                            <p className="hero-description">
+                              Access emergency contacts and support instantly.</p>
+                          </div>
+                        </div>
+                      </section>
       <div className="emergency-container-with-map">
 
         {/* ===== BIG MAP BOX SECTION ===== */}
