@@ -140,13 +140,16 @@ const Profile = () => {
 
   return (
     <div className="profile-page">
-      <div className="profile-header">
-        <h1 className="page-title">
-          <span className="page-icon">👤</span>
-          My Profile
-        </h1>
-        <p className="page-subtitle">Manage your personal information and account settings</p>
-      </div>
+      {/* Hero Section */}
+      <section className="portfolio-hero">
+        <div className="container">
+          <div className="hero-content">
+            <h1 className="hero-title">👤 My Profile </h1>
+            <p className="hero-description">
+              View and manage your personal information and account settings</p>
+          </div>
+        </div>
+      </section>
 
       <div className="alert-container">
         {error && <div className="profile-alert error-alert">{error}</div>}
