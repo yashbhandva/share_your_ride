@@ -870,3 +870,36 @@ PROFILE PAGE STYLES
   font-weight: 600;
   text-align: left;
 }
+
+
+// Hero Section
+.portfolio-hero {
+background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+  color: white;
+  padding: 8rem 0 4rem;
+  text-align: center;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
