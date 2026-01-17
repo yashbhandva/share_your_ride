@@ -232,10 +232,15 @@ const DashboardAdmin = () => {
 
   return (
     <div className="admin-dashboard">
-      <div className="dashboard-header">
-        <h1 className="dashboard-title">Admin Dashboard</h1>
-        <p className="dashboard-subtitle">Welcome, <span className="admin-name">{user?.name}</span>!</p>
-      </div>
+           <section className="portfolio-hero">
+                <div className="container">
+                  <div className="hero-content">
+                    <h1 className="hero-title">👤 Admin Dashboard</h1>
+                    <p className="hero-description">
+                      Welcome, {user?.name}</p>
+                  </div>
+                </div>
+              </section>
 
       <div className="alert-container">
         {error && <div className="alert error-alert">{error}</div>}
