@@ -385,10 +385,16 @@ const DashboardPassenger = () => {
 
   return (
     <div className="passenger-dashboard">
-      <div className="dashboard-header">
-        <h1 className="dashboard-title">👤 Passenger Dashboard</h1>
-        <p className="dashboard-subtitle">Welcome, <span className="passenger-name">{user?.name}</span>!</p>
-      </div>
+        <section className="portfolio-hero">
+                <div className="container">
+                  <div className="hero-content">
+                    <h1 className="hero-title">👤 Passenger Dashboard </h1>
+                    <p className="hero-description">
+                      Welcome ,{user?.name}</p>
+                  </div>
+                </div>
+              </section>
+
 
       <div className="alert-container">
         {error && <div className="passenger-alert error-alert">{error}</div>}
