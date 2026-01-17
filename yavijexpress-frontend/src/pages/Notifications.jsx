@@ -143,13 +143,15 @@ const Notifications = () => {
 
   return (
     <div className="notifications-page">
-      <div className="notifications-header">
-        <h1 className="page-title">
-          <span className="page-icon">🔔</span>
-          Notifications
-        </h1>
-        <p className="page-subtitle">Stay updated with your latest activity</p>
-      </div>
+        <section className="portfolio-hero">
+                <div className="container">
+                  <div className="hero-content">
+                    <h1 className="hero-title">🔔 Notifications</h1>
+                    <p className="hero-description">
+                      Stay updated with your latest activity</p>
+                  </div>
+                </div>
+              </section>
 
       <div className="alert-container">
         {error && <div className="error-alert">{error}</div>}
