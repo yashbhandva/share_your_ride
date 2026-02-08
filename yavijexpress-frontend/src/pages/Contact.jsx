@@ -61,19 +61,19 @@ const Contact = () => {
     {
       icon: <FaEnvelope />,
       title: "Email",
-      details: ["support@yavijexpress.com", "info@yavijexpress.com"],
+      details: ["yashbhandva@yavijexpress.com", "alijamani@yavijexpress.com"],
       color: "#3A36E0"
     },
     {
       icon: <FaPhone />,
       title: "Phone",
-      details: ["+91 98765 43210", "+91 98765 43211"],
+      details: ["+91 95125 70683", "+91 92659 98660"],
       color: "#10B981"
     },
     {
       icon: <FaMapMarkerAlt />,
       title: "Address",
-      details: ["123 Express Street", "Tech Park, Bengaluru", "Karnataka 560001"],
+      details: ["004 Express Street", "Tech Park, Kutch", "Gujarat 370155"],
       color: "#8B5CF6"
     },
     {
