@@ -30,13 +30,13 @@ const Footer = () => {
             reliability, and exceptional service since {year - 5}.
           </p>
           <div className="social-links">
-            <a href="#" className="social-icon" aria-label="Facebook">
+            <a href="https://www.facebook.com/profile.php?id=61578196962250" className="social-icon" aria-label="Facebook">
               <FaFacebook />
             </a>
             <a href="#" className="social-icon" aria-label="Twitter">
               <FaTwitter />
             </a>
-            <a href="#" className="social-icon" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/yash-bhandva-7969a03a5/" className="social-icon" aria-label="LinkedIn">
               <FaLinkedin />
             </a>
             <a href="https://www.instagram.com/_y_a_s_h004/?next=%2F" className="social-icon" aria-label="Instagram">
