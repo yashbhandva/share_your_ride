@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import java.util.Properties;
+
 @Service
 public class EmailServiceImpl  {
 
@@ -24,7 +26,7 @@ public class EmailServiceImpl  {
     @Value("${spring.mail.username}")
     private String fromEmail;
 
-    @Value("${app.frontend.url:http://localhost:4200}")
+    @Value("${app.frontend.url:*}")
     private String frontendUrl;
 
     @Async
