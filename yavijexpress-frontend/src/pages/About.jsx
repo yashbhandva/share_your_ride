@@ -25,7 +25,7 @@ import {
 
 // 2 NEW CEO PHOTOS IMPORT - Adjust paths as needed
 import ceo1Photo from '/img/y.png'; // First CEO photo
-import ceo2Photo from '/img/vijay.jpg'; // Second CEO photo
+import ceo2Photo from '/img/ali.jpg'; // Second CEO photo
 
 const About = () => {
   // SIRF 2 NEW TEAM MEMBERS - Both CEOs with real photos
@@ -44,15 +44,15 @@ const About = () => {
       isNew: true
     },
     {
-      name: "Vijay Bhandva",
+      name: "Jamani Ali Asgar",
       role: "CFO & Co-Founder",
       bio: "Ex-McKinsey consultant with deep expertise in operations and scaling. Led operations for India's largest logistics company. MBA from IIM Ahmedabad with focus on sustainable mobility.",
       image: "👨",
       photo: ceo2Photo, // Real photo path
       color: "#10B981",
       skills: ["Operations", "Logistics", "Scale Management", "Process Optimization", "Team Building"],
-      whatsapp: "https://wa.me/919016376642",
-      instagram: "https://www.instagram.com/_y_a_s_h004/",
+      whatsapp: "https://wa.me/919265998660",
+      instagram: "https://www.instagram.com/aliasgar_jamani/",
       isRealPhoto: true,
       isNew: true
     }
@@ -95,11 +95,11 @@ const About = () => {
   ];
 
   const milestones = [
-    { year: "2020", title: "Founded", description: "Started operations in Bengaluru with seed funding" },
-    { year: "2021", title: "Expansion", description: "Launched in 5 major metro cities across India" },
-    { year: "2022", title: "Series A", description: "Raised $15M in funding from leading VC firms" },
-    { year: "2023", title: "Tech Innovation", description: "Launched AI-powered dispatch and route optimization" },
-    { year: "2024", title: "Pan-India Reach", description: "Operating in 25+ cities with 5000+ vehicle partners" }
+    { year: "2023", title: "Founded", description: "Started operations in Kutch with seed funding" },
+    { year: "2023", title: "Expansion", description: "Launched in 5 major metro cities across India" },
+    { year: "2024", title: "Series A", description: "Raised $15M in funding from leading VC firms" },
+    { year: "2025", title: "Tech Innovation", description: "Launched AI-powered dispatch and route optimization" },
+    { year: "2026", title: "Pan-India Reach", description: "Operating in 25+ cities with 5000+ vehicle partners" }
   ];
 
   // Tech Stack - Platform ke technologies show karne ke liye
@@ -140,7 +140,7 @@ const About = () => {
             <span className="gradient-text">Redefining Urban Mobility</span>
           </h1>
           <p className="about-subtitle">
-            Founded by visionary leaders <strong>Yash Bhandva</strong> and <strong>Vijay Bhandva</strong>,
+            Founded by visionary leaders <strong>Yash Bhandva</strong> and <strong>Jamani Ali Asgar</strong>,
             YaVij Express is India's fastest-growing ride-sharing platform.
             <br />
             <span className="tech-mention">
@@ -183,7 +183,7 @@ const About = () => {
         <motion.div className="story-content" variants={fadeInUp}>
           <div className="story-text">
             <p>
-              Founded in 2020 by <strong>Yash Bhandva</strong> and <strong>Vijay Bhandva</strong>,
+              Founded in 2020 by <strong>Yash Bhandva</strong> and <strong>Jamani Ali Asgar</strong>,
               YaVij Express began with a mission to solve urban transportation challenges in India.
             </p>
             <p>
