@@ -53,10 +53,10 @@ const Emergency = () => {
     try {
       setContactsLoading(true);
       const res = await api.get(`/api/emergency/contacts/${user.id}`);
-      setContacts(res.data || []);
+      const data = res.data?.data || res.data || [];
+      setContacts(Array.isArray(data) ? data : []);
     } catch (e) {
       console.error("Failed to fetch emergency contacts", e);
-      // Fallback to default contacts if API fails
       setContacts([
         { type: "Police", number: "100" },
         { type: "Ambulance", number: "102" },
