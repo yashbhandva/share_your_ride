@@ -75,11 +75,22 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGlobalException(Exception ex) {
+        String userMessage = ex.getMessage();
+        
+        // Convert database constraint errors to user-friendly messages
+        if (userMessage != null && userMessage.contains("constraint")) {
+            if (userMessage.contains("subject") || userMessage.contains("user_id")) {
+                userMessage = "Failed to submit complaint. Please try again.";
+            } else {
+                userMessage = "Failed to process request. Please check your input and try again.";
+            }
+        }
+        
         ErrorResponse error = new ErrorResponse(
                 LocalDateTime.now(),
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "Internal Server Error",
-                ex.getMessage()
+                "Error",
+                userMessage
         );
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
