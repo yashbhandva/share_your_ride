@@ -54,6 +54,8 @@ public class ComplaintServiceImpl implements ComplaintService {
         // Create complaint
         Complaint complaint = new Complaint();
         complaint.setTitle(request.getTitle());
+        complaint.setSubject(request.getTitle()); // Use title as subject
+        complaint.setUser(reportedBy); // Set user_id
         complaint.setDescription(request.getDescription());
         complaint.setType(complaintType);
         complaint.setStatus(Complaint.ComplaintStatus.OPEN);
