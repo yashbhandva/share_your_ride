@@ -713,3 +713,34 @@ HEADER (NAVBAR)
   }
 }
 
+
+/* ===== NOTIFICATION BADGE ===== */
+.notification-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, var(--error-red), #dc2626);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 2px solid var(--bg-primary);
+  animation: pulse 2s infinite;
+  z-index: 1;
+}
+
+.dropdown-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-nav-icon {
+  position: relative;
+}
