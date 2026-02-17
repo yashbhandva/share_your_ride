@@ -96,21 +96,18 @@ public class RatingServiceImpl implements RatingService {
         updateUserAverageRating(userId);
     }
     @Override
-    public RatingDTO.RatingResponse submitRating(RatingDTO.RatingRequest request) {
+    public RatingDTO.RatingResponse submitRating(Long userId, RatingDTO.RatingRequest request) {
         Booking booking = bookingService.getBookingById(request.getBookingId());
 
-        // Validate booking status
         if (booking.getStatus() != Booking.BookingStatus.COMPLETED) {
             throw new BadRequestException("Can only rate completed bookings");
         }
 
-        // Check if rating already exists
         ratingRepository.findByBookingId(booking.getId())
                 .ifPresent(rating -> {
                     throw new ResourceAlreadyExistsException("Rating already submitted for this booking");
                 });
 
-        // Validate rating type
         Rating.RatingType ratingType;
         try {
             ratingType = Rating.RatingType.valueOf(request.getType());
@@ -118,20 +115,21 @@ public class RatingServiceImpl implements RatingService {
             throw new BadRequestException("Invalid rating type");
         }
 
-        // Determine who is giving rating to whom
-        User givenBy, givenTo;
+        User givenBy = userService.getUserById(userId);
+        User givenTo;
 
         if (ratingType == Rating.RatingType.PASSENGER_TO_DRIVER) {
-            givenBy = booking.getPassenger();
+            if (!booking.getPassenger().getId().equals(userId)) {
+                throw new BadRequestException("Only passenger can rate driver");
+            }
             givenTo = booking.getTrip().getDriver();
-        } else if (ratingType == Rating.RatingType.DRIVER_TO_PASSENGER) {
-            givenBy = booking.getTrip().getDriver();
-            givenTo = booking.getPassenger();
         } else {
-            throw new BadRequestException("Invalid rating type");
+            if (!booking.getTrip().getDriver().getId().equals(userId)) {
+                throw new BadRequestException("Only driver can rate passenger");
+            }
+            givenTo = booking.getPassenger();
         }
 
-        // Create rating
         Rating rating = new Rating();
         rating.setStars(request.getStars());
         rating.setComment(request.getComment());
@@ -141,8 +139,6 @@ public class RatingServiceImpl implements RatingService {
         rating.setBooking(booking);
 
         Rating savedRating = ratingRepository.save(rating);
-
-        // Update user's average rating
         updateUserAverageRating(givenTo.getId());
 
         return convertToRatingResponse(savedRating);
