@@ -296,14 +296,14 @@ public class NotificationServiceImpl implements NotificationService {
     public void sendComplaintStatusUpdateNotification(Complaint complaint) {
         Notification notification = createNotification(
                 complaint.getReportedBy(),
-                "Complaint Status Updated",
-                String.format("Your complaint '%s' status has been updated to: %s",
-                        complaint.getTitle(), complaint.getStatus()),
+                "Complaint Resolved",
+                String.format("Your complaint '%s' has been resolved.", complaint.getTitle()),
                 Notification.NotificationType.INFO,
                 "COMPLAINT",
                 complaint.getId()
         );
-        notificationRepository.save(notification);
+        Notification saved = notificationRepository.save(notification);
+        sendRealTimeNotification(complaint.getReportedBy().getId(), saved);
     }
 
     @Override
