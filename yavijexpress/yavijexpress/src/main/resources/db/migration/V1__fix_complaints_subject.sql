@@ -1,0 +1,1 @@
+ALTER TABLE complaints ALTER COLUMN subject DROP NOT NULL;
