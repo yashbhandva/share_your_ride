@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import api from "../api/axiosClient";
 import { useAuth } from "../context/AuthContext.jsx";
+import RatingModal from "../components/RatingModal";
+import { getBookingRating } from "../api/ratingApi";
 import "../assets/driver_dashboard.scss";
 
 
@@ -41,6 +43,8 @@ const DashboardDriver = () => {
   const [bookingLoading, setBookingLoading] = useState(false);
   const [otpForm, setOtpForm] = useState({ bookingId: null, otp: "" });
   const [otpVerifying, setOtpVerifying] = useState(false);
+  const [ratingModal, setRatingModal] = useState(null);
+  const [bookingRatings, setBookingRatings] = useState({});
 
   const loadTrips = async (driverId) => {
     try {
@@ -207,6 +211,34 @@ const DashboardDriver = () => {
     loadBookings(user.id);
   }, [user]);
 
+  useEffect(() => {
+    bookings.forEach(booking => {
+      if (booking.status === "COMPLETED" && !bookingRatings[booking.id]) {
+        checkBookingRating(booking.id);
+      }
+    });
+  }, [bookings]);
+
+  const checkBookingRating = async (bookingId) => {
+    try {
+      const rating = await getBookingRating(bookingId);
+      if (rating) {
+        setBookingRatings(prev => ({ ...prev, [bookingId]: rating }));
+      }
+    } catch (e) {
+      // No rating exists - set as null to indicate checked
+      setBookingRatings(prev => ({ ...prev, [bookingId]: null }));
+    }
+  };
+
+  const handleRatingSuccess = () => {
+    setSuccess("Rating submitted successfully!");
+    setTimeout(() => setSuccess(""), 3000);
+    if (ratingModal) {
+      checkBookingRating(ratingModal.id);
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -356,6 +388,15 @@ const DashboardDriver = () => {
 
   return (
     <div className="driver-dashboard">
+      {ratingModal && (
+        <RatingModal
+          booking={ratingModal}
+          onClose={() => setRatingModal(null)}
+          onSuccess={handleRatingSuccess}
+          userRole="DRIVER"
+        />
+      )}
+
       <div className="driver-header">
         <h1 className="driver-title">🚗 Driver Dashboard</h1>
         <p className="driver-welcome">Welcome back, <span className="driver-name">{user?.name}</span>!</p>
@@ -509,6 +550,31 @@ const DashboardDriver = () => {
                       Debug: BookingId={booking.id}
                     </div>
                   </div>
+                )}
+
+                {booking.status === 'COMPLETED' && (
+                  bookingRatings[booking.id] && bookingRatings[booking.id] !== null ? (
+                    <div className="rating-display">
+                      <div className="rating-stars">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <span key={star} className="star-icon">{star <= bookingRatings[booking.id].stars ? "⭐" : "☆"}</span>
+                        ))}
+                        <span className="rating-value">({bookingRatings[booking.id].stars}/5)</span>
+                      </div>
+                      {bookingRatings[booking.id].comment && (
+                        <p className="rating-comment">💬 {bookingRatings[booking.id].comment}</p>
+                      )}
+                    </div>
+                  ) : bookingRatings.hasOwnProperty(booking.id) ? (
+                    <button
+                      onClick={() => setRatingModal(booking)}
+                      className="action-btn rate-btn"
+                    >
+                      ⭐ Rate Passenger
+                    </button>
+                  ) : (
+                    <div className="rating-loading">Loading rating...</div>
+                  )
                 )}
               </div>
             ))}
