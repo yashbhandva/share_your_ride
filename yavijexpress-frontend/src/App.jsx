@@ -173,6 +173,14 @@ const App = () => {
                     </RouteTransition>
                   }
                 />
+                <Route
+                  path="/complaints"
+                  element={
+                    <RouteTransition>
+                      <Complaints />
+                    </RouteTransition>
+                  }
+                />
 
                 {/* Protected Routes */}
                 <Route element={<ProtectedRoute />}>
@@ -208,15 +216,6 @@ const App = () => {
                     element={
                       <RouteTransition>
                         <Emergency />
-                      </RouteTransition>
-                    }
-                  />
-
-                  <Route
-                    path="/complaints"
-                    element={
-                      <RouteTransition>
-                        <Complaints />
                       </RouteTransition>
                     }
                   />
