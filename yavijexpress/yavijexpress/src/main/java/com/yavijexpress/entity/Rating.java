@@ -2,7 +2,15 @@ package com.yavijexpress.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "ratings")
 public class Rating {
@@ -42,69 +50,5 @@ public class Rating {
 
     public enum RatingType {
         DRIVER_TO_PASSENGER, PASSENGER_TO_DRIVER
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getStars() {
-        return stars;
-    }
-
-    public void setStars(Integer stars) {
-        this.stars = stars;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public RatingType getType() {
-        return type;
-    }
-
-    public void setType(RatingType type) {
-        this.type = type;
-    }
-
-    public User getGivenBy() {
-        return givenBy;
-    }
-
-    public void setGivenBy(User givenBy) {
-        this.givenBy = givenBy;
-    }
-
-    public User getGivenTo() {
-        return givenTo;
-    }
-
-    public void setGivenTo(User givenTo) {
-        this.givenTo = givenTo;
-    }
-
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 }

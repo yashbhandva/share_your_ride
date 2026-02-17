@@ -2,7 +2,15 @@ package com.yavijexpress.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "notifications")
 public class Notification {
@@ -30,7 +38,7 @@ public class Notification {
 
     private String relatedEntityType; // TRIP, BOOKING, PAYMENT, etc.
     private Long relatedEntityId;
-    
+
     @Column(columnDefinition = "TEXT")
     private String actions; // JSON string for action buttons
 
@@ -45,85 +53,5 @@ public class Notification {
         INFO, SUCCESS, WARNING, ERROR,
         BOOKING_CONFIRMED, TRIP_REMINDER,
         PAYMENT_SUCCESS, EMERGENCY_ALERT
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public NotificationType getType() {
-        return type;
-    }
-
-    public void setType(NotificationType type) {
-        this.type = type;
-    }
-
-    public Boolean getRead() {
-        return isRead;
-    }
-
-    public void setIsRead(Boolean read) {
-        isRead = read;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getRelatedEntityType() {
-        return relatedEntityType;
-    }
-
-    public void setRelatedEntityType(String relatedEntityType) {
-        this.relatedEntityType = relatedEntityType;
-    }
-
-    public Long getRelatedEntityId() {
-        return relatedEntityId;
-    }
-
-    public void setRelatedEntityId(Long relatedEntityId) {
-        this.relatedEntityId = relatedEntityId;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-    
-    public String getActions() {
-        return actions;
-    }
-    
-    public void setActions(String actions) {
-        this.actions = actions;
     }
 }

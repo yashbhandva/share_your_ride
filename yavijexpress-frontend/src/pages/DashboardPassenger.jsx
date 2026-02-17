@@ -147,7 +147,8 @@ const DashboardPassenger = () => {
       setPaymentLoadingId(bookingId);
       setError("");
       const res = await api.get(`/api/payments/booking/${bookingId}`);
-      setPaymentDetails((prev) => ({ ...prev, [bookingId]: res.data }));
+      const data = res.data?.data || res.data;
+      setPaymentDetails((prev) => ({ ...prev, [bookingId]: data }));
     } catch (e) {
       setError(e.response?.data?.message || "Failed to load payment details");
     } finally {

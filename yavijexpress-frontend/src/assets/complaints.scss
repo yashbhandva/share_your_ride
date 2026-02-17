@@ -1,0 +1,44 @@
+.complaints-page {
+  padding: 2rem;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .complaint-form-container {
+    margin-bottom: 2rem;
+    padding: 2rem;
+  }
+
+  .complaints-list .card {
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+  }
+
+  .complaint-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-weight: bold;
+    color: white;
+
+    &.open { background-color: #f44336; }
+    &.in_progress { background-color: #ff9800; }
+    &.resolved { background-color: #4caf50; }
+  }
+
+  .admin-response {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+  }
+}

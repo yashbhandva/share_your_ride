@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/common/ProtectedRoute.jsx";
 import RoleRoute from "./components/common/RoleRoute.jsx";
 import RouteTransition from "./components/common/RouteTransition.jsx";
 import LoadingScreen from "./components/common/LoadingScreen.jsx";
+import BackToTopButton from "./components/common/BackToTopButton.jsx";
 
 // Lazy load pages for better performance
 const Home = lazy(() => import("./pages/Home.jsx"));
@@ -27,6 +28,7 @@ const PrivacyPolicy = lazy(() => import("./pages/Privacy-Policy.jsx"));
 const TermOfService = lazy(() => import("./pages/terms.jsx"));
 const Faq = lazy(() => import("./pages/faq.jsx"));
 const Careers = lazy(() => import("./pages/careers.jsx"));
+const Complaints = lazy(() => import("./pages/Complaints.jsx"));
 
 
 const App = () => {
@@ -210,6 +212,15 @@ const App = () => {
                     }
                   />
 
+                  <Route
+                    path="/complaints"
+                    element={
+                      <RouteTransition>
+                        <Complaints />
+                      </RouteTransition>
+                    }
+                  />
+
                   {/* Role-based Dashboard Routes */}
                   <Route
                     element={<RoleRoute allowedRoles={["PASSENGER", "ADMIN"]} />}
@@ -272,50 +283,6 @@ const App = () => {
       {/* Back to Top Button */}
       <BackToTopButton />
     </div>
-  );
-};
-
-// Back to Top Button Component
-const BackToTopButton = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  return (
-    <button
-      className={`back-to-top-btn ${isVisible ? "visible" : ""}`}
-      onClick={scrollToTop}
-      aria-label="Back to top"
-    >
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <path d="M12 19V5M5 12l7-7 7 7" />
-      </svg>
-    </button>
   );
 };
 

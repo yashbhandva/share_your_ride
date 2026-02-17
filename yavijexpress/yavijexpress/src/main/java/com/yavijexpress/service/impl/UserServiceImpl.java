@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final VehicleRepository vehicleRepository;
     private final NotificationRepository notificationRepository;
+    private final PasswordResetTokenRepository passwordResetTokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -34,10 +36,11 @@ public class UserServiceImpl implements UserService {
     private final OTPService otpService;
     private final ModelMapper modelMapper;
 
-    public UserServiceImpl(UserRepository userRepository, VehicleRepository vehicleRepository, NotificationRepository notificationRepository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager, EmailServiceImpl emailService, OTPService otpService, ModelMapper modelMapper) {
+    public UserServiceImpl(UserRepository userRepository, VehicleRepository vehicleRepository, NotificationRepository notificationRepository, PasswordResetTokenRepository passwordResetTokenRepository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager, EmailServiceImpl emailService, OTPService otpService, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.vehicleRepository = vehicleRepository;
         this.notificationRepository = notificationRepository;
+        this.passwordResetTokenRepository = passwordResetTokenRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
         this.authenticationManager = authenticationManager;
@@ -113,28 +116,51 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with email: " + email));
 
-        // TODO: generate and store a secure reset token (e.g., UUID or JWT)
-        // String resetToken = ...;
+        // Delete any existing token for this user
+        passwordResetTokenRepository.deleteByUser(user);
 
-        // TODO: send reset email with link containing the token
-        // emailService.sendPasswordResetEmail(user.getEmail(), user.getName(), resetToken);
-        throw new UnsupportedOperationException("Password reset flow not fully implemented yet");
+        // Generate new token
+        String token = UUID.randomUUID().toString();
+        PasswordResetToken passwordResetToken = new PasswordResetToken(token, user);
+        passwordResetTokenRepository.save(passwordResetToken);
+
+        // Send email
+        // Note: In a real application, this would be a link to the frontend reset password page
+        // e.g., https://yavijexpress.com/reset-password?token=...
+        // For now, we'll just send the token or a simulated link
+        String resetLink = "http://localhost:5173/reset-password?token=" + token;
+        emailService.sendPasswordResetEmail(user.getEmail(), user.getName(), resetLink);
     }
 
     @Override
     public void resetPassword(String token, String newPassword) {
-        // TODO: validate token, load associated user, check expiry
+        PasswordResetToken resetToken = passwordResetTokenRepository.findByToken(token)
+                .orElseThrow(() -> new BadRequestException("Invalid password reset token"));
 
-        // Example flow (pseudocode):
-        // PasswordResetToken prt = tokenRepo.findByToken(token).orElseThrow(...);
-        // if (prt.isExpired()) { ... }
-        // User user = prt.getUser();
+        if (resetToken.isExpired()) {
+            throw new BadRequestException("Password reset token has expired");
+        }
 
-        // user.setPassword(passwordEncoder.encode(newPassword));
-        // userRepository.save(user);
-        // tokenRepo.markUsed(prt);
+        User user = resetToken.getUser();
+        
+        // Prevent reusing same password
+        if (passwordEncoder.matches(newPassword, user.getPassword())) {
+            throw new BadRequestException("New password must be different from the current password");
+        }
 
-        throw new UnsupportedOperationException("Password reset flow not fully implemented yet");
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+
+        // Invalidate the token
+        passwordResetTokenRepository.delete(resetToken);
+
+        // Send notification
+        Notification notification = new Notification();
+        notification.setUser(user);
+        notification.setTitle("Password Reset Successful");
+        notification.setMessage("Your password has been successfully reset. You can now login with your new password.");
+        notification.setType(Notification.NotificationType.SUCCESS);
+        notificationRepository.save(notification);
     }
     @Override
     public void deactivateUser(Long userId) {
@@ -435,7 +461,7 @@ public class UserServiceImpl implements UserService {
         // Stats and status
         response.setTotalRides(user.getTotalRides());
         response.setAvgRating(user.getAvgRating());
-        response.setActive(user.getIsActive());
+        response.setIsActive(user.getIsActive());
 
         // Timestamps
         response.setCreatedAt(user.getCreatedAt());

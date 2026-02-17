@@ -150,7 +150,8 @@ const DashboardDriver = () => {
       setError("");
       const res = await api.post(`/api/bookings/${bookingId}/confirm`);
       console.log('Confirm response:', res.data);
-      setSuccess("✅ Booking confirmed! OTP sent to passenger.");
+      const message = typeof res.data?.data === 'string' ? res.data.data : (res.data?.message || "✅ Booking confirmed! OTP sent to passenger.");
+      setSuccess(message);
       setTimeout(() => setSuccess(""), 5000);
       await loadBookings(user.id);
     } catch (e) {
@@ -180,7 +181,8 @@ const DashboardDriver = () => {
       });
 
       console.log('OTP verification response:', res.data);
-      const message = res.data?.data?.message || res.data?.message || "✅ OTP Verified Successfully! Trip can now start.";
+      // Handle string response in data field
+      const message = typeof res.data?.data === 'string' ? res.data.data : (res.data?.data?.message || res.data?.message || "✅ OTP Verified Successfully! Trip can now start.");
       setSuccess(message);
       setOtpForm({ bookingId: null, otp: "" });
       setTimeout(() => setSuccess(""), 8000);

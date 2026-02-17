@@ -2,7 +2,15 @@ package com.yavijexpress.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "complaints")
 
@@ -57,93 +65,5 @@ public class Complaint {
 
     public enum ComplaintStatus {
         OPEN, IN_PROGRESS, RESOLVED, REJECTED
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public ComplaintType getType() {
-        return type;
-    }
-
-    public void setType(ComplaintType type) {
-        this.type = type;
-    }
-
-    public ComplaintStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(ComplaintStatus status) {
-        this.status = status;
-    }
-
-    public User getReportedBy() {
-        return reportedBy;
-    }
-
-    public void setReportedBy(User reportedBy) {
-        this.reportedBy = reportedBy;
-    }
-
-    public User getReportedUser() {
-        return reportedUser;
-    }
-
-    public void setReportedUser(User reportedUser) {
-        this.reportedUser = reportedUser;
-    }
-
-    public Trip getTrip() {
-        return trip;
-    }
-
-    public void setTrip(Trip trip) {
-        this.trip = trip;
-    }
-
-    public String getAdminResponse() {
-        return adminResponse;
-    }
-
-    public void setAdminResponse(String adminResponse) {
-        this.adminResponse = adminResponse;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getResolvedAt() {
-        return resolvedAt;
-    }
-
-    public void setResolvedAt(LocalDateTime resolvedAt) {
-        this.resolvedAt = resolvedAt;
     }
 }

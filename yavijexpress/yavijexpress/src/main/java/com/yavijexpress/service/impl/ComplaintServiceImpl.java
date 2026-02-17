@@ -7,6 +7,7 @@ import com.yavijexpress.repository.ComplaintRepository;
 import com.yavijexpress.service.ComplaintService;
 import com.yavijexpress.service.UserService;
 import com.yavijexpress.service.NotificationService;
+import com.yavijexpress.utils.SecurityUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class ComplaintServiceImpl implements ComplaintService {
 
     @Override
     public ComplaintDTO.ComplaintResponse submitComplaint(ComplaintDTO.ComplaintRequest request) {
-        User reportedBy = userService.getUserById(extractUserIdFromContext()); // Get from security context
+        User reportedBy = userService.getUserById(SecurityUtils.getCurrentUserId());
 
         // Validate reported user if provided
         User reportedUser = null;
@@ -207,11 +208,5 @@ public class ComplaintServiceImpl implements ComplaintService {
         }
 
         return response;
-    }
-
-    private Long extractUserIdFromContext() {
-        // In real implementation, get from SecurityContext
-        // For now, return dummy
-        return 1L;
     }
 }

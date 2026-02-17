@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import api from "../api/axiosClient";
+import { useAuth } from "../context/AuthContext";
 import LocationPicker from "../components/common/LocationPicker.jsx";
 import "../assets/home.scss";
 import "../assets/emergency.scss";
@@ -25,6 +26,7 @@ import {
 } from "react-icons/fa";
 
 const Emergency = () => {
+  const { user } = useAuth();
   const [form, setForm] = useState({
     tripId: "",
     message: "",
@@ -38,6 +40,33 @@ const Emergency = () => {
   const [mapType, setMapType] = useState("roadmap");
   const [isMapExpanded, setIsMapExpanded] = useState(false);
   const [locationError, setLocationError] = useState("");
+  const [contacts, setContacts] = useState([]);
+  const [contactsLoading, setContactsLoading] = useState(true);
+
+  useEffect(() => {
+    if (user?.id) {
+      fetchContacts();
+    }
+  }, [user]);
+
+  const fetchContacts = async () => {
+    try {
+      setContactsLoading(true);
+      const res = await api.get(`/api/emergency/contacts/${user.id}`);
+      setContacts(res.data || []);
+    } catch (e) {
+      console.error("Failed to fetch emergency contacts", e);
+      // Fallback to default contacts if API fails
+      setContacts([
+        { type: "Police", number: "100" },
+        { type: "Ambulance", number: "102" },
+        { type: "Fire", number: "101" },
+        { type: "YaVij Helpline", number: "1800-XXX-XXXX" }
+      ]);
+    } finally {
+      setContactsLoading(false);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -514,24 +543,18 @@ const Emergency = () => {
                 <FaPhone className="section-icon" />
                 <h4>Emergency Contacts</h4>
               </div>
-              <div className="contact-list">
-                <div className="contact-item">
-                  <div className="contact-type">Police</div>
-                  <div className="contact-number">100</div>
+              {contactsLoading ? (
+                <div className="contacts-loading">Loading contacts...</div>
+              ) : (
+                <div className="contact-list">
+                  {contacts.map((contact, index) => (
+                    <div key={index} className="contact-item">
+                      <div className="contact-type">{contact.type}</div>
+                      <div className="contact-number">{contact.number}</div>
+                    </div>
+                  ))}
                 </div>
-                <div className="contact-item">
-                  <div className="contact-type">Ambulance</div>
-                  <div className="contact-number">102</div>
-                </div>
-                <div className="contact-item">
-                  <div className="contact-type">Fire</div>
-                  <div className="contact-number">101</div>
-                </div>
-                <div className="contact-item">
-                  <div className="contact-type">Yavij Support</div>
-                  <div className="contact-number">1800-XXX-XXXX</div>
-                </div>
-              </div>
+              )}
             </div>
 
             {/* Safety Tips */}

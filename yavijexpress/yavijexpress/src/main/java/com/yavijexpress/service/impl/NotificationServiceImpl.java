@@ -363,7 +363,7 @@ public class NotificationServiceImpl implements NotificationService {
             notificationData.put("actions", notification.getActions());
             notificationData.put("timestamp", LocalDateTime.now());
             
-            messagingTemplate.convertAndSend("/topic/notifications/" + userId, notificationData);
+            messagingTemplate.convertAndSend("/topic/notifications/" + userId, (Object) notificationData);
         } catch (Exception e) {
             // Log error but don't fail notification creation
         }

@@ -38,7 +38,7 @@ public class NotificationController {
                     response.setTitle(notification.getTitle());
                     response.setMessage(notification.getMessage());
                     response.setType(notification.getType().toString());
-                    response.setIsRead(notification.getRead());
+                    response.setIsRead(notification.getIsRead());
                     response.setRelatedEntityType(notification.getRelatedEntityType());
                     response.setRelatedEntityId(notification.getRelatedEntityId());
                     response.setActions(notification.getActions());

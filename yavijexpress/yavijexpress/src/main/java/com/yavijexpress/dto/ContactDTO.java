@@ -1,10 +1,19 @@
 package com.yavijexpress.dto;
 
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
 public class ContactDTO {
 
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class ContactRequest {
         @NotBlank(message = "Name is required")
         private String name;
@@ -19,16 +28,12 @@ public class ContactDTO {
         @NotBlank(message = "Message is required")
         private String message;
 
-        public String getName() { return name; }
-        public void setName(String name) { this.name = name; }
-        public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
-        public String getSubject() { return subject; }
-        public void setSubject(String subject) { this.subject = subject; }
-        public String getMessage() { return message; }
-        public void setMessage(String message) { this.message = message; }
     }
 
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class ContactResponse {
         private Long id;
         private String name;
@@ -37,20 +42,5 @@ public class ContactDTO {
         private String message;
         private String status;
         private LocalDateTime createdAt;
-
-        public Long getId() { return id; }
-        public void setId(Long id) { this.id = id; }
-        public String getName() { return name; }
-        public void setName(String name) { this.name = name; }
-        public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
-        public String getSubject() { return subject; }
-        public void setSubject(String subject) { this.subject = subject; }
-        public String getMessage() { return message; }
-        public void setMessage(String message) { this.message = message; }
-        public String getStatus() { return status; }
-        public void setStatus(String status) { this.status = status; }
-        public LocalDateTime getCreatedAt() { return createdAt; }
-        public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
     }
 }
