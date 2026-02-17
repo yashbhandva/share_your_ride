@@ -23,6 +23,13 @@ public class Complaint {
     @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
+    private String subject;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     @Column(columnDefinition = "TEXT", nullable = false)
     private String description;
 
