@@ -14,11 +14,13 @@ const Complaints = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    type: "OTHER", // Default type
-    reportedUserId: ""
+    type: "OTHER",
+    reportedUserId: "",
+    tripId: ""
   });
 
-  // Updated to match backend Complaint.ComplaintType enum
+  const [replyData, setReplyData] = useState({});
+
   const complaintTypes = [
     { value: "DRIVER_BEHAVIOR", label: "Driver Behavior" },
     { value: "PASSENGER_BEHAVIOR", label: "Passenger Behavior" },
@@ -29,13 +31,14 @@ const Complaints = () => {
   ];
 
   useEffect(() => {
-    loadComplaints();
-  }, []);
+    if (user) loadComplaints();
+  }, [user]);
 
   const loadComplaints = async () => {
     try {
       setLoading(true);
-      const res = await api.get("/api/complaints/my-complaints");
+      const endpoint = user?.role === "ADMIN" ? "/api/complaints" : "/api/complaints/my-complaints";
+      const res = await api.get(endpoint);
       const data = res.data?.data || res.data || [];
       setComplaints(data);
     } catch (e) {
@@ -54,7 +57,8 @@ const Complaints = () => {
 
       const payload = {
         ...formData,
-        reportedUserId: formData.reportedUserId ? Number(formData.reportedUserId) : null
+        reportedUserId: formData.reportedUserId ? Number(formData.reportedUserId) : null,
+        tripId: formData.tripId ? Number(formData.tripId) : null
       };
 
       await api.post("/api/complaints", payload);
@@ -65,11 +69,28 @@ const Complaints = () => {
         title: "",
         description: "",
         type: "OTHER",
-        reportedUserId: ""
+        reportedUserId: "",
+        tripId: ""
       });
       loadComplaints();
     } catch (e) {
       setError(e.response?.data?.message || "Failed to submit complaint");
+    }
+  };
+
+  const handleReply = async (complaintId) => {
+    try {
+      setError("");
+      await api.put(`/api/complaints/${complaintId}/status`, {
+        status: "RESOLVED",
+        adminResponse: replyData[complaintId]
+      });
+      setSuccess("Reply sent successfully!");
+      setReplyData({ ...replyData, [complaintId]: "" });
+      loadComplaints();
+      setTimeout(() => setSuccess(""), 3000);
+    } catch (e) {
+      setError(e.response?.data?.message || "Failed to send reply");
     }
   };
 
@@ -81,13 +102,15 @@ const Complaints = () => {
   return (
     <div className="complaints-page container">
       <div className="page-header">
-        <h1>My Complaints</h1>
-        <button
-          className="btn-primary"
-          onClick={() => setShowForm(!showForm)}
-        >
-          {showForm ? "Cancel" : "New Complaint"}
-        </button>
+        <h1>📝 {user?.role === "ADMIN" ? "All Complaints" : "My Complaints"}</h1>
+        {user?.role !== "ADMIN" && (
+          <button
+            className="btn-primary"
+            onClick={() => setShowForm(!showForm)}
+          >
+            {showForm ? "Cancel" : "New Complaint"}
+          </button>
+        )}
       </div>
 
       {error && <div className="alert error">{error}</div>}
@@ -138,6 +161,17 @@ const Complaints = () => {
             </div>
 
             <div className="form-group">
+              <label>Trip ID (Optional)</label>
+              <input
+                type="number"
+                name="tripId"
+                value={formData.tripId}
+                onChange={handleChange}
+                placeholder="Related trip ID"
+              />
+            </div>
+
+            <div className="form-group">
               <label>Reported User ID (Optional)</label>
               <input
                 type="number"
@@ -174,11 +208,33 @@ const Complaints = () => {
               <h3>{complaint.title}</h3>
               <p className="complaint-type">Type: {complaint.type}</p>
               <p className="complaint-desc">{complaint.description}</p>
+              {user?.role === "ADMIN" && (
+                <>
+                  <p className="complaint-by">Reported by: {complaint.reportedByName}</p>
+                  {complaint.reportedUser && (
+                    <p className="complaint-by">Against: {complaint.reportedUserName}</p>
+                  )}
+                </>
+              )}
 
               {complaint.adminResponse && (
                 <div className="admin-response">
                   <h4>Admin Response:</h4>
                   <p>{complaint.adminResponse}</p>
+                </div>
+              )}
+
+              {user?.role === "ADMIN" && (complaint.status === "PENDING" || complaint.status === "OPEN") && (
+                <div className="reply-section">
+                  <textarea
+                    placeholder="Type your response..."
+                    value={replyData[complaint.id] || ""}
+                    onChange={(e) => setReplyData({ ...replyData, [complaint.id]: e.target.value })}
+                    rows="3"
+                  />
+                  <button onClick={() => handleReply(complaint.id)} className="btn-reply">
+                    Send Reply
+                  </button>
                 </div>
               )}
             </div>
