@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import api from "../api/axiosClient";
 import { useAuth } from "../context/AuthContext.jsx";
+import RatingModal from "../components/RatingModal";
+import { getBookingRating } from "../api/ratingApi";
 import "../assets/passenger_dashboard.scss";
 
 
@@ -19,6 +21,8 @@ const DashboardPassenger = () => {
   const [paymentDetails, setPaymentDetails] = useState({});
   const [paymentLoadingId, setPaymentLoadingId] = useState(null);
   const [paymentProcessingId, setPaymentProcessingId] = useState(null);
+  const [ratingModal, setRatingModal] = useState(null);
+  const [bookingRatings, setBookingRatings] = useState({});
   const [searchForm, setSearchForm] = useState({
     fromLocation: "",
     toLocation: "",
@@ -60,6 +64,14 @@ const DashboardPassenger = () => {
     if (!user?.id) return;
     loadData(user.id);
   }, [user]);
+
+  useEffect(() => {
+    bookings.forEach(booking => {
+      if (booking.status === "COMPLETED" && !bookingRatings[booking.id]) {
+        checkBookingRating(booking.id);
+      }
+    });
+  }, [bookings]);
 
   const handleSearchChange = (e) => {
     const { name, value } = e.target;
@@ -167,6 +179,26 @@ const DashboardPassenger = () => {
       setError(e.response?.data?.message || "Failed to process cash payment");
     } finally {
       setPaymentProcessingId(null);
+    }
+  };
+
+  const checkBookingRating = async (bookingId) => {
+    try {
+      const rating = await getBookingRating(bookingId);
+      if (rating) {
+        setBookingRatings(prev => ({ ...prev, [bookingId]: rating }));
+      }
+    } catch (e) {
+      // No rating exists - set as null to indicate checked
+      setBookingRatings(prev => ({ ...prev, [bookingId]: null }));
+    }
+  };
+
+  const handleRatingSuccess = () => {
+    setSuccess("Rating submitted successfully!");
+    setTimeout(() => setSuccess(""), 3000);
+    if (ratingModal) {
+      checkBookingRating(ratingModal.id);
     }
   };
 
@@ -380,6 +412,31 @@ const DashboardPassenger = () => {
             {paymentProcessingId === booking.id ? "Processing..." : "Mark Cash Paid"}
           </button>
         )}
+
+        {booking.status === "COMPLETED" && (
+          bookingRatings[booking.id] && bookingRatings[booking.id] !== null ? (
+            <div className="rating-display">
+              <div className="rating-stars">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <span key={star} className="star-icon">{star <= bookingRatings[booking.id].stars ? "⭐" : "☆"}</span>
+                ))}
+                <span className="rating-value">({bookingRatings[booking.id].stars}/5)</span>
+              </div>
+              {bookingRatings[booking.id].comment && (
+                <p className="rating-comment">💬 {bookingRatings[booking.id].comment}</p>
+              )}
+            </div>
+          ) : bookingRatings.hasOwnProperty(booking.id) ? (
+            <button
+              onClick={() => setRatingModal(booking)}
+              className="rate-btn"
+            >
+              ⭐ Rate Driver
+            </button>
+          ) : (
+            <div className="rating-loading">Loading rating...</div>
+          )
+        )}
       </div>
     </div>
   );
@@ -395,6 +452,15 @@ const DashboardPassenger = () => {
                   </div>
                 </div>
               </section>
+
+      {ratingModal && (
+        <RatingModal
+          booking={ratingModal}
+          onClose={() => setRatingModal(null)}
+          onSuccess={handleRatingSuccess}
+          userRole="PASSENGER"
+        />
+      )}
 
 
       <div className="alert-container">
