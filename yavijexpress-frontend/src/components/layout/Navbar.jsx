@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
+import { getUnreadCount } from "../../api/notificationApi";
 import '../../assets/header.scss';
 
 import {
@@ -31,6 +32,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +45,22 @@ const Navbar = () => {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    if (user) {
+      const fetchUnreadCount = async () => {
+        try {
+          const count = await getUnreadCount();
+          setUnreadCount(count?.data || count || 0);
+        } catch (error) {
+          console.error("Failed to fetch unread count", error);
+        }
+      };
+      fetchUnreadCount();
+      const interval = setInterval(fetchUnreadCount, 30000);
+      return () => clearInterval(interval);
+    }
+  }, [user]);
 
   const handleLogout = () => {
     logoutUser();
@@ -75,7 +93,8 @@ const Navbar = () => {
 
   const userNavItems = [
     { path: "/profile", label: "Profile", icon: <FaUser />, role: "ALL" },
-    { path: "/notifications", label: "Notifications", icon: <FaBell />, role: "ALL" },
+    { path: "/notifications", label: "Notifications", icon: <FaBell />, role: "ALL", badge: unreadCount },
+    { path: "/complaints", label: "Complaints", icon: <FaExclamationTriangle />, role: "ALL" },
     { path: "/payments", label: "Payments", icon: <FaCreditCard />, role: "ALL" },
     { path: "/emergency", label: "Emergency", icon: <FaExclamationTriangle />, role: "ALL" },
     {
@@ -178,7 +197,10 @@ const Navbar = () => {
                         to={item.path}
                         className="dropdown-item"
                       >
-                        {item.icon}
+                        <span className="dropdown-icon-wrapper">
+                          {item.icon}
+                          {item.badge > 0 && <span className="notification-badge">{item.badge}</span>}
+                        </span>
                         <span>{item.label}</span>
                       </Link>
                     )
@@ -268,7 +290,12 @@ const Navbar = () => {
                   to={item.path}
                   className={`mobile-nav-item ${location.pathname === item.path ? "active" : ""}`}
                 >
-                  {item.icon && <span className="mobile-nav-icon">{item.icon}</span>}
+                  {item.icon && (
+                    <span className="mobile-nav-icon">
+                      {item.icon}
+                      {item.badge > 0 && <span className="notification-badge">{item.badge}</span>}
+                    </span>
+                  )}
                   {item.label}
                 </Link>
               )
