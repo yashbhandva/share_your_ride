@@ -13,12 +13,13 @@ import java.util.List;
 public class RatingController {
 
     @Autowired
-    private  RatingService ratingService;
+    private RatingService ratingService;
 
     @PostMapping
     public ResponseEntity<RatingDTO.RatingResponse> submitRating(
+            @RequestHeader("X-User-ID") Long userId,
             @Valid @RequestBody RatingDTO.RatingRequest request) {
-        return ResponseEntity.ok(ratingService.submitRating(request));
+        return ResponseEntity.ok(ratingService.submitRating(userId, request));
     }
 
     @GetMapping("/user/{userId}")
