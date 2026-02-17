@@ -178,17 +178,26 @@ public class EmailServiceImpl  {
     }
 
     private void sendEmail(String to, String subject, String body) throws Exception {
-        System.out.println("Preparing email - From: " + fromEmail + ", To: " + to);
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+        try {
+            System.out.println("Preparing email - From: " + fromEmail + ", To: " + to);
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-        helper.setFrom(fromEmail, "YaVij Express");
-        helper.setTo(to);
-        helper.setSubject(subject);
-        helper.setText(body, true);
+            helper.setFrom(fromEmail, "YaVij Express");
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(body, true);
 
-        System.out.println("Sending email via SMTP...");
-        mailSender.send(message);
-        System.out.println("Email sent successfully!");
+            System.out.println("Sending email via SMTP...");
+            mailSender.send(message);
+            System.out.println("Email sent successfully to: " + to);
+        } catch (Exception e) {
+            System.err.println("CRITICAL: Failed to send email to " + to);
+            System.err.println("Error: " + e.getMessage());
+            System.err.println("Mail Host: " + System.getenv("MAIL_HOST"));
+            System.err.println("Mail Port: " + System.getenv("MAIL_PORT"));
+            e.printStackTrace();
+            throw e;
+        }
     }
 }
