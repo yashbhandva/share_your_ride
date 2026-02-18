@@ -61,7 +61,7 @@ const Emergency = () => {
         { type: "Police", number: "100" },
         { type: "Ambulance", number: "102" },
         { type: "Fire", number: "101" },
-        { type: "YaVij Helpline", number: "1800-XXX-XXXX" }
+        { type: "Yavigo Helpline", number: "1800-400-2100" }
       ]);
     } finally {
       setContactsLoading(false);
