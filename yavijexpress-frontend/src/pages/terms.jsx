@@ -55,7 +55,7 @@ const TermsOfService = () => {
   const termsContent = {
     acceptance: {
       title: "Acceptance of Terms",
-      content: `By registering, accessing, or using YaVij-Express, users agree to comply with these Terms of Service. If a user does not agree with these terms, they must not use the platform.`,
+      content: `By registering, accessing, or using Yavigo, users agree to comply with these Terms of Service. If a user does not agree with these terms, they must not use the platform.`,
       points: [
         "Agreement to all terms by platform usage",
         "Mandatory compliance for all users",
@@ -65,7 +65,7 @@ const TermsOfService = () => {
     },
     platform: {
       title: "Platform Role",
-      content: `YaVij-Express acts only as a technology platform that connects drivers and passengers. The platform does not own vehicles and does not provide transportation services directly.`,
+      content: `Yavigo acts only as a technology platform that connects drivers and passengers. The platform does not own vehicles and does not provide transportation services directly.`,
       points: [
         "Technology intermediary only",
         "No direct transportation services",
@@ -216,7 +216,7 @@ const TermsOfService = () => {
     },
     conclusion: {
       title: "Conclusion",
-      content: `By using YaVij-Express, users agree to act responsibly, respect community rules, and help maintain a safe and trusted ride-sharing environment.`,
+      content: `By using Yavigo, users agree to act responsibly, respect community rules, and help maintain a safe and trusted ride-sharing environment.`,
       points: [
         "Community responsibility",
         "Safe ride-sharing commitment",
@@ -241,7 +241,7 @@ const TermsOfService = () => {
       type: 'text/plain'
     });
     element.href = URL.createObjectURL(file);
-    element.download = "YaVij-Express-Terms-of-Service.txt";
+    element.download = "Yavigo-Terms-of-Service.txt";
     document.body.appendChild(element);
     element.click();
   };
@@ -278,7 +278,7 @@ const TermsOfService = () => {
             Terms of <span className="gradient-text">Service</span>
           </h1>
           <p className="terms-subtitle">
-            Your rights and responsibilities when using YaVij Express.
+            Your rights and responsibilities when using Yavigo.
             Please read carefully before using our services.
           </p>
 
@@ -571,7 +571,7 @@ const TermsOfService = () => {
 
               <div className="modal-body">
                 <p className="modal-intro">
-                  Please review and accept each section of our Terms of Service to continue using YaVij Express.
+                  Please review and accept each section of our Terms of Service to continue using Yavigo.
                 </p>
 
                 <div className="acceptance-sections">
