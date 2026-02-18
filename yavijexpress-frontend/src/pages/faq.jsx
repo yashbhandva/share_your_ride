@@ -43,31 +43,31 @@ const FAQ = () => {
     general: [
       {
         id: "what-is",
-        question: "What is YaVij Express?",
-        answer: "YaVij Express is a community-based ride-sharing platform where drivers can share their planned trips and passengers can book available seats for safe and affordable travel.",
+        question: "What is Yavigo ?",
+        answer: "Yavigo is a community-based ride-sharing platform where drivers can share their planned trips and passengers can book available seats for safe and affordable travel.",
         tags: ["Platform", "Introduction"]
       },
       {
         id: "who-can-use",
-        question: "Who can use YaVij Express?",
+        question: "Who can use Yavigo?",
         answer: "Any user above 18 years of age can register. Drivers must have a valid driving license, vehicle registration, and insurance. Both drivers and passengers need to complete identity verification.",
         tags: ["Eligibility", "Registration"]
       },
       {
         id: "taxi-service",
-        question: "Is YaVij Express a taxi service?",
-        answer: "No. YaVij Express is a technology platform that connects drivers and passengers. It does not own vehicles or provide transportation services directly. We're a community ride-sharing platform.",
+        question: "Is Yavigo a taxi service?",
+        answer: "No. Yavigo is a technology platform that connects drivers and passengers. It does not own vehicles or provide transportation services directly. We're a community ride-sharing platform.",
         tags: ["Platform Type"]
       },
       {
         id: "free-to-use",
-        question: "Is YaVij Express free to use?",
+        question: "Is Yavigo free to use?",
         answer: "Account creation is completely free. Charges apply only when booking a ride or using paid services. There are no subscription fees or hidden charges.",
         tags: ["Pricing", "Cost"]
       },
       {
         id: "future-expansion",
-        question: "Will YaVij Express expand in the future?",
+        question: "Will Yavigo expand in the future?",
         answer: "Yes. The platform is designed to scale with additional features, cities, and services. We're constantly working on expanding to new locations and adding innovative features.",
         tags: ["Future", "Expansion"]
       }
@@ -108,7 +108,7 @@ const FAQ = () => {
       {
         id: "data-safe",
         question: "Is my personal data safe?",
-        answer: "Yes. YaVij Express uses secure authentication, encryption, and follows strict privacy policies to protect user data. We never share your data with third parties without consent.",
+        answer: "Yes. Yavigo uses secure authentication, encryption, and follows strict privacy policies to protect user data. We never share your data with third parties without consent.",
         tags: ["Privacy", "Security"]
       },
       {
@@ -181,7 +181,7 @@ const FAQ = () => {
     ).join('');
     const file = new Blob([content], { type: 'text/plain' });
     element.href = URL.createObjectURL(file);
-    element.download = "YaVij-Express-FAQ.txt";
+    element.download = "Yavigo-FAQ.txt";
     document.body.appendChild(element);
     element.click();
   };
@@ -217,7 +217,7 @@ const FAQ = () => {
             Frequently Asked <span className="gradient-text">Questions</span>
           </h1>
           <p className="faq-subtitle">
-            Find quick answers to common questions about YaVij Express.
+            Find quick answers to common questions about Yavigo.
             Can't find what you're looking for? Contact our support team.
           </p>
 
@@ -306,7 +306,7 @@ const FAQ = () => {
                 }}
               >
                 <FaQuestionCircle className="popular-icon" />
-                <span>What is YaVij Express?</span>
+                <span>What is Yavigo ?</span>
               </button>
               <button
                 className="popular-item"
@@ -548,10 +548,10 @@ const FAQ = () => {
             <a href="/contact" className="contact-btn primary">
               <FaHeadset /> Live Chat
             </a>
-            <a href="mailto:support@yavijexpress.com" className="contact-btn">
+            <a href="mailto:support@Yavigo.com" className="contact-btn">
               <FaCommentAlt /> Email Support
             </a>
-            <a href="tel:+911234567890" className="contact-btn">
+            <a href="tel:+91 82389 64651" className="contact-btn">
               <FaHeadset /> Call Us
             </a>
           </div>
