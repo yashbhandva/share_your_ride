@@ -36,12 +36,12 @@ public class EmailServiceImpl  {
             Context context = new Context();
             context.setVariable("name", name);
             context.setVariable("otp", otp);
-            context.setVariable("supportEmail", "support@yavijexpress.com");
+            context.setVariable("supportEmail", "support@yavigo.com");
 
             String htmlContent = templateEngine.process("email/verification", context);
             System.out.println("Email template processed successfully");
 
-            sendEmail(to, "Verify Your Email - YaVij Express", htmlContent);
+            sendEmail(to, "Verify Your Email - yavigo ", htmlContent);
             System.out.println("Verification email sent successfully to: " + to);
         } catch (Exception e) {
             System.err.println("Failed to send verification email to " + to + ": " + e.getMessage());
@@ -52,12 +52,12 @@ public class EmailServiceImpl  {
     @Async
     public void sendOTPEmail(String to, String name, String otp) {
         try {
-            String subject = "Your OTP Code - YaVij Express";
+            String subject = "Your OTP Code - yavigo";
             String body = String.format("""
                 <html>
                 <body style="font-family: Arial, sans-serif;">
                     <h2>Hello %s,</h2>
-                    <p>Your OTP for YaVij Express is: <strong>%s</strong></p>
+                    <p>Your OTP for yavigo is: <strong>%s</strong></p>
                     <p>This OTP is valid for 5 minutes.</p>
                     <hr>
                     <p><small>If you didn't request this, please ignore this email.</small></p>
@@ -74,12 +74,12 @@ public class EmailServiceImpl  {
     @Async
     public void sendWelcomeEmail(String to, String name) {
         try {
-            String subject = "Welcome to YaVij Express!";
+            String subject = "Welcome to yavigo!";
             String body = String.format("""
                 <html>
                 <body style="font-family: Arial, sans-serif;">
                     <h2>Welcome %s! 🎉</h2>
-                    <p>Thank you for joining YaVij Express - India's leading ride-sharing platform.</p>
+                    <p>Thank you for joining yavigo - India's leading ride-sharing platform.</p>
                     <p>Start your journey with us:</p>
                     <ul>
                         <li>✓ Share rides and save money</li>
@@ -101,7 +101,7 @@ public class EmailServiceImpl  {
     @Async
     public void sendBookingConfirmationEmail(String to, String name, Booking booking) {
         try {
-            String subject = "Booking Confirmed - YaVij Express";
+            String subject = "Booking Confirmed - yavigo ";
             String body = String.format("""
                 <html>
                 <body style="font-family: Arial, sans-serif;">
@@ -143,7 +143,7 @@ public class EmailServiceImpl  {
                     <p>%s</p>
                     <p><strong>Time:</strong> %s</p>
                     <hr>
-                    <p><small>This is an automated emergency alert from YaVij Express.</small></p>
+                    <p><small>This is an automated emergency alert from yavigo.</small></p>
                 </body>
                 </html>
                 """, message, java.time.LocalDateTime.now());
@@ -157,7 +157,7 @@ public class EmailServiceImpl  {
     @Async
     public void sendPasswordResetEmail(String to, String name, String resetLink) {
         try {
-            String subject = "Password Reset - YaVij Express";
+            String subject = "Password Reset - yavigo";
             String body = String.format("""
                 <html>
                 <body style="font-family: Arial, sans-serif;">
@@ -183,7 +183,7 @@ public class EmailServiceImpl  {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-            helper.setFrom(fromEmail, "YaVij Express");
+            helper.setFrom(fromEmail, "yavigo");
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(body, true);
