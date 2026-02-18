@@ -61,7 +61,7 @@ const Contact = () => {
     {
       icon: <FaEnvelope />,
       title: "Email",
-      details: ["yashbhandva@yavijexpress.com", "alijamani@yavijexpress.com"],
+      details: ["yashbhandva@Yavigo.com", "alijamani@Yavigo.com"],
       color: "#3A36E0"
     },
     {
