@@ -109,35 +109,63 @@ HEADER (NAVBAR)
   position: relative;
   display: flex;
   align-items: center;
-}
+}/* ===== GOOGLE-STYLE LOGO (NO BOX, NO BORDER) ===== */
 
-.logo-container {
-  position: relative;
-  width: 70px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 2px solid transparent;
-  background-size: 200% 200%;
-  animation: gradient-flow 3s ease infinite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white !important; /* Logo ke peeche white background */
-}
+ .navbar-brand {
+   background: transparent !important;
+   border: none !important;
+   padding: 0;
+   display: flex;
+   align-items: center;
+   text-decoration: none;
+   box-shadow: none !important;
+ }
 
-.custom-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: var(--radius-sm);
-  transition: transform var(--transition-normal) ease;
-}
+ .logo-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: transparent !important;
+   border: none !important;
+   box-shadow: none !important;
+   padding: 0;
+   margin-right: 15px;
+   overflow: hidden;
+   border-radius: 50%;
+ }
 
-.custom-logo:hover {
-  transform: scale(1.05);
-}
+ .custom-logo {
+   height: 60px;
+   width: 150px;
+   object-fit: cover;
+   background-color: transparent !important;
+   border: none !important;
+   outline: none !important;
+   box-shadow: none !important;
+   border-radius: 50%;
+   transition: transform 0.3s ease;
+ }
 
+ .custom-logo:hover {
+   transform: translateY(-1px);        /* Subtle lift instead of heavy zoom */
+ }
+
+ /* Fallback Text style */
+ .logo-fallback-clean {
+   color: var(--primary-blue);
+   font-weight: 800;
+   font-size: 1.5rem;
+   font-family: var(--font-heading);
+ }
+
+ /* CLEAN MOBILE LOGO */
+ .mobile-logo {
+   height: 38px;
+   width: auto;
+   background: transparent !important;
+   border: none !important;
+   padding: 0;
+ }
 .logo-fallback {
   width: 100%;
   height: 100%;
@@ -152,19 +180,6 @@ HEADER (NAVBAR)
   animation: pulse 2s infinite;
 }
 
-.logo-loader {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 3px solid transparent;
-  border-top-color: var(--accent-cyan);
-  border-radius: 100%;
-  animation: spin 1s linear infinite;
-  opacity: 0;
-  transition: opacity var(--transition-normal);
-}
 
 .logo-container:hover .logo-loader {
   opacity: 1;
@@ -461,15 +476,15 @@ HEADER (NAVBAR)
   gap: var(--space-md);
 }
 
+/* Adjust Mobile Logo for consistency */
 .mobile-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
+  width: 36px;
+  height: 36px;
   object-fit: cover;
-  border: 2px solid transparent;
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple));
-  padding: 2px;
-  background-color: white !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 50%;
+  padding: 0;
 }
 
 .mobile-logo-fallback {
