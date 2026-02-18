@@ -331,7 +331,7 @@ const Careers = () => {
             <span>We're Hiring</span>
           </div>
           <h1 className="careers-title">
-            Careers at <span className="gradient-text">YaVij Express</span>
+            Careers at <span className="gradient-text">Yavigo </span>
           </h1>
           <p className="careers-subtitle">
             We're building more than just a ride-sharing platform — we're creating a safer,
@@ -578,7 +578,7 @@ const Careers = () => {
               >
                 <FaUpload /> Apply for Internship
               </button>
-              <a href="mailto:internships@yavijexpress.com" className="internship-link">
+              <a href="mailto:internships@Yavigo.com" className="internship-link">
                 <FaEnvelope /> Email for Internship Queries
               </a>
             </div>
@@ -627,14 +627,14 @@ const Careers = () => {
           <div className="apply-card">
             <div className="apply-content">
               <h2>Ready to Join Our Journey?</h2>
-              <p>Send your resume or portfolio to careers@yavijexpress.com or apply through the form below.</p>
+              <p>Send your resume or portfolio to careers@Yavigo.com or apply through the form below.</p>
 
               <div className="apply-methods">
                 <div className="method">
                   <FaEnvelope className="method-icon" />
                   <div>
                     <h4>Email Application</h4>
-                    <p>careers@yavijexpress.com</p>
+                    <p>careers@Yavigo.com</p>
                   </div>
                 </div>
                 <div className="method">
@@ -662,7 +662,7 @@ const Careers = () => {
                 </button>
                 <p className="cta-note">
                   Whether you're a student, fresher, or experienced professional —
-                  if you want to build something impactful, YaVij Express is the place for you.
+                  if you want to build something impactful, Yavigo is the place for you.
                 </p>
               </div>
             </div>
@@ -689,7 +689,7 @@ const Careers = () => {
             >
               <div className="modal-header">
                 <FaRocket className="modal-icon" />
-                <h2>Apply to YaVij Express</h2>
+                <h2>Apply to Yavigo</h2>
                 <p>Join our mission to revolutionize urban mobility</p>
               </div>
 
@@ -792,7 +792,7 @@ const Careers = () => {
                         name="coverLetter"
                         value={applicationData.coverLetter}
                         onChange={handleInputChange}
-                        placeholder="Tell us why you want to join YaVij Express..."
+                        placeholder="Tell us why you want to join Yavigo..."
                         rows="4"
                       />
                     </div>
