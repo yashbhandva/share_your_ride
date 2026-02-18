@@ -43,7 +43,7 @@ const PrivacyPolicy = () => {
   const policyContent = {
     introduction: {
       title: "Introduction",
-      content: `YaVij Express respects the privacy of all users and is committed to protecting personal information shared on the platform. This privacy policy explains how user data is collected, used, stored, and protected while using the application.`,
+      content: `Yavigo respects the privacy of all users and is committed to protecting personal information shared on the platform. This privacy policy explains how user data is collected, used, stored, and protected while using the application.`,
       points: [
         "Transparent data practices",
         "User-first privacy approach",
@@ -143,7 +143,7 @@ const PrivacyPolicy = () => {
     },
     conclusion: {
       title: "Conclusion",
-      content: `YaVij Express is built with privacy-by-design principles, ensuring transparency, security, and trust. User data is handled responsibly to provide a safe, reliable, and respectful ride-sharing experience.`,
+      content: `Yavigo is built with privacy-by-design principles, ensuring transparency, security, and trust. User data is handled responsibly to provide a safe, reliable, and respectful ride-sharing experience.`,
       points: [
         "Privacy as core principle",
         "Continuous improvement",
@@ -164,7 +164,7 @@ const PrivacyPolicy = () => {
     const element = document.createElement("a");
     const file = new Blob([document.getElementById("policy-content").innerText], { type: 'text/plain' });
     element.href = URL.createObjectURL(file);
-    element.download = "YaVij-Express-Privacy-Policy.txt";
+    element.download = "Yavigo-Privacy-Policy.txt";
     document.body.appendChild(element);
     element.click();
   };
