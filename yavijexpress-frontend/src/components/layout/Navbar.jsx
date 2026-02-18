@@ -22,7 +22,7 @@ import {
 } from "react-icons/fa";
 
 // TERA CUSTOM LOGO IMPORT KARNA
-import customLogo from "/img/logo.jpg.png"; // Tera logo path
+import customLogo from "/img/yavigo.png"; // Tera logo path
 // Ya fir: import customLogo from "/images/logo.png";
 
 const Navbar = () => {
@@ -122,29 +122,27 @@ const Navbar = () => {
       <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
         {/* Left Section - Brand & Main Links */}
         <div className="navbar-left">
-          <Link to="/" className="navbar-brand">
-            <div className="brand-logo">
-              {/* TERA CUSTOM LOGO YAHAN */}
-              <div className="logo-container">
-                <img
-                  src={customLogo}
-                  alt="YaVij Express Logo"
-                  className="custom-logo"
-                  onError={(e) => {
-                    // If logo fails to load, show fallback
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = `
-                      <div class="logo-fallback">
-                        <div class="logo-icon">🚖</div>
-                      </div>
-                    `;
-                  }}
-                />
-                {/* Loading State */}
-                <div className="logo-loader"></div>
-              </div>
-            </div>
-          </Link>
+
+         <Link to="/" className="navbar-brand">
+           <div className="brand-logo">
+             <div className="logo-container">
+               <img
+                 src={customLogo}
+                 alt="Yavigo Logo"
+                 className="custom-logo"
+                 onError={(e) => {
+                   e.target.style.display = 'none';
+                   // Clean fallback without boxes
+                   const fallback = document.createElement('div');
+                   fallback.className = 'logo-fallback-clean';
+                   fallback.innerText = 'Yavigo';
+                   e.target.parentNode.appendChild(fallback);
+                 }}
+               />
+               {/* REMOVED: logo-loader div (this was likely causing your border/circle) */}
+             </div>
+           </div>
+         </Link>
 
           <div className="navbar-desktop-links">
             {navItems.map((item) => (
@@ -251,7 +249,7 @@ const Navbar = () => {
             <div className="mobile-brand">
               <img
                 src={customLogo}
-                alt="YaVij Express Logo"
+                alt="Yavigo Logo"
                 className="mobile-logo"
                 onError={(e) => {
                   e.target.style.display = 'none';
@@ -261,7 +259,7 @@ const Navbar = () => {
                 }}
               />
               <div className="mobile-brand-text">
-                <div className="mobile-brand-primary">YaVij Express</div>
+                <div className="mobile-brand-primary">Yavigo</div>
                 <div className="mobile-brand-tagline">Ride with Confidence</div>
               </div>
             </div>
