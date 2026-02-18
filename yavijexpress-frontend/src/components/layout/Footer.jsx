@@ -22,7 +22,7 @@ const Footer = () => {
         {/* Company Info Section */}
         <div className="footer-section company-info">
           <div className="footer-logo">
-            <h2 className="logo-text">YaVij<span className="logo-highlight">Express</span></h2>
+            <h2 className="logo-text">Yavigo<span className="logo-highlight"></span></h2>
             <p className="footer-tagline">Ride with Confidence, Arrive with Style</p>
           </div>
           <p className="footer-description">
@@ -97,7 +97,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="footer-bottom">
         <div className="footer-copyright">
-          © {year} YaVij Express. All rights reserved.
+          © {year} Yavigo. All rights reserved.
           <span className="made-with">
             Made with <FaHeart className="heart-icon" /> in India
           </span>
