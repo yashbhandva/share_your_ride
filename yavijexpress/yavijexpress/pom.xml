@@ -167,7 +167,7 @@
                 <version>3.5.1</version>
                 <configuration>
                     <to>
-                        <image>yash0004/yavi</image>
+                        <image>yash0004/yavigo</image>
                     </to>
                 </configuration>
             </plugin>
