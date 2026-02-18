@@ -102,8 +102,8 @@ const Login = () => {
               <div className="logo">
                 <div className="logo-icon">🚖</div>
                 <div className="logo-text">
-                  <span className="logo-primary">YaVij</span>
-                  <span className="logo-secondary">Express</span>
+                  <span className="logo-primary">Yavigo</span>
+                  <span className="logo-secondary"></span>
                 </div>
               </div>
               <h1>Welcome Back</h1>
@@ -217,7 +217,7 @@ const Login = () => {
           <div className="info-wrapper">
             <h2>One Platform, Multiple Roles</h2>
             <p className="info-subtitle">
-              YaVij Express serves different user needs with dedicated dashboards
+              Yavigo serves different user needs with dedicated dashboards
             </p>
 
             <div className="benefits-grid">
