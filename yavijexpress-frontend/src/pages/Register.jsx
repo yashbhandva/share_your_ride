@@ -254,8 +254,7 @@ const Register = () => {
               <div className="logo">
                 <div className="logo-icon">🚖</div>
                 <div className="logo-text">
-                  <span className="logo-primary">YaVij</span>
-                  <span className="logo-secondary">Express</span>
+                  <span className="logo-primary">Yavigo</span>
                 </div>
               </div>
               <h1>Create Account</h1>
@@ -588,7 +587,7 @@ const Register = () => {
         >
           <div className="info-wrapper">
             <div className="benefits-header">
-              <h2>Why Join YaVij Express?</h2>
+              <h2>Why Join Yavigo ?</h2>
               <p className="benefits-subtitle">
                 Choose the account type that fits your needs
               </p>
