@@ -71,7 +71,7 @@ const Home = () => {
     {
       name: "Rahul Sharma",
       role: "Regular Passenger",
-      content: "YaVij Express has transformed my daily commute. The drivers are professional and rides are always on time!",
+      content: "Yavigo has transformed my daily commute. The drivers are professional and rides are always on time!",
       rating: 5,
       avatar: "👨‍💼"
     },
@@ -98,7 +98,7 @@ const Home = () => {
           >
             <h1 className="hero-title">
               Welcome to
-              <span className="brand-name"> YaVij Express</span>
+              <span className="brand-name"> Yavigo</span>
             </h1>
             <p className="hero-subtitle">
               India's fastest-growing ride-sharing platform connecting passengers
@@ -146,7 +146,7 @@ const Home = () => {
       >
         <div className="container">
           <motion.div className="section-header" variants={fadeInUp}>
-            <h2 className="section-title">Why Choose YaVij?</h2>
+            <h2 className="section-title">Why Choose Yavigo?</h2>
             <p className="section-subtitle">Experience the best in ride-sharing</p>
           </motion.div>
 
