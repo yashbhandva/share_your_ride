@@ -141,7 +141,7 @@ const About = () => {
           </h1>
           <p className="about-subtitle">
             Founded by visionary leaders <strong>Yash Bhandva</strong> and <strong>Jamani Ali Asgar</strong>,
-            YaVij Express is India's fastest-growing ride-sharing platform.
+            Yavigo is India's fastest-growing ride-sharing platform.
             <br />
             <span className="tech-mention">
               Connecting millions of riders with verified drivers across 25+ cities with cutting-edge technology.
@@ -184,22 +184,22 @@ const About = () => {
           <div className="story-text">
             <p>
               Founded in 2020 by <strong>Yash Bhandva</strong> and <strong>Jamani Ali Asgar</strong>,
-              YaVij Express began with a mission to solve urban transportation challenges in India.
+              Yavigo began with a mission to solve urban transportation challenges in India.
             </p>
             <p>
-             YaVij-Express was born from a simple but powerful idea — making everyday travel easier, safer, and more reliable for everyone. Like many people, we noticed how difficult it can be to find trustworthy transportation at the right time, especially for daily commuting, long-distance travel, or urgent trips.
+             Yavigo was born from a simple but powerful idea — making everyday travel easier, safer, and more reliable for everyone. Like many people, we noticed how difficult it can be to find trustworthy transportation at the right time, especially for daily commuting, long-distance travel, or urgent trips.
             </p>
             <p>
-              The name YaVij represents the collaboration and shared vision of its founders, combining innovation, responsibility, and dedication to solving real-world mobility problems. We wanted to create a platform where people don't just book rides, but travel with confidence.
+              The name Yavigo represents the collaboration and shared vision of its founders, combining innovation, responsibility, and dedication to solving real-world mobility problems. We wanted to create a platform where people don't just book rides, but travel with confidence.
             </p>
             <p>
-             From the beginning, our focus has been on community-based ride sharing. By connecting verified drivers with genuine passengers, YaVij-Express helps reduce travel stress, save costs, and make better use of existing vehicles — all while keeping safety at the center.
+             From the beginning, our focus has been on community-based ride sharing. By connecting verified drivers with genuine passengers, Yavigo helps reduce travel stress, save costs, and make better use of existing vehicles — all while keeping safety at the center.
             </p>
             <p>
-             We believe technology should serve people, not complicate their lives. That's why YaVij-Express is built using modern, secure, and scalable technologies, ensuring smooth performance, strong data protection, and a user-friendly experience across all devices.
+             We believe technology should serve people, not complicate their lives. That's why Yavigo is built using modern, secure, and scalable technologies, ensuring smooth performance, strong data protection, and a user-friendly experience across all devices.
             </p>
             <p>
-                Today, YaVij-Express is more than just an app — it is a growing travel community driven by trust, transparency, and innovation. As we continue to evolve, our mission remains the same: to redefine the way people move, connect, and travel together.
+                Today, Yavigo is more than just an app — it is a growing travel community driven by trust, transparency, and innovation. As we continue to evolve, our mission remains the same: to redefine the way people move, connect, and travel together.
             </p>
           </div>
           <div className="story-image">
@@ -289,7 +289,7 @@ const About = () => {
       >
         <div className="section-header">
           <h2>Meet Our Founders</h2>
-          <p>The visionary leaders behind YaVij Express</p>
+          <p>The visionary leaders behind Yavigo</p>
         </div>
         <div className="team-grid">
           {teamMembers.map((member, index) => (
@@ -400,7 +400,7 @@ const About = () => {
               <h3>Our Mission</h3>
             </div>
             <p>
-              Our mission at YaVij-Express is to make transportation simple, safe, affordable, and accessible for everyone. We aim to connect verified drivers and passengers through a trusted digital platform that reduces travel difficulties, lowers transportation costs, and promotes efficient use of available vehicles. By focusing on safety, transparency, and community trust, we strive to deliver a reliable ride-sharing experience for daily commuters, students, professionals, and long-distance travelers.
+              Our mission at Yavigo is to make transportation simple, safe, affordable, and accessible for everyone. We aim to connect verified drivers and passengers through a trusted digital platform that reduces travel difficulties, lowers transportation costs, and promotes efficient use of available vehicles. By focusing on safety, transparency, and community trust, we strive to deliver a reliable ride-sharing experience for daily commuters, students, professionals, and long-distance travelers.
             </p>
           </motion.div>
           <motion.div className="vision-card" variants={fadeInUp}>
@@ -409,7 +409,7 @@ const About = () => {
               <h3>Our Vision</h3>
             </div>
             <p>
-              Our vision is to become a leading community-driven mobility platform that transforms how people travel together. We aspire to create a future where transportation is not only convenient but also eco-friendly, secure, and socially responsible. By continuously innovating and adopting modern technologies, YaVij-Express envisions a connected travel ecosystem that minimizes empty seats, reduces traffic congestion, and builds a strong network of responsible drivers and passengers across cities and regions.
+              Our vision is to become a leading community-driven mobility platform that transforms how people travel together. We aspire to create a future where transportation is not only convenient but also eco-friendly, secure, and socially responsible. By continuously innovating and adopting modern technologies, Yavigo envisions a connected travel ecosystem that minimizes empty seats, reduces traffic congestion, and builds a strong network of responsible drivers and passengers across cities and regions.
             </p>
           </motion.div>
         </div>
