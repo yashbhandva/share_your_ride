@@ -86,20 +86,16 @@ public class UserServiceImpl implements UserService {
         user.setAadhaarNumber(request.getAadhaarNumber());
         user.setDrivingLicense(request.getDrivingLicense());
         user.setRole(role);
-        user.setVerificationStatus(User.VerificationStatus.PENDING);
+        user.setVerificationStatus(User.VerificationStatus.VERIFIED);
         user.setIsActive(true);
 
         User savedUser = userRepository.save(user);
-
-        // Send verification email
-        String otp = otpService.generateOTP(request.getEmail());
-        emailService.sendVerificationEmail(request.getEmail(), request.getName(), otp);
 
         // Create welcome notification
         Notification notification = new Notification();
         notification.setUser(savedUser);
         notification.setTitle("Welcome to YaVij Express!");
-        notification.setMessage("Thank you for registering. Please verify your email.");
+        notification.setMessage("Thank you for registering. Your account is ready to use.");
         notification.setType(Notification.NotificationType.INFO);
         notificationRepository.save(notification);
 
