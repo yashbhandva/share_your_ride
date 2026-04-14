@@ -15,7 +15,6 @@ const About = lazy(() => import("./pages/About.jsx"));
 const Contact = lazy(() => import("./pages/Contact.jsx"));
 const Login = lazy(() => import("./pages/Login.jsx"));
 const Register = lazy(() => import("./pages/Register.jsx"));
-const VerifyOTP = lazy(() => import("./pages/VerifyOTP.jsx"));
 const DashboardPassenger = lazy(() => import("./pages/DashboardPassenger.jsx"));
 const DashboardDriver = lazy(() => import("./pages/DashboardDriver.jsx"));
 const DashboardAdmin = lazy(() => import("./pages/DashboardAdmin.jsx"));
@@ -130,14 +129,6 @@ const App = () => {
                   element={
                     <RouteTransition>
                       <Register />
-                    </RouteTransition>
-                  }
-                />
-                <Route
-                  path="/verify-otp"
-                  element={
-                    <RouteTransition>
-                      <VerifyOTP />
                     </RouteTransition>
                   }
                 />
