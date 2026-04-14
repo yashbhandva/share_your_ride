@@ -24,7 +24,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<ApiResponse<?>> register(@Valid @RequestBody AuthDTO.RegisterRequest request) {
         return ResponseEntity.ok(
-                ApiResponse.created(userService.register(request), "Registration successful. Please verify your email.")
+                ApiResponse.created(userService.register(request), "Registration successful")
         );
     }
 
@@ -32,22 +32,6 @@ public class AuthController {
     public ResponseEntity<ApiResponse<AuthDTO.JwtResponse>> login(@Valid @RequestBody AuthDTO.LoginRequest request) {
         return ResponseEntity.ok(
                 ApiResponse.success(userService.login(request), "Login successful")
-        );
-    }
-
-    @PostMapping("/verify-otp")
-    public ResponseEntity<ApiResponse<?>> verifyOTP(@Valid @RequestBody AuthDTO.OTPVerifyRequest request) {
-        userService.verifyEmail(request.getEmail(), request.getOtp());
-        return ResponseEntity.ok(
-                ApiResponse.success(null, "Email verified successfully")
-        );
-    }
-
-    @PostMapping("/send-otp")
-    public ResponseEntity<ApiResponse<?>> sendOTP(@RequestParam String email) {
-        userService.sendOTP(email);
-        return ResponseEntity.ok(
-                ApiResponse.success(null, "OTP sent successfully")
         );
     }
 
