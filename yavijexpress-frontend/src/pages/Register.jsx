@@ -159,15 +159,8 @@ const Register = () => {
       console.log('Sending to API:', apiData);
 
       await register(apiData);
-      setSuccess("Registration successful! Redirecting to OTP verification...");
-      setTimeout(() => navigate("/verify-otp", {
-        state: {
-          email: form.email,
-          name: form.name,
-          role: form.role,
-          mobile: form.mobile
-        }
-      }), 2000);
+      setSuccess("Registration successful! Redirecting to login...");
+      setTimeout(() => navigate("/login"), 2000);
     } catch (err) {
       console.log('Error response:', err.response);
       const respData = err.response?.data;
